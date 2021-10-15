@@ -13,7 +13,8 @@ function di_add_admin_page() {
     add_menu_page( "DI Theme Options", "Designer's Image", 'manage_options', 'designers_image', 'di_theme_create_page', get_template_directory_uri() . '/img/di_icon.png', 3 );
 
     // Generate DI Admin Sub Pages
-    add_submenu_page( 'designers_image', 'DI Theme Options', 'Settings', 'manage_options', 'designers_image', 'di_theme_create_page' );
+    add_submenu_page( 'designers_image', 'DI Sidebar Options', 'Sidebar', 'manage_options', 'designers_image', 'di_theme_create_page' );
+    add_submenu_page( 'designers_image', 'DI Theme Options', 'Theme Options', 'manage_options', 'designers_image_theme', 'di_theme_support_page' );
     add_submenu_page( 'designers_image', 'DI CSS Options', 'Custom CSS', 'manage_options', 'designers_image_css', 'di_theme_css_page' );
 
     // Activate custom settings
@@ -24,6 +25,7 @@ function di_add_admin_page() {
 add_action( 'admin_menu', 'di_add_admin_page' );
 
 function di_custom_settings() {
+    // Sidebar Options
     register_setting( 'di-settings-group', 'profile_image' );
     register_setting( 'di-settings-group', 'first_name' );
     register_setting( 'di-settings-group', 'last_name' );
@@ -40,8 +42,38 @@ function di_custom_settings() {
     add_settings_field( 'sidebar-twitter', 'Twitter handler', 'di_sidebar_twitter', 'designers_image', 'di-sidebar-options' );
     add_settings_field( 'sidebar-facebook', 'Facebook handler', 'di_sidebar_facebook', 'designers_image', 'di-sidebar-options' );
     add_settings_field( 'sidebar-gplus', 'Google+ handler', 'di_sidebar_gplus', 'designers_image', 'di-sidebar-options' );
+
+    // Theme Support Options
+    register_setting( 'di-theme-support' , 'post_formats', 'di_post_formats_callback' );
+
+    add_settings_section( 'di-theme-options', 'Theme Options', 'di_theme_options', 'designers_image_theme' );
+
+    add_settings_field( 'post-formats', 'Post Formats', 'di_post_formats', 'designers_image_theme', 'di-theme-options' );
 }
 
+// Post Formats Callback Function
+function di_post_formats_callback( $input ) {
+    return $input;
+}
+
+function di_theme_options() {
+    echo 'Activate and Deactivate specific Theme Support Options';
+}
+
+function di_post_formats() {
+    $options = get_option( 'post_formats' );
+    $formats = array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' );
+    $output = '';
+
+    foreach ( $formats as $format ) {
+        $checked = ( @$options[$format] == 1 ? 'checked' : '');
+        $output .= '<label><input type="checkbox" id="'.$format.'" name="post_formats['.$format.']" value="1" '.$checked.' />'.$format.'</label><br />';
+    }
+
+    echo $output;
+}
+
+// Sidebar Options Functions
 function di_sidebar_options() {
     echo 'Customize your Sidebar Information';
 }
@@ -83,12 +115,14 @@ function di_sanitize_twitter_handler( $input ) {
     return $output;
 }
 
+// Template submenu functions
+function di_theme_support_page() {
+    require_once( get_template_directory() . '/inc/templates/di-theme-support.php' );
+}
 
-function di_theme_create_page() {
-    
+function di_theme_create_page() {   
     // generation of our admin page
     require_once( get_template_directory() . '/inc/templates/di-admin.php' );
-
 }
 
 function di_theme_css_page() {

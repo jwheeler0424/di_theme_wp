@@ -1,4 +1,4 @@
-<h1>Designer's Image Theme Options</h1>
+<h1>Designer's Image Sidebar Options</h1>
 <?php settings_errors() ?>
 <?php
     $picture = esc_attr( get_option( 'profile_image' ) );
