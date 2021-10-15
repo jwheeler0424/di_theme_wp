@@ -1,7 +1,6 @@
 ready((event) => {
     
     let mediaUploader;
-
     document.querySelector('#upload-button').addEventListener('click', (e) => {
         e.preventDefault();
         if ( mediaUploader ) {
@@ -26,6 +25,16 @@ ready((event) => {
         mediaUploader.open();
 
     });
+
+    document.querySelector('#remove-image').addEventListener('click', (e) => {
+        e.preventDefault();
+        const answer = confirm('Are you sure you want to remove your Profile Image?');
+        if ( answer === true ) {
+            document.querySelector('#profile-image').value = '';
+            document.querySelector('.di-general-form').submit();
+        }
+        return;
+    })
 
 })
 

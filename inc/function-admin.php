@@ -44,17 +44,18 @@ function di_custom_settings() {
     add_settings_field( 'sidebar-gplus', 'Google+ handler', 'di_sidebar_gplus', 'designers_image', 'di-sidebar-options' );
 
     // Theme Support Options
-    register_setting( 'di-theme-support' , 'post_formats', 'di_post_formats_callback' );
+    register_setting( 'di-theme-support' , 'post_formats' );
+    register_setting( 'di-theme-support' , 'custom_header' );
+    register_setting( 'di-theme-support' , 'custom_background' );
 
     add_settings_section( 'di-theme-options', 'Theme Options', 'di_theme_options', 'designers_image_theme' );
 
     add_settings_field( 'post-formats', 'Post Formats', 'di_post_formats', 'designers_image_theme', 'di-theme-options' );
+    add_settings_field( 'custom-header', 'Custom Header', 'di_custom_header', 'designers_image_theme', 'di-theme-options' );
+    add_settings_field( 'custom-background', 'Custom Background', 'di_custom_background', 'designers_image_theme', 'di-theme-options' );
+
 }
 
-// Post Formats Callback Function
-function di_post_formats_callback( $input ) {
-    return $input;
-}
 
 function di_theme_options() {
     echo 'Activate and Deactivate specific Theme Support Options';
@@ -73,6 +74,18 @@ function di_post_formats() {
     echo $output;
 }
 
+function di_custom_header() {
+    $options = get_option( 'custom_header' );
+    $checked = ( @$options == 1 ? 'checked' : '');
+    echo '<label><input type="checkbox" id="custom_header" name="custom_header" value="1" '.$checked.' /> Activate Custom Header</label><br />';
+}
+
+function di_custom_background() {
+    $options = get_option( 'custom_background' );
+    $checked = ( @$options == 1 ? 'checked' : '');
+    echo '<label><input type="checkbox" id="custom_background" name="custom_background" value="1" '.$checked.' /> Activate Custom Background</label>';
+}
+
 // Sidebar Options Functions
 function di_sidebar_options() {
     echo 'Customize your Sidebar Information';
@@ -80,7 +93,11 @@ function di_sidebar_options() {
 
 function di_sidebar_profile() {
     $profileImg = esc_attr( get_option( 'profile_image' ) );
-    echo '<input type="button" class="button button-secondary" value="Choose Profile Image" id="upload-button" /><input type="hidden" id="profile-image" name="profile_image" value="'.$profileImg.'" />';
+    if ( empty($profileImg) ) {
+        echo '<input type="button" class="button button-secondary" value="Choose Profile Image" id="upload-button" /><input type="hidden" id="profile-image" name="profile_image" value="" />';
+    } else {
+        echo '<input type="button" class="button button-secondary" value="Choose Profile Image" id="upload-button" /><input type="hidden" id="profile-image" name="profile_image" value="'.$profileImg.'" /> <input type="button" class="button button-secondary" value="Remove" id="remove-image" />';
+    }
 }
 
 function di_sidebar_name() {

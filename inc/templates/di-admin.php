@@ -20,7 +20,7 @@
 </div>
 
 <form method="post" action="options.php" class="di-general-form">
-    <?php settings_fields( 'di-settings-group' ) ?>
-    <?php do_settings_sections( 'designers_image' ) ?>
-    <?php submit_button() ?>
+    <?php settings_fields( 'di-settings-group' ); ?>
+    <?php do_settings_sections( 'designers_image' ); ?>
+    <?php submit_button( 'Save Changes', 'primary', 'btnSubmit' ); ?>
 </form>
