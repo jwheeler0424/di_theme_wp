@@ -62,6 +62,13 @@ function di_custom_settings() {
 
     add_settings_field( 'activate-form', 'Activate Contact Form', 'di_activate_contact', 'designers_image_theme_contact', 'di-contact-section' );
 
+    // Custom CSS Options
+    register_setting ( 'di-custom-css-options', 'di_css', 'di_sanitize_custom_css' );
+
+    add_settings_section( 'di-custom-css-section', 'Custom CSS', 'di_custom_css_section_callback', 'di_theme_css_page' );
+
+    add_settings_field( 'custom-css', 'Insert Custom CSS', 'di_custom_css_callback', 'di_theme_css_page', 'di-custom-css-section' );
+
 }
 
 
@@ -77,6 +84,16 @@ function di_activate_contact() {
     $options = get_option( 'activate_contact' );
     $checked = ( @$options == 1 ? 'checked' : '');
     echo '<label><input type="checkbox" id="activate_contact" name="activate_contact" value="1" '.$checked.' /></label><br />';
+}
+
+function di_custom_css_section_callback() {
+    echo 'Customize Designer\'s Image Theme with your own CSS.';
+}
+
+function di_custom_css_callback() {
+    $css = get_option( 'di_css' );
+    $css = ( empty($css) ) ? "/* Designer's Image Custom CSS */" : $css;
+    echo '<div id="customCss">'.$css.'</div><textarea id="di_css" name="di_css" style="display: none; visibility: hidden">'.$css.'</textarea>';
 }
 
 function di_post_formats() {
@@ -150,6 +167,11 @@ function di_sanitize_twitter_handler( $input ) {
     return $output;
 }
 
+function di_sanitize_custom_css( $input ) {
+    $output = esc_textarea( $input );
+    return $output;
+}
+
 // Template submenu functions
 function di_theme_support_page() {
     require_once( get_template_directory() . '/inc/templates/di-theme-support.php' );
@@ -165,7 +187,8 @@ function di_contact_form_page() {
 }
 
 function di_theme_css_page() {
-    // generation of our admin page
+    // generation of our admin custom css page
+    require_once( get_template_directory() . '/inc/templates/di-custom-css.php' );
 }
 
 
