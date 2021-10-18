@@ -15,6 +15,7 @@ function di_add_admin_page() {
     // Generate DI Admin Sub Pages
     add_submenu_page( 'designers_image', 'DI Sidebar Options', 'Sidebar', 'manage_options', 'designers_image', 'di_theme_create_page' );
     add_submenu_page( 'designers_image', 'DI Theme Options', 'Theme Options', 'manage_options', 'designers_image_theme', 'di_theme_support_page' );
+    add_submenu_page( 'designers_image', 'DI Contact Form', 'Contact Form', 'manage_options', 'designers_image_theme_contact', 'di_contact_form_page' );
     add_submenu_page( 'designers_image', 'DI CSS Options', 'Custom CSS', 'manage_options', 'designers_image_css', 'di_theme_css_page' );
 
     // Activate custom settings
@@ -54,11 +55,28 @@ function di_custom_settings() {
     add_settings_field( 'custom-header', 'Custom Header', 'di_custom_header', 'designers_image_theme', 'di-theme-options' );
     add_settings_field( 'custom-background', 'Custom Background', 'di_custom_background', 'designers_image_theme', 'di-theme-options' );
 
+    // Contact Form Options
+    register_setting ( 'di-contact-options', 'activate_contact' );
+
+    add_settings_section( 'di-contact-section', 'Contact Form', 'di_contact_section', 'designers_image_theme_contact' );
+
+    add_settings_field( 'activate-form', 'Activate Contact Form', 'di_activate_contact', 'designers_image_theme_contact', 'di-contact-section' );
+
 }
 
 
 function di_theme_options() {
     echo 'Activate and Deactivate specific Theme Support Options';
+}
+
+function di_contact_section() {
+    echo 'Activate and Deactivate the Built-in Contact Form';
+}
+
+function di_activate_contact() {
+    $options = get_option( 'activate_contact' );
+    $checked = ( @$options == 1 ? 'checked' : '');
+    echo '<label><input type="checkbox" id="activate_contact" name="activate_contact" value="1" '.$checked.' /></label><br />';
 }
 
 function di_post_formats() {
@@ -140,6 +158,10 @@ function di_theme_support_page() {
 function di_theme_create_page() {   
     // generation of our admin page
     require_once( get_template_directory() . '/inc/templates/di-admin.php' );
+}
+
+function di_contact_form_page() {
+    require_once( get_template_directory() . '/inc/templates/di-contact-form.php' );
 }
 
 function di_theme_css_page() {
