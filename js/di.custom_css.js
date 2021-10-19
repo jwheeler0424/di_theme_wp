@@ -13,9 +13,9 @@ editor.getSession().setMode("ace/mode/css");
 
 
 /*
-    ==============================
-    |   Document Ready Function
-    ==============================
+    ========================================
+    |   Document Ready Function            |
+    ========================================
 */
 function ready(callbackFunction){
     if(document.readyState != 'loading') {

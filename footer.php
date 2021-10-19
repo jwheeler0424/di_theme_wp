@@ -1,8 +1,9 @@
 <?php 
     /* 
-        This is the header template
-
         @package designersimage
+        ========================================
+        |   FOOTER TEMPLATE                    |
+        ========================================
     */
 ?>
 

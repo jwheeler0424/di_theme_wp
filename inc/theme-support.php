@@ -1,10 +1,10 @@
 <?php
 
 /* 
-    @package designersimage
-    ==============================
-        THEME SUPPORT
-    ==============================
+    @package designersimage 
+    ========================================
+        THEME SUPPORT                      |
+    ========================================
 */
 
 $options = get_option( 'post_formats' );

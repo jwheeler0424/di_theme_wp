@@ -1,10 +1,10 @@
 <?php
 
-/* 
+/*  
     @package designersimage
-    ==============================
-        THEME CUSTOM POST TYPES
-    ==============================
+    ========================================
+        CONTACT MESSAGE CUSTOM POST TYPE   |
+    ========================================
 */
 
 $contact = get_option( 'activate_contact' );

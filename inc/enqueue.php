@@ -2,9 +2,9 @@
 
 /* 
     @package designersimage
-    ===================================
-        ADMIN ENQUEUE FUNCTIONS
-    ===================================
+    ========================================
+        ADMIN ENQUEUE FUNCTIONS            |
+    ========================================
 */
 
 function di_load_admin_scripts( $hook ) {
@@ -35,9 +35,9 @@ function di_load_admin_scripts( $hook ) {
 add_action( 'admin_enqueue_scripts', 'di_load_admin_scripts' );
 
 /* 
-    ===================================
-        FRONT-END ENQUEUE FUNCTIONS
-    ===================================
+    ========================================
+        FRONT-END ENQUEUE FUNCTIONS        |
+    ========================================
 */
 
 function di_load_scripts() {
