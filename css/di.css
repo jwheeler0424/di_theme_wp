@@ -1,23 +1,41 @@
 /*
     @package designersimage
 */
-
 /*
     ========================================
     |   Generic                            |
     ========================================
 */
-
-
 /*
     ========================================
     |   Header                             |
     ========================================
 */
 .header-container {
-    background: white;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
-    display: block;
-    height: 60px;
-    position: relative;
+  background: white;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+  display: block;
+  height: 70px;
+  position: relative;
+  width: 100%;
 }
+
+.header-content img.site-logo {
+  height: 50px;
+  margin: 10px 0;
+  float: left;
+  position: relative;
+}
+.header-content h1.site-title {
+  color: #666;
+  float: left;
+  font-size: 1.6em;
+  font-weight: 100;
+  line-height: 50px;
+  margin-top: 8px;
+  padding: 0 0 0 10px;
+  position: relative;
+  text-transform: lowercase;
+}
+
+/*# sourceMappingURL=di.css.map */
