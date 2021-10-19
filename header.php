@@ -19,3 +19,20 @@
     </head>
 
 <body <?php body_class(); ?>>
+
+    <header class="header-container">
+
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="container text-center">
+                    <div class="header-content">
+                        <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+                    </div> <!-- .header-content -->
+                    <div class="nav-container"></div> <!-- .nav-container -->
+                </div> <!-- .header-container -->
+
+            </div> <!-- .col-xs-12 -->
+        </div> <!-- .row -->
+
+    </header>

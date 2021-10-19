@@ -1,0 +1,23 @@
+/*
+    @package designersimage
+*/
+
+/*
+    ===================================
+    |   Generic
+    ===================================
+*/
+
+
+/*
+    ===================================
+    |   Header
+    ===================================
+*/
+.header-container {
+    background: white;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.6);
+    display: block;
+    height: 80px;
+    position: relative;
+}
