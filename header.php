@@ -23,31 +23,29 @@
 
 <body <?php body_class(); ?>>
 
-    <header class="header-container">
-        <div class="col-xs-12">
+    <div class="header-container">
+        <header class="container text-center">
+            <div class="header-content">
+                <a href="#">
+                    <img class="site-logo" src="<?php header_image() ?>" alt="<?php echo alt_text_display(); ?>" />
+                    <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+                </a>
+            </div><!-- .header-content -->
+            <div class="nav-container">
 
-            <div class="container text-center">
-                <div class="header-content">
-                    <a href="#">
-                        <img class="site-logo" src="<?php header_image() ?>" alt="<?php echo alt_text_display(); ?>" />
-                        <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
-                    </a>
-                </div><!-- .header-content -->
-                <div class="nav-container">
+                <nav class="navbar-di">
+                    <?php
+                        $args = array(
+                            'theme_location' => 'primary',
+                            'container' => false,
+                            'menu_class' => 'navbar-di__menu',
+                            'walker' => new di_Walker_Nav_Primary
+                        );
+                        wp_nav_menu( $args );
+                    ?>
+                </nav>
 
-                    <nav class="navbar navbar-expand-lg navbar-light navbar-di">
-                        <?php
-                            $args = array(
-                                'theme_location' => 'primary',
-                                'container' => false,
-                                'menu_class' => 'nav navbar-nav'
-                            );
-                            wp_nav_menu( $args );
-                        ?>
-                    </nav>
+            </div><!-- .nav-container -->
+        </header><!-- .header-container -->
 
-                </div><!-- .nav-container -->
-            </div><!-- .header-container -->
-
-        </div><!-- .col-xs-12 -->
-    </header>
+    </div><!-- .header-container -->

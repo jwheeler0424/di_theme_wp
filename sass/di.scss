@@ -4,9 +4,28 @@
 
 /*
     ========================================
-    |   Generic                            |
+    |   Variables                          |
     ========================================
 */
+$color__primary : rgb( 63, 88, 159);
+$color__secondary : rgb( 122, 136, 175);
+$color__active : rgb( 101, 125, 190);
+$color__hover : rgb( 167, 182, 222 );
+$font__dark : rgb( 87, 91, 120 );
+
+
+/*
+    ========================================
+    |   Mixins                             |
+    ========================================
+*/
+@mixin animate ( $attr, $time ) {
+    -webkit-transition: $attr $time ease-in-out;
+    -moz-transition: $attr $time ease-in-out;
+    -ms-transition: $attr $time ease-in-out;
+    -o-transition: $attr $time ease-in-out;
+    transition: $attr $time ease-in-out;
+}
 
 
 /*
@@ -21,24 +40,98 @@
     height: 70px;
     position: relative;
     width: 100%;
+
+    header {
+        display: flex;
+        flex-direction: row;
+    }
 }
 
-.header-content { 
-    img.site-logo {
-        height: 50px;
-        margin: 10px 0;
-        float: left;
+.header-content {
+    height: 70px;
+    position: relative;
+    width: fit-content;
+
+    a {
+        display: block;
+        height: 70px;
         position: relative;
+        width: max-content;
+
+        img.site-logo {
+            height: 50px;
+            margin: 10px 0;
+            float: left;
+            position: relative;
+        }
+        h1.site-title {
+            color: $font__dark;
+            float: left;
+            font-size: 1.6em;
+            font-weight: 200;
+            line-height: 50px;
+            margin-top: 8px;
+            padding: 0 10px;
+            position: relative;
+            text-transform: lowercase;
+            @include animate( color, 250ms );
+        }
+        
+        &:hover h1.site-title {
+            color: $color__hover;
+        }
     }
-    h1.site-title {
-        color: #666;
-        float: left;
-        font-size: 1.6em;
-        font-weight: 100;
-        line-height: 50px;
-        margin-top: 8px;
-        padding: 0 0 0 10px;
-        position: relative;
-        text-transform: lowercase;
+    
+}
+
+
+/*
+    ========================================
+    |   Nav Bar                            |
+    ========================================
+*/
+.nav-container {
+    display: flex;
+    flex: 1;
+    height: 70px;
+    position: relative;
+
+    .navbar-di {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        height: 100%;
+    }
+    .navbar-di__menu {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        justify-content: flex-end;
+        line-height: 60px;
+        list-style: none;
+        margin: 5px 0;
+        padding: 0;
+
+        li {
+            padding-left: 20px;
+            text-transform: lowercase;
+            a {
+                color: $font__dark;
+                display: block;
+                text-decoration: none;
+                @include animate( color, 250ms );
+
+                &:hover {
+                    color: $color__hover;
+                }
+            }
+        }
+        li.active {
+            a {
+                color: $color__active;
+                cursor: default;
+                font-weight: 600;
+            }
+        }
     }
 }
