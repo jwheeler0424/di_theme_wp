@@ -35,7 +35,7 @@
                 </div><!-- .header-content -->
                 <div class="nav-container">
 
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-di">
+                    <nav class="navbar navbar-expand-lg navbar-light navbar-di">
                         <?php
                             $args = array(
                                 'theme_location' => 'primary',
