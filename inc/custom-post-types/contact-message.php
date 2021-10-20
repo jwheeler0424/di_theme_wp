@@ -3,7 +3,7 @@
 /*  
     @package designersimage
     ========================================
-        CONTACT MESSAGE CUSTOM POST TYPE   |
+    |   CONTACT MESSAGE CUSTOM POST TYPE   |
     ========================================
 */
 

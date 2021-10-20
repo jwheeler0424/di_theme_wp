@@ -3,7 +3,7 @@
 /* 
     @package designersimage
     ========================================
-        ADMIN ENQUEUE FUNCTIONS            |
+    |   ADMIN ENQUEUE FUNCTIONS            |
     ========================================
 */
 
@@ -36,7 +36,7 @@ add_action( 'admin_enqueue_scripts', 'di_load_admin_scripts' );
 
 /* 
     ========================================
-        FRONT-END ENQUEUE FUNCTIONS        |
+    |   FRONT-END ENQUEUE FUNCTIONS        |
     ========================================
 */
 
@@ -44,6 +44,7 @@ function di_load_scripts() {
 
     wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '5.1.3', 'all' );
     wp_enqueue_style( 'designersimage', get_template_directory_uri() . '/css/di.css', array(), '1.0.0', 'all' );
+    wp_enqueue_style( 'material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), '1.6.28', 'all' );
 
     wp_deregister_script( 'jquery' );
     wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery.min.js', array(), '3.6.0', true );

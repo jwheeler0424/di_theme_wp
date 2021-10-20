@@ -3,7 +3,7 @@
 /* 
     @package designersimage
     ========================================
-        FRONT-END ENQUEUE FUNCTIONS        |
+    |   FRONT-END ENQUEUE FUNCTIONS        |
     ========================================
 */
 
