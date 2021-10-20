@@ -24,25 +24,40 @@ if ( @$contact == 1) {
 /* CONTACT CPT */
 function di_contact_custom_post_type() {
     $labels = array(
-        'name'              => 'Contact Messages',
-        'singular_name'     => 'Contact Message',
-        'menu_name'         => 'Contact Messages',
-        'name_admin_bar'    => 'Contact Message',
+        'name'                  => 'Contact Messages',
+        'singular_name'         => 'Contact Message',
+        'menu_name'             => 'Contact Messages',
+        'name_admin_bar'        => 'Contact Message',
+    );
+
+    $capabilities = array(
+        'publish_posts'         => 'publish_contact_message',
+        'edit_posts'            => 'edit_contact_message',
+        'edit_others_posts'     => 'edit_others_contact_message',
+        'delete_posts'          => 'delete_contact_message',
+        'delete_others_posts'   => 'delete_others_contact_message',
+        'read_private_posts'    => 'read_private_contact_message',
+        'edit_post'             => 'edit_contact_message',
+        'delete_post'           => 'delete_contact_message',
+        'read_post'             => 'read_contact_message'
     );
 
     $args = array(
-        'labels' => $labels,
-        'show_ui'           => true,
-        'show_in_menu'      => true,
-        'capability_type'   => 'post',
-        'hierarchical'      => false,
-        'menu_position'     => 26,
-        'menu_icon'         => 'dashicons-email-alt',
-        'supports'          => array( 'title', 'editor', 'author' )
+        'labels'                => $labels,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'capability_type'       => 'contact_message',
+        'capabilities'          => $capabilities,
+        'hierarchical'          => false,
+        // 'map_meta_cap'          => true,
+        'menu_position'         => 26,
+        'menu_icon'             => 'dashicons-email-alt',
+        'supports'              => array( 'title', 'editor', 'author' )
     );
 
     register_post_type( 'di-contact', $args );
 }
+
 
 function di_set_contact_columns( $columns ) {
     $newColumns = array();
