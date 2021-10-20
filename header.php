@@ -32,9 +32,22 @@
                         <img class="site-logo" src="<?php header_image() ?>" alt="<?php echo alt_text_display(); ?>" />
                         <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
                     </a>
-                </div> <!-- .header-content -->
-                <div class="nav-container"></div> <!-- .nav-container -->
-            </div> <!-- .header-container -->
+                </div><!-- .header-content -->
+                <div class="nav-container">
 
-        </div> <!-- .col-xs-12 -->
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-di">
+                        <?php
+                            $args = array(
+                                'theme_location' => 'primary',
+                                'container' => false,
+                                'menu_class' => 'nav navbar-nav'
+                            );
+                            wp_nav_menu( $args );
+                        ?>
+                    </nav>
+
+                </div><!-- .nav-container -->
+            </div><!-- .header-container -->
+
+        </div><!-- .col-xs-12 -->
     </header>
