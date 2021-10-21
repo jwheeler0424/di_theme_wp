@@ -86,22 +86,6 @@ function di_activate_contact() {
     echo '<label><input type="checkbox" id="activate_contact" name="activate_contact" value="1" '.$checked.' /></label><br />';
 }
 
-function add_theme_caps() {
-    // gets the administrator role
-    $admins = get_role( 'administrator' );
-
-    $admins->add_cap( 'publish_contact_message' ); 
-    $admins->add_cap( 'edit_contact_message' ); 
-    $admins->add_cap( 'edit_others_contact_message' ); 
-    $admins->add_cap( 'delete_contact_message' ); 
-    $admins->add_cap( 'delete_others_contact_message' ); 
-    $admins->add_cap( 'read_private_contact_message' ); 
-    $admins->add_cap( 'edit_contact_message' );  
-    $admins->add_cap( 'delete_contact_message' ); 
-    $admins->add_cap( 'read_contact_message' ); 
-}
-add_action( 'admin_init', 'add_theme_caps');
-
 function di_custom_css_section_callback() {
     echo 'Customize Designer\'s Image Theme with your own CSS.';
 }

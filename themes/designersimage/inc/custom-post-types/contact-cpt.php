@@ -13,6 +13,8 @@ if ( @$contact == 1) {
     add_action( 'init', 'di_contact_custom_post_type' );
 
     add_filter( 'manage_di-contact_posts_columns', 'di_set_contact_columns' );
+    add_filter( 'manage_edit-di-contact_sortable_columns', 'di_set_sortable_columns' );
+    add_filter( 'post_row_actions', 'remove_row_actions', 10, 2 );
     add_action( 'manage_di-contact_posts_custom_column', 'di_contact_custom_column', 10, 2 );
 
     add_action( 'add_meta_boxes', 'di_contact_add_meta_box' );
@@ -29,30 +31,16 @@ function di_contact_custom_post_type() {
         'menu_name'             => 'Contact Messages',
         'name_admin_bar'        => 'Contact Message',
     );
-
-    $capabilities = array(
-        'publish_posts'         => 'publish_contact_message',
-        'edit_posts'            => 'edit_contact_message',
-        'edit_others_posts'     => 'edit_others_contact_message',
-        'delete_posts'          => 'delete_contact_message',
-        'delete_others_posts'   => 'delete_others_contact_message',
-        'read_private_posts'    => 'read_private_contact_message',
-        'edit_post'             => 'edit_contact_message',
-        'delete_post'           => 'delete_contact_message',
-        'read_post'             => 'read_contact_message'
-    );
-
     $args = array(
         'labels'                => $labels,
         'show_ui'               => true,
         'show_in_menu'          => true,
-        'capability_type'       => 'contact_message',
-        'capabilities'          => $capabilities,
+        'capability_type'       => 'post',
         'hierarchical'          => false,
-        // 'map_meta_cap'          => true,
         'menu_position'         => 26,
         'menu_icon'             => 'dashicons-email-alt',
-        'supports'              => array( 'title', 'editor', 'author' )
+        'rewrite'               => array('slug' => 'contacts', 'with_front' => false ),
+        'supports'              => array( 'title', 'editor' )
     );
 
     register_post_type( 'di-contact', $args );
@@ -65,8 +53,27 @@ function di_set_contact_columns( $columns ) {
     $newColumns['message'] = 'Message';
     $newColumns['email'] = 'Email Address';
     $newColumns['phone'] = 'Phone Number';
-    $newColumns['date'] = 'Date';
+    $newColumns['datetime'] = 'Date';
+    //$newColumns['date'] = 'Date';
+    $newColumns['trash'] = '';
     return $newColumns;
+}
+
+function di_set_sortable_columns ( $columns ) {
+    $newColumns['title'] = 'Full Name';
+    $newColumns['datetime'] = 'Date';
+    return $newColumns;
+}
+
+function remove_row_actions( $actions, $post ) {
+    $post_type_object = get_post_type_object( $post->post_type );
+    $can_edit_post    = current_user_can( 'edit_post', $post->ID );
+    $actions          = array();
+    
+    global $current_screen;
+    if( $current_screen->post_type != 'di-contact' ) return $actions;
+
+    return $actions;
 }
 
 function di_contact_custom_column( $column, $post_id ) {
@@ -88,6 +95,22 @@ function di_contact_custom_column( $column, $post_id ) {
             // phone number column
             $phone = get_post_meta ( $post_id, '_contact_phone_value_key', true );
             echo $phone;
+            break;
+        
+        case 'datetime':
+            echo get_the_date( 'n/j/y @ g:i a', $post_id );
+            break;
+        
+        case 'trash':
+            // delete button column
+            $trash = sprintf(
+                '<div class="row-actions"><span class="trash"><a href="%s" class="submitdelete" aria-label="%s" title="Delete">%s</a></span></div>',
+                get_delete_post_link( $post_id ),
+                /* translators: %s: Post title. */
+                esc_attr( sprintf( __( 'Move &#8220;%s&#8221; to the Trash' ), $title ) ),
+                _x( '<span class="dashicons dashicons-trash"></span>', 'verb' )
+            );
+            echo $trash;
             break;
 
     }
@@ -184,7 +207,7 @@ function di_save_contact_phone_data( $post_id ) {
         return;
     }
 
-    $data = sanitize_text_field( $_POST['di_contact_phone_field'] );
+    $data = sanitize_text_field( preg_replace( "/[^0-9]/", "", $_POST['di_contact_phone_field'] ) );
 
     update_post_meta( $post_id, '_contact_phone_value_key', $data );
 

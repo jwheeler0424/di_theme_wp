@@ -8,7 +8,7 @@
 */
 
 function di_load_admin_scripts( $hook ) {
-    // echo $hook;
+    //echo $hook;
 
     switch ( $hook ) {
 
@@ -28,6 +28,13 @@ function di_load_admin_scripts( $hook ) {
             wp_enqueue_script( 'ace', get_template_directory_uri() . '/js/ace/ace.js', array(), '1.4.13', true );
             wp_enqueue_script( 'di-custom-css-script', get_template_directory_uri() . '/js/di.custom_css.js', array(), '1.0.0', true );
             break;
+
+        case 'edit.php':
+            wp_enqueue_style( 'di-admin-edit-style', get_template_directory_uri() . '/css/di.admin.edit.css', array(), '1.0.0', 'all' );
+            break;
+
+        case 'post.php':
+            wp_enqueue_script( 'di-admin-edit-script', get_template_directory_uri() . '/js/di.admin.edit.js', array(), '1.0.0', true );
 
     }
 }
