@@ -1,0 +1,119 @@
+/*
+    @package designersimage
+*/
+/*
+    ========================================
+    |   Variables                          |
+    ========================================
+*/
+/*
+    ========================================
+    |   Mixins                             |
+    ========================================
+*/
+/*
+    ========================================
+    |   Header                             |
+    ========================================
+*/
+.header-container {
+  background: white;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+  display: block;
+  height: 70px;
+  position: relative;
+  width: 100%;
+}
+.header-container header {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-content {
+  height: 70px;
+  position: relative;
+  width: fit-content;
+}
+.header-content a {
+  display: block;
+  height: 70px;
+  position: relative;
+  width: max-content;
+}
+.header-content a img.site-logo {
+  height: 50px;
+  margin: 10px 0;
+  float: left;
+  position: relative;
+}
+.header-content a h1.site-title {
+  color: #575b78;
+  float: left;
+  font-size: 1.6em;
+  font-weight: 200;
+  line-height: 50px;
+  margin-top: 8px;
+  padding: 0 10px;
+  position: relative;
+  text-transform: lowercase;
+  -webkit-transition: color 250ms ease-in-out;
+  -moz-transition: color 250ms ease-in-out;
+  -ms-transition: color 250ms ease-in-out;
+  -o-transition: color 250ms ease-in-out;
+  transition: color 250ms ease-in-out;
+}
+.header-content a:hover h1.site-title {
+  color: #a7b6de;
+}
+
+/*
+    ========================================
+    |   Nav Bar                            |
+    ========================================
+*/
+.nav-container {
+  display: flex;
+  flex: 1;
+  height: 70px;
+  position: relative;
+}
+.nav-container .navbar-di {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  height: 100%;
+}
+.nav-container .navbar-di__menu {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  line-height: 60px;
+  list-style: none;
+  margin: 5px 0;
+  padding: 0;
+}
+.nav-container .navbar-di__menu li {
+  padding-left: 20px;
+  text-transform: lowercase;
+}
+.nav-container .navbar-di__menu li a {
+  color: #575b78;
+  display: block;
+  text-decoration: none;
+  -webkit-transition: color 250ms ease-in-out;
+  -moz-transition: color 250ms ease-in-out;
+  -ms-transition: color 250ms ease-in-out;
+  -o-transition: color 250ms ease-in-out;
+  transition: color 250ms ease-in-out;
+}
+.nav-container .navbar-di__menu li a:hover {
+  color: #a7b6de;
+}
+.nav-container .navbar-di__menu li.active a {
+  color: #657dbe;
+  cursor: default;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=di.css.map */
