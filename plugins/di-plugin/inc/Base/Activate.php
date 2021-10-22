@@ -1,6 +1,6 @@
 <?php
-/*
-    @package diPlugin
+/**
+ * @package diPlugin
 */
 
 namespace Inc\Base;
