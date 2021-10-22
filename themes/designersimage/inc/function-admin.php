@@ -10,7 +10,7 @@
 function di_add_admin_page() {
 
     // Generate DI Admin Page
-    add_menu_page( "DI Theme Options", "Designer's Image", 'manage_options', 'designers_image', 'di_theme_create_page', get_template_directory_uri() . '/img/di_icon.png', 3 );
+    add_menu_page( "DI Theme Options", "di Theme", 'manage_options', 'designers_image', 'di_theme_create_page', get_template_directory_uri() . '/img/di_icon.png', 2 );
 
     // Generate DI Admin Sub Pages
     add_submenu_page( 'designers_image', 'DI Sidebar Options', 'Sidebar', 'manage_options', 'designers_image', 'di_theme_create_page' );
