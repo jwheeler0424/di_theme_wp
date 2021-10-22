@@ -45,14 +45,16 @@ if ( !class_exists( 'DesignersImagePlugin' ) ) {
 
             add_action( 'admin_menu', array( $this, 'add_admin_pages' ) );
 
-            add_filter( "plugin_action_links", array( $this, 'settings_link' ) );
+            add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'settings_links' ) );
         }
 
-        public function settings_link( $links ) {
+        public function settings_links( $links ) {
             // add custom settings link
-            $settings_link = '<a href="admin.php?page=di_plugin">Settings</a>';
-            array_push( $links, $settings_link );
-            return $links;
+            $newLinks = $links;
+            $url = get_admin_url() . "admin.php?page=di-plugin";
+            $settings_link = '<a href="' . $url . '">' . __('Settings', 'textdomain') . '</a>';
+            $newLinks[] = $settings_link;
+            return $newLinks;
         }
 
         public function add_admin_pages() {
