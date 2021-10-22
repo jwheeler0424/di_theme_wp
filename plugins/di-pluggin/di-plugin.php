@@ -45,7 +45,7 @@ if ( !class_exists( 'DesignersImagePlugin' ) ) {
 
             add_action( 'admin_menu', array( $this, 'add_admin_pages' ) );
 
-            add_filter( "plugin_action_links_$this->plugin", array( $this, 'settings_link' ) );
+            add_filter( "plugin_action_links", array( $this, 'settings_link' ) );
         }
 
         public function settings_link( $links ) {
