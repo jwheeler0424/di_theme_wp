@@ -1,0 +1,1 @@
+<h1>Designer's Image Plugin</h1>

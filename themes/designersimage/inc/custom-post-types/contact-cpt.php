@@ -107,7 +107,7 @@ function di_contact_custom_column( $column, $post_id ) {
                 '<div class="row-actions"><span class="trash"><a href="%s" class="submitdelete" aria-label="%s" title="Delete">%s</a></span></div>',
                 get_delete_post_link( $post_id ),
                 /* translators: %s: Post title. */
-                esc_attr( sprintf( __( 'Move &#8220;%s&#8221; to the Trash' ), $title ) ),
+                esc_attr( sprintf( __( 'Move &#8220;%s&#8221; to the Trash' ), get_the_title( $post_id ) ) ),
                 _x( '<span class="dashicons dashicons-trash"></span>', 'verb' )
             );
             echo $trash;
