@@ -51,7 +51,7 @@ if ( !class_exists( 'DesignersImagePlugin' ) ) {
         public function settings_links( $links ) {
             // add custom settings link
             $newLinks = $links;
-            $url = get_admin_url() . "admin.php?page=di-plugin";
+            $url = get_admin_url() . "admin.php?page=di_plugin";
             $settings_link = '<a href="' . $url . '">' . __('Settings', 'textdomain') . '</a>';
             $newLinks[] = $settings_link;
             return $newLinks;
