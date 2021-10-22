@@ -29,15 +29,43 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// If this file is called directly, abort!
 defined( 'ABSPATH' ) or die( 'You\'re not allowed to access this file. Run, you fools.' );
 
+// Require_once the Composer Autoload
 if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
     require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 }
 
+// Define CONSTANTS
 define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'PLUGIN', plugin_basename( __FILE__ ) );
 
+use Inc\Base\Activate;
+use Inc\Base\Deactivate;
+
+
+/**
+ * The code that runs dring plugin activation
+ */
+function activate_di_plugin() {
+    Activate::activate();
+}
+
+/**
+ * The code that runs dring plugin deactivation
+ */
+function deactivate_di_plugin() {
+    Deactivate::deactivate();
+}
+
+register_activation_hook( __FILE__, 'activate_di_plugin' );
+register_deactivation_hook( __FILE__, 'deactivate_di_plugin' );
+
+/**
+ * Initialize all the core classes of the plugin 
+ */
 if ( class_exists( 'Inc\\Init' ) ) {
     Inc\Init::register_services();
 }
