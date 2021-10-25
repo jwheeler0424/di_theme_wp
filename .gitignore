@@ -9,3 +9,5 @@
 /plugins/akismet/
 /plugins/hello.php
 /plugins/index.php
+/plugins/di-plugin/node_modules/
+/plugins/di-plugin/package-lock.json
