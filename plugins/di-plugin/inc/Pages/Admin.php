@@ -82,54 +82,15 @@ class Admin extends BaseController
 
     public function setSettings()
     {
-        $args = [
-            [
-                'option_group' => 'di_plugin_settings',
-                'option_name' => 'cpt_manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxSanitize' )
-            ],
-            [
-                'option_group' => 'di_plugin_settings',
-                'option_name' => 'taxonomy_manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxSanitize' )
-            ],
-            [
-                'option_group' => 'di_plugin_settings',
-                'option_name' => 'widget_manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxSanitize' )
-            ],
-            [
-                'option_group' => 'di_plugin_settings',
-                'option_name' => 'gallery_manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxSanitize' )
-            ],
-            [
-                'option_group' => 'di_plugin_settings',
-                'option_name' => 'testimonial_manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxSanitize' )
-            ],
-            [
-                'option_group' => 'di_plugin_settings',
-                'option_name' => 'templates_manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxSanitize' )
-            ],
-            [
-                'option_group' => 'di_plugin_settings',
-                'option_name' => 'login_manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxSanitize' )
-            ],
-            [
-                'option_group' => 'di_plugin_settings',
-                'option_name' => 'membership_manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxSanitize' )
-            ],
-            [
-                'option_group' => 'di_plugin_settings',
-                'option_name' => 'chat_manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxSanitize' )
-            ]
+        $args = array();
 
-        ];
+        foreach ( $this->managers as $key => $value ) {
+            $args[] = [
+                'option_group' => 'di_plugin_settings',
+                'option_name' => $key,
+                'callback' => array( $this->callbacks_mgr, 'checkboxSanitize' )
+            ];
+        }
 
         $this->settings->setSettings( $args );
     }
@@ -150,116 +111,21 @@ class Admin extends BaseController
 
     public function setFields()
     {
-        $args = [
-            [
-                'id' => 'cpt_manager',
-                'title' => 'Activate CPT Manager',
+        $args = array();
+
+        foreach ( $this->managers as $key => $value ) {
+            $args[] = [
+                'id' => $key,
+                'title' => $value,
                 'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
                 'page' => 'di_plugin',
                 'section' => 'di_admin_index',
                 'args' => array(
-                    'label_for' => 'cpt_manager',
+                    'label_for' => $key,
                     'class' => 'ui-toggle'
                 )
-
-            ],
-            [
-                'id' => 'taxonomy_manager',
-                'title' => 'Activate Taxonomy Manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
-                'page' => 'di_plugin',
-                'section' => 'di_admin_index',
-                'args' => array(
-                    'label_for' => 'taxonomy_manager',
-                    'class' => 'ui-toggle'
-                )
-
-            ],
-            [
-                'id' => 'widget_manager',
-                'title' => 'Activate Widget Manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
-                'page' => 'di_plugin',
-                'section' => 'di_admin_index',
-                'args' => array(
-                    'label_for' => 'widget_manager',
-                    'class' => 'ui-toggle'
-                )
-
-            ],
-            [
-                'id' => 'gallery_manager',
-                'title' => 'Activate Gallery Manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
-                'page' => 'di_plugin',
-                'section' => 'di_admin_index',
-                'args' => array(
-                    'label_for' => 'gallery_manager',
-                    'class' => 'ui-toggle'
-                )
-
-            ],
-            [
-                'id' => 'testimonial_manager',
-                'title' => 'Activate Testimonial Manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
-                'page' => 'di_plugin',
-                'section' => 'di_admin_index',
-                'args' => array(
-                    'label_for' => 'testimonial_manager',
-                    'class' => 'ui-toggle'
-                )
-
-            ],
-            [
-                'id' => 'templates_manager',
-                'title' => 'Activate Templates Manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
-                'page' => 'di_plugin',
-                'section' => 'di_admin_index',
-                'args' => array(
-                    'label_for' => 'templates_manager',
-                    'class' => 'ui-toggle'
-                )
-
-            ],
-            [
-                'id' => 'login_manager',
-                'title' => 'Activate Ajax Login/Signup',
-                'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
-                'page' => 'di_plugin',
-                'section' => 'di_admin_index',
-                'args' => array(
-                    'label_for' => 'login_manager',
-                    'class' => 'ui-toggle'
-                )
-
-            ],
-            [
-                'id' => 'membership_manager',
-                'title' => 'Activate Membership Manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
-                'page' => 'di_plugin',
-                'section' => 'di_admin_index',
-                'args' => array(
-                    'label_for' => 'membership_manager',
-                    'class' => 'ui-toggle'
-                )
-
-            ],
-            [
-                'id' => 'chat_manager',
-                'title' => 'Activate Chat Manager',
-                'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
-                'page' => 'di_plugin',
-                'section' => 'di_admin_index',
-                'args' => array(
-                    'label_for' => 'chat_manager',
-                    'class' => 'ui-toggle'
-                )
-
-            ]
-        ];
+            ];
+        }
 
         $this->settings->setFields( $args );
     }
