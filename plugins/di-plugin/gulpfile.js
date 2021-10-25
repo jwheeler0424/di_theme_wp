@@ -2,51 +2,51 @@
 const { src, dest, task, watch, series, parallel } = require('gulp');
 
 // CSS related plugins
-var sass         = require( 'gulp-sass' )( require('sass') );
-var autoprefixer = require( 'gulp-autoprefixer' );
+const sass         = require( 'gulp-sass' )( require('sass') );
+const autoprefixer = require( 'gulp-autoprefixer' );
 
 // JS related plugins
-var uglify       = require( 'gulp-uglify' );
-var babelify     = require( 'babelify' );
-var browserify   = require( 'browserify' );
-var source       = require( 'vinyl-source-stream' );
-var buffer       = require( 'vinyl-buffer' );
-var stripDebug   = require( 'gulp-strip-debug' );
+const uglify       = require( 'gulp-uglify' );
+const babelify     = require( 'babelify' );
+const browserify   = require( 'browserify' );
+const source       = require( 'vinyl-source-stream' );
+const buffer       = require( 'vinyl-buffer' );
+const stripDebug   = require( 'gulp-strip-debug' );
 
 // Utility plugins
-var rename       = require( 'gulp-rename' );
-var sourcemaps   = require( 'gulp-sourcemaps' );
-var notify       = require( 'gulp-notify' );
-var plumber      = require( 'gulp-plumber' );
-var options      = require( 'gulp-options' );
-var gulpif       = require( 'gulp-if' );
+const rename       = require( 'gulp-rename' );
+const sourcemaps   = require( 'gulp-sourcemaps' );
+const notify       = require( 'gulp-notify' );
+const plumber      = require( 'gulp-plumber' );
+const options      = require( 'gulp-options' );
+const gulpif       = require( 'gulp-if' );
 
 // Browers related plugins
-var browserSync  = require( 'browser-sync' ).create();
+const browserSync  = require( 'browser-sync' ).create();
 
 // Project related variables
-var projectURL   = 'http://local.designersimage.io/wp-admin/';
+const projectURL   = 'http://local.designersimage.io/wp-admin/';
 
-var styleSRC     = './src/scss/di-style.scss';
-var styleURL     = './assets/';
-var mapURL       = './';
+const styleSRC     = './src/scss/di-style.scss';
+const styleURL     = './assets/';
+const mapURL       = './';
 
-var jsSRC        = './src/js/';
-var jsFront      = 'di-script.js';
-var jsFiles      = [ jsFront ];
-var jsURL        = './assets/';
+const jsSRC        = './src/js/';
+const jsFront      = 'di-script.js';
+const jsFiles      = [ jsFront ];
+const jsURL        = './assets/';
 
-var imgSRC       = './src/images/**/*';
-var imgURL       = './dist/images/';
+const imgSRC       = './src/images/**/*';
+const imgURL       = './dist/images/';
 
-var fontsSRC     = './src/fonts/**/*';
-var fontsURL     = './dist/fonts/';
+const fontsSRC     = './src/fonts/**/*';
+const fontsURL     = './dist/fonts/';
 
-var styleWatch   = './src/scss/**/*.scss';
-var jsWatch      = './src/js/**/*.js';
-var imgWatch     = './src/images/**/*.*';
-var fontsWatch   = './src/fonts/**/*.*';
-var phpWatch    = './**/*.php';
+const styleWatch   = './src/scss/**/*.scss';
+const jsWatch      = './src/js/**/*.js';
+const imgWatch     = './src/images/**/*.*';
+const fontsWatch   = './src/fonts/**/*.*';
+const phpWatch    = './**/*.php';
 
 // Tasks
 function browser_sync() {

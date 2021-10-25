@@ -30,15 +30,15 @@ class AdminCallbacks extends BaseController
         return require_once( "$this->plugin_path/templates/widgets.php" );
     }
 
-    public function diOptionsGroup( $input )
-    {
-        return $input;
-    } 
+    // public function diOptionsGroup( $input )
+    // {
+    //     return $input;
+    // } 
 
-    public function diAdminSection()
-    {
-        echo 'look here.';
-    }
+    // public function diAdminSection()
+    // {
+    //     echo 'look here.';
+    // }
 
     public function diTextExample() 
     {

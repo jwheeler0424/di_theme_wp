@@ -13,7 +13,7 @@
 
             <form method="post" action="options.php">
                 <?php 
-                    settings_fields( 'di_options_group' );
+                    settings_fields( 'di_plugin_settings' );
                     do_settings_sections( 'di_plugin' );
                     submit_button();
                 ?>
