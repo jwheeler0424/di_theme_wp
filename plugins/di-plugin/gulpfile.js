@@ -118,8 +118,7 @@ function watch_files() {
 	watch(imgWatch, series(images, reload));
 	watch(fontsWatch, series(fonts, reload));
 	watch(phpWatch, reload);
-	src(jsURL + 'di-script.min.js')
-		.pipe( notify({ message: 'Gulp is Watching, Happy Coding!' }) );
+	src(jsURL + 'di-script.min.js');
 }
 
 task("css", css);
