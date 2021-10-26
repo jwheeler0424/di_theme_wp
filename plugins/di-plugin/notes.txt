@@ -1,0 +1,32 @@
+========================================
+|   ADMIN SIDE MENU ORDER              |
+========================================
+    2 - Dashbord
+    3 - Designer's Image
+    4 - Separator
+    5 - Posts
+    10 - Media
+    15 - Links
+    20 - Pages
+    25 - Comments
+    59 - Separator
+    60 - Appearnce
+    65 - Plugins
+    70 - Users
+    75 - Tools
+    80 - Settings
+    99 - Separator
+
+    
+========================================
+|   BUILT-IN POST TYPES                |
+========================================
+    *   'post'
+    *   'page'
+    *   'attachment'
+    *   'revision'
+    *   'nav_menu_item'
+    *   'custom_css'
+    *   'customize_changeset'
+    *   'oembed_cache'
+    *   'user_request'
