@@ -126,6 +126,19 @@ class CustomPostTypeController extends BaseController
                 )
             ),
             array(
+                'id' => 'menu_icon',
+                'title' => 'Menu Dashicon',
+                'callback' => array( $this->cpt_callbacks, 'textField' ),
+                'page' => 'di_cpt',
+                'section' => 'di_cpt_index',
+                'args' => array(
+                    'option_name' => 'di_plugin_cpt',
+                    'label_for' => 'menu_icon',
+                    'placeholder' => 'eg. dashicons-admin-post',
+                    'array' => 'post_type'
+                )
+            ),
+            array(
                 'id' => 'public',
                 'title' => 'Public',
                 'callback' => array( $this->cpt_callbacks, 'checkboxField' ),
@@ -198,6 +211,7 @@ class CustomPostTypeController extends BaseController
                 'public'                => isset($option['public']) ?: false,
                 'show_ui'               => true,
                 'show_in_menu'          => true,
+                'menu_icon'             => $option['menu_icon'] ?: 'dashicons-admin-post',
                 'menu_position'         => 26,
                 'show_in_admin_bar'     => true,
                 'show_in_nav_menus'     => true,
@@ -252,7 +266,8 @@ class CustomPostTypeController extends BaseController
 					'public'                    => $post_type['public'],
 					'show_ui'                   => $post_type['show_ui'],
 					'show_in_menu'              => $post_type['show_in_menu'],
-					'menu_position'             => $post_type['menu_position'],
+					'menu_icon'                 => $post_type['menu_icon'],
+                    'menu_position'             => $post_type['menu_position'],
 					'show_in_admin_bar'         => $post_type['show_in_admin_bar'],
 					'show_in_nav_menus'         => $post_type['show_in_nav_menus'],
 					'can_export'                => $post_type['can_export'],
