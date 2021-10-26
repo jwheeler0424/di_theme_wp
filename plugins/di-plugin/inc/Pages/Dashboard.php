@@ -9,12 +9,14 @@ use \Inc\Base\BaseController;
 use \Inc\Api\Callbacks\AdminCallbacks;
 use \Inc\Api\Callbacks\ManagerCallbacks;
 
-class Admin extends BaseController
+class Dashboard extends BaseController
 {
     public $callbacks;
+
     public $callbacks_mgr;
+
     public $pages;
-    public $subpages;
+    
     public $settings;
 
     public function register()
@@ -26,13 +28,12 @@ class Admin extends BaseController
         $this->callbacks_mgr = new ManagerCallbacks();
 
         $this->setPages();
-        $this->setSubpages();
 
         $this->setSettings();
         $this->setSections();
         $this->setFields();
 
-        $this->settings->addPages( $this->pages )->withSubPage( 'Dashboard' )->addSubPages( $this->subpages )->register();
+        $this->settings->addPages( $this->pages )->withSubPage( 'Dashboard' )->register();
     }
 
     public function setPages()
@@ -43,54 +44,22 @@ class Admin extends BaseController
                 'menu_title' => 'di Settings', 
                 'capability' => 'manage_options', 
                 'menu_slug' => 'di_plugin', 
-                'callback' => array( $this->callbacks, 'pluginDashboard'),
+                'callback' => array( $this->callbacks, 'adminDashboard'),
                 'icon_url' => '', 
                 'position' => 3
             ]
         ];
     }
 
-    public function setSubpages()
-    {
-        $this->subpages = [
-            [
-                'parent_slug' => 'di_plugin',
-                'page_title' => 'Custom Post Types',
-                'menu_title' => 'Custom Post Types', 
-                'capability' => 'manage_options', 
-                'menu_slug' => 'di_cpt', 
-                'callback' => array( $this->callbacks, 'pluginCPT')
-            ],
-            [
-                'parent_slug' => 'di_plugin',
-                'page_title' => 'Custom Taxonomies',
-                'menu_title' => 'Taxonomies', 
-                'capability' => 'manage_options', 
-                'menu_slug' => 'di_taxonomies', 
-                'callback' => array( $this->callbacks, 'pluginTaxonomy')
-            ],
-            [
-                'parent_slug' => 'di_plugin',
-                'page_title' => 'Custom Widgets',
-                'menu_title' => 'Widets', 
-                'capability' => 'manage_options', 
-                'menu_slug' => 'di_widgets', 
-                'callback' => array( $this->callbacks, 'pluginWidget')
-            ]
-        ];
-    }
-
     public function setSettings()
     {
-        $args = array();
-
-        foreach ( $this->managers as $key => $value ) {
-            $args[] = [
+        $args = [
+            [
                 'option_group' => 'di_plugin_settings',
-                'option_name' => $key,
+                'option_name' => 'di_plugin',
                 'callback' => array( $this->callbacks_mgr, 'checkboxSanitize' )
-            ];
-        }
+            ]
+        ];
 
         $this->settings->setSettings( $args );
     }
@@ -121,6 +90,7 @@ class Admin extends BaseController
                 'page' => 'di_plugin',
                 'section' => 'di_admin_index',
                 'args' => array(
+                    'option_name' => 'di_plugin',
                     'label_for' => $key,
                     'class' => 'ui-toggle'
                 )

@@ -10,45 +10,53 @@ use \Inc\Base\BaseController;
 
 class AdminCallbacks extends BaseController
 {
-    public function pluginDashboard()
-    {
-        return require_once( "$this->plugin_path/templates/admin.php" );
-    }
+    public function adminDashboard()
+	{
+		return require_once( "$this->plugin_path/templates/admin.php" );
+	}
 
-    public function pluginCPT()
-    {
-        return require_once( "$this->plugin_path/templates/cpt.php" );
-    }
+	public function adminCpt()
+	{
+		return require_once( "$this->plugin_path/templates/cpt.php" );
+	}
 
-    public function pluginTaxonomy()
-    {
-        return require_once( "$this->plugin_path/templates/taxonomies.php" );
-    }
+	public function adminTaxonomy()
+	{
+		return require_once( "$this->plugin_path/templates/taxonomy.php" );
+	}
 
-    public function pluginWidget()
-    {
-        return require_once( "$this->plugin_path/templates/widgets.php" );
-    }
+	public function adminWidget()
+	{
+		return require_once( "$this->plugin_path/templates/widget.php" );
+	}
 
-    // public function diOptionsGroup( $input )
-    // {
-    //     return $input;
-    // } 
+	public function adminGallery()
+	{
+		echo "<h1>Gallery Manager</h1>";
+	}
 
-    // public function diAdminSection()
-    // {
-    //     echo 'look here.';
-    // }
+	public function adminTestimonial()
+	{
+		echo "<h1>Testimonial Manager</h1>";
+	}
 
-    public function diTextExample() 
-    {
-        $value = esc_attr( get_option( 'text_example' ) );
-        echo '<input type="text" class="regular-text" name="text_example" value="'. $value .'" placeholder="Write something here!" >';
-    }
+	public function adminTemplates()
+	{
+		echo "<h1>Templates Manager</h1>";
+	}
 
-    public function diFirstName() 
-    {
-        $value = esc_attr( get_option( 'first_name' ) );
-        echo '<input type="text" class="regular-text" name="first_name" value="'. $value .'" placeholder="First name" >';
-    }
+	public function adminAuth()
+	{
+		echo "<h1>Templates Manager</h1>";
+	}
+
+	public function adminMembership()
+	{
+		echo "<h1>Membership Manager</h1>";
+	}
+
+	public function adminChat()
+	{
+		echo "<h1>Chat Manager</h1>";
+	}
 }
