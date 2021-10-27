@@ -21,8 +21,8 @@ class BaseController
         $this->managers = [
             'cpt_manager' => 'Activate CPT Manager',
             'taxonomy_manager' => 'Activate Taxonomy Manager',
-            'widget_manager' => 'Activate Widget Manager',
-            'gallery_manager' => 'Activate Gallery Manager',
+            // 'widget_manager' => 'Activate Widget Manager',
+            // 'gallery_manager' => 'Activate Gallery Manager',
             'testimonial_manager' => 'Activate Testimonial Manager',
             'templates_manager' => 'Activate Templates Manager',
             'login_manager' => 'Activate Ajax Login/Signup',

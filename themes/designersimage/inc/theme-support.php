@@ -29,6 +29,8 @@ if ( @$background == 1) {
 }
 
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'widgets' );
+add_theme_support( 'widgets-block-editor' );
 
 /* Activate Nav Menu Option */
 function di_register_nav_menu() {
