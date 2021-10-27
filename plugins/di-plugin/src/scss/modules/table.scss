@@ -1,4 +1,4 @@
-.cpt-table {
+.cpt-table, .tax-table {
 	width: 100%;
 	border-spacing: 5px;
 	text-align: left;
@@ -12,7 +12,7 @@
 	}
 
 	& th {
-		background-color: #f5f5f5;
+		background-color: #eee;
 	}
 }
 

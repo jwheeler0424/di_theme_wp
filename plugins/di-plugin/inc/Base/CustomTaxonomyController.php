@@ -35,6 +35,12 @@ class CustomTaxonomyController extends BaseController
         $this->setFields();
 
         $this->settings->addSubPages( $this->subpages )->register();
+
+        $this->storeCustomTaxonomies();
+
+        if ( !empty( $this->taxonomies ) ) {
+            add_action( 'init', array( $this, 'registerCustomTaxonomy' ) );
+        }
     }
 
     public function setSubpages()
@@ -120,8 +126,61 @@ class CustomTaxonomyController extends BaseController
                     'array' => 'taxonomy'
                 )
             ),
+            array(
+                'id' => 'objects',
+                'title' => 'Post Types',
+                'callback' => array( $this->tax_callbacks, 'checkboxPostTypesField' ),
+                'page' => 'di_taxonomy',
+                'section' => 'di_tax_index',
+                'args' => array(
+                    'option_name' => 'di_plugin_tax',
+                    'label_for' => 'objects',
+                    'class' => 'ui-toggle',
+                    'array' => 'taxonomy'
+                )
+            )
         );
 
         $this->settings->setFields( $args );
+    }
+
+    public function storeCustomTaxonomies()
+    {
+        $options = get_option( 'di_plugin_tax' ) ?: array();
+
+        foreach ($options as $option) {
+            $labels = array(
+                'name' => $option['singular_name'],
+                'singular_name' => $option['singular_name'],
+                'search_items' => 'Search ' . $option['singular_name'],
+                'all_items' => 'All ' . $option['singular_name'],
+                'parent_item' => 'Parent ' . $option['singular_name'],
+                'parent_item_colon' => 'Parent ' . $option['singular_name'] . ':',
+                'edit_item' => 'Edit ' . $option['singular_name'],
+                'update_item' => 'Update ' . $option['singular_name'],
+                'add_new_item' => 'Add New ' . $option['singular_name'],
+                'new_item_name' => 'New ' . $option['singular_name'] . ' Name',
+                'menu_name' => $option['singular_name']
+            );
+
+            $this->taxonomies[] = array(
+                'hierarchical' => isset($option['hierarchical']) ? true : false,
+                'labels' => $labels,
+                'show_ui' => true,
+                'show_admin_column' => true,
+                'query_var' => true,
+                'rewrite' => array( 'slug' => $option['taxonomy'] ),
+                'objects' => isset($option['objects']) ? $option['objects'] : null
+            );
+        }
+
+    }
+
+    public function registerCustomTaxonomy()
+    {
+        foreach ($this->taxonomies as $taxonomy) {
+            $objects = isset($taxonomy['objects']) ? array_keys($taxonomy['objects']) : null;
+            register_taxonomy( $taxonomy['rewrite']['slug'], $objects, $taxonomy );
+        }
     }
 }
