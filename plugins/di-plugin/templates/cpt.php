@@ -10,7 +10,7 @@
             <?php echo isset($_POST["edit_post"]) ? 'Edit' : 'Add' ?> Custom Post Type
             </a>
         </li>
-        <li><a href="#tab-3" id="tab-3">Export</a></li>
+        <!-- <li><a href="#tab-3" id="tab-3">Export</a></li> -->
     </ul>
 
     <div class="tab-content">
@@ -56,8 +56,8 @@
                 ?>
             </form>
         </div>
-        <div id="tab-3" class="tab-pane">
+        <!-- <div id="tab-3" class="tab-pane">
             <h3>About</h3>
-        </div>
+        </div> -->
     </div>
 </div>
