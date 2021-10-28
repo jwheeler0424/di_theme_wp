@@ -23,6 +23,7 @@ class BaseController
             'taxonomy_manager' => 'Activate Taxonomy Manager',
             // 'widget_manager' => 'Activate Widget Manager',
             // 'gallery_manager' => 'Activate Gallery Manager',
+            'contact_manager' => 'Activate Contact Message Manager',
             'testimonial_manager' => 'Activate Testimonial Manager',
             'templates_manager' => 'Activate Templates Manager',
             'login_manager' => 'Activate Ajax Login/Signup',

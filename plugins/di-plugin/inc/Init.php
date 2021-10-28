@@ -20,7 +20,7 @@ final class Init
             Base\CustomPostTypeController::class,
 			Base\CustomTaxonomyController::class,
 			// Base\WidgetController::class,
-			// Base\GalleryController::class,
+			Base\ContactMessageController::class,
 			Base\TestimonialController::class,
 			Base\TemplateController::class,
 			Base\AuthController::class,
