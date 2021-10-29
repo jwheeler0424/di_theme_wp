@@ -1,14 +1,11 @@
 /index.php
 
-/uploads/
-/upgrade/
-
 /themes/index.php
 /themes/twentytwentyone/
 
 /plugins/akismet/
 /plugins/hello.php
 /plugins/index.php
-/plugins/di-plugin/node_modules/
-/plugins/di-plugin/package-lock.json
+/node_modules/
+/package-lock.json
 /vendor/
