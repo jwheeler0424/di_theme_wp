@@ -3,10 +3,10 @@
  * @package diPlugin
 */
 
-namespace Inc\Base;
+namespace PluginInc\Base;
 
-use \Inc\Base\BaseController;
-use \Inc\Api\Widgets\MediaWidget;
+use \PluginInc\Base\BaseController;
+use \PluginInc\Api\Widgets\MediaWidget;
 
 class WidgetController extends BaseController
 {

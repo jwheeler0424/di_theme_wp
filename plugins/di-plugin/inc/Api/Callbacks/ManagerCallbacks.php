@@ -4,9 +4,9 @@
 */
 
 
-namespace Inc\Api\Callbacks;
+namespace PluginInc\Api\Callbacks;
 
-use \Inc\Base\BaseController;
+use \PluginInc\Base\BaseController;
 
 class ManagerCallbacks extends BaseController
 {

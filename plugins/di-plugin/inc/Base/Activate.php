@@ -3,7 +3,7 @@
  * @package diPlugin
 */
 
-namespace Inc\Base;
+namespace PluginInc\Base;
 
 class Activate
 {

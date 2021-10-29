@@ -3,7 +3,7 @@
  * @package diPlugin
 */
 
-namespace Inc\Api\Widgets;
+namespace PluginInc\Api\Widgets;
 
 use WP_Widget;
 

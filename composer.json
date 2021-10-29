@@ -1,0 +1,20 @@
+{
+    "name": "designersimage/wp-designersimage",
+    "description": "A theme and plugin to control the Designer's Image WordPress website.",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Jonathan Wheeler",
+            "email": "jonathan.wheeler87@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "PluginInc\\": "./plugins/di-plugin/inc",
+            "ThemeInc\\": "./themes/designersimage/inc"
+        }
+    }
+}

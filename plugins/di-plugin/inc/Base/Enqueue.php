@@ -3,9 +3,9 @@
  * @package diPlugin
 */
 
-namespace Inc\Base;
+namespace PluginInc\Base;
 
-use \Inc\Base\BaseController;
+use \PluginInc\Base\BaseController;
 
 class Enqueue extends BaseController
 {

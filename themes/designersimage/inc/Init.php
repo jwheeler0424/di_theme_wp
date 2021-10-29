@@ -1,9 +1,9 @@
 <?php
 /**
- * @package diPlugin
+ * @package designersimage
 */
 
-namespace PluginInc;
+namespace Inc;
 
 final class Init
 {
@@ -16,16 +16,7 @@ final class Init
         return [
             Pages\Dashboard::class,
             Base\Enqueue::class,
-            Base\SettingsLinks::class,
-            Base\CustomPostTypeController::class,
-			Base\CustomTaxonomyController::class,
-			// Base\WidgetController::class,
-			Base\ContactController::class,
-			Base\TestimonialController::class,
-			Base\TemplateController::class,
-			Base\AuthController::class,
-			Base\MembershipController::class,
-			Base\ChatController::class
+            Base\SettingsLinks::class
         ];
     }
 
