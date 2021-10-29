@@ -28,12 +28,14 @@ const browserSync  = require( 'browser-sync' ).create();
 const projectURL   = 'http://local.designersimage.io/wp-admin/';
 
 const styleSRC     = './src/scss/di-style.scss';
+const styleFront     = './src/scss/di-form.scss';
 const styleURL     = './assets/';
 const mapURL       = './';
 
 const jsSRC        = './src/js/';
-const jsFront      = 'di-script.js';
-const jsFiles      = [ jsFront ];
+const jsAdmin      = 'di-script.js';
+const jsFront      = 'di-form.js';
+const jsFiles      = [ jsAdmin, jsFront ];
 const jsURL        = './assets/';
 
 const imgSRC       = './src/images/**/*';
@@ -61,7 +63,7 @@ function reload(done) {
 }
 
 function css(done) {
-	src( [ styleSRC ] )
+	src( [ styleSRC, styleFront ] )
 		.pipe( sourcemaps.init() )
 		.pipe( sass({
 			errLogToConsole: true,

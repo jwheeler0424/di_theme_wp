@@ -30,6 +30,17 @@ class TestimonialController extends BaseController
         add_filter( 'manage_edit-testimonial_sortable_columns', array( $this, 'set_custom_columns_sortable' ) );
 
         $this->setShortcodePage();
+
+        add_shortcode( 'testimonial-form', array( $this, 'testimonial_form' ) );
+    }
+
+    public function testimonial_form()
+    {
+        ob_start();
+        //echo "<link href=\"$this->plugin_url/assets/di-form.css\"></script>";
+        require_once( "$this->plugin_path/templates/testimonial-form.php" );
+        //echo "<script src=\"$this->plugin_url/assets/di-form.js\"></script>";
+        return ob_get_clean();
     }
 
     public function setShortcodePage()
@@ -92,7 +103,7 @@ class TestimonialController extends BaseController
 		$featured = isset($data['featured']) ? $data['featured'] : false;
 		?>
 		<p>
-			<label class="meta-label" for="ditestimonial_author">Author Name</label>
+			<label class="meta-label" for="di_testimonial_author">Author Name</label>
 			<input type="text" id="di_testimonial_author" name="di_testimonial_author" class="widefat" value="<?php echo esc_attr( $name ); ?>">
 		</p>
 		<p>
