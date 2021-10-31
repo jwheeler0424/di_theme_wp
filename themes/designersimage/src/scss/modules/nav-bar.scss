@@ -1,0 +1,54 @@
+/**
+ *  @package diTheme
+*/
+
+/*
+    ##################################################
+    |   NAV BAR STYLES                               |
+    ##################################################
+*/
+.nav-container {
+    display: flex;
+    flex: 1;
+    height: 70px;
+    position: relative;
+
+    .navbar-di {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        height: 100%;
+    }
+    .navbar-di__menu {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        justify-content: flex-end;
+        line-height: 60px;
+        list-style: none;
+        margin: 5px 0;
+        padding: 0;
+
+        li {
+            padding-left: 20px;
+            text-transform: lowercase;
+            a {
+                color: $font__dark;
+                display: block;
+                text-decoration: none;
+                @include animate( color, 250ms );
+
+                &:hover {
+                    color: $color__hover;
+                }
+            }
+        }
+        li.active {
+            a {
+                color: $color__active;
+                cursor: default;
+                font-weight: 600;
+            }
+        }
+    }
+}

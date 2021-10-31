@@ -2,48 +2,50 @@
 const { src, dest, task, watch, series, parallel } = require('gulp');
 
 // CSS related plugins
-const sass              = require( 'gulp-sass' )( require('sass') );
-const autoprefixer      = require( 'gulp-autoprefixer' );
+const sass                  = require( 'gulp-sass' )( require('sass') );
+const autoprefixer          = require( 'gulp-autoprefixer' );
 
 // JS related plugins
-const uglify            = require( 'gulp-uglify' );
-const babelify          = require( 'babelify' );
-const browserify        = require( 'browserify' );
-const source            = require( 'vinyl-source-stream' );
-const buffer            = require( 'vinyl-buffer' );
-const stripDebug        = require( 'gulp-strip-debug' );
+const uglify                = require( 'gulp-uglify' );
+const babelify              = require( 'babelify' );
+const browserify            = require( 'browserify' );
+const source                = require( 'vinyl-source-stream' );
+const buffer                = require( 'vinyl-buffer' );
+const stripDebug            = require( 'gulp-strip-debug' );
 
 // Utility plugins
-const rename            = require( 'gulp-rename' );
-const sourcemaps        = require( 'gulp-sourcemaps' );
-const notify            = require( 'gulp-notify' );
-const plumber           = require( 'gulp-plumber' );
-const options           = require( 'gulp-options' );
-const gulpif            = require( 'gulp-if' );
+const rename                = require( 'gulp-rename' );
+const sourcemaps            = require( 'gulp-sourcemaps' );
+const notify                = require( 'gulp-notify' );
+const plumber               = require( 'gulp-plumber' );
+const options               = require( 'gulp-options' );
+const gulpif                = require( 'gulp-if' );
 
 // Browers related plugins
-const browserSync       = require( 'browser-sync' ).create();
+const browserSync           = require( 'browser-sync' ).create();
 
 // Project related variables
-const projectURL        = 'http://local.designersimage.io/wp-admin/';
+const projectURL            = 'http://local.designersimage.io/wp-admin/';
 
-const stylePluginSRC    = './plugins/di-plugin/src/scss/di-plugin.scss';
-const styleThemeSRC     = './themes/designersimage/src/scss/di-theme.scss';
-const styleThemeAdminSRC     = './themes/designersimage/src/scss/di-theme-admin.scss';
-const stylePluginURL    = './plugins/di-plugin/assets/';
-const styleThemeURL     = './themes/designersimage/assets/';
-const mapPluginURL      = './';
-const mapThemeURL       = './';
+const stylePluginSRC        = './plugins/di-plugin/src/scss/di-plugin.scss';
+const styleThemeSRC         = './themes/designersimage/src/scss/di-theme.scss';
+const styleThemeAdminSRC    = './themes/designersimage/src/scss/di-theme-admin.scss';
+const styleThemeFormsSRC    = './themes/designersimage/src/scss/di-theme-forms.scss';
+const stylePluginURL        = './plugins/di-plugin/assets/';
+const styleThemeURL         = './themes/designersimage/assets/';
+const mapPluginURL          = './';
+const mapThemeURL           = './';
 
-const jsPluginSRC       = './plugins/di-plugin/src/js/';
-const jsThemeSRC        = './themes/designersimage/src/js/';
-const jsPlugin          = 'di-plugin.js';
-const jsTheme           = 'di-theme.js';
-const jsThemeAdmin      = 'di-theme-admin.js';
-const jsPluginFiles     = [ jsPlugin ];
-const jsThemeFiles      = [ jsTheme, jsThemeAdmin ];
-const jsPluginURL       = './plugins/di-plugin/assets/';
-const jsThemeURL        = './themes/designersimage/assets/';
+const jsPluginSRC           = './plugins/di-plugin/src/js/';
+const jsThemeSRC            = './themes/designersimage/src/js/';
+const jsPlugin              = 'di-plugin.js';
+const jsTheme               = 'di-theme.js';
+const jsThemeAdmin          = 'di-theme-admin.js';
+const jsThemeForms          = 'di-theme-forms.js';
+const jsPluginFiles         = [ jsPlugin ];
+const jsThemeFiles          = [ jsTheme, jsThemeAdmin, jsThemeForms ];
+const jsPluginURL           = './plugins/di-plugin/assets/';
+const jsThemeURL            = './themes/designersimage/assets/';
 
 // const imgSRC       = './src/images/**/*';
 // const imgURL       = './dist/images/';
@@ -87,7 +89,7 @@ function css(done) {
 		.pipe( browserSync.stream() );
 
     /* Theme CSS Style */
-    src( [ styleThemeSRC, styleThemeAdminSRC ] )
+    src( [ styleThemeSRC, styleThemeAdminSRC, styleThemeFormsSRC ] )
 		.pipe( sourcemaps.init() )
 		.pipe( sass({
 			errLogToConsole: true,

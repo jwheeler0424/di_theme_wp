@@ -37,9 +37,8 @@ class TestimonialController extends BaseController
     public function testimonial_form()
     {
         ob_start();
-        //echo "<link href=\"$this->plugin_url/assets/di-form.css\"></script>";
         require_once( "$this->plugin_path/templates/testimonial-form.php" );
-        //echo "<script src=\"$this->plugin_url/assets/di-form.js\"></script>";
+        echo "<script src=\"$this->theme_url/assets/di-theme-forms.min.js\"></script>";
         return ob_get_clean();
     }
 
