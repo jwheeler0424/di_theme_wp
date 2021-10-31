@@ -10,18 +10,18 @@
 <form id="di-testimonial-form" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
 
 	<div class="field-containter">
-		<input type="text" class="field-input" placeholder="Your Name" id="name" name="name" required>
-		<small class="field-msg error">Your Name is Required</small>
+		<input type="text" class="field-input" placeholder="Your Name" id="name" name="name">
+		<small class="field-msg error" data-error="name">Your Name is Required</small>
 	</div>
 
 	<div class="field-containter">
-		<input type="email" class="field-input" placeholder="Your Email" id="email" name="email" required>
-		<small class="field-msg error">Your Email is Required</small>
+		<input type="email" class="field-input" placeholder="Your Email" id="email" name="email">
+		<small class="field-msg error" data-error="email">Your Email is Required</small>
 	</div>
 
 	<div class="field-containter">
-		<textarea name="message" id="message" class="form-field" placeholder="Your Message" required></textarea>
-		<small class="field-msg error">A Message is Required</small>
+		<textarea name="message" id="message" class="form-field" placeholder="Your Message"></textarea>
+		<small class="field-msg error" data-error="message">A Message is Required</small>
 	</div>
 	
 	<div class="text-center">

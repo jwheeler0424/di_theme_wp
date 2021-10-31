@@ -38,7 +38,6 @@ class TestimonialController extends BaseController
     {
         ob_start();
         require_once( "$this->plugin_path/templates/testimonial-form.php" );
-        echo "<script src=\"$this->theme_url/assets/di-theme-forms.min.js\"></script>";
         return ob_get_clean();
     }
 

@@ -40,9 +40,9 @@ ready((event) => {
 
 
 /*
-    ========================================
-    |   Document Ready Function            |
-    ========================================
+    ##################################################
+    |   Document Ready Function                      |
+    ##################################################
 */
 function ready(callbackFunction){
     if(document.readyState != 'loading') {

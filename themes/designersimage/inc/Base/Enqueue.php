@@ -55,6 +55,7 @@ class Enqueue extends BaseController
         wp_deregister_script( 'jquery' );
         wp_enqueue_script( 'jquery', $this->theme_url . '/assets/jquery.min.js', array(), '3.6.0', true );
         wp_enqueue_script( 'bootstrap', $this->theme_url . '/assets/bootstrap.min.js', array('jquery'), '5.1.3', true );
+        wp_enqueue_script( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.js', array(), '1.0.0', true );
     }
 
 }
