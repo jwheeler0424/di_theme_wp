@@ -1,10 +1,7 @@
 <?php 
-    /* 
-        @package designersimage
-        ========================================
-        |   FOOTER TEMPLATE                    |
-        ========================================
-    */
+/**
+ *  @package diTheme
+*/
 ?>
 
 <?php wp_footer(); ?>

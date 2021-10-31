@@ -15,8 +15,9 @@ final class Init
     {
         return [
             Pages\Dashboard::class,
-            // Base\Enqueue::class,
-            // Base\SettingsLinks::class
+            Base\Enqueue::class,
+            Base\Cleanup::class,
+            Base\ThemeSupport::class
         ];
     }
 

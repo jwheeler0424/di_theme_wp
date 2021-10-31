@@ -29,6 +29,7 @@ const projectURL        = 'http://local.designersimage.io/wp-admin/';
 
 const stylePluginSRC    = './plugins/di-plugin/src/scss/di-plugin.scss';
 const styleThemeSRC     = './themes/designersimage/src/scss/di-theme.scss';
+const styleThemeAdminSRC     = './themes/designersimage/src/scss/di-theme-admin.scss';
 const stylePluginURL    = './plugins/di-plugin/assets/';
 const styleThemeURL     = './themes/designersimage/assets/';
 const mapPluginURL      = './';
@@ -86,7 +87,7 @@ function css(done) {
 		.pipe( browserSync.stream() );
 
     /* Theme CSS Style */
-    src( [ styleThemeSRC ] )
+    src( [ styleThemeSRC, styleThemeAdminSRC ] )
 		.pipe( sourcemaps.init() )
 		.pipe( sass({
 			errLogToConsole: true,

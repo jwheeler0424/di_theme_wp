@@ -1,10 +1,10 @@
 <?php 
-    /* 
-        @package designersimage
-        ========================================
-        |   HEADER TEMPLATE                    |
-        ========================================
-    */
+/**
+ *  @package diTheme
+*/
+    
+    $function = new CustomFunctions();
+    
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
         <header class="container text-center">
             <div class="header-content">
                 <a href="#">
-                    <img class="site-logo" src="<?php header_image() ?>" alt="<?php echo alt_text_display(); ?>" />
+                    <img class="site-logo" src="<?php header_image() ?>" alt="<?php echo $function->alt_text_display(); ?>" />
                     <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
                 </a>
             </div><!-- .header-content -->
@@ -39,7 +39,7 @@
                             'theme_location' => 'primary',
                             'container' => false,
                             'menu_class' => 'navbar-di__menu',
-                            'walker' => new di_Walker_Nav_Primary
+                            'walker' => new WalkerNavPrimary()
                         );
                         wp_nav_menu( $args );
                     ?>

@@ -7,7 +7,7 @@
     ========================================
 */
 
-class di_Walker_Nav_Primary extends Walker_Nav_Menu {
+class WalkerNavPrimary extends Walker_Nav_Menu {
 
     function start_lvl(  &$output, $depth = 0, $args = array() ) { //ul
         $indent = str_repeat( "\t", $depth );
@@ -20,7 +20,8 @@ class di_Walker_Nav_Primary extends Walker_Nav_Menu {
 
         $li_attributes = '';
         $class_names = $value = '';
-
+        var_dump($args->walker);
+        die();
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
 
         $classes[] = ( $args->walker->has_children ) ? 'dropdown' : '';

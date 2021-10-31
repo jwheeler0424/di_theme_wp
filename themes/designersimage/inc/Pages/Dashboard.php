@@ -57,7 +57,7 @@ class Dashboard extends BaseController
             [
                 'option_group' => 'di_theme_settings',
                 'option_name' => 'di_theme_option',
-                'callback' => array( $this->callbacks_mgr, 'checkboxSanitize' )
+                'callback' => array( $this->callbacks_mgr, 'themeSanitize' )
             ]
         ];
 
@@ -68,7 +68,7 @@ class Dashboard extends BaseController
     {
         $args = [
             [
-                'id' => 'di_admin-theme_index',
+                'id' => 'di_theme_index',
                 'title' => 'Options Manager',
                 'callback' => array( $this->callbacks_mgr, 'adminSectionManager' ),
                 'page' => 'di_theme'
@@ -86,10 +86,23 @@ class Dashboard extends BaseController
                 'title' => 'Post Formats',
                 'callback' => array( $this->callbacks_mgr, 'checkboxPostFormatsField' ),
                 'page' => 'di_theme',
-                'section' => 'di_admin-theme_index',
+                'section' => 'di_theme_index',
                 'args' => array(
                     'option_name' => 'di_theme_option',
                     'label_for' => 'post_formats',
+                    'class' => 'ui-toggle',
+                    'array' => 'options'
+                )
+            ],
+            [
+                'id' => 'post_thumbnail',
+                'title' => 'Post Thumbnail',
+                'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
+                'page' => 'di_theme',
+                'section' => 'di_theme_index',
+                'args' => array(
+                    'option_name' => 'di_theme_option',
+                    'label_for' => 'post_thumbnail',
                     'class' => 'ui-toggle',
                     'array' => 'options'
                 )
@@ -99,7 +112,7 @@ class Dashboard extends BaseController
                 'title' => 'Custom Header',
                 'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
                 'page' => 'di_theme',
-                'section' => 'di_admin-theme_index',
+                'section' => 'di_theme_index',
                 'args' => array(
                     'option_name' => 'di_theme_option',
                     'label_for' => 'custom_header',
@@ -112,7 +125,7 @@ class Dashboard extends BaseController
                 'title' => 'Custom Background',
                 'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
                 'page' => 'di_theme',
-                'section' => 'di_admin-theme_index',
+                'section' => 'di_theme_index',
                 'args' => array(
                     'option_name' => 'di_theme_option',
                     'label_for' => 'custom_background',
@@ -125,10 +138,23 @@ class Dashboard extends BaseController
                 'title' => 'Widget Manager',
                 'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
                 'page' => 'di_theme',
-                'section' => 'di_admin-theme_index',
+                'section' => 'di_theme_index',
                 'args' => array(
                     'option_name' => 'di_theme_option',
                     'label_for' => 'widget_manager',
+                    'class' => 'ui-toggle',
+                    'array' => 'options'
+                )
+            ],
+            [
+                'id' => 'widget_block_editor',
+                'title' => 'Widget Block Editor',
+                'callback' => array( $this->callbacks_mgr, 'checkboxField' ),
+                'page' => 'di_theme',
+                'section' => 'di_theme_index',
+                'args' => array(
+                    'option_name' => 'di_theme_option',
+                    'label_for' => 'widget_block_editor',
                     'class' => 'ui-toggle',
                     'array' => 'options'
                 )

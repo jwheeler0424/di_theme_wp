@@ -1,5 +1,7 @@
 <?php
-/* @package designersimage */
+/**
+ *  @package diTheme
+*/
 ?>
 
 <?php get_header(); ?>

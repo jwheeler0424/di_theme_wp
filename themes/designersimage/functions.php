@@ -1,6 +1,6 @@
 <?php
 /**
- * @package designersimage
+ *  @package diTheme
 */
 
 // If this file is called directly, abort!
@@ -12,15 +12,19 @@ if ( file_exists( dirname( __DIR__, 2 ) . '/vendor/autoload.php' ) ) {
 }
 
 /**
- * Initialize all the core classes of the plugin 
+ * Initialize all the core classes of the theme 
+ */
+if ( class_exists( 'ThemeInc\\Base\\Activate' ) ) {
+    ThemeInc\Base\Activate::activate();
+}
+
+/**
+ * Initialize all the core classes of the theme
  */
 if ( class_exists( 'ThemeInc\\Init' ) ) {
     ThemeInc\Init::register_services();
 }
 
-// require get_template_directory() . '/inc/cleanup.php';
-// require get_template_directory() . '/inc/function-admin.php';
-// require get_template_directory() . '/inc/function-front.php';
-// require get_template_directory() . '/inc/enqueue.php';
-// require get_template_directory() . '/inc/theme-support.php';
-// require get_template_directory() . '/inc/walker.php';
+
+require get_template_directory() . '/inc/Base/CustomFunctions.php';
+require get_template_directory() . '/inc/Base/WalkerNavPrimary.php';
