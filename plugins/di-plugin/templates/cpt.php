@@ -1,3 +1,13 @@
+<?php
+/**
+ *  @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN CUSTOM POST TYPE MANAGER PAGE         |
+ *  ##################################################
+*/
+?>
+
+
 <div class="wrap">
     <h1>Custom Post Type Manager</h1>
     <?php settings_errors(); ?>

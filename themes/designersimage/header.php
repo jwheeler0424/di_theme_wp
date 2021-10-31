@@ -1,9 +1,18 @@
 <?php 
 /**
  *  @package diTheme
+ *  ##################################################
+ *  |   CUSTOM HEADER                                |
+ *  ##################################################
 */
     
     $function = new CustomFunctions();
+
+    if ( is_front_page() ):
+        $theme_classes = array( 'home-class' );
+    else:
+        $theme_classes = array( 'page-class' );
+    endif;
     
 ?>
 
@@ -21,7 +30,7 @@
         <?php wp_head(); ?>
     </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class( $theme_classes ); ?>>
 
     <div class="header-container">
         <header class="container text-center">

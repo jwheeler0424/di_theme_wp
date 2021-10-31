@@ -1,3 +1,13 @@
+<?php
+/**
+ *  @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN TAXONOMIES MANAGER PAGE               |
+ *  ##################################################
+*/
+?>
+
+
 <div class="wrap">
     <h1>Taxonomies Manager</h1>
     <?php settings_errors(); ?>

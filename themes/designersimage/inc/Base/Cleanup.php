@@ -1,6 +1,9 @@
 <?php
 /**
- * @package diTheme
+ *  @package diTheme
+ *  ##################################################
+ *  |   THEME CLEANUP VERSION STRINGS                |
+ *  ##################################################
 */
 
 namespace ThemeInc\Base;

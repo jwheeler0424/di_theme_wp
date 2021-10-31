@@ -1,7 +1,11 @@
 <?php
 /**
- * @package diTheme
+ *  @package diTheme
+ *  ##################################################
+ *  |   THEME SETTINGS API CONTROLLER                |
+ *  ##################################################
 */
+
 namespace ThemeInc\Api;
 
 class SettingsApi

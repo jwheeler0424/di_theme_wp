@@ -1,6 +1,9 @@
 <?php
 /**
- * @package diTheme
+ *  @package diTheme
+ *  ##################################################
+ *  |   THEME SUPPORT OPTIONS CONTROLLER             |
+ *  ##################################################
 */
 
 namespace ThemeInc\Base;

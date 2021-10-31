@@ -1,6 +1,9 @@
 <?php
 /**
  *  @package diTheme
+ *  ##################################################
+ *  |   INITIALIZATION FUNCTIONS                     |
+ *  ##################################################
 */
 
 // If this file is called directly, abort!

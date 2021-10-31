@@ -1,8 +1,10 @@
 <?php
 /**
- * @package diTheme
+ *  @package diTheme
+ *  ##################################################
+ *  |   THEME MANAGER API CALLBACKS                  |
+ *  ##################################################
 */
-
 
 namespace ThemeInc\Api\Callbacks;
 

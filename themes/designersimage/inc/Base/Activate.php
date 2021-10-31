@@ -1,6 +1,9 @@
 <?php
 /**
- * @package diTheme
+ *  @package diTheme
+ *  ##################################################
+ *  |   THEME ACTIVATION FUNCTION                    |
+ *  ##################################################
 */
 
 namespace ThemeInc\Base;

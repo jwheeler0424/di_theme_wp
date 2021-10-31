@@ -1,6 +1,9 @@
 <?php
 /**
- * @package diPlugin
+ *  @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN INITIALIZATION                        |
+ *  ##################################################
 */
 
 namespace PluginInc;

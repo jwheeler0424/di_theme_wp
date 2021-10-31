@@ -1,6 +1,9 @@
 <?php
 /**
- * @package diTheme
+ *  @package diTheme
+ *  ##################################################
+ *  |   THEME INITIALIZATION                         |
+ *  ##################################################
 */
 
 namespace ThemeInc;
@@ -9,7 +12,7 @@ final class Init
 {
    /** 
     * Store all the classes inside an array
-    * @return array             Full list of classes
+    * @return array | Full list of classes
     */
     public static function get_services()
     {
@@ -38,8 +41,8 @@ final class Init
 
    /** 
     * Initialize the class 
-    * @param class $class       class from the services array
-    * @return class instance    new instance of the class
+    * @param class $class | class from the services array
+    * @return class instance | new instance of the class
     */    
     private static function instantiate( $class )
     {

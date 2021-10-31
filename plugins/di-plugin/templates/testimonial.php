@@ -1,3 +1,13 @@
+<?php
+/**
+ *  @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN TESTIMONIAL SHORTCODE PAGE            |
+ *  ##################################################
+*/
+?>
+
+
 <div class="wrap">
     <h1>Testimonial Shortcode</h1>
 

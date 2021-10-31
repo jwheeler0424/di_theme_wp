@@ -1,10 +1,13 @@
 <?php
-/* 
-    @package designersimage 
-    ========================================
-    |   STANDARD POST FORMAT               |
-    ========================================
+/**
+ *  @package diTheme
+ *  ##################################################
+ *  |   STANDARD POST FORMAT                         |
+ *  ##################################################
 */
+
+    $function = new CustomFunctions();
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -13,7 +16,7 @@
         <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
         <div class="entry-meta">
-            <?php echo di_posted_meta(); ?>
+            <?php echo $function->di_posted_meta(); ?>
         </div>
 
     </header>
@@ -37,7 +40,7 @@
     </div><!-- .entry-content -->
 
     <footer class="entry-footer">
-        <?php echo di_posted_footer(); ?>
+        <?php echo $function->di_posted_footer(); ?>
     </footer>
 
 </article>

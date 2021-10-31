@@ -1,6 +1,9 @@
 <?php
 /**
- * @package diTheme
+ *  @package diTheme
+ *  ##################################################
+ *  |   THEME ENQUEUE SCRIPTS & STYLES CONTROLLER    |
+ *  ##################################################
 */
 
 namespace ThemeInc\Base;

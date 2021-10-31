@@ -1,6 +1,9 @@
 <?php
 /**
- * @package diTheme
+ *  @package diTheme
+ *  ##################################################
+ *  |   THEME CUSTOM FUNCTIONS                       |
+ *  ##################################################
 */
 
 class CustomFunctions

@@ -1,3 +1,13 @@
+<?php
+/**
+ *  @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN ADMIN PAGE                            |
+ *  ##################################################
+*/
+?>
+
+
 <div class="wrap">
     <h1>di Plugin Dashboard</h1>
     <?php settings_errors(); ?>

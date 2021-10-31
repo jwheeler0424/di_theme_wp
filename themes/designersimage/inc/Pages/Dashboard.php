@@ -1,7 +1,11 @@
 <?php
 /**
- * @package diTheme
+ *  @package diTheme
+ *  ##################################################
+ *  |   THEME ADMIN DASHBOARD CONTROLLER             |
+ *  ##################################################
 */
+
 namespace ThemeInc\Pages;
 
 use \ThemeInc\Api\SettingsApi;

@@ -2,7 +2,7 @@
 /**
  *  @package diTheme
  *  ##################################################
- *  |   THEME INDEX PAGE                             |
+ *  |   THEME ABOUT PAGE                             |
  *  ##################################################
 */
 ?>
@@ -12,7 +12,7 @@
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
             <div class="container">
-            <?php
+                <?php
                     if ( have_posts() ):
 
                         while ( have_posts() ) : the_post();?>

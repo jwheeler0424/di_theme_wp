@@ -1,4 +1,11 @@
-<div class="wrap">
+<?php
+/**
+ *  @package diTheme
+ *  ##################################################
+ *  |   THEME ADMIN PAGE                             |
+ *  ##################################################
+*/
+?><div class="wrap">
     <h1>di Theme Options</h1>
     <?php settings_errors() ?>
     <?php
