@@ -32,6 +32,55 @@ class TestimonialController extends BaseController
         $this->setShortcodePage();
 
         add_shortcode( 'testimonial-form', array( $this, 'testimonial_form' ) );
+        add_action( 'wp_ajax_submit_testimonial', array( $this, 'submit_testimonial' ) );
+        add_action( 'wp_ajax_nopriv_submit_testimonial', array( $this, 'submit_testimonial' ) );
+    }
+
+    public function submit_testimonial()
+    {
+        // Sanitize the data
+        $name = sanitize_text_field( $_POST['name'] );
+        $email = sanitize_email( $_POST['email'] );
+        $message = sanitize_textarea_field( $_POST['message'] );
+
+        // Store the data into testimonial CPT
+        $data = array(
+			'name' => $name,
+			'email' => $email,
+			'approved' => 0,
+			'featured' => 0,
+		);
+
+        $args = array(
+            'post_title' => 'Testimonial from ' . $name,
+            'post_content' => $message,
+            'post_author' => 1,
+            'post_status' => 'publish',
+            'post_type' => 'testimonial',
+            'meta_input' => array(
+                '_di_testimonial_key' => $data
+            )
+        );
+
+        $postID = wp_insert_post( $args );
+
+        if ( $postID ) {
+            $return = array(
+                'status' => 'success',
+                'ID' => $postID
+            );
+            wp_send_json( $return );
+
+            wp_die();
+        }
+
+        $return = array(
+            'status' => 'error'
+        );
+        wp_send_json( $return );
+
+        // Send response
+        wp_die();
     }
 
     public function testimonial_form()
@@ -152,7 +201,7 @@ class TestimonialController extends BaseController
 
         $data = array(
 			'name' => sanitize_text_field( $_POST['di_testimonial_author'] ),
-			'email' => sanitize_text_field( $_POST['di_testimonial_email'] ),
+			'email' => sanitize_email( $_POST['di_testimonial_email'] ),
 			'approved' => isset($_POST['di_testimonial_approved']) ? 1 : 0,
 			'featured' => isset($_POST['di_testimonial_featured']) ? 1 : 0,
 		);
