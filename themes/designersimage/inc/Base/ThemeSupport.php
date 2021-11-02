@@ -41,7 +41,7 @@ class ThemeSupport
     public function setThemeSupports()
     {
         $formats = array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' );
-        if ( count($this->post_formats) > 0 ) {
+        if ( is_array($this->post_formats) && count($this->post_formats) > 0 ) {
             foreach ( $formats as $format ) {
                 $this->output[] = (isset($this->post_formats[$format]) && $this->post_formats[$format] == 1) ? $format : '';
             }

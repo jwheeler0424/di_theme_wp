@@ -5,8 +5,7 @@
  *  |   CUSTOM HEADER                                |
  *  ##################################################
 */
-    
-    $function = new CustomFunctions();
+    namespace ThemeInc\Base;
 
     if ( is_front_page() ):
         $theme_classes = array( 'home-class' );
@@ -36,7 +35,7 @@
         <header class="container text-center">
             <div class="header-content">
                 <a href="#">
-                    <img class="site-logo" src="<?php header_image() ?>" alt="<?php echo $function->alt_text_display(); ?>" />
+                    <img class="site-logo" src="<?php header_image() ?>" alt="<?php echo CustomFunctions::alt_text_display(); ?>" />
                     <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
                 </a>
             </div><!-- .header-content -->

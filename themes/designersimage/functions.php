@@ -15,7 +15,7 @@ if ( file_exists( dirname( __DIR__, 2 ) . '/vendor/autoload.php' ) ) {
 }
 
 /**
- * Initialize all the core classes of the theme 
+ * Activate the core of the theme 
  */
 if ( class_exists( 'ThemeInc\\Base\\Activate' ) ) {
     ThemeInc\Base\Activate::activate();
@@ -27,7 +27,3 @@ if ( class_exists( 'ThemeInc\\Base\\Activate' ) ) {
 if ( class_exists( 'ThemeInc\\Init' ) ) {
     ThemeInc\Init::register_services();
 }
-
-
-require get_template_directory() . '/inc/Base/CustomFunctions.php';
-require get_template_directory() . '/inc/Base/WalkerNavPrimary.php';

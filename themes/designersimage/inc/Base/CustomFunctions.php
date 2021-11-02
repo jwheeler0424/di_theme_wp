@@ -6,10 +6,12 @@
  *  ##################################################
 */
 
+namespace ThemeInc\Base;
+
 class CustomFunctions
 {
     public function register() {
-
+        
         add_action( 'wp_enqueue_scripts', array( $this, 'alt_text_display' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'di_posted_meta' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'di_posted_footer' ) );

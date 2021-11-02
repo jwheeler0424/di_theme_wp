@@ -20,7 +20,9 @@ final class Init
             Pages\Dashboard::class,
             Base\Enqueue::class,
             Base\Cleanup::class,
-            Base\ThemeSupport::class
+            Base\CustomFunctions::class,
+            Base\ThemeSupport::class,
+            Base\WalkerNavPrimary::class
         ];
     }
 

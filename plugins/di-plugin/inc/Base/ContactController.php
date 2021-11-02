@@ -12,7 +12,8 @@ use \PluginInc\Api\Callbacks\ContactCallbacks;
 class ContactController extends BaseController
 {
     public $callbacks;
-    public $subpages;
+    public $settings;
+
     public function register()
     {
         if ( !$this->activated( 'contact_manager' ) ) return;
@@ -31,6 +32,73 @@ class ContactController extends BaseController
         $this->setShortcodePage();
 
         add_shortcode( 'contact-form', array( $this, 'contact_form' ) );
+
+        add_action( 'wp_ajax_submit_contact', array( $this, 'submit_contact' ) );
+        add_action( 'wp_ajax_nopriv_submit_contact', array( $this, 'submit_contact' ) );
+    }
+
+    public function submit_contact()
+    {
+        if( !DOING_AJAX || !check_ajax_referer( 'contact-nonce', 'nonce' )) {
+            return $this->return_json( 'error' );
+        }
+
+        // Sanitize the data
+        $subject = sanitize_text_field( $_POST['subject'] );
+        $name = sanitize_text_field( $_POST['name'] );
+        $company = sanitize_text_field( $_POST['company'] );
+        $email = sanitize_email( $_POST['email'] );
+        $phone = $_POST['phone'];
+        $message = sanitize_textarea_field( $_POST['message'] );
+
+        // Store the data into contact CPT
+        $data = array(
+			'name' => $name,
+            'company' => $company,
+			'email' => $email,
+			'phone' => $phone,
+			'responded' => 0,
+		);
+
+        $args = array(
+            'post_title' => $subject,
+            'post_content' => $message,
+            'post_author' => 1,
+            'post_status' => 'publish',
+            'post_type' => 'contact',
+            'meta_input' => array(
+                '_di_contact_key' => $data
+            )
+        );
+
+        $postID = wp_insert_post( $args );
+
+        if ( $postID ) {
+            return $this->return_json( 'success' );
+        }
+
+        return $this->return_json( 'error' );
+    }
+
+    public function return_json($status)
+    {
+        $return = array(
+            'status' => $status
+        );
+        wp_send_json( $return );
+
+        // Send response
+        wp_die();
+    }
+
+    public function sanitize_phone_number ( $phone )
+    {
+        $phone = preg_replace( "/[^0-9]/", "", $phone );
+        if ( strlen( $phone ) == 10 ) {
+                 if ( is_numeric( $phone ) ) {
+                     return intval( $phone );
+                 }
+        }
     }
 
     public function contact_form()
@@ -84,13 +152,14 @@ class ContactController extends BaseController
         );
 
         $args = array(
-            'labels' => $labels,
-            'public' => true,
-            'has_archive' => false,
-            'menu_icon' => 'dashicons-email-alt',
-            'exclude_from_search' => true,
-            'publicly_queryable' => false,
-            'supports' => array( 'title', 'editor' )
+            'labels'                => $labels,
+            'public'                => true,
+            'has_archive'           => false,
+            'menu_icon'             => 'dashicons-email-alt',
+            'exclude_from_search'   => true,
+            'publicly_queryable'    => false,
+            'supports'              => array( 'title', 'editor' ),
+            'show_in_rest'          => true
         );
 
         register_post_type ( 'contact', $args );
@@ -115,7 +184,7 @@ class ContactController extends BaseController
 
         $data = get_post_meta( $post->ID, '_di_contact_key', true );
 		$name = isset($data['name']) ? $data['name'] : '';
-        $company_name = isset($data['company_name']) ? $data['company_name'] : '';
+        $company = isset($data['company']) ? $data['company'] : '';
 		$email = isset($data['email']) ? $data['email'] : '';
         $phone = isset($data['phone']) ? $data['phone'] : '';
 		$responded = isset($data['responded']) ? $data['responded'] : false;
@@ -126,8 +195,8 @@ class ContactController extends BaseController
 			<input type="text" id="di_contact_name" name="di_contact_name" class="widefat" value="<?php echo esc_attr( $name ); ?>">
 		</p>
         <p>
-			<label class="meta-label" for="di_contact_company_name">Company</label>
-			<input type="text" id="di_contact_company_name" name="di_contact_company_name" class="widefat" value="<?php echo esc_attr( $company_name ); ?>">
+			<label class="meta-label" for="di_contact_company">Company Name</label>
+			<input type="text" id="di_contact_company" name="di_contact_company" class="widefat" value="<?php echo esc_attr( $company ); ?>">
 		</p>
 		<p>
 			<label class="meta-label" for="di_contact_email">Email Address</label>
@@ -171,7 +240,7 @@ class ContactController extends BaseController
 
         $data = array(
 			'name' => sanitize_text_field( $_POST['di_contact_name'] ),
-            'company_name' => sanitize_text_field( $_POST['di_contact_company_name'] ),
+            'company' => sanitize_text_field( $_POST['di_contact_company'] ),
 			'email' => sanitize_text_field( $_POST['di_contact_email'] ),
             'phone' => sanitize_text_field( $_POST['di_contact_phone'] ),
 			'responded' => isset($_POST['di_contact_responded']) ? 1 : 0
@@ -196,17 +265,17 @@ class ContactController extends BaseController
     {
         $data = get_post_meta( $post_id, '_di_contact_key', true );
 		$name = isset($data['name']) ? $data['name'] : '';
-        $company_name = isset($data['company_name']) ? $data['company_name'] : '';
+        $company = isset($data['company']) ? $data['company'] : '';
 		$email = isset($data['email']) ? $data['email'] : '';
         $phone = isset($data['phone']) ? $data['phone'] : '';
 		$responded = isset($data['responded']) && $data['responded'] === 1 ? '✅' : '⛔';
 
         switch ( $column ) {
             case 'name':
-                $company_insert = ($company_name) ? '<em>'. $company_name .'</em><br />' : '';
+                $company_insert = ($company) ? '<em>'. $company .'</em><br />' : '';
                 $phone_number = sprintf("(%s) %s-%s", substr($phone, 0, 3), substr($phone, 3, 3), substr($phone, 6, 9));
 
-                echo '<strong>'. $name .'</strong><br />'. $company_insert .'<a href="mailto:'. $email .'">'. $email .'</a><br />' . $phone_number;
+                echo '<strong>'. $name .'</strong><br />'. $company_insert .'<a href="mailto:'. $email .'">'. $email .'</a><br /><a href="tel:'. $phone_number .'">' . $phone_number . '</a>';
                 break;
 
             case 'message':

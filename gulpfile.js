@@ -3,7 +3,9 @@ import pkg from 'gulp';
 const { src, dest, task, watch, series, parallel } = pkg;
 
 // CSS related plugins
-import sass                  from 'gulp-sass';
+import dartSass              from 'sass';
+import gulpSass              from 'gulp-sass';
+const sass = gulpSass(dartSass)
 import autoprefixer          from 'gulp-autoprefixer';
 
 // JS related plugins

@@ -4,10 +4,12 @@
 
 /*
     ##################################################
-    |   TESTIMONIAL FORM                             |
+    |   CONTACT FORM                                 |
     ##################################################
 */
-const testimonialForm = (e, testimonialForm) => {
+
+const contactForm = (e, contactForm) => {
+
     e.preventDefault();
     
     // reset the form messages
@@ -15,54 +17,69 @@ const testimonialForm = (e, testimonialForm) => {
 
     // collect all the data
     let formData = {
-        name: testimonialForm.querySelector('[name="name"]').value,
-        email: testimonialForm.querySelector('[name="email"]').value,
-        message: testimonialForm.querySelector('[name="message"]').value,
-        nonce: testimonialForm.querySelector('[name="nonce"]').value
+        subject: contactForm.querySelector('[name="subject"]').value,
+        name: contactForm.querySelector('[name="name"]').value,
+        company: contactForm.querySelector('[name="company"]').value,
+        email: contactForm.querySelector('[name="email"]').value,
+        phone: contactForm.querySelector('[name="phone"]').value,
+        message: contactForm.querySelector('[name="message"]').value,
+        nonce: contactForm.querySelector('[name="nonce"]').value
     };
 
     // validate the form fields
+    if ( !formData.subject ) {
+        contactForm.querySelector('[data-error="subject"]').classList.add('show');
+        return;
+    }
+
     if ( !formData.name ) {
-        testimonialForm.querySelector('[data-error="name"]').classList.add('show');
+        contactForm.querySelector('[data-error="name"]').classList.add('show');
         return;
     }
 
     if ( !validateEmail(formData.email) ) {
-        testimonialForm.querySelector('[data-error="email"]').classList.add('show');
+        contactForm.querySelector('[data-error="email"]').classList.add('show');
+        return;
+    }
+
+    if ( !formData.phone ) {
+        contactForm.querySelector('[data-error="phone"]').classList.add('show');
         return;
     }
 
     if ( !formData.message ) {
-        testimonialForm.querySelector('[data-error="message"]').classList.add('show');
+        contactForm.querySelector('[data-error="message"]').classList.add('show');
         return;
     }
 
     // ajax http post request
-    let url = testimonialForm.dataset.url;
-    let params = new URLSearchParams(new FormData(testimonialForm));
+    let url = contactForm.dataset.url;
+    let params = new URLSearchParams(new FormData(contactForm));
     const fetchData = {
         method: "POST",
         body: params
     };
-
-    testimonialForm.querySelector('.js-form-submission').classList.add('show');
+    
+    contactForm.querySelector('.js-form-submission').classList.add('show');
     
     fetch( url, fetchData)
         .then(res => res.json())
         .catch(error => {
             resetMessages();
-            testimonialForm.querySelector('.js-form-error').classList.add('show');
+            contactForm.querySelector('.js-form-error').classList.add('show');
         })
         .then(response => {
+            
             resetMessages();
             // deal with the response
             if ( response === 0 || response.status === 'error' ) {
-                testimonialForm.querySelector('.js-form-error').classList.add('show');
+                contactForm.querySelector('.js-form-error').classList.add('show');
+                
                 return;
             }
-
-            testimonialForm.querySelector('.js-form-success').classList.add('show');
-            testimonialForm.reset();
+            
+            contactForm.querySelector('.js-form-success').classList.add('show');
+            contactForm.reset();
         })
 
 }
@@ -87,4 +104,4 @@ function validateEmail(email) {
 }
 
 
-export default testimonialForm;
+export default contactForm;

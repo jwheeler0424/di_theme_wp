@@ -6,6 +6,11 @@
  *  ##################################################
 */
 
+namespace ThemeInc\Base;
+
+use Walker_Nav_Menu;
+
+
 class WalkerNavPrimary extends Walker_Nav_Menu {
 
     function start_lvl(  &$output, $depth = 0, $args = array() ) { //ul
