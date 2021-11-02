@@ -31,6 +31,7 @@ const stylePluginSRC        = './plugins/di-plugin/src/scss/di-plugin.scss';
 const styleThemeSRC         = './themes/designersimage/src/scss/di-theme.scss';
 const styleThemeAdminSRC    = './themes/designersimage/src/scss/di-theme-admin.scss';
 const styleThemeFormsSRC    = './themes/designersimage/src/scss/di-theme-forms.scss';
+const styleThemeSliderSRC   = './themes/designersimage/src/scss/di-theme-slider.scss';
 const stylePluginURL        = './plugins/di-plugin/assets/';
 const styleThemeURL         = './themes/designersimage/assets/';
 const mapPluginURL          = './';
@@ -42,8 +43,9 @@ const jsPlugin              = 'di-plugin.js';
 const jsTheme               = 'di-theme.js';
 const jsThemeAdmin          = 'di-theme-admin.js';
 const jsThemeForms          = 'di-theme-forms.js';
+const jsThemeSlider          = 'di-theme-slider.js';
 const jsPluginFiles         = [ jsPlugin ];
-const jsThemeFiles          = [ jsTheme, jsThemeAdmin, jsThemeForms ];
+const jsThemeFiles          = [ jsTheme, jsThemeAdmin, jsThemeForms, jsThemeSlider ];
 const jsPluginURL           = './plugins/di-plugin/assets/';
 const jsThemeURL            = './themes/designersimage/assets/';
 
@@ -89,7 +91,7 @@ function css(done) {
 		.pipe( browserSync.stream() );
 
     /* Theme CSS Style */
-    src( [ styleThemeSRC, styleThemeAdminSRC, styleThemeFormsSRC ] )
+    src( [ styleThemeSRC, styleThemeAdminSRC, styleThemeFormsSRC, styleThemeSliderSRC ] )
 		.pipe( sourcemaps.init() )
 		.pipe( sass({
 			errLogToConsole: true,

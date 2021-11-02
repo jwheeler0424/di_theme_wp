@@ -5,10 +5,9 @@
 ready((event) => {
 
     let testimonialForm = document.querySelector('#di-testimonial-form');
-    console.log('loaded.')
+    
     testimonialForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        let formError = false;
         
         // reset the form messages
         resetMessages();
@@ -17,7 +16,8 @@ ready((event) => {
         let formData = {
             name: testimonialForm.querySelector('[name="name"]').value,
             email: testimonialForm.querySelector('[name="email"]').value,
-            message: testimonialForm.querySelector('[name="message"]').value
+            message: testimonialForm.querySelector('[name="message"]').value,
+            nonce: testimonialForm.querySelector('[name="nonce"]').value
         };
 
         // validate the form fields
@@ -61,9 +61,7 @@ ready((event) => {
                 }
 
                 testimonialForm.querySelector('.js-form-success').classList.add('show');
-                testimonialForm.querySelector('[name="name"]').value = '';
-                testimonialForm.querySelector('[name="email"]').value = '';
-                testimonialForm.querySelector('[name="message"]').value = '';
+                testimonialForm.reset();
             })
 
     });

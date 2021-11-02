@@ -32,12 +32,18 @@ class TestimonialController extends BaseController
         $this->setShortcodePage();
 
         add_shortcode( 'testimonial-form', array( $this, 'testimonial_form' ) );
+        add_shortcode( 'testimonial-slideshow', array( $this, 'testimonial_slideshow' ) );
+
         add_action( 'wp_ajax_submit_testimonial', array( $this, 'submit_testimonial' ) );
         add_action( 'wp_ajax_nopriv_submit_testimonial', array( $this, 'submit_testimonial' ) );
     }
 
     public function submit_testimonial()
     {
+        if( !DOING_AJAX || !check_ajax_referer( 'testimonial-nonce', 'nonce' )) {
+            return $this->return_json( 'error' );
+        }
+
         // Sanitize the data
         $name = sanitize_text_field( $_POST['name'] );
         $email = sanitize_email( $_POST['email'] );
@@ -65,17 +71,16 @@ class TestimonialController extends BaseController
         $postID = wp_insert_post( $args );
 
         if ( $postID ) {
-            $return = array(
-                'status' => 'success',
-                'ID' => $postID
-            );
-            wp_send_json( $return );
-
-            wp_die();
+            return $this->return_json( 'success' );
         }
 
+        return $this->return_json( 'error' );
+    }
+
+    public function return_json($status)
+    {
         $return = array(
-            'status' => 'error'
+            'status' => $status
         );
         wp_send_json( $return );
 
@@ -87,6 +92,13 @@ class TestimonialController extends BaseController
     {
         ob_start();
         require_once( "$this->plugin_path/templates/testimonial-form.php" );
+        return ob_get_clean();
+    }
+
+    public function testimonial_slideshow()
+    {
+        ob_start();
+        require_once( "$this->plugin_path/templates/testimonial-slider.php" );
         return ob_get_clean();
     }
 

@@ -47,15 +47,31 @@ class Enqueue extends BaseController
 
     public function enqueueFront()
     {
+        $slug = basename(get_permalink());
+
         wp_enqueue_style( 'bootstrap', $this->theme_url . '/assets/bootstrap.min.css', array(), '5.1.3', 'all' );
         wp_enqueue_style( 'di-theme', $this->theme_url . '/assets/di-theme.min.css', array(), '1.0.0', 'all' );
-        wp_enqueue_style( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.css', array(), '1.0.0', 'all' );
         wp_enqueue_style( 'material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), '1.6.28', 'all' );
     
-        wp_deregister_script( 'jquery' );
-        wp_enqueue_script( 'jquery', $this->theme_url . '/assets/jquery.min.js', array(), '3.6.0', true );
-        wp_enqueue_script( 'bootstrap', $this->theme_url . '/assets/bootstrap.min.js', array('jquery'), '5.1.3', true );
-        wp_enqueue_script( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.js', array(), '1.0.0', true );
+        wp_enqueue_script( 'bootstrap', $this->theme_url . '/assets/bootstrap.min.js', array(), '5.1.3', true );
+
+        switch ( $slug )
+        {
+            case 'testimonials':
+                wp_enqueue_style( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.css', array(), '1.0.0', 'all' );
+                wp_enqueue_style( 'di-theme-slider', $this->theme_url . '/assets/di-theme-slider.min.css', array(), '1.0.0', 'all' );
+
+                wp_enqueue_script( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.js', array(), '1.0.0', true );
+                wp_enqueue_script( 'di-theme-slider', $this->theme_url . '/assets/di-theme-slider.min.js', array(), '1.0.0', true );
+                break;
+            
+            case 'contact':
+                wp_enqueue_style( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.css', array(), '1.0.0', 'all' );
+                wp_enqueue_script( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.js', array(), '1.0.0', true );
+                break;
+            
+        }
+       
     }
 
 }
