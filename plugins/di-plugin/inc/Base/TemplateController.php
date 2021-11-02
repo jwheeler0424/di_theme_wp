@@ -5,44 +5,62 @@
 
 namespace PluginInc\Base;
 
-use \PluginInc\Api\SettingsApi;
 use \PluginInc\Base\BaseController;
-use \PluginInc\Api\Callbacks\AdminCallbacks;
 
 class TemplateController extends BaseController
 {
-    public $callbacks;
-    public $subpages;
+    public $templates;
+
     public function register()
     {
         if ( !$this->activated( 'templates_manager' ) ) return;
 
-        $this->settings = new SettingsApi();
-        $this->callbacks = new AdminCallbacks();
+        $this->templates = array(
+            'page-templates/two-columns-tpl.php' => 'Two Columns Layout'
+        );
 
-        $this->setSubpages();
+        add_filter( 'theme_page_templates', array( $this, 'custom_template' ) );
+        add_filter( 'template_include', array( $this, 'load_template' ) );
 
-        $this->settings->addSubPages( $this->subpages )->register();
-
-        add_action( 'init', array( $this, 'activate' ) );
     }
 
-    public function setSubpages()
+    public function custom_template( $templates )
     {
-        $this->subpages = [
-            [
-                'parent_slug' => 'di_plugin',
-                'page_title' => 'Templates Manager',
-                'menu_title' => 'Templates Manager', 
-                'capability' => 'manage_options', 
-                'menu_slug' => 'di_templates', 
-                'callback' => array( $this->callbacks, 'adminTemplates')
-            ]
-        ];
+        $templates = array_merge( $templates, $this->templates );
+        return $templates;
     }
 
-    public function activate()
+    public function load_template( $template )
     {
-        return;
+        global $post;
+
+        if ( !$post ) {
+            return $template;
+        }
+        
+        // If front page, load a custom template
+        // if ( is_front_page() ) {
+        //     $file = $this->plugin_path . 'page-templates/front-page.php';
+
+        //     if ( file_exists( $file ) ) {
+        //         return $file;
+        //     }
+        // }
+
+        $template_name = get_post_meta( $post->ID, '_wp_page_template', true );
+
+        if ( !isset($this->templates[$template_name]) ) {
+            return $template;
+        }
+
+        $file = $this->plugin_path . $template_name;
+
+        if ( file_exists($file) ) {
+            return $file;
+        }
+
+        return $template;
+
     }
+    
 }

@@ -30,7 +30,7 @@ class BaseController
             // 'gallery_manager' => 'Activate Gallery Manager',
             'contact_manager' => 'Activate Contacts Manager',
             'testimonial_manager' => 'Activate Testimonial Manager',
-            'templates_manager' => 'Activate Templates Manager',
+            'templates_manager' => 'Activate Custom Templates',
             'login_manager' => 'Activate Ajax Login/Signup',
             'membership_manager' => 'Activate Membership Manager',
             'chat_manager' => 'Activate Chat Manager'
