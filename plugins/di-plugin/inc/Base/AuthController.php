@@ -5,9 +5,7 @@
 
 namespace PluginInc\Base;
 
-use \PluginInc\Api\SettingsApi;
 use \PluginInc\Base\BaseController;
-use \PluginInc\Api\Callbacks\AdminCallbacks;
 
 class AuthController extends BaseController
 {
@@ -18,32 +16,16 @@ class AuthController extends BaseController
     {
         if ( !$this->activated( 'login_manager' ) ) return;
 
-        $this->settings = new SettingsApi();
-        $this->callbacks = new AdminCallbacks();
+        add_action( 'wp_head', array( $this, 'add_auth_template' ) );
 
-        $this->setSubpages();
-
-        $this->settings->addSubPages( $this->subpages )->register();
-
-        add_action( 'init', array( $this, 'activate' ) );
     }
 
-    public function setSubpages()
+    public function add_auth_template()
     {
-        $this->subpages = [
-            [
-                'parent_slug' => 'di_plugin',
-                'page_title' => 'Login Manager',
-                'menu_title' => 'Login Manager', 
-                'capability' => 'manage_options', 
-                'menu_slug' => 'di_auth', 
-                'callback' => array( $this->callbacks, 'adminAuth')
-            ]
-        ];
-    }
+        $file = $this->plugin_path . 'templates/auth.php';
 
-    public function activate()
-    {
-        return;
+        if ( file_exists( $file ) ) {
+            load_template( $file, true );
+        }
     }
 }

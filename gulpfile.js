@@ -1,28 +1,30 @@
 // Load Gulp
-const { src, dest, task, watch, series, parallel } = require('gulp');
+import pkg from 'gulp';
+const { src, dest, task, watch, series, parallel } = pkg;
 
 // CSS related plugins
-const sass                  = require( 'gulp-sass' )( require('sass') );
-const autoprefixer          = require( 'gulp-autoprefixer' );
+import sass                  from 'gulp-sass';
+import autoprefixer          from 'gulp-autoprefixer';
 
 // JS related plugins
-const uglify                = require( 'gulp-uglify' );
-const babelify              = require( 'babelify' );
-const browserify            = require( 'browserify' );
-const source                = require( 'vinyl-source-stream' );
-const buffer                = require( 'vinyl-buffer' );
-const stripDebug            = require( 'gulp-strip-debug' );
+import uglify                from 'gulp-uglify';
+import babelify              from 'babelify';
+import browserify            from 'browserify';
+import source                from 'vinyl-source-stream';
+import buffer                from 'vinyl-buffer';
+import stripDebug            from 'gulp-strip-debug';
 
 // Utility plugins
-const rename                = require( 'gulp-rename' );
-const sourcemaps            = require( 'gulp-sourcemaps' );
-const notify                = require( 'gulp-notify' );
-const plumber               = require( 'gulp-plumber' );
-const options               = require( 'gulp-options' );
-const gulpif                = require( 'gulp-if' );
+import rename                from 'gulp-rename';
+import sourcemaps            from 'gulp-sourcemaps';
+import notify                from 'gulp-notify';
+import plumber               from 'gulp-plumber';
+import options               from 'gulp-options';
+import gulpif                from 'gulp-if';
 
 // Browers related plugins
-const browserSync           = require( 'browser-sync' ).create();
+import browserSync           from 'browser-sync';
+browserSync.create();
 
 // Project related variables
 const projectURL            = 'http://local.designersimage.io/wp-admin/';
@@ -31,7 +33,6 @@ const stylePluginSRC        = './plugins/di-plugin/src/scss/di-plugin.scss';
 const styleThemeSRC         = './themes/designersimage/src/scss/di-theme.scss';
 const styleThemeAdminSRC    = './themes/designersimage/src/scss/di-theme-admin.scss';
 const styleThemeFormsSRC    = './themes/designersimage/src/scss/di-theme-forms.scss';
-const styleThemeSliderSRC   = './themes/designersimage/src/scss/di-theme-slider.scss';
 const stylePluginURL        = './plugins/di-plugin/assets/';
 const styleThemeURL         = './themes/designersimage/assets/';
 const mapPluginURL          = './';
@@ -43,9 +44,8 @@ const jsPlugin              = 'di-plugin.js';
 const jsTheme               = 'di-theme.js';
 const jsThemeAdmin          = 'di-theme-admin.js';
 const jsThemeForms          = 'di-theme-forms.js';
-const jsThemeSlider          = 'di-theme-slider.js';
 const jsPluginFiles         = [ jsPlugin ];
-const jsThemeFiles          = [ jsTheme, jsThemeAdmin, jsThemeForms, jsThemeSlider ];
+const jsThemeFiles          = [ jsTheme, jsThemeAdmin, jsThemeForms ];
 const jsPluginURL           = './plugins/di-plugin/assets/';
 const jsThemeURL            = './themes/designersimage/assets/';
 
@@ -91,7 +91,7 @@ function css(done) {
 		.pipe( browserSync.stream() );
 
     /* Theme CSS Style */
-    src( [ styleThemeSRC, styleThemeAdminSRC, styleThemeFormsSRC, styleThemeSliderSRC ] )
+    src( [ styleThemeSRC, styleThemeAdminSRC, styleThemeFormsSRC ] )
 		.pipe( sourcemaps.init() )
 		.pipe( sass({
 			errLogToConsole: true,
