@@ -16,4 +16,9 @@ class AdminCallbacks extends BaseController
 	{
         return require_once( "$this->theme_path/templates/admin.php" );
 	}
+
+    public function adminContactInfo()
+	{
+		return require_once( "$this->theme_path/templates/contact-info.php" );
+	}
 }

@@ -16,5 +16,9 @@ class Activate
         if ( !get_option( 'di_theme_option' ) ) {
             update_option( 'di_theme_option', $default );
         }
+
+        if ( !get_option( 'di_theme_ci' ) ) {
+            update_option( 'di_theme_ci', $default );
+        }
     }
 }

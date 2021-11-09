@@ -18,7 +18,7 @@ class CustomFunctions
 
     }
 
-    public function alt_text_display()
+    public static function alt_text_display()
     {
     
         $data =  get_object_vars(get_theme_mod('header_image_data'));
