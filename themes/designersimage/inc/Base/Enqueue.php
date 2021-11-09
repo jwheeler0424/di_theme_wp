@@ -20,28 +20,11 @@ class Enqueue extends BaseController
 
     }
 
-    public function enqueueAdmin( $hook )
+    public function enqueueAdmin()
     {
         
-        switch ( $hook ) {
-
-            case 'toplevel_page_designers_image':
-                wp_enqueue_style( 'di-theme-admin', $this->theme_url . '/assets/di-theme-admin.min.css', array(), '1.0.0', 'all' );
-            
-                wp_enqueue_media();
-            
-                wp_enqueue_script( 'di-admin-script', $this->theme_url . '/assets/di-theme-admin.min.js', array(), '1.0.0', true );
-                break;
-    
-            case 'edit.php':
-                
-                break;
-    
-            case 'post.php':
-                
-                break;
-    
-        }
+        wp_enqueue_style( 'di-theme-admin', $this->theme_url . '/assets/di-theme-admin.min.css' );
+        wp_enqueue_script( 'di-admin-script', $this->theme_url . '/assets/di-theme-admin.min.js', array(), '1.0.0', true );
 
     }
 

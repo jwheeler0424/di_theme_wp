@@ -2,8 +2,8 @@
  *  @package diTheme
 */
 
-import loginForm from './modules/auth';
-import slider from './modules/slider';
+import loginForm from './modules/frontend/auth';
+import slider from './modules/frontend/slider';
 
 ready((event) => {
 

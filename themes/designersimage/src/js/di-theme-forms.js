@@ -2,8 +2,8 @@
  *  @package diTheme
 */
 
-import contactForm from './modules/contact';
-import testimonialForm from './modules/testimonial';
+import contactForm from './modules/frontend/contact';
+import testimonialForm from './modules/frontend/testimonial';
 
 ready((event) => {
     

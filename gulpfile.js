@@ -177,9 +177,14 @@ function watch_files() {
     src(jsThemeURL + 'di-theme.min.js');
 }
 
+function watch_php() {
+    watch(phpWatch, reload);
+}
+
 task("css", css);
 task("js", js);
 // task("images", images);
 // task("fonts", fonts);
+task("live", parallel(browser_sync, watch_php));
 task("default", parallel(css, js/*, images, fonts*/));
 task("watch", parallel(browser_sync, watch_files));
