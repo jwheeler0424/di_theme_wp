@@ -2,9 +2,16 @@
  *  @package diTheme
 */
 
-@import './modules/variables.scss';
-@import './modules/mixins.scss';
-@import './modules/header.scss';
-@import './modules/nav-bar.scss';
-@import './modules/forms/auth.scss';
-@import './modules/sliders/testimonial.scss';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
+@import './modules/reset';
+
+@import './modules/variables';
+@import './modules/mixins';
+
+@import './modules/layout';
+
+@import './modules/header';
+
+// @import './modules/nav-bar.scss';
+
+// @import './modules/sliders/testimonial.scss';

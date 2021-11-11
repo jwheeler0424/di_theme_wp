@@ -32,11 +32,8 @@ class Enqueue extends BaseController
     {
         $slug = basename(get_permalink());
 
-        wp_enqueue_style( 'bootstrap', $this->theme_url . '/assets/bootstrap.min.css', array(), '5.1.3', 'all' );
         wp_enqueue_style( 'di-theme', $this->theme_url . '/assets/di-theme.min.css', array(), '1.0.0', 'all' );
-        wp_enqueue_style( 'material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), '1.6.28', 'all' );
     
-        wp_enqueue_script( 'bootstrap', $this->theme_url . '/assets/bootstrap.min.js', array(), '5.1.3', true );
         wp_enqueue_script( 'di-theme', $this->theme_url . '/assets/di-theme.min.js', array(), '1.0.0', true );
 
         switch ( $slug )

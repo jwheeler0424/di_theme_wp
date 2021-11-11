@@ -1,12 +1,10 @@
 /*
     @package diTheme
-*/
-
-/*
     ##################################################
     |   MIXINS                                       |
     ##################################################
 */
+
 @mixin animate ( $attr, $time ) {
     -webkit-transition: $attr $time ease-in-out;
     -moz-transition: $attr $time ease-in-out;

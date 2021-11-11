@@ -69,6 +69,8 @@ class ThemeSupport
         if ( @$this->widget_block_editor == 1) {
             add_theme_support( 'widgets-block-editor');
         }
+
+        add_theme_support( 'html5', array( 'search-form' ) );
         
     }
 

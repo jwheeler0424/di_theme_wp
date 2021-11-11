@@ -31,29 +31,30 @@
 
 <body <?php body_class( $theme_classes ); ?>>
 
-    <div class="header-container">
-        <header class="container text-center">
-            <div class="header-content">
-                <a href="#">
-                    <img class="site-logo" src="<?php header_image() ?>" alt="<?php echo CustomFunctions::alt_text_display(); ?>" />
-                    <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
-                </a>
-            </div><!-- .header-content -->
-            <div class="nav-container">
+    <header class="di-header__main">
+        <div class="container">
+        
+            <a href="<?php echo home_url( '/' ); ?>">
+                <img class="di-header__logo" src="<?php header_image() ?>" alt="<?php echo CustomFunctions::alt_text_display(); ?>" />
+            </a>
+            <a href="<?php echo home_url( '/' ); ?>">
+                <h1 class="di-header__title"><?php bloginfo( 'name' ); ?></h1>
+            </a>
 
-                <nav class="navbar-di">
-                    <?php
-                        $args = array(
-                            'theme_location' => 'primary',
-                            'container' => false,
-                            'menu_class' => 'navbar-di__menu',
-                            'walker' => new WalkerNavPrimary()
-                        );
-                        wp_nav_menu( $args );
-                    ?>
-                </nav>
+            <nav class="di-menu-nav">
+                <?php
+                    $args = array(
+                        'theme_location' => 'primary',
+                        'container' => false,
+                        'menu_class' => 'navbar-di__menu',
+                        // 'walker' => new WalkerNavPrimary()
+                    );
+                    wp_nav_menu( $args );
+                    get_search_form();
+                ?>
+            </nav>
 
-            </div><!-- .nav-container -->
-        </header><!-- .header-container -->
+            <button class="di-menu-toggle material-icons-round" type="button">menu</button>
 
-    </div><!-- .header-container -->
+        </div>
+    </header>
