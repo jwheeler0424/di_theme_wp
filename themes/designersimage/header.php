@@ -41,7 +41,7 @@
                 <h1><?php bloginfo( 'name' ); ?></h1>
             </a>
 
-            <nav class="di-menu" id="di-menu">
+            <nav class="di-menu closed" id="di-menu">
                 <?php
                     $args = array(
                         'theme_location' => 'primary',
@@ -54,7 +54,11 @@
                 ?>
             </nav>
 
-            <button class="di-menu-toggle material-icons-round" id="di-menu-toggle" type="button">menu</button>
+            <button class="di-menu-toggle closed" id="di-menu-toggle" type="button">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
 
         </div>
     </header>
