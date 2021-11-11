@@ -2,6 +2,7 @@
  *  @package diTheme
 */
 
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
 @import './modules/reset';
 
@@ -9,6 +10,7 @@
 @import './modules/mixins';
 
 @import './modules/layout';
+@import './modules/links';
 
 @import './modules/header';
 

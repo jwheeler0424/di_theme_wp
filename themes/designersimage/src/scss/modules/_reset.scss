@@ -51,6 +51,6 @@ input{
     border-radius: 0;
 }
 
-a{
-    text-decoration: none;
+button, input[type="submit"] {
+    cursor: pointer;
 }

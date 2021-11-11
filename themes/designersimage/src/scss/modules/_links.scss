@@ -1,0 +1,24 @@
+/*
+    @package diTheme
+    ##################################################
+    |   THEME LINKS STYLES                           |
+    ##################################################
+*/
+
+.link {
+    color: $di__grey-dark;
+    text-decoration: none;
+
+    &:link {
+        color: $di__grey-dark;
+    }
+    &:visited {
+        color: $di__grey-dark;
+    }
+    &:hover {
+        color: $di__light;
+    }
+    &:active {
+        color: $di__light;
+    }
+}

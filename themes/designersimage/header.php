@@ -34,19 +34,19 @@
     <header class="di-header__main">
         <div class="container">
         
-            <a href="<?php echo home_url( '/' ); ?>">
-                <img class="di-header__logo" src="<?php header_image() ?>" alt="<?php echo CustomFunctions::alt_text_display(); ?>" />
+            <a href="<?php echo home_url( '/' ); ?>" class="di-header__logo">
+                <img src="<?php header_image() ?>" alt="<?php echo CustomFunctions::alt_text_display(); ?>" />
             </a>
-            <a href="<?php echo home_url( '/' ); ?>">
-                <h1 class="di-header__title"><?php bloginfo( 'name' ); ?></h1>
+            <a href="<?php echo home_url( '/' ); ?>" class="di-header__title">
+                <h1><?php bloginfo( 'name' ); ?></h1>
             </a>
 
-            <nav class="di-menu-nav">
+            <nav class="di-menu" id="di-menu">
                 <?php
                     $args = array(
                         'theme_location' => 'primary',
                         'container' => false,
-                        'menu_class' => 'navbar-di__menu',
+                        'menu_class' => 'di-menu__nav',
                         // 'walker' => new WalkerNavPrimary()
                     );
                     wp_nav_menu( $args );
@@ -54,7 +54,7 @@
                 ?>
             </nav>
 
-            <button class="di-menu-toggle material-icons-round" type="button">menu</button>
+            <button class="di-menu-toggle material-icons-round" id="di-menu-toggle" type="button">menu</button>
 
         </div>
     </header>
