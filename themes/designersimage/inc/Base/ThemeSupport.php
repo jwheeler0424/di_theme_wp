@@ -76,6 +76,7 @@ class ThemeSupport
 
     public function register_nav_menu() {
         register_nav_menu( 'primary', 'Header Navigation Menu' );
+        register_nav_menu( 'footer', 'Footer Navigation Menu' );
     }
 
 }

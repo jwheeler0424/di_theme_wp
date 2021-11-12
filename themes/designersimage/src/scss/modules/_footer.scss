@@ -1,0 +1,140 @@
+/*
+    @package diTheme
+    ##################################################
+    |   THEME FOOTER STYLES                          |
+    ##################################################
+*/
+
+.di-footer__main {
+
+    .di-footer__nav {
+        background: $di__primary;
+        display: block;
+        width: 100%;
+
+        .container {
+            align-items: center;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .copyright {
+            color: $di__secondary;
+            font-size: .9rem;
+            padding: 0 0 20px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .di-menu__footer {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 20px 0;
+            width: 100%;
+
+            .di-menu__footer-nav {
+                align-items: center;
+                display: flex;
+                flex: 1;
+                flex-direction: row;
+                justify-content: space-between;
+
+                li {
+                    a {
+                        color: $di__light;
+                        font-size: 1.1rem;
+                        text-decoration: none;
+                        text-transform: lowercase;
+
+                        svg {
+                            fill: $di__light;
+                            height: 1.7rem;
+                            margin-top: 2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (min-width: 360px) {
+    .di-footer__main {
+
+        .di-footer__nav {
+            
+            .copyright {
+                font-size: 1.1rem;
+            }
+    
+            .di-menu__footer {
+    
+                .di-menu__footer-nav {
+                    
+                    li {
+                        a {
+                            font-size: 1.4rem;
+    
+                            svg {
+                                height: 2rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+    }
+}
+
+@media screen and (min-width: 410px) {
+    .di-footer__main {
+
+        .di-footer__nav {
+            
+            .copyright {
+                font-size: 1.3rem;
+            }
+    
+            .di-menu__footer {
+    
+                .di-menu__footer-nav {
+                    
+                    justify-content: space-around;
+                }
+            }
+        }
+    
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .di-footer__main {
+        
+    }
+}
+
+@media screen and (min-width: 768px) {
+    
+}
+
+@media screen and (min-width: 1024px) {
+    
+}
+
+@media screen and (min-width: 1280px) {
+    .di-footer__main {
+        
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    
+}
+
+@media screen and (min-width: 1600px) {
+    
+}

@@ -1,0 +1,30 @@
+/*
+    @package diTheme
+    ##################################################
+    |   THEME LINKS STYLES                           |
+    ##################################################
+*/
+
+.link {
+    color: $di__grey-dark;
+    text-decoration: none;
+
+    &:hover {
+        color: $di__light;
+    }
+    &:active {
+        color: $di__light;
+    }
+}
+
+.link-copyright {
+    color: $di__light;
+    text-decoration: none;
+
+    &:hover {
+        color: $di__secondary;
+    }
+    &:active {
+        color: $di__secondary;
+    }
+}
