@@ -9,16 +9,22 @@
     color: $di__grey-dark;
     text-decoration: none;
 
-    &:link {
-        color: $di__grey-dark;
-    }
-    &:visited {
-        color: $di__grey-dark;
-    }
     &:hover {
         color: $di__light;
     }
     &:active {
         color: $di__light;
+    }
+}
+
+.link-copyright {
+    color: $di__light;
+    text-decoration: none;
+
+    &:hover {
+        color: $di__secondary;
+    }
+    &:active {
+        color: $di__secondary;
     }
 }
