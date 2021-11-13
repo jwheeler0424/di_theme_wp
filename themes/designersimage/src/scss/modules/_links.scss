@@ -8,6 +8,7 @@
 .link {
     color: $di__grey-dark;
     text-decoration: none;
+    @include animate( color, 250ms );
 
     &:hover {
         color: $di__light;
@@ -20,6 +21,7 @@
 .link-copyright {
     color: $di__light;
     text-decoration: none;
+    @include animate( color, 250ms );
 
     &:hover {
         color: $di__secondary;

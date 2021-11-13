@@ -4,11 +4,11 @@
 
 /*
     ##################################################
-    |   GALLERY SLIDER                               |
+    |   MENU FUNCTIONS                               |
     ##################################################
 */
 
-const menuToggle = () => {
+export const menuToggle = () => {
 
     const menu = document.querySelector('#di-menu');
     const menu_btn = document.querySelector('#di-menu-toggle');
@@ -34,4 +34,16 @@ const menuToggle = () => {
 
 }
 
-export default menuToggle;
+export const pageTop = () => {
+    const top_btn = document.querySelector('.di-menu__footer-nav li:last-child a');
+
+    top_btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scroll({
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth' 
+        });
+    });
+
+}

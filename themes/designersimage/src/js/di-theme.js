@@ -2,8 +2,7 @@
  *  @package diTheme
 */
 
-import loginForm from './modules/frontend/auth';
-import menuToggle from './modules/frontend/menu';
+import { menuToggle, pageTop } from './modules/frontend/menu';
 import slider from './modules/frontend/slider';
 
 ready((event) => {
@@ -11,8 +10,8 @@ ready((event) => {
     // Load Menu Toggle
     menuToggle();
 
-    // Load Login Auth Form
-    loginForm();
+    // Load Top of Page
+    pageTop();
 
     // Load slider JS
     slider();
