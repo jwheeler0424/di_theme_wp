@@ -3,9 +3,9 @@
  * @package diPlugin
 */
 
-namespace PluginInc\Base;
+namespace Plugin\Base;
 
-use \PluginInc\Base\BaseController;
+use Plugin\Base\BaseController;
 
 class SettingsLinks extends BaseController
 {

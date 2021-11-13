@@ -3,12 +3,12 @@
  * @package diPlugin
 */
 
-namespace PluginInc\Base;
+namespace Plugin\Base;
 
-use \PluginInc\Api\SettingsApi;
-use \PluginInc\Base\BaseController;
-use \PluginInc\Api\Callbacks\CptCallbacks;
-use \PluginInc\Api\Callbacks\AdminCallbacks;
+use Plugin\Api\SettingsApi;
+use Plugin\Base\BaseController;
+use Plugin\Api\Callbacks\CptCallbacks;
+use Plugin\Api\Callbacks\AdminCallbacks;
 
 class CustomPostTypeController extends BaseController
 {

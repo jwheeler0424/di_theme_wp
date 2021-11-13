@@ -2,12 +2,12 @@
 /**
  * @package diPlugin
 */
-namespace PluginInc\Pages;
+namespace Plugin\Pages;
 
-use \PluginInc\Api\SettingsApi;
-use PluginInc\Base\BaseController;
-use \PluginInc\Api\Callbacks\AdminCallbacks;
-use \PluginInc\Api\Callbacks\ManagerCallbacks;
+use Plugin\Api\SettingsApi;
+use Plugin\Base\BaseController;
+use Plugin\Api\Callbacks\AdminCallbacks;
+use Plugin\Api\Callbacks\ManagerCallbacks;
 
 class Dashboard extends BaseController
 {

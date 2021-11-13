@@ -3,11 +3,11 @@
  * @package diPlugin
 */
 
-namespace PluginInc\Base;
+namespace Plugin\Base;
 
-use \PluginInc\Api\SettingsApi;
-use \PluginInc\Base\BaseController;
-use \PluginInc\Api\Callbacks\TestimonialCallbacks;
+use Plugin\Api\SettingsApi;
+use Plugin\Base\BaseController;
+use Plugin\Api\Callbacks\TestimonialCallbacks;
 
 class TestimonialController extends BaseController
 {

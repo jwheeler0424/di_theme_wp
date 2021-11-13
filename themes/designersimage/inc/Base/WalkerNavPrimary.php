@@ -6,7 +6,7 @@
  *  ##################################################
 */
 
-namespace ThemeInc\Base;
+namespace Theme\Base;
 
 use Walker_Nav_Menu;
 

@@ -6,7 +6,7 @@
  *  ##################################################
 */
 
-namespace ThemeInc;
+namespace Theme;
 
 final class Init
 {

@@ -6,12 +6,12 @@
  *  ##################################################
 */
 
-namespace ThemeInc\Base;
+namespace Theme\Base;
 
-use \ThemeInc\Api\SettingsApi;
-use \ThemeInc\Base\BaseController;
-use \ThemeInc\Api\Callbacks\AdminCallbacks;
-use \ThemeInc\Api\Callbacks\ContactInfoCallbacks;
+use Theme\Api\SettingsApi;
+use Theme\Base\BaseController;
+use Theme\Api\Callbacks\AdminCallbacks;
+use Theme\Api\Callbacks\ContactInfoCallbacks;
 
 class ContactInfoController extends BaseController
 {

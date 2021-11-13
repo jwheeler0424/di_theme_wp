@@ -6,7 +6,7 @@
  *  ##################################################
 */
 
-namespace ThemeInc\Api;
+namespace Theme\Api;
 
 class SettingsApi
 {

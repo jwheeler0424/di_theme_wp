@@ -3,12 +3,12 @@
  * @package diPlugin
 */
 
-namespace PluginInc\Base;
+namespace Plugin\Base;
 
-use \PluginInc\Api\SettingsApi;
-use \PluginInc\Base\BaseController;
-use \PluginInc\Api\Callbacks\AdminCallbacks;
-use \PluginInc\Api\Callbacks\TaxonomyCallbacks;
+use Plugin\Api\SettingsApi;
+use Plugin\Base\BaseController;
+use Plugin\Api\Callbacks\AdminCallbacks;
+use Plugin\Api\Callbacks\TaxonomyCallbacks;
 
 class CustomTaxonomyController extends BaseController
 {

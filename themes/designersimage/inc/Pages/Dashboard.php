@@ -6,12 +6,12 @@
  *  ##################################################
 */
 
-namespace ThemeInc\Pages;
+namespace Theme\Pages;
 
-use \ThemeInc\Api\SettingsApi;
-use \ThemeInc\Base\BaseController;
-use \ThemeInc\Api\Callbacks\AdminCallbacks;
-use \ThemeInc\Api\Callbacks\ManagerCallbacks;
+use Theme\Api\SettingsApi;
+use Theme\Base\BaseController;
+use Theme\Api\Callbacks\AdminCallbacks;
+use Theme\Api\Callbacks\ManagerCallbacks;
 
 class Dashboard extends BaseController
 {

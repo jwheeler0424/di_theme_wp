@@ -6,7 +6,7 @@
  *  ##################################################
 */
 
-namespace ThemeInc\Base;
+namespace Theme\Base;
 
 class BaseController
 {

@@ -4,7 +4,7 @@
 */
 
 
-namespace PluginInc\Api\Callbacks;
+namespace Plugin\Api\Callbacks;
 
 class TaxonomyCallbacks
 {

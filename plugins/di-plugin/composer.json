@@ -1,6 +1,6 @@
 {
-    "name": "designersimage/wp-designersimage",
-    "description": "A theme and plugin to control the Designer's Image WordPress website.",
+    "name": "designersimage/plugin",
+    "description": "A plugin to control the Designer's Image WordPress website.",
     "type": "project",
     "license": "GPL",
     "authors": [
@@ -13,8 +13,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "PluginInc\\": "./plugins/di-plugin/inc",
-            "ThemeInc\\": "./themes/designersimage/inc"
+            "Plugin\\": "./inc"
         }
     }
 }

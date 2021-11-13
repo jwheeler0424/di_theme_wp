@@ -6,9 +6,9 @@
  *  ##################################################
 */
 
-namespace ThemeInc\Base;
+namespace Theme\Base;
 
-use \ThemeInc\Base\BaseController;
+use Theme\Base\BaseController;
 
 class Enqueue extends BaseController
 {

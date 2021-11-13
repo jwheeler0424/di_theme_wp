@@ -1,0 +1,19 @@
+{
+    "name": "designersimage/theme",
+    "description": "A theme for the Designer's Image WordPress website.",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Jonathan Wheeler",
+            "email": "jonathan.wheeler87@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Theme\\": "./inc"
+        }
+    }
+}

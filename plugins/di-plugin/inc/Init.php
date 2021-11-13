@@ -6,7 +6,7 @@
  *  ##################################################
 */
 
-namespace PluginInc;
+namespace Plugin;
 
 final class Init
 {

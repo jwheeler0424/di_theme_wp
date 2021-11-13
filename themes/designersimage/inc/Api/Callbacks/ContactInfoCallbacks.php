@@ -6,7 +6,7 @@
  *  ##################################################
 */
 
-namespace ThemeInc\Api\Callbacks;
+namespace Theme\Api\Callbacks;
 
 class ContactInfoCallbacks
 {

@@ -2,7 +2,7 @@
 /**
  * @package diPlugin
 */
-namespace PluginInc\Api;
+namespace Plugin\Api;
 
 class SettingsApi
 {

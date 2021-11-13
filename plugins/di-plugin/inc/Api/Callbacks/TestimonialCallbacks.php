@@ -4,9 +4,9 @@
 */
 
 
-namespace PluginInc\Api\Callbacks;
+namespace Plugin\Api\Callbacks;
 
-use \PluginInc\Base\BaseController;
+use Plugin\Base\BaseController;
 
 class TestimonialCallbacks extends BaseController
 {

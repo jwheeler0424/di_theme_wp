@@ -6,9 +6,9 @@
  *  ##################################################
 */
 
-namespace ThemeInc\Api\Callbacks;
+namespace Theme\Api\Callbacks;
 
-use \ThemeInc\Base\BaseController;
+use Theme\Base\BaseController;
 
 class AdminCallbacks extends BaseController
 {

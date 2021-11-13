@@ -36,15 +36,16 @@
 defined( 'ABSPATH' ) or die( 'You\'re not allowed to access this file. Run, you fools.' );
 
 // Require_once the Composer Autoload
-if ( file_exists( dirname( __DIR__, 2 ) . '/vendor/autoload.php' ) ) {
-    require_once dirname( __DIR__, 2 ) . '/vendor/autoload.php';
+if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
+    require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+    
 }
 
 /**
  * The code that runs dring plugin activation
  */
 function activate_di_plugin() {
-    PluginInc\Base\Activate::activate();
+    Plugin\Base\Activate::activate();
 }
 register_activation_hook( __FILE__, 'activate_di_plugin' );
 
@@ -52,13 +53,13 @@ register_activation_hook( __FILE__, 'activate_di_plugin' );
  * The code that runs dring plugin deactivation
  */
 function deactivate_di_plugin() {
-    PluginInc\Base\Deactivate::deactivate();
+    Plugin\Base\Deactivate::deactivate();
 }
 register_deactivation_hook( __FILE__, 'deactivate_di_plugin' );
 
 /**
  * Initialize all the core classes of the plugin 
  */
-if ( class_exists( 'PluginInc\\Init' ) ) {
-    PluginInc\Init::register_services();
+if ( class_exists( 'Plugin\\Init' ) ) {
+    Plugin\Init::register_services();
 }
