@@ -2,13 +2,16 @@
  *  @package diTheme
 */
 
-import { menuToggle, pageTop } from './modules/frontend/menu';
+import { menuToggle, pageTop, titleHover } from './modules/frontend/menu';
 import slider from './modules/frontend/slider';
 
 ready((event) => {
 
     // Load Menu Toggle
     menuToggle();
+
+    // Load Title Rollover
+    titleHover();
 
     // Load Top of Page
     pageTop();

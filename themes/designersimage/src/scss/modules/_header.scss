@@ -29,18 +29,21 @@
             height: 40px;
             
             .cls-1{fill:none;}
-            .cls-2{fill: $di__tertiary;}
-            .cls-3{fill: $di__mix;}
-            .cls-4{fill: $di__light;}
-            .cls-5{fill: $di__blue;}
-            .cls-6{fill: $di__dark;}
+            .cls-2{fill: $di__tertiary; @include animate( fill, 250ms );}
+            .cls-3{fill: $di__mix; @include animate( fill, 250ms );}
+            .cls-4{fill: $di__light; @include animate( fill, 250ms );}
+            .cls-5{fill: $di__blue; @include animate( fill, 250ms );}
+            .cls-6{fill: $di__dark; @include animate( fill, 250ms );}
         }
-    
-        &:active + .di-header__title {
-            color: $di__light;
-        }
-        &:hover + .di-header__title {
-            color: $di__light;
+
+        &.hover {
+            svg#di_logo {
+                .cls-2{fill: $di__light;}
+                .cls-3{fill: $di__light;}
+                .cls-4{fill: $di__light;}
+                .cls-5{fill: $di__light;}
+                .cls-6{fill: $di__light;}
+            }
         }
     }
 
@@ -55,19 +58,11 @@
         h1 {
             font-weight: 100;
         }
+        &.hover {
+            color: $di__light;
+        }
 
-        &:link {
-            color: $di__grey-dark;
-        }
-        &:visited {
-            color: $di__grey-dark;
-        }
-        &:active {
-            color: $di__light;
-        }
-        &:hover {
-            color: $di__light;
-        }
+        
     }
 
     .di-menu {
