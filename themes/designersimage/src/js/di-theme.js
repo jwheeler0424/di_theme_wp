@@ -2,8 +2,10 @@
  *  @package diTheme
 */
 
-import { menuToggle, pageTop, titleHover } from './modules/frontend/menu';
 import slider from './modules/frontend/slider';
+import { homeParallax } from './modules/frontend/parallax'
+import { menuToggle, pageTop, titleHover } from './modules/frontend/menu';
+
 
 ready((event) => {
 
@@ -12,6 +14,9 @@ ready((event) => {
 
     // Load Title Rollover
     titleHover();
+
+    // Load Home Parallax
+    homeParallax();
 
     // Load Top of Page
     pageTop();

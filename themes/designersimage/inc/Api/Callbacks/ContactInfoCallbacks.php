@@ -45,7 +45,7 @@ class ContactInfoCallbacks
         $option_name = $args['option_name'];
         $input = get_option( $option_name );
 
-        $value = $input[ $name ] ?: '';
+        $value = isset($input[ $name ]) ? $input[ $name ] : '';
 
         echo '<input type="email" class="regular-text" id="'. $name .'" name="'. $option_name .'['. $name .']" value="'. $value .'" placeholder="'. $args['placeholder'] .'" '. $required .' />';
     }
@@ -58,7 +58,7 @@ class ContactInfoCallbacks
         $option_name = $args['option_name'];
         $input = get_option( $option_name );
 
-        $value = $input[ $name ] ? '(' . substr($input[ $name ], 0, 3) . ') ' . substr($input[ $name ], 3, 3) . '-' . substr($input[ $name ], 6) : '';
+        $value = isset($input[ $name ]) ? '(' . substr($input[ $name ], 0, 3) . ') ' . substr($input[ $name ], 3, 3) . '-' . substr($input[ $name ], 6) : '';
 
         echo '<input type="tel" class="regular-text" id="'. $name .'" name="'. $option_name .'['. $name .']" value="'. $value .'" placeholder="'. $args['placeholder'] .'" '. $required .' />';
     }
@@ -71,7 +71,7 @@ class ContactInfoCallbacks
         $option_name = $args['option_name'];
         $input = get_option( $option_name );
 
-        $value = $input[ $name ] ?: '';
+        $value = isset($input[ $name ]) ? $input[ $name ] : '';
 
         echo '<input type="text" class="regular-text" id="'. $name .'" name="'. $option_name .'['. $name .']" value="'. $value .'" placeholder="'. $args['placeholder'] .'" '. $required .' />';
     }
@@ -84,7 +84,7 @@ class ContactInfoCallbacks
         $option_name = $args['option_name'];
         $input = get_option( $option_name );
 
-        $value = $input[ $name ] ?: '';
+        $value = isset($input[ $name ]) ? $input[ $name ] : '';
 
         echo '<input type="url" class="regular-text" id="'. $name .'" name="'. $option_name .'['. $name .']" value="'. $value .'" placeholder="'. $args['placeholder'] .'" '. $required .' />';
     }

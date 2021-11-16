@@ -10,10 +10,10 @@
     text-decoration: none;
     @include animate( color, 250ms );
 
-    &:hover {
+    &:active {
         color: $di__light;
     }
-    &:active {
+    &:hover {
         color: $di__light;
     }
 }
@@ -23,10 +23,28 @@
     text-decoration: none;
     @include animate( color, 250ms );
 
+    &:active {
+        color: $di__secondary;
+    }
     &:hover {
         color: $di__secondary;
     }
+}
+
+.link-home {
+    color: $di__light;
+    font-weight: 600;
+
     &:active {
-        color: $di__secondary;
+        color: $di__grey;
+    }
+    &:hover {
+        color: $di__grey;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .link-home {
+        font-weight: 400;
     }
 }

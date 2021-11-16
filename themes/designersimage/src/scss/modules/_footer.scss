@@ -22,6 +22,7 @@
         .footer_logo {
             align-items: center;
             bottom: 0;
+            cursor: default;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -48,6 +49,11 @@
 
         .services {
             display: none;
+            left: 0px;
+            padding: 30px 0;
+            position: relative;
+            top: 0;
+            width: 100%;
         }
 
         .contact_info {
@@ -57,7 +63,6 @@
             top: 0;
             width: 100%;
             z-index: 1;
-            
         }
 
         h3 {
@@ -78,12 +83,12 @@
             width: 85px;
         }
 
-        .info {
+        .info, .links {
             display: flex;
             flex-direction: column;
             padding: 10px 0;
 
-            .phone, .email, .website, .location {
+            .phone, .email, .website, .location, .web, .graphic, .tech {
                 align-items: center;
                 display: flex;
                 flex-direction: row;
@@ -93,6 +98,7 @@
                 a {
                     color: $di__white;
                     font-size: 1.3rem;
+                    font-weight: 300;
                     padding-left: 15px;
                     text-decoration: none;
                     @include animate( color, 250ms );
@@ -109,6 +115,7 @@
                 span {
                     color: $di__white;
                     font-size: 1.3rem;
+                    font-weight: 300;
                     padding-left: 15px;
                 }
             }
@@ -236,7 +243,7 @@
                 padding: 0 30px;
             }
 
-            .contact_info {
+            .contact_info, .services {
                 padding: 30px 30px;
             }
         }
@@ -274,7 +281,7 @@
 
         .di-footer__info {
         
-            .contact_info {
+            .contact_info, .services {
                 padding: 30px 60px;
             }
 
@@ -312,29 +319,31 @@
             .footer_logo {
                 align-items: center;
                 display: flex;
-                flex: .8;
+                flex: 1;
                 flex-direction: column;
                 justify-content: center;
-                padding-right: 10px;
+                padding: 0 30px;
                 position: relative;
     
                 svg {
                     fill: $di__light;
+                    margin-bottom: 10px;
                     opacity: 100%;
-                    width: 80%;
+                    width: 100%;
                 }
     
                 h3 {
                     color: $di__light;
                     display: block;
-                    font-size: 1.8rem;
+                    font-size: 1.5rem;
                     font-weight: 300;
+                    padding: 0;
                     text-align:center;
                     text-transform: lowercase;
                 }
             }
 
-            .contact_info {
+            .contact_info, .services {
                 flex: 1;
                 padding: 30px 30px 30px 0;
             }
@@ -355,7 +364,7 @@
                 width: 85px;
             }
 
-            .info {
+            .info, .links {
                 border-left: solid 1px $di__primary;
                 margin-top: 10px;
                 padding: 0 0 10px 40px;
@@ -427,7 +436,7 @@
                 }
             }
 
-            .contact_info {
+            .contact_info, .services {
                 flex: 1;
                 padding: 30px 0;
             }
@@ -443,12 +452,12 @@
                 width: 100px;
             }
 
-            .info {
+            .info, .links {
                 border-left: solid 1px $di__primary;
                 margin-top: 30px;
                 padding: 0 0 10px 70px;
     
-                .phone, .email, .website, .location {
+                .phone, .email, .website, .location, .web, .graphic, .tech {
                     padding-top: 0;
                     margin: 0 0 15px 0;
     
@@ -513,6 +522,78 @@
 @media screen and (min-width: 1024px) {
     .di-footer__main {
 
+        .di-footer__info {
+
+            .container {
+                justify-content: center;
+                padding: 0 40px;
+            }
+
+            h3 {
+                font-size: 2.1rem;
+                padding: 0 0 0 40px;
+            }
+    
+            .footer_bar {
+                height: 3px;
+                margin: 10px 0 0 40px;
+                width: 100px;
+            }
+
+            .info, .links {
+                padding: 0 0 10px 50px;
+
+                .phone, .email, .website, .location {
+                    a {
+                        font-size: 1.5rem;
+                    }
+    
+                    span {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .web, .graphic, .tech {
+                    font-weight: 100;
+                    
+                    a {
+                        font-size: 1.7rem;
+                    }
+    
+                    span {
+                        font-size: 1.7rem;
+                    }
+                }
+            }
+            
+            .links {
+                padding-bottom: 40px;
+            }
+
+            .footer_logo, .services, .contact_info {
+                flex: 1;
+                max-width: 300px;
+            }
+
+            .services {
+                display: block;
+                padding-right: 40px;
+            }
+
+            .separator {
+                border-bottom: dotted 2px $di__primary;
+                content: '';
+                display: block;
+                margin: 5px 0 15px -10px;
+                width: 100%;
+            }
+
+            .social {
+                padding-left: 40px;
+            }
+            
+        }
+
         .di-footer__nav {
             
             .container {
@@ -548,6 +629,66 @@
 
 @media screen and (min-width: 1280px) {
     .di-footer__main {
+
+        .di-footer__info {
+
+            .container {
+                justify-content: center;
+                padding: 0 20px;
+            }
+
+            h3 {
+                padding: 0 0 0 80px;
+            }
+    
+            .footer_bar {
+                margin: 10px 0 0 80px;
+            }
+
+            .footer_logo, .services, .contact_info {
+                flex: 1;
+                max-width: 350px;
+            }
+
+            .footer_logo {
+                // background: blue;
+                display: flex;
+                flex: 0 220px;
+                margin: 0 80px 0 40px;
+                padding: 0;
+
+                svg {
+                    width: 90%;
+                }
+
+                h3 {
+                    font-size: 2.4rem;
+                }
+            }
+
+            .services {
+                display: block;
+                margin-right: 40px;
+            }
+
+            .contact_info {
+                display: block;
+                margin-right: 40px;
+            }
+
+            .info, .links {
+                padding: 0 0 10px 90px;
+            }
+
+            .links {
+                padding-bottom: 40px;
+            }
+
+            .social {
+                padding-left: 80px;
+            }
+            
+        }
 
         .di-footer__nav {
             
