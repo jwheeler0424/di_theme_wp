@@ -22,14 +22,14 @@ export const homeParallax = () => {
     document.addEventListener('scroll', () => {
         const distance = window.pageYOffset;
 
-        bg7.style.transform = `translateY(${distance * 0}px)`;
-        bg6.style.transform = `translateY(${distance * .2}px)`;
-        bg5.style.transform = `translateY(${distance * .3}px)`;
-        bg4.style.transform = `translateY(${distance * .4}px)`;
-        bg3.style.transform = `translateY(${distance * .5}px)`;
-        bg2.style.transform = `translateY(${distance * .6}px)`;
-        bg1.style.transform = `translateY(${distance * .7}px)`;
-        // h2.style.transform = `translateY(${distance * .5}px)`;
+        bg7.style.transform = `translate3d(0, ${distance * 0}px, 0)`;
+        bg6.style.transform = `translate3d(0, ${distance * .2}px, 0)`;
+        bg5.style.transform = `translate3d(0, ${distance * .3}px, 0)`;
+        bg4.style.transform = `translate3d(0, ${distance * .4}px, 0)`;
+        bg3.style.transform = `translate3d(0, ${distance * .5}px, 0)`;
+        bg2.style.transform = `translate3d(0, ${distance * .6}px, 0)`;
+        bg1.style.transform = `translate3d(0, ${distance * .7}px, 0)`;
+        h2.style.transform = `translate3d(0, ${distance * 1.2}px, 0)`;
         
     });
 

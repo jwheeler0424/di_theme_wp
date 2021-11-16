@@ -50,13 +50,12 @@
     .di-header__title {
         color: $di__grey-dark;
         font-size: 1.8rem;
-        font-weight: 300;
         text-decoration: none;
         text-transform: lowercase;
         @include animate( color, 250ms );
 
         h1 {
-            font-weight: 100;
+            font-weight: 300;
         }
         &.hover {
             color: $di__light;
@@ -124,6 +123,7 @@
                 border-collapse: collapse;
                 border-radius: 7px 0 0 7px;
                 border-right: 0;
+                color: $di__grey;
                 flex: 1;
                 font-size: 1.4rem;
                 margin-right: -2px;
@@ -131,9 +131,9 @@
                 padding: 10px 12px 10px 10px;
 
                 &::placeholder {
-                    color: lighten($di__grey, 20);
+                    color: $di__light;
                     font-style: italic;
-                    font-weight: 100;
+                    font-weight: 200;
                 }
             }
 
@@ -275,7 +275,7 @@
         }
 
         .di-header__title {
-            font-size: 2.2rem;
+            font-size: 2rem;
         }
 
         .di-menu {
@@ -328,7 +328,7 @@
         }
 
         .di-header__title {
-            font-size: 2.8rem;
+            font-size: 2.4rem;
         }
 
         .di-menu {
@@ -386,14 +386,6 @@
             margin-left: auto;
         }
     }
-}
-
-@media screen and (min-width: 768px) {
-    
-}
-
-@media screen and (min-width: 1024px) {
-    
 }
 
 @media screen and (min-width: 1280px) {
@@ -479,12 +471,4 @@
             display: none;
         }
     }
-}
-
-@media screen and (min-width: 1440px) {
-    
-}
-
-@media screen and (min-width: 1600px) {
-    
 }
