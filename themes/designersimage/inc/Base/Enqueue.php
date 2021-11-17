@@ -47,6 +47,10 @@ class Enqueue extends BaseController
                 wp_enqueue_style( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.css', array(), '1.0.0', 'all' );
                 wp_enqueue_script( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.js', array(), '1.0.0', true );
                 break;
+
+            case basename(get_site_url()):
+                wp_enqueue_style( 'di-theme-homePage', $this->theme_url . '/assets/di-theme-homePage.min.css', array(), '1.0.0', 'all' );
+                break;
             
         }
        
