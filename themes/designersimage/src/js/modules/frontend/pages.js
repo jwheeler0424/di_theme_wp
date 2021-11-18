@@ -16,27 +16,29 @@ export const adjustHeight = () => {
     if ( homeHero ) {
         let height = window.innerHeight,
             width = window.innerWidth,
+            prevHeight = height,
             prevOrientation = (width > height) ? 'landscape' : 'portrait',
             landscape = false,
             portrait = false;
 
         homeHero.style.height = main.offsetHeight - header.clientHeight - (main.clientHeight - window.innerHeight);
-        main.style.height = height;
+        main.style.minHeight = height;
 
         window.addEventListener('resize', () => {
-            
+            height = window.innerHeight;
+            width = window.innerWidth;
+
             setTimeout(() => {
-                height = window.innerHeight;
-                width = window.innerWidth;
                 landscape = width > height;
                 portrait = width <= height;
 
-                if (landscape & prevOrientation === 'portrait' || portrait & prevOrientation === 'landscape') {
+                if (landscape & prevOrientation === 'portrait' || portrait & prevOrientation === 'landscape' || Math.abs(prevHeight - height) > 50) {
                     homeHero.style.height = main.offsetHeight - header.clientHeight - (main.clientHeight - window.innerHeight);
-                    main.style.height = height;
+                    main.style.minHeight = height;
                 }
 
                 prevOrientation = (width > height) ? 'landscape' : 'portrait';
+                prevHeight = height;
                 
             }, 100);
 
