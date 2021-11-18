@@ -19,9 +19,10 @@
 <html <?php language_attributes(); ?>>
     <head>
         <meta charset="<?php bloginfo( 'charset' ); ?>">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1">
         <title><?php bloginfo( 'name' ); wp_title(); ?></title>
         <meta name="description" content="<?php bloginfo( 'description' ); ?>">
+        <meta name="mobile-web-app-capable" content="yes">
         <link rel="profile" href="http://gmpg.org/xfn/11">
         <?php if ( is_singular() && pings_open( get_queried_object() ) ): ?>
             <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">

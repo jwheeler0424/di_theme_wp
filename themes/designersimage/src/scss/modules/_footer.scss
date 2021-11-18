@@ -6,6 +6,8 @@
 */
 
 .di-footer__main {
+    position: relative;
+    z-index: 100;
 
     .di-footer__info {
         background: $di__secondary;
@@ -168,6 +170,7 @@
     .di-footer__nav {
         background: $di__primary;
         display: block;
+        position: relative;
         width: 100%;
 
         .container {

@@ -33,7 +33,7 @@ const projectURL            = 'http://local.designersimage.io/wp-admin/';
 
 const stylePluginSRC        = './plugins/di-plugin/src/scss/di-plugin.scss';
 const styleThemeSRC         = './themes/designersimage/src/scss/di-theme.scss';
-const styleThemeHomeSRC     = './themes/designersimage/src/scss/di-theme-homePage.scss';
+const styleThemeHomeSRC     = './themes/designersimage/src/scss/di-theme-home.scss';
 const styleThemeAdminSRC    = './themes/designersimage/src/scss/di-theme-admin.scss';
 const styleThemeFormsSRC    = './themes/designersimage/src/scss/di-theme-forms.scss';
 const stylePluginURL        = './plugins/di-plugin/assets/';

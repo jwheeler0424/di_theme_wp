@@ -3,7 +3,7 @@
 */
 
 import slider from './modules/frontend/slider';
-import { homeParallax } from './modules/frontend/parallax'
+import { adjustHeight } from './modules/frontend/pages';
 import { menuToggle, pageTop, titleHover } from './modules/frontend/menu';
 
 
@@ -15,10 +15,10 @@ ready((event) => {
     // Load Title Rollover
     titleHover();
 
-    // Load Home Parallax
-    homeParallax();
+    // Adjust Page Height on load and rotate
+    adjustHeight();
 
-    // Load Top of Page
+    // Load Top of Page Action
     pageTop();
 
     // Load slider JS
@@ -38,3 +38,5 @@ function ready(callbackFunction) {
         document.addEventListener("DOMContentLoaded", callbackFunction);
     }
 }
+
+window.prevLandscape = window.innerWidth > window.innerHeight;

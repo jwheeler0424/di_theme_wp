@@ -49,7 +49,7 @@ class Enqueue extends BaseController
                 break;
 
             case basename(get_site_url()):
-                wp_enqueue_style( 'di-theme-homePage', $this->theme_url . '/assets/di-theme-homePage.min.css', array(), '1.0.0', 'all' );
+                wp_enqueue_style( 'di-theme-homePage', $this->theme_url . '/assets/di-theme-home.min.css', array(), '1.0.0', 'all' );
                 break;
             
         }

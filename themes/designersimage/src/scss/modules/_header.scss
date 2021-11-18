@@ -11,7 +11,7 @@
     display: block;
     height: 60px;
     left: 0;
-    position: sticky;
+    position: sticky !important;
     top: 0;
     width: 100%;
     z-index: 999;
@@ -70,7 +70,7 @@
         display: flex;
         flex-direction: column-reverse;
         padding: 30px 20px 10px;
-        position: fixed;
+        position: absolute;
         right: 0;
         top: 60px;
         width: 280px;
@@ -80,7 +80,7 @@
             flex-direction: column;
             list-style: none;
             padding-top: 30px;
-            z-index: -1;
+            z-index: 0;
     
             li {
                 border-top: solid 1px $di__grey-light;
@@ -133,7 +133,7 @@
                 &::placeholder {
                     color: $di__light;
                     font-style: italic;
-                    font-weight: 200;
+                    font-weight: 300;
                 }
             }
 
@@ -441,6 +441,16 @@
                         font-weight: 600;
                     }
         
+                }
+            }
+
+            .di-menu__search {
+                display: flex;
+    
+                input[type="search"] {
+                    &::placeholder {
+                        font-weight: 100;
+                    }
                 }
             }
 
