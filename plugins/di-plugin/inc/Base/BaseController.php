@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN BASE CONTROLLER                       |
+ *  ##################################################
 */
 
 namespace Plugin\Base;
@@ -28,12 +31,13 @@ class BaseController
             'taxonomy_manager' => 'Activate Taxonomy Manager',
             // 'widget_manager' => 'Activate Widget Manager',
             // 'gallery_manager' => 'Activate Gallery Manager',
+            'event_manager' => 'Activate Events Manager',
             'contact_manager' => 'Activate Contacts Manager',
             'testimonial_manager' => 'Activate Testimonial Manager',
             'templates_manager' => 'Activate Custom Templates',
-            'login_manager' => 'Activate Ajax Login/Signup',
-            'membership_manager' => 'Activate Membership Manager',
-            'chat_manager' => 'Activate Chat Manager'
+            // 'login_manager' => 'Activate Ajax Login/Signup',
+            // 'membership_manager' => 'Activate Membership Manager',
+            // 'chat_manager' => 'Activate Chat Manager'
         ];
     }
 

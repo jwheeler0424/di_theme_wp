@@ -1,27 +1,30 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   EVENT CONTROLLER                            |
+ *  ##################################################
 */
 
 namespace Plugin\Base;
 
 use Plugin\Api\SettingsApi;
 use Plugin\Base\BaseController;
-use Plugin\Api\Callbacks\ContactCallbacks;
+use Plugin\Api\Callbacks\EventCallbacks;
 
-class ContactController extends BaseController
+class EventController extends BaseController
 {
     public $callbacks;
     public $settings;
 
     public function register()
     {
-        if ( !$this->activated( 'contact_manager' ) ) return;
+        if ( !$this->activated( 'event_manager' ) ) return;
 
         $this->settings = new SettingsApi();
-        $this->callbacks = new ContactCallbacks();
+        $this->callbacks = new EventCallbacks();
 
-        add_action( 'init', array( $this, 'contact_message_cpt' ) );
+        add_action( 'init', array( $this, 'event_cpt' ) );
         add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
         add_action( 'save_post', array( $this, 'save_meta_box' ) );
 
@@ -29,22 +32,22 @@ class ContactController extends BaseController
         add_action( 'manage_contact_posts_custom_column', array( $this, 'set_custom_columns_data' ), 10, 2 );
         add_filter( 'manage_edit-contact_sortable_columns', array( $this, 'set_custom_columns_sortable' ) );
 
-        $this->setShortcodePage();
+        // $this->setShortcodePage();
 
-        add_shortcode( 'contact-form', array( $this, 'contact_form' ) );
+        // add_shortcode( 'contact-form', array( $this, 'contact_form' ) );
 
-        add_action( 'wp_ajax_submit_contact', array( $this, 'submit_contact' ) );
-        add_action( 'wp_ajax_nopriv_submit_contact', array( $this, 'submit_contact' ) );
+        // add_action( 'wp_ajax_submit_contact', array( $this, 'submit_contact' ) );
+        // add_action( 'wp_ajax_nopriv_submit_contact', array( $this, 'submit_contact' ) );
     }
 
-    public function submit_contact()
+    public function submit_event()
     {
-        if( !DOING_AJAX || !check_ajax_referer( 'contact-nonce', 'nonce' )) {
+        if( !DOING_AJAX || !check_ajax_referer( 'event-nonce', 'nonce' )) {
             return $this->return_json( 'error' );
         }
 
         // Sanitize the data
-        $subject = sanitize_text_field( $_POST['subject'] );
+        $title = sanitize_text_field( $_POST['title'] );
         $name = sanitize_text_field( $_POST['name'] );
         $company = sanitize_text_field( $_POST['company'] );
         $email = sanitize_email( $_POST['email'] );
@@ -101,10 +104,10 @@ class ContactController extends BaseController
         }
     }
 
-    public function contact_form()
+    public function event_form()
     {
         ob_start();
-        require_once( "$this->plugin_path/templates/contact-form.php" );
+        require_once( "$this->plugin_path/templates/event-form.php" );
         echo "<script src=\"$this->plugin_url/src/js/form.js\"></script>";
         return ob_get_clean();
     }
@@ -113,11 +116,11 @@ class ContactController extends BaseController
     {
         $subpage = array(
             array(
-                'parent_slug' => 'edit.php?post_type=contact',
+                'parent_slug' => 'edit.php?post_type=event',
                 'page_title' => 'Shortcodes',
                 'menu_title' => 'Shortcodes',
                 'capability' => 'manage_options',
-                'menu_slug' => 'di_contact_shortcode',
+                'menu_slug' => 'di_event_shortcode',
                 'callback' => array( $this->callbacks, 'shortcodePage' )
             ),
         );
@@ -125,44 +128,44 @@ class ContactController extends BaseController
         $this->settings->addSubPages( $subpage )->register();
     }
 
-    public function contact_message_cpt()
+    public function event_cpt()
     {
         $labels = array(
-            'name'                  => 'Contacts',
-            'singular_name'         => 'Contact',
-            'menu_name'             => 'Contacts',
-            'name_admin_bar'        => 'Contact',
-            'archives'              => 'Contact Archives',
-            'attributes'            => 'Contact Attributes',
-            'parent_item_colon'     => 'Parent Contact',
-            'all_items'             => 'All Contacts',
-            'add_new_item'          => 'Add New Contact',
+            'name'                  => 'Events',
+            'singular_name'         => 'Event',
+            'menu_name'             => 'Events',
+            'name_admin_bar'        => 'Event',
+            'archives'              => 'Event Archives',
+            'attributes'            => 'Event Attributes',
+            'parent_item_colon'     => 'Parent Event',
+            'all_items'             => 'All Events',
+            'add_new_item'          => 'Add New Event',
             'add_new'               => 'Add New',
-            'new_item'              => 'New Contact',
-            'edit_item'             => 'Edit Contact',
-            'update_item'           => 'Update Contact',
-            'view_item'             => 'View Contact',
-            'view_items'            => 'View Contacts',
-            'search_items'          => 'Search Contacts',
-            'not_found'             => 'No Contact Found',
-            'not_found_in_trash'    => 'No Contact Found in Trash',
-            'items_list'            => 'Contact List',
-            'items_list_navigation' => 'Contact List Navigation',
-            'filter_items_list'     => 'Filter Contact List'
+            'new_item'              => 'New Event',
+            'edit_item'             => 'Edit Event',
+            'update_item'           => 'Update Event',
+            'view_item'             => 'View Event',
+            'view_items'            => 'View Events',
+            'search_items'          => 'Search Events',
+            'not_found'             => 'No Event Found',
+            'not_found_in_trash'    => 'No Event Found in Trash',
+            'items_list'            => 'Event List',
+            'items_list_navigation' => 'Event List Navigation',
+            'filter_items_list'     => 'Filter Event List'
         );
 
         $args = array(
             'labels'                => $labels,
             'public'                => true,
             'has_archive'           => false,
-            'menu_icon'             => 'dashicons-email-alt',
+            'menu_icon'             => 'dashicons-tickets-alt',
             'exclude_from_search'   => true,
             'publicly_queryable'    => false,
             'supports'              => array( 'title', 'editor' ),
             'show_in_rest'          => true
         );
 
-        register_post_type ( 'contact', $args );
+        register_post_type ( 'event', $args );
     }
 
     public function add_meta_boxes()
@@ -268,7 +271,7 @@ class ContactController extends BaseController
         $company = isset($data['company']) ? $data['company'] : '';
 		$email = isset($data['email']) ? $data['email'] : '';
         $phone = isset($data['phone']) ? $data['phone'] : '';
-		$responded = isset($data['responded']) && $data['responded'] === 1 ? '<span class="dashicons dashicons-yes-alt" style="color: green;"></span>' : '<span class="dashicons dashicons-dismiss" style="color: red;"></span>';
+		$responded = isset($data['responded']) && $data['responded'] === 1 ? '✅' : '⛔';
 
         switch ( $column ) {
             case 'name':

@@ -213,7 +213,7 @@ class CustomPostTypeController extends BaseController
                 'show_ui'               => true,
                 'show_in_menu'          => true,
                 'menu_icon'             => $option['menu_icon'] ?: 'dashicons-admin-post',
-                'menu_position'         => 26,
+                'menu_position'         => 32,
                 'show_in_admin_bar'     => true,
                 'show_in_nav_menus'     => true,
                 'can_export'            => true,
