@@ -20,7 +20,11 @@ $contact_phone_formatted = isset($contact_info[ 'contact_phone' ]) ? '+1 (' . su
                         </svg>
                         <h3><?php bloginfo( 'name' ); ?></h3>
                     </div>
-                    <div class="posts"></div>
+                    <div class="events">
+                        <h3>Community Events</h3>
+                        <div class="footer_bar"></div>
+                        <div class="links"></div>
+                    </div>
                     <div class="services">
                         <h3>Services</h3>
                         <div class="footer_bar"></div>
