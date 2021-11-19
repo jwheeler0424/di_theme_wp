@@ -20,11 +20,45 @@ $contact_phone_formatted = isset($contact_info[ 'contact_phone' ]) ? '+1 (' . su
                         </svg>
                         <h3><?php bloginfo( 'name' ); ?></h3>
                     </div>
+                    <div class="divider_events"></div>
                     <div class="events">
                         <h3>Community Events</h3>
                         <div class="footer_bar"></div>
-                        <div class="links"></div>
+                        <div class="event_links">
+                            <div class="event">
+                                <a href="#">Concert In The Park After Dark</a>
+                                <div class="datetime">
+                                    <div class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.545 16"><g id="calendar" transform="translate(-2 -1)"><path d="M15.091,2.455h-.727V1H12.909V2.455H5.636V1H4.182V2.455H3.455A1.459,1.459,0,0,0,2,3.909V15.545A1.459,1.459,0,0,0,3.455,17H15.091a1.459,1.459,0,0,0,1.455-1.455V3.909A1.459,1.459,0,0,0,15.091,2.455Zm0,13.091H3.455V6.091H15.091Z" transform="translate(0 0)"/></g></svg>
+                                    </div>
+                                    <span>11/25/21 @ 6:00 PM</span>
+                                </div>
+                                <div class="location">
+                                    <div class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.579 16"><g id="location" transform="translate(-5.466 -2.187)"><path d="M10.789,2A5.693,5.693,0,0,0,5,7.6C5,11.8,10.789,18,10.789,18s5.789-6.2,5.789-10.4A5.693,5.693,0,0,0,10.789,2Zm0,7.6a2,2,0,1,1,2.068-2A2.035,2.035,0,0,1,10.789,9.6Z" transform="translate(0.466 0.187)"/></g></svg>
+                                    </div>
+                                    <span>Woodward Park</span>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <a href="#">Karaoke Night</a>
+                                <div class="datetime">
+                                    <div class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.545 16"><g id="calendar" transform="translate(-2 -1)"><path d="M15.091,2.455h-.727V1H12.909V2.455H5.636V1H4.182V2.455H3.455A1.459,1.459,0,0,0,2,3.909V15.545A1.459,1.459,0,0,0,3.455,17H15.091a1.459,1.459,0,0,0,1.455-1.455V3.909A1.459,1.459,0,0,0,15.091,2.455Zm0,13.091H3.455V6.091H15.091Z" transform="translate(0 0)"/></g></svg>
+                                    </div>
+                                    <span>11/30/21 @ 9:00 PM</span>
+                                </div>
+                                <div class="location">
+                                    <div class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.579 16"><g id="location" transform="translate(-5.466 -2.187)"><path d="M10.789,2A5.693,5.693,0,0,0,5,7.6C5,11.8,10.789,18,10.789,18s5.789-6.2,5.789-10.4A5.693,5.693,0,0,0,10.789,2Zm0,7.6a2,2,0,1,1,2.068-2A2.035,2.035,0,0,1,10.789,9.6Z" transform="translate(0.466 0.187)"/></g></svg>
+                                    </div>
+                                    <span>Goldsteins</span>
+                                </div>
+                            </div>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
                     </div>
+                    <div class="divider_services"></div>
                     <div class="services">
                         <h3>Services</h3>
                         <div class="footer_bar"></div>
@@ -51,6 +85,7 @@ $contact_phone_formatted = isset($contact_info[ 'contact_phone' ]) ? '+1 (' . su
                             </div>
                         </div>
                     </div>
+                    <div class="divider_contact"></div>
                     <div class="contact_info">
                         <h3>Contact Info</h3>
                         <div class="footer_bar"></div>
