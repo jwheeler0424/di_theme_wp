@@ -297,7 +297,7 @@ main {
         color: $di__grey;
         font-size: .725rem;
         font-weight: 400;
-        padding: 5px 0 0 0;
+        padding: 5px 0 40px 0;
         text-align: center;
         text-transform: lowercase;
     }
@@ -305,7 +305,9 @@ main {
     .portfolio-carousel {
         align-items: center;
         display: flex;
-        padding: 40px 0 60px;
+        justify-content: space-around;
+        padding-bottom: 120px;
+        position: relative;
 
         button {
             background: none;
@@ -331,9 +333,31 @@ main {
             font-weight: 600;
             height: 200px;
             line-height: 200px;
-            margin: 0 auto;
+            position: relative;
             text-align: center;
             width: 135px;
+
+            .card-info {
+                bottom: -80px;
+                box-sizing: content-box;
+                color: $di__grey;
+                height: 60px;
+                line-height: 1.6;
+                position: absolute;
+                text-align: center;
+                width: 100%;
+
+                h4 {
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                }
+                span {
+                    font-size: 1rem;
+                    font-weight: 400;
+                    text-transform: lowercase;
+                }
+            }
         }
 
         .hidden {
