@@ -38,5 +38,3 @@ function ready(callbackFunction) {
         document.addEventListener("DOMContentLoaded", callbackFunction);
     }
 }
-
-window.prevLandscape = window.innerWidth > window.innerHeight;

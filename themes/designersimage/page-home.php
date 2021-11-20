@@ -41,10 +41,9 @@
             </section>
             <section class="home-about">
                 <div class="top-left">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 125">
-                    <path d="M310-20.667s-242.269,7.063-310,125v-125Z" transform="translate(0 20)" />
-                </svg>
-
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 125">
+                        <path d="M310-20.667s-242.269,7.063-310,125v-125Z" transform="translate(0 20)" />
+                    </svg>
                 </div>
                 <div class="top-right">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 125">
@@ -99,11 +98,10 @@
                 </div>
             </section>
             <section class="home-portfolio">
-            <div class="top-left">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 125">
-                    <path d="M310-20.667s-242.269,7.063-310,125v-125Z" transform="translate(0 20)" />
-                </svg>
-
+                <div class="top-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 125">
+                        <path d="M310-20.667s-242.269,7.063-310,125v-125Z" transform="translate(0 20)" />
+                    </svg>
                 </div>
                 <div class="top-right">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 125">
@@ -113,6 +111,19 @@
                 <div class="container">
                     <h2>Check out our latest projects</h2>
                     <p>View our <a href="portfolio/" class="link link-home">portfolio</a> for the full collection of our work.</p>
+                    <div class="portfolio-carousel">
+                        <button class="left" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.913 59.671"><path d="M28.378,3.536l-25.878,26.2,25.878,26.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="card front">1</div>
+                        <div class="card right hidden">2</div>
+                        <div class="card back hidden">3</div>
+                        <div class="card back hidden">4</div>
+                        <div class="card left hidden">5</div>
+                        <button class="right" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.913 59.671"><path d="M3.536,3.536l25.878,26.2-25.878,26.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
                 </div>
             </section>
             <section class="home-services">

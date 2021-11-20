@@ -49,7 +49,7 @@ main {
             scroll-behavior: smooth; 
             text-align: center;
             text-transform: lowercase;
-            top: 25%;
+            top: 25vh;
             width: 100%;
             will-change: transform;
         }
@@ -258,7 +258,6 @@ main {
 
 .home-portfolio {
     background: white;
-    min-height: 800px;
     position: relative;
 
     .top-left {
@@ -298,9 +297,48 @@ main {
         color: $di__grey;
         font-size: .725rem;
         font-weight: 400;
-        padding: 5px 0 40px 0;
+        padding: 5px 0 0 0;
         text-align: center;
         text-transform: lowercase;
+    }
+
+    .portfolio-carousel {
+        align-items: center;
+        display: flex;
+        padding: 40px 0 60px;
+
+        button {
+            background: none;
+            border: none;
+            outline: none;
+            padding: 0;
+
+            svg {
+                fill: none;
+                height: 30px;
+                stroke: $di__grey-medium;
+                stroke-width: 6px;
+            }
+        }
+
+        .card {
+            background: white;
+            border: solid 1px $di__grey-light;
+            border-radius: 15px;
+            box-shadow: 0 0 6px rgba(0, 0, 0, .25);
+            color: $di__grey-light;
+            font-size: 4rem;
+            font-weight: 600;
+            height: 200px;
+            line-height: 200px;
+            margin: 0 auto;
+            text-align: center;
+            width: 135px;
+        }
+
+        .hidden {
+            display: none;
+        }
     }
 }
 
@@ -778,7 +816,7 @@ main {
                 font-size: 2.8rem;
                 font-weight: 200;
                 padding: 0 20%;
-                top: 20%;
+                top: 25vh;
             }
         }
 
@@ -1001,7 +1039,7 @@ main {
             .bg-title {
                 h2 {
                     padding: 0;
-                    top: 15%
+                    top: 15vh;
                 }
             }
     
@@ -1143,7 +1181,7 @@ main {
         .bg-title {
             h2 {
                 padding: 0;
-                top: 15%
+                top: 15vh;
             }
         }
 
@@ -1279,7 +1317,6 @@ main {
         .bg-title {
             h2 {
                 font-size: 6rem;
-                top: 15%
             }
         }
     }
