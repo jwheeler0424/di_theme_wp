@@ -2,7 +2,7 @@
  *  @package diTheme
 */
 
-import slider from './modules/frontend/slider';
+import { carousel, slider } from './modules/frontend/animations';
 import { adjustHeight } from './modules/frontend/pages';
 import { menuToggle, pageTop, titleHover } from './modules/frontend/menu';
 
@@ -20,6 +20,9 @@ ready((event) => {
 
     // Load Top of Page Action
     pageTop();
+
+    // Load carousel JS
+    carousel();
 
     // Load slider JS
     slider();

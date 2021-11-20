@@ -304,10 +304,14 @@ main {
 
     .portfolio-carousel {
         align-items: center;
+        box-sizing: content-box;
         display: flex;
-        justify-content: space-around;
+        height: 200px;
+        justify-content: space-between;
         padding-bottom: 120px;
+        perspective: 300px;
         position: relative;
+        transform-style: preserve-3d;
 
         button {
             background: none;
@@ -320,6 +324,18 @@ main {
                 height: 30px;
                 stroke: $di__grey-medium;
                 stroke-width: 6px;
+                @include animate( stroke, 250ms );
+            }
+
+            &:active {
+                svg {
+                    stroke: $di__light;
+                }
+            }
+            &:hover {
+                svg {
+                    stroke: $di__light;
+                }
             }
         }
 
@@ -332,36 +348,48 @@ main {
             font-size: 4rem;
             font-weight: 600;
             height: 200px;
+            left: calc(50% - 135px / 2);
             line-height: 200px;
-            position: relative;
+            position: absolute;
             text-align: center;
             width: 135px;
+            @include animate( transform, 250ms );
 
-            .card-info {
-                bottom: -80px;
-                box-sizing: content-box;
-                color: $di__grey;
-                height: 60px;
-                line-height: 1.6;
-                position: absolute;
-                text-align: center;
-                width: 100%;
+            &.back {
+                opacity: .5;
+                transform: translate3d(0, calc(200px * -.2), calc(200px * -1));
+            }
 
-                h4 {
-                    font-size: 1.2rem;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                }
-                span {
-                    font-size: 1rem;
-                    font-weight: 400;
-                    text-transform: lowercase;
-                }
+            &.left {
+                opacity: .5;
+                transform: translate3d(-100px, calc(200px * -.1), calc(200px * -.5));
+            }
+
+            &.right {
+                opacity: .5;
+                transform: translate3d(100px, calc(200px * -.1), calc(200px * -.5));
             }
         }
 
-        .hidden {
-            display: none;
+        .card-info {
+            bottom: 70px;
+            color: $di__grey;
+            line-height: 1.6;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            @include animate( opacity, 200ms );
+
+            h4 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+            span {
+                font-size: 1rem;
+                font-weight: 400;
+                text-transform: lowercase;
+            }
         }
     }
 }
@@ -600,7 +628,7 @@ main {
 
         p {
             font-size: .9rem;
-            padding: 10px 0 0 0;
+            padding: 10px 0 50px 0;
         }
     }
 
@@ -759,7 +787,7 @@ main {
 
         p {
             font-size: 1rem;
-            padding: 10px 0 0 0;
+            padding: 10px 0 60px 0;
         }
     }
 
@@ -780,6 +808,34 @@ main {
                     font-weight: 300;
                 }
     
+            }
+        }
+    }
+    
+    .home-portfolio {
+        .portfolio-carousel {
+            height: 240px;
+            padding-bottom: 120px;
+
+            .card {
+                height: 240px;
+                left: calc(50% - 160px / 2);
+                line-height: 240px;
+                width: 160px;
+            }
+            .card-info {
+                bottom: 70px;
+    
+                h4 {
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                }
+                span {
+                    font-size: 1rem;
+                    font-weight: 400;
+                    text-transform: lowercase;
+                }
             }
         }
     }

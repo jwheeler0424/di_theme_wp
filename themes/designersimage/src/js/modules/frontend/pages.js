@@ -31,7 +31,7 @@ export const adjustHeight = () => {
             landscape = width > height;
             portrait = width <= height;
 
-            if (landscape & !prevLandscape || portrait & prevLandscape || Math.abs(prevHeight - height) > 50) {
+            if (landscape & !prevLandscape || portrait & prevLandscape || Math.abs(prevHeight - height) > 60) {
                 homeHero.style.height = main.offsetHeight - header.clientHeight - (main.clientHeight - window.innerHeight);
                 main.style.minHeight = height;
             }
