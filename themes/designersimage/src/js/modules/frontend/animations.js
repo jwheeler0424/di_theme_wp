@@ -16,6 +16,7 @@ export const carousel = () => {
           cardInfo = document.querySelector('.card-info');
     
     buttonLeft.addEventListener('click', () => {
+        buttonLeft.disabled = true;
         const frontCard = document.querySelector('.portfolio-carousel > .card.front'),
               frontIndex = Array.prototype.indexOf.call(cards, frontCard);
         
@@ -31,11 +32,13 @@ export const carousel = () => {
                 } else if ( index === cardsCount - 2 ) {
                     card.classList.add('left');
                     if ( card.classList.contains('back') ) { card.classList.remove('back') };
+                    if ( card.classList.contains('hidden') ) { card.classList.remove('hidden') };
                 } else if ( index === 0 ) {
                     card.classList.add('right');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                 } else {
                     card.classList.add('back');
+                    card.classList.add('hidden');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
@@ -52,11 +55,13 @@ export const carousel = () => {
                 } else if ( index === cardsCount - 1 ) {
                     card.classList.add('left');
                     if ( card.classList.contains('back') ) { card.classList.remove('back') };
+                    if ( card.classList.contains('hidden') ) { card.classList.remove('hidden') };
                 } else if ( index === 1 ) {
                     card.classList.add('right');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                 } else {
                     card.classList.add('back');
+                    card.classList.add('hidden');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
@@ -74,11 +79,13 @@ export const carousel = () => {
                 } else if ( index === frontIndex - 2 ) {
                     card.classList.add('left');
                     if ( card.classList.contains('back') ) { card.classList.remove('back') };
+                    if ( card.classList.contains('hidden') ) { card.classList.remove('hidden') };
                 } else if ( index === frontIndex ) {
                     card.classList.add('right');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                 } else {
                     card.classList.add('back');
+                    card.classList.add('hidden');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
@@ -91,10 +98,14 @@ export const carousel = () => {
         setTimeout(() => {
             cardInfo.style.opacity = '100';
         }, 200 );
+        setTimeout(() => {
+            buttonLeft.disabled = false;
+        }, 300);
         
     });
 
     buttonRight.addEventListener('click', () => {
+        buttonRight.disabled = true;
         const frontCard = document.querySelector('.portfolio-carousel > .card.front'),
               frontIndex = Array.prototype.indexOf.call(cards, frontCard);
 
@@ -112,8 +123,10 @@ export const carousel = () => {
                 } else if ( index === 1 ) {
                     card.classList.add('right');
                     if ( card.classList.contains('back') ) { card.classList.remove('back') };
+                    if ( card.classList.contains('hidden') ) { card.classList.remove('hidden') };
                 } else {
                     card.classList.add('back');
+                    card.classList.add('hidden');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
@@ -133,8 +146,10 @@ export const carousel = () => {
                 } else if ( index === 0 ) {
                     card.classList.add('right');
                     if ( card.classList.contains('back') ) { card.classList.remove('back') };
+                    if ( card.classList.contains('hidden') ) { card.classList.remove('hidden') };
                 } else {
                     card.classList.add('back');
+                    card.classList.add('hidden');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
@@ -155,8 +170,10 @@ export const carousel = () => {
                 } else if ( index === frontIndex + 2 ) {
                     card.classList.add('right');
                     if ( card.classList.contains('back') ) { card.classList.remove('back') };
+                    if ( card.classList.contains('hidden') ) { card.classList.remove('hidden') };
                 } else {
                     card.classList.add('back');
+                    card.classList.add('hidden');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
@@ -168,6 +185,9 @@ export const carousel = () => {
         setTimeout(() => {
             cardInfo.style.opacity = '100';
         }, 200 );
+        setTimeout(() => {
+            buttonRight.disabled = false;
+        }, 300);
 
     });
 

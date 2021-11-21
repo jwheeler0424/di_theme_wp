@@ -309,7 +309,6 @@ main {
         height: 200px;
         justify-content: space-between;
         padding-bottom: 120px;
-        perspective: 300px;
         position: relative;
         transform-style: preserve-3d;
 
@@ -318,6 +317,7 @@ main {
             border: none;
             outline: none;
             padding: 0;
+            z-index: 3;
 
             svg {
                 fill: none;
@@ -350,24 +350,35 @@ main {
             height: 200px;
             left: calc(50% - 135px / 2);
             line-height: 200px;
+            opacity: 1;
             position: absolute;
             text-align: center;
             width: 135px;
-            @include animate( transform, 250ms );
+            z-index: 3;
+            @include animate( all, 500ms );
 
             &.back {
                 opacity: .5;
-                transform: translate3d(0, calc(200px * -.2), calc(200px * -1));
+                transform: scale(.5);
+                z-index: 1;
+                @include animate( all, 500ms );
             }
 
             &.left {
                 opacity: .5;
-                transform: translate3d(-100px, calc(200px * -.1), calc(200px * -.5));
+                transform: translateX(-70px) scale(.75);
+                z-index: 2;
             }
 
             &.right {
                 opacity: .5;
-                transform: translate3d(100px, calc(200px * -.1), calc(200px * -.5));
+                transform: translateX(70px) scale(.75);
+                z-index: 2;
+            }
+
+            &.hidden {
+                opacity: 0;
+                @include animate( all, 500ms );
             }
         }
 
@@ -378,7 +389,7 @@ main {
             position: absolute;
             text-align: center;
             width: 100%;
-            @include animate( opacity, 200ms );
+            @include animate( opacity, 300ms );
 
             h4 {
                 font-size: 1.2rem;
@@ -488,7 +499,6 @@ main {
 
 .home-testimonials {
     background: white;
-    min-height: 800px;
     position: relative;
 
     .top-left {
@@ -822,6 +832,14 @@ main {
                 left: calc(50% - 160px / 2);
                 line-height: 240px;
                 width: 160px;
+
+                &.left {
+                    transform: translateX(-70px) scale(.75);
+                }
+    
+                &.right {
+                    transform: translateX(70px) scale(.75);
+                }
             }
             .card-info {
                 bottom: 70px;
@@ -965,7 +983,7 @@ main {
 
         p {
             font-size: 1.4rem;
-            padding: 15px 0 0 0;
+            padding: 15px 0 80px 0;
         }
     }
 
@@ -986,6 +1004,46 @@ main {
                     font-weight: 300;
                 }
     
+            }
+        }
+    }
+
+    .home-portfolio {
+        .portfolio-carousel {
+            height: 240px;
+            padding-bottom: 140px;
+
+            button {
+                
+                svg {
+                    height: 35px;
+                    stroke-width: 6px;
+                }
+            }
+    
+            .card {
+                &.left {
+                    transform: translateX(-120px) scale(.75);
+                }
+    
+                &.right {
+                    transform: translateX(120px) scale(.75);
+                }
+            }
+            
+            .card-info {
+                bottom: 90px;
+    
+                h4 {
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                }
+                span {
+                    font-size: 1rem;
+                    font-weight: 400;
+                    text-transform: lowercase;
+                }
             }
         }
     }
@@ -1058,13 +1116,13 @@ main {
     .home-portfolio, .home-testimonials {
         h2 {
             font-size: 4rem;
-            padding-top: 200px;
+            padding-top: 120px;
         }
 
         p {
             font-size: 2rem;
             font-weight: 200;
-            padding: 20px 0 0 0;
+            padding: 20px 0 120px 0;
         }
     }
 
@@ -1085,6 +1143,42 @@ main {
                     font-weight: 300;
                 }
     
+            }
+        }
+    }
+
+    .home-portfolio {
+        .portfolio-carousel {
+            height: 320px;
+            padding-bottom: 180px;
+
+            .card {
+                height: 320px;
+                left: calc(50% - 210px / 2);
+                line-height: 320px;
+                width: 210px;
+
+                &.left {
+                    transform: translateX(-210px) scale(.75);
+                }
+    
+                &.right {
+                    transform: translateX(210px) scale(.75);
+                }
+            }
+            .card-info {
+                bottom: 120px;
+    
+                h4 {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+                span {
+                    font-size: 1.3rem;
+                    font-weight: 300;
+                    text-transform: lowercase;
+                }
             }
         }
     }
@@ -1221,7 +1315,7 @@ main {
 
         p {
             font-size: 2.4rem;
-            padding: 20px 0 0 0;
+            padding: 20px 0 100px 0;
         }
     }
 
@@ -1244,6 +1338,60 @@ main {
     
             }
         }
+    }
+
+    .home-portfolio {
+    
+        .portfolio-carousel {
+            height: 400px;
+            padding-bottom: 180px;
+            
+            button {
+                svg {
+                    height: 50px;
+                    stroke-width: 6px;
+                }
+
+                &.left {
+                    margin-left: 15px;
+                }
+
+                &.right {
+                    margin-right: 15px;
+                }
+
+            }
+
+            .card {
+                height: 400px;
+                left: calc(50% - 265px / 2);
+                line-height: 400px;
+                width: 265px;
+
+                &.left {
+                    transform: translateX(-265px) scale(.75);
+                }
+    
+                &.right {
+                    transform: translateX(265px) scale(.75);
+                }
+            }
+            .card-info {
+                bottom: 120px;
+    
+                h4 {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+                span {
+                    font-size: 1.3rem;
+                    font-weight: 300;
+                    text-transform: lowercase;
+                }
+            }
+        }
+    
     }
 
     .home-services {
@@ -1323,7 +1471,7 @@ main {
 
         p {
             font-size: 2.4rem;
-            padding: 20px 0 0 0;
+            padding: 20px 0 80px 0;
         }
     }
 
@@ -1348,6 +1496,60 @@ main {
     
             }
         }
+    }
+
+    .home-portfolio {
+    
+        .portfolio-carousel {
+            height: 400px;
+            padding-bottom: 180px;
+            
+            button {
+                svg {
+                    height: 50px;
+                    stroke-width: 5px;
+                }
+
+                &.left {
+                    margin-left: 12%;
+                }
+
+                &.right {
+                    margin-right: 12%;
+                }
+                
+            }
+
+            .card {
+                height: 400px;
+                left: calc(50% - 265px / 2);
+                line-height: 400px;
+                width: 265px;
+
+                &.left {
+                    transform: translateX(-265px) scale(.75);
+                }
+    
+                &.right {
+                    transform: translateX(265px) scale(.75);
+                }
+            }
+            .card-info {
+                bottom: 120px;
+    
+                h4 {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+                span {
+                    font-size: 1.3rem;
+                    font-weight: 300;
+                    text-transform: lowercase;
+                }
+            }
+        }
+    
     }
 
     .home-services {
@@ -1381,6 +1583,25 @@ main {
                 height: 100px;
             }
         }
+    }
+
+    .home-portfolio {
+    
+        .portfolio-carousel {
+            
+            button {
+
+                &.left {
+                    margin-left: 15%;
+                }
+
+                &.right {
+                    margin-right: 15%;
+                }
+                
+            }
+        }
+    
     }
 
     .home-services {
@@ -1440,7 +1661,7 @@ main {
         p {
             font-size: 3rem;
             font-weight: 200;
-            padding: 20px 0 0 0;
+            padding: 20px 0 100px 0;
         }
     }
 
@@ -1485,5 +1706,58 @@ main {
     
             }
         }
+    }
+}
+
+@media screen and (min-width: 1920px) {
+
+    .home-portfolio {
+    
+        .portfolio-carousel {
+            height: 525px;
+            padding-bottom: 180px;
+            
+            button {
+                
+                &.left {
+                    margin-left: 10%;
+                }
+
+                &.right {
+                    margin-right: 10%;
+                }
+                
+            }
+
+            .card {
+                height: 525px;
+                left: calc(50% - 345px / 2);
+                line-height: 525px;
+                width: 345px;
+
+                &.left {
+                    transform: translateX(-345px) scale(.75);
+                }
+    
+                &.right {
+                    transform: translateX(345px) scale(.75);
+                }
+            }
+            .card-info {
+                bottom: 120px;
+    
+                h4 {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+                span {
+                    font-size: 1.3rem;
+                    font-weight: 300;
+                    text-transform: lowercase;
+                }
+            }
+        }
+    
     }
 }
