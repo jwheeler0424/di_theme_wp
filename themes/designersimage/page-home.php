@@ -115,18 +115,39 @@
                         <button class="left" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.913 59.671"><path d="M28.378,3.536l-25.878,26.2,25.878,26.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
-                        <div class="card front">1</div>
-                        <div class="card right">2</div>
-                        <div class="card back hidden">3</div>
-                        <div class="card back hidden">4</div>
-                        <div class="card left">5</div>
+                        <div class="card front">1
+                            <div class="card-info">
+                                <h4>Company Name</h4>
+                                <span>Website</span>
+                            </div>
+                        </div>
+                        <div class="card right">2
+                            <div class="card-info">
+                                <h4>Company Title</h4>
+                                <span>Logo</span>
+                            </div>
+                        </div>
+                        <div class="card back hidden">3
+                            <div class="card-info">
+                                <h4>Company Name</h4>
+                                <span>Web Application</span>
+                            </div>
+                        </div>
+                        <div class="card back hidden">4
+                            <div class="card-info">
+                                <h4>Company Title</h4>
+                                <span>Website</span>
+                            </div>
+                        </div>
+                        <div class="card left">5
+                            <div class="card-info">
+                                <h4>Company Name</h4>
+                                <span>Logo</span>
+                            </div>
+                        </div>
                         <button class="right" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.913 59.671"><path d="M3.536,3.536l25.878,26.2-25.878,26.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
-                        <div class="card-info">
-                            <h4>Company Name</h4>
-                            <span>Website</span>
-                        </div>
                     </div>
                 </div>
             </section>

@@ -11,12 +11,13 @@
 export const carousel = () => {
     const cards = document.querySelectorAll('.portfolio-carousel > .card'),
           cardsCount = cards.length,
-          buttonLeft = document.querySelector('.portfolio-carousel >button.left'),
-          buttonRight = document.querySelector('.portfolio-carousel >button.right'),
-          cardInfo = document.querySelector('.portfolio-carousel > .card-info');
+          arrowLeft = document.querySelector('.portfolio-carousel >button.left'),
+          arrowRight = document.querySelector('.portfolio-carousel >button.right'),
+          cardInfo = document.querySelector('.portfolio-carousel > .card > .card-info');
     
-    buttonLeft.addEventListener('click', () => {
-        buttonLeft.disabled = true;
+    arrowRight.addEventListener('click', () => {
+        
+        arrowRight.disabled = true;
         const frontCard = document.querySelector('.portfolio-carousel > .card.front'),
               frontIndex = Array.prototype.indexOf.call(cards, frontCard);
         
@@ -99,13 +100,13 @@ export const carousel = () => {
             cardInfo.style.opacity = '100';
         }, 200 );
         setTimeout(() => {
-            buttonLeft.disabled = false;
+            arrowRight.disabled = false;
         }, 300);
         
     });
 
-    buttonRight.addEventListener('click', () => {
-        buttonRight.disabled = true;
+    arrowLeft.addEventListener('click', () => {
+        arrowLeft.disabled = true;
         const frontCard = document.querySelector('.portfolio-carousel > .card.front'),
               frontIndex = Array.prototype.indexOf.call(cards, frontCard);
 
@@ -186,7 +187,7 @@ export const carousel = () => {
             cardInfo.style.opacity = '100';
         }, 200 );
         setTimeout(() => {
-            buttonRight.disabled = false;
+            arrowLeft.disabled = false;
         }, 300);
 
     });
@@ -214,29 +215,34 @@ export const slider = () => {
 
     arrowLeft.addEventListener('click', () => {
         arrowLeft.disabled = true;
-        const rightCount = document.querySelectorAll('.testimonial-slider > figure.right').length,
-              frontCard = document.querySelector('.testimonial-slider > figure.front'),
-              frontIndex = Array.prototype.indexOf.call(cards, frontCard);
+        let leftCount = document.querySelectorAll('.testimonial-slider > figure.left').length,
+            rightCount = document.querySelectorAll('.testimonial-slider > figure.right').length,
+            frontCard = document.querySelector('.testimonial-slider > figure.front'),
+            frontIndex = Array.prototype.indexOf.call(cards, frontCard);
         
         if ( frontIndex < cardsCount - 1 ) {
             cards.forEach((card, index) => {
                 if ( index === frontIndex + 1 ) {
                     card.classList.add('front')
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
+                    rightCount --;
                 } else if ( index === frontIndex ) {
                     card.classList.add('left')
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
+                    leftCount ++;
                 }
             })
         }
-        
-        if (rightCount > 0) {
-            setTimeout(() => {
-                arrowRight.disabled = false;
-            }, 500);
-        }
-        
+
         if (leftCount <= 0) {
+            arrowRight.disabled = true;
+            if ( !arrowRight.classList.contains('disabled') ) { arrowRight.classList.add('disabled') };
+        } else {
+            arrowRight.disabled = false;
+            if ( arrowRight.classList.contains('disabled') ) { arrowRight.classList.remove('disabled') };
+        }
+
+        if (rightCount <= 0) {
             arrowLeft.disabled = true;
             if ( !arrowLeft.classList.contains('disabled') ) { arrowLeft.classList.add('disabled') };
         } else {
@@ -247,27 +253,41 @@ export const slider = () => {
 
     arrowRight.addEventListener('click', () => {
         arrowRight.disabled = true;
-        const leftCount = document.querySelectorAll('.testimonial-slider > figure.left').length,
-              frontCard = document.querySelector('.testimonial-slider > figure.front'),
-              frontIndex = Array.prototype.indexOf.call(cards, frontCard);
+        let leftCount = document.querySelectorAll('.testimonial-slider > figure.left').length,
+            rightCount = document.querySelectorAll('.testimonial-slider > figure.right').length,
+            frontCard = document.querySelector('.testimonial-slider > figure.front'),
+            frontIndex = Array.prototype.indexOf.call(cards, frontCard);
 
         if ( frontIndex >= 0 ) {
             cards.forEach((card, index) => {
                 if ( index === frontIndex - 1 ) {
                     card.classList.add('front')
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
+                    leftCount --;
                 } else if ( index === frontIndex ) {
                     card.classList.add('right')
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
+                    rightCount ++;
                 }
             })
         }
-        
-        if (leftCount > 0) {
-            setTimeout(() => {
-                arrowRight.disabled = false;
-            }, 500);
+
+        if (leftCount <= 0) {
+            arrowRight.disabled = true;
+            if ( !arrowRight.classList.contains('disabled') ) { arrowRight.classList.add('disabled') };
+        } else {
+            arrowRight.disabled = false;
+            if ( arrowRight.classList.contains('disabled') ) { arrowRight.classList.remove('disabled') };
         }
+
+        if (rightCount <= 0) {
+            arrowLeft.disabled = true;
+            if ( !arrowLeft.classList.contains('disabled') ) { arrowLeft.classList.add('disabled') };
+        } else {
+            arrowLeft.disabled = false;
+            if ( arrowLeft.classList.contains('disabled') ) { arrowLeft.classList.remove('disabled') };
+        }
+
     })
 
 }
