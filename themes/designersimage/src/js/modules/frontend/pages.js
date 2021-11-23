@@ -22,7 +22,8 @@ export const adjustHeight = () => {
             portrait = false;
 
         homeHero.style.height = main.offsetHeight - header.clientHeight - (main.clientHeight - window.innerHeight);
-        main.style.minHeight = height;
+        main.style.height = height;
+        main.style.top = '0';
 
         window.addEventListener('resize', () => {
             height = window.innerHeight;
@@ -33,7 +34,8 @@ export const adjustHeight = () => {
 
             if (landscape & !prevLandscape || portrait & prevLandscape || Math.abs(prevHeight - height) > 60) {
                 homeHero.style.height = main.offsetHeight - header.clientHeight - (main.clientHeight - window.innerHeight);
-                main.style.minHeight = height;
+                main.style.height = height;
+                main.style.top = '0';
             }
 
             prevLandscape = width > height;
