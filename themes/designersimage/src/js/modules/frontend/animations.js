@@ -195,8 +195,79 @@ export const carousel = () => {
 
 export const slider = () => {
 
-    const leftArrow = document.querySelector('.testimonial-slider > button.left'),
-          rightArrow = document.querySelector('.testimonial-slider > button.right'),
+    const arrowLeft = document.querySelector('.testimonial-slider > button.left'),
+          leftCount = document.querySelector('.testimonial-slider > figure.left'),
+          arrowRight = document.querySelector('.testimonial-slider > button.right'),
+          rightCount = document.querySelector('.testimonial-slider > figure.right'),
           cards = document.querySelectorAll('.testimonial-slider > figure'),
           cardsCount = cards.length;
+
+    if ( rightCount <= 0) {
+        arrowLeft.disabled = true;
+        arrowLeft.classList.add('disabled');
+    }
+
+    if ( leftCount <= 0 ) {
+        arrowRight.disabled = true;
+        arrowRight.classList.add('disabled');
+    }
+
+    arrowLeft.addEventListener('click', () => {
+        arrowLeft.disabled = true;
+        const rightCount = document.querySelectorAll('.testimonial-slider > figure.right').length,
+              frontCard = document.querySelector('.testimonial-slider > figure.front'),
+              frontIndex = Array.prototype.indexOf.call(cards, frontCard);
+        
+        if ( frontIndex < cardsCount - 1 ) {
+            cards.forEach((card, index) => {
+                if ( index === frontIndex + 1 ) {
+                    card.classList.add('front')
+                    if ( card.classList.contains('right') ) { card.classList.remove('right') };
+                } else if ( index === frontIndex ) {
+                    card.classList.add('left')
+                    if ( card.classList.contains('front') ) { card.classList.remove('front') };
+                }
+            })
+        }
+        
+        if (rightCount > 0) {
+            setTimeout(() => {
+                arrowRight.disabled = false;
+            }, 500);
+        }
+        
+        if (leftCount <= 0) {
+            arrowLeft.disabled = true;
+            if ( !arrowLeft.classList.contains('disabled') ) { arrowLeft.classList.add('disabled') };
+        } else {
+            arrowLeft.disabled = false;
+            if ( arrowLeft.classList.contains('disabled') ) { arrowLeft.classList.remove('disabled') };
+        }
+    })
+
+    arrowRight.addEventListener('click', () => {
+        arrowRight.disabled = true;
+        const leftCount = document.querySelectorAll('.testimonial-slider > figure.left').length,
+              frontCard = document.querySelector('.testimonial-slider > figure.front'),
+              frontIndex = Array.prototype.indexOf.call(cards, frontCard);
+
+        if ( frontIndex >= 0 ) {
+            cards.forEach((card, index) => {
+                if ( index === frontIndex - 1 ) {
+                    card.classList.add('front')
+                    if ( card.classList.contains('left') ) { card.classList.remove('left') };
+                } else if ( index === frontIndex ) {
+                    card.classList.add('right')
+                    if ( card.classList.contains('front') ) { card.classList.remove('front') };
+                }
+            })
+        }
+        
+        if (leftCount > 0) {
+            setTimeout(() => {
+                arrowRight.disabled = false;
+            }, 500);
+        }
+    })
+
 }

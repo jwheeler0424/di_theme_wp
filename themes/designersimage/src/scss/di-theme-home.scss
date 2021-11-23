@@ -324,7 +324,7 @@ main {
             svg {
                 fill: none;
                 height: 30px;
-                stroke: $di__grey-medium;
+                stroke: $di__grey;
                 stroke-width: 6px;
                 @include animate( stroke, 250ms );
             }
@@ -566,15 +566,27 @@ main {
             svg {
                 fill: none;
                 height: 30px;
-                stroke: $di__grey-medium;
+                stroke: $di__grey;
                 stroke-width: 6px;
                 @include animate( stroke, 250ms );
             }
 
-            &.hidden {
+            &.disabled {
+                cursor: default;
 
                 svg {
                     stroke: $di__grey-light;
+                }
+
+                &:active {
+                    svg {
+                        stroke: $di__grey-light;
+                    }
+                }
+                &:hover {
+                    svg {
+                        stroke: $di__grey-light;
+                    }
                 }
             }
 
@@ -1874,6 +1886,7 @@ main {
                 &.right {
                     margin-right: 10%;
                 }
+
             }
     
             figure {
