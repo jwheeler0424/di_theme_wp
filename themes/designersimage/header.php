@@ -2,7 +2,7 @@
 /**
  *  @package diTheme
  *  ##################################################
- *  |   CUSTOM HEADER                                |
+ *  |   THEME HEADER                                 |
  *  ##################################################
 */
     namespace ThemeInc\Base;
@@ -36,7 +36,7 @@
         <div class="container">
         
             <a href="<?php echo home_url( '/' ); ?>" class="di-header__logo">
-                <?php get_template_part( 'img/svg/inline', 'di_logo.svg' ); ?>
+                <?php get_template_part( 'img/svg/logo', 'di_logo.svg' ); ?>
             </a>
             <a href="<?php echo home_url( '/' ); ?>" class="di-header__title">
                 <h1><?php bloginfo( 'name' ); ?></h1>
