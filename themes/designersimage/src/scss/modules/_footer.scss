@@ -41,6 +41,9 @@
                 fill: $di__light;
                 opacity: 20%;
                 width: 80%;
+
+                .cls-1{fill:none;}
+                
             }
 
             h3 {
@@ -370,7 +373,6 @@
                 width: unset;
     
                 svg {
-                    fill: $di__light;
                     margin: 0 0 10px 0;
                     opacity: 100%;
                     padding: 0;

@@ -23,10 +23,6 @@ main {
     scroll-behavior: smooth;
     top: 0;
     width: 100vw;
-    
-    .full-height {
-        height: 100vh;
-    }
 }
 
 .home-hero {
@@ -132,10 +128,11 @@ main {
 
         svg {
             bottom: 0;
+            fill:$di__light;
+            fill-rule:evenodd;
             left: -65%;
             position: absolute;
             width: 350%;
-            .cls-1{fill:$di__light; fill-rule:evenodd;}
         }
     }
     .bg-city6 {
@@ -146,10 +143,11 @@ main {
 
         svg {
             bottom: 0;
+            fill:$di__mix;
+            fill-rule:evenodd;
             left: -65%;
             position: absolute;
             width: 350%;
-            .cls-1{fill:$di__mix; fill-rule:evenodd;}
         }
     }
     .bg-city7 {
@@ -159,10 +157,11 @@ main {
 
         svg {
             bottom: 0px;
+            fill:$di__blue;
+            fill-rule:evenodd;
             left: -65%;
             position: absolute;
             width: 350%;
-            .cls-1{fill:$di__blue; fill-rule:evenodd;}
         }
     }
 }
