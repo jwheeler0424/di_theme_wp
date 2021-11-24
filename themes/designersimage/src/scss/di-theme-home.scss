@@ -359,7 +359,7 @@ main {
             @include animate( all, 500ms );
 
             .card-info {
-                bottom: -50px;
+                bottom: -45px;
                 color: $di__grey;
                 line-height: 1.6;
                 position: absolute;
@@ -1000,21 +1000,24 @@ main {
                 &.right {
                     transform: translateX(70px) scale(.75);
                 }
-            }
-            .card-info {
-                bottom: 70px;
-    
-                h4 {
-                    font-size: 1.2rem;
-                    font-weight: 700;
-                    text-transform: uppercase;
+
+                .card-info {
+                    bottom: -55px;
+        
+                    h4 {
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                    }
+                    span {
+                        font-size: 1rem;
+                        font-weight: 400;
+                        text-transform: lowercase;
+                    }
                 }
-                span {
-                    font-size: 1rem;
-                    font-weight: 400;
-                    text-transform: lowercase;
-                }
+
             }
+            
         }
     }
     
@@ -1208,20 +1211,20 @@ main {
                 &.right {
                     transform: translateX(120px) scale(.75);
                 }
-            }
             
-            .card-info {
-                bottom: 90px;
-    
-                h4 {
-                    font-size: 1.2rem;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                }
-                span {
-                    font-size: 1rem;
-                    font-weight: 400;
-                    text-transform: lowercase;
+                .card-info {
+                    bottom: -55px;
+        
+                    h4 {
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                    }
+                    span {
+                        font-size: 1rem;
+                        font-weight: 400;
+                        text-transform: lowercase;
+                    }
                 }
             }
         }
@@ -1383,21 +1386,23 @@ main {
                 &.right {
                     transform: translateX(210px) scale(.75);
                 }
-            }
-            .card-info {
-                bottom: 120px;
-    
-                h4 {
-                    font-size: 1.6rem;
-                    font-weight: 600;
-                    text-transform: uppercase;
+                
+                .card-info {
+                    bottom: -65px;
+        
+                    h4 {
+                        font-size: 1.6rem;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                    }
+                    span {
+                        font-size: 1.3rem;
+                        font-weight: 300;
+                        text-transform: lowercase;
+                    }
                 }
-                span {
-                    font-size: 1.3rem;
-                    font-weight: 300;
-                    text-transform: lowercase;
-                }
             }
+            
         }
     }
 
@@ -1629,19 +1634,20 @@ main {
                 &.right {
                     transform: translateX(265px) scale(.75);
                 }
-            }
-            .card-info {
-                bottom: 120px;
-    
-                h4 {
-                    font-size: 1.6rem;
-                    font-weight: 600;
-                    text-transform: uppercase;
-                }
-                span {
-                    font-size: 1.3rem;
-                    font-weight: 300;
-                    text-transform: lowercase;
+
+                .card-info {
+                    bottom: -75px;
+        
+                    h4 {
+                        font-size: 1.6rem;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                    }
+                    span {
+                        font-size: 1.3rem;
+                        font-weight: 300;
+                        text-transform: lowercase;
+                    }
                 }
             }
         }
@@ -1831,19 +1837,19 @@ main {
                 &.right {
                     transform: translateX(265px) scale(.75);
                 }
-            }
-            .card-info {
-                bottom: 120px;
-    
-                h4 {
-                    font-size: 1.6rem;
-                    font-weight: 600;
-                    text-transform: uppercase;
-                }
-                span {
-                    font-size: 1.3rem;
-                    font-weight: 300;
-                    text-transform: lowercase;
+                .card-info {
+                    bottom: -75px;
+        
+                    h4 {
+                        font-size: 1.6rem;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                    }
+                    span {
+                        font-size: 1.3rem;
+                        font-weight: 300;
+                        text-transform: lowercase;
+                    }
                 }
             }
         }
@@ -2099,19 +2105,19 @@ main {
                 &.right {
                     transform: translateX(345px) scale(.75);
                 }
-            }
-            .card-info {
-                bottom: 120px;
-    
-                h4 {
-                    font-size: 1.6rem;
-                    font-weight: 600;
-                    text-transform: uppercase;
-                }
-                span {
-                    font-size: 1.3rem;
-                    font-weight: 300;
-                    text-transform: lowercase;
+                .card-info {
+                    bottom: -75px;
+        
+                    h4 {
+                        font-size: 1.6rem;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                    }
+                    span {
+                        font-size: 1.3rem;
+                        font-weight: 300;
+                        text-transform: lowercase;
+                    }
                 }
             }
         }

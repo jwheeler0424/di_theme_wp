@@ -25,6 +25,9 @@
 
                     endif;
                 ?>
+                <div class="bg">
+                    <?php get_template_part( 'img/svg/bg', 'contact.svg' ); ?>
+                </div>
             </section>
             
         </main>

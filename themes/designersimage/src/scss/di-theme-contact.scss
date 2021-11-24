@@ -10,33 +10,103 @@
 @import './modules/mixins';
 
 .contact-main {
+    height: calc(100vh - 60px);
+    position: relative;
+    overflow: hidden;
+}
+
+.bg {
     bottom: 0;
-    height: 100vh;
     left: 0;
     position: absolute;
-    scroll-behavior: smooth;
     top: 0;
-    width: 100vw;
+    width: 100%;
+    z-index: -1;
+
+    svg {
+        bottom: 0;
+        fill: $di__light;
+        left: -150%;
+        opacity: .15;
+        position: absolute;
+        top: 0;
+        width: 420%;
+    }
 }
 
 @media screen and (min-width: 360px) {
+    .bg {
     
+        svg {
+            bottom: 0;
+            fill: $di__light;
+            left: -130%;
+            opacity: .15;
+            position: absolute;
+            top: 0;
+            width: 380%;
+        }
+    }
 }
 
 @media screen and (min-width: 375px) {
-
+    .bg {
+    
+        svg {
+            bottom: 0;
+            fill: $di__light;
+            left: -130%;
+            opacity: .15;
+            position: absolute;
+            top: 0;
+            width: 390%;
+        }
+    }
 }
 
 @media screen and (min-width: 410px) {
+    .bg {
     
+        svg {
+            bottom: 0;
+            fill: $di__light;
+            left: -120%;
+            opacity: .15;
+            position: absolute;
+            top: 0;
+            width: 360%;
+        }
+    }
 }
 
 @media screen and (min-width: 425px) {
-
+    .bg {
+    
+        svg {
+            bottom: 0;
+            fill: $di__light;
+            left: -140%;
+            opacity: .15;
+            position: absolute;
+            top: 0;
+            width: 410%;
+        }
+    }
 }
 
 @media screen and (min-width: 540px) {
+    .bg {
     
+        svg {
+            bottom: 0;
+            fill: $di__light;
+            left: -70%;
+            opacity: .15;
+            position: absolute;
+            top: 0;
+            width: 250%;
+        }
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -48,7 +118,18 @@
 }
 
 @media screen and (min-width: 1280px) {
-
+    .bg {
+    
+        svg {
+            bottom: 0;
+            fill: $di__light;
+            left: 0;
+            opacity: .15;
+            position: absolute;
+            top: 0;
+            width: 113%;
+        }
+    }
 }
 
 @media screen and (min-width: 1440px) {

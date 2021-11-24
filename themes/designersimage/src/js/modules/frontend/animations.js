@@ -12,93 +12,110 @@ export const carousel = () => {
     const cards = document.querySelectorAll('.portfolio-carousel > .card'),
           cardsCount = cards.length,
           arrowLeft = document.querySelector('.portfolio-carousel >button.left'),
-          arrowRight = document.querySelector('.portfolio-carousel >button.right'),
-          cardInfo = document.querySelector('.portfolio-carousel > .card > .card-info');
+          arrowRight = document.querySelector('.portfolio-carousel >button.right')
+
+    cards.forEach((card, index) => {
+        if ( !card.classList.contains('front') ) {
+            card.querySelector('.card-info').style.opacity = '0';
+        }
+    });
     
     arrowRight.addEventListener('click', () => {
-        
         arrowRight.disabled = true;
         const frontCard = document.querySelector('.portfolio-carousel > .card.front'),
               frontIndex = Array.prototype.indexOf.call(cards, frontCard);
         
-        cardInfo.style.opacity = '0';
-
         if ( frontIndex < 1 ) {
 
             cards.forEach((card, index) => {
-                
+                card.querySelector('.card-info').style.opacity = '0';
                 if ( index === cardsCount - 1 ) {
                     card.classList.add('front');
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
+                    setTimeout(() => {
+                        card.querySelector('.card-info').style.opacity = '100';
+                    }, 200 );
                 } else if ( index === cardsCount - 2 ) {
                     card.classList.add('left');
                     if ( card.classList.contains('back') ) { card.classList.remove('back') };
                     if ( card.classList.contains('hidden') ) { card.classList.remove('hidden') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 } else if ( index === 0 ) {
                     card.classList.add('right');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 } else {
                     card.classList.add('back');
                     card.classList.add('hidden');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 }
 
             });
 
         } else if ( frontIndex - 1 < 1 ) {
             cards.forEach((card, index) => {
-                
+                card.querySelector('.card-info').style.opacity = '0';
                 if ( index === 0 ) {
                     card.classList.add('front');
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
+                    setTimeout(() => {
+                        card.querySelector('.card-info').style.opacity = '100';
+                    }, 200 );
                 } else if ( index === cardsCount - 1 ) {
                     card.classList.add('left');
                     if ( card.classList.contains('back') ) { card.classList.remove('back') };
                     if ( card.classList.contains('hidden') ) { card.classList.remove('hidden') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 } else if ( index === 1 ) {
                     card.classList.add('right');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 } else {
                     card.classList.add('back');
                     card.classList.add('hidden');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 }
 
             });
             
         } else {
-
+            
             cards.forEach((card, index) => {
-                
+                card.querySelector('.card-info').style.opacity = '0';
                 if ( index === frontIndex - 1 ) {
                     card.classList.add('front');
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
+                    setTimeout(() => {
+                        card.querySelector('.card-info').style.opacity = '100';
+                    }, 200 );
                 } else if ( index === frontIndex - 2 ) {
                     card.classList.add('left');
                     if ( card.classList.contains('back') ) { card.classList.remove('back') };
                     if ( card.classList.contains('hidden') ) { card.classList.remove('hidden') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 } else if ( index === frontIndex ) {
                     card.classList.add('right');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 } else {
                     card.classList.add('back');
                     card.classList.add('hidden');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 }
 
             })
 
         }
 
-        setTimeout(() => {
-            cardInfo.style.opacity = '100';
-        }, 200 );
         setTimeout(() => {
             arrowRight.disabled = false;
         }, 300);
@@ -110,50 +127,60 @@ export const carousel = () => {
         const frontCard = document.querySelector('.portfolio-carousel > .card.front'),
               frontIndex = Array.prototype.indexOf.call(cards, frontCard);
 
-        cardInfo.style.opacity = '0';
-
         if ( frontIndex >= cardsCount - 1 ) {
             cards.forEach((card, index) => {
-                
+                card.querySelector('.card-info').style.opacity = '0';
                 if ( index === 0 ) {
                     card.classList.add('front');
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
+                    setTimeout(() => {
+                        card.querySelector('.card-info').style.opacity = '100';
+                    }, 200 );
                 } else if ( index === cardsCount - 1 ) {
                     card.classList.add('left');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 } else if ( index === 1 ) {
                     card.classList.add('right');
                     if ( card.classList.contains('back') ) { card.classList.remove('back') };
                     if ( card.classList.contains('hidden') ) { card.classList.remove('hidden') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 } else {
                     card.classList.add('back');
                     card.classList.add('hidden');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 }
 
             });
             
         } else if ( frontIndex + 2 > cardsCount - 1 ) {
             cards.forEach((card, index) => {
-                
+                card.querySelector('.card-info').style.opacity = '0';
                 if ( index === frontIndex + 1 ) {
                     card.classList.add('front');
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
+                    setTimeout(() => {
+                        card.querySelector('.card-info').style.opacity = '100';
+                    }, 200 );
                 } else if ( index === cardsCount - 2 ) {
                     card.classList.add('left');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 } else if ( index === 0 ) {
                     card.classList.add('right');
                     if ( card.classList.contains('back') ) { card.classList.remove('back') };
                     if ( card.classList.contains('hidden') ) { card.classList.remove('hidden') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 } else {
                     card.classList.add('back');
                     card.classList.add('hidden');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 }
 
             });
@@ -161,31 +188,34 @@ export const carousel = () => {
         } else {
 
             cards.forEach((card, index) => {
-                
+                card.querySelector('.card-info').style.opacity = '0';
                 if ( index === frontIndex + 1 ) {
                     card.classList.add('front');
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
+                    setTimeout(() => {
+                        card.querySelector('.card-info').style.opacity = '100';
+                    }, 200 );
                 } else if ( index === frontIndex ) {
                     card.classList.add('left');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 } else if ( index === frontIndex + 2 ) {
                     card.classList.add('right');
                     if ( card.classList.contains('back') ) { card.classList.remove('back') };
                     if ( card.classList.contains('hidden') ) { card.classList.remove('hidden') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 } else {
                     card.classList.add('back');
                     card.classList.add('hidden');
                     if ( card.classList.contains('front') ) { card.classList.remove('front') };
                     if ( card.classList.contains('left') ) { card.classList.remove('left') };
                     if ( card.classList.contains('right') ) { card.classList.remove('right') };
+                    card.querySelector('.card-info').style.opacity = '0';
                 }
 
             })
         }
 
-        setTimeout(() => {
-            cardInfo.style.opacity = '100';
-        }, 200 );
         setTimeout(() => {
             arrowLeft.disabled = false;
         }, 300);
