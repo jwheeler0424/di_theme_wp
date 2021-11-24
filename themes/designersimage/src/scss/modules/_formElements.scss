@@ -1,0 +1,77 @@
+/*
+    @package diTheme
+    ##################################################
+    |   THEME FORM ELEMENTS STYLES                   |
+    ##################################################
+*/
+@import './modules/variables';
+@import './modules/mixins';
+
+.di-select-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+
+    .di-select-value {
+        align-items: center;
+        background: white;
+        border: 1px solid $di__primary;
+        border-radius: .5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        padding: .5rem 1rem;
+        user-select: none;
+        width: 100%;
+    
+        &::after {
+            border: 4px solid transparent;
+            border-top-color: $di__primary;
+            content: '';
+            display: inline-block;
+            margin-left: 1rem;
+            margin-top: .4rem;
+        }
+    }
+
+    &:focus > .di-select-value {
+        border-color: $di__blue;
+        outline: none;
+    }
+
+    .di-select-options {
+        background: white;
+        border: solid 1px $di__blue;
+        border-top: none;
+        display: none;
+        max-height: 200px;
+        overflow-y: auto;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+
+        &.show {
+            display: block;
+        }
+
+        .di-select-option {
+            padding: .5rem 1rem;
+            cursor: pointer;
+
+            &:active {
+                background: $di__grey-light;
+            }
+            &:hover {
+                background: $di__grey-light;
+            }
+
+            &.selected {
+                background: $di__light;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    }
+}

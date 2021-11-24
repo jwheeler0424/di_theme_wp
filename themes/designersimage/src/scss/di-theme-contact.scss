@@ -8,16 +8,18 @@
 @import './modules/reset';
 @import './modules/variables';
 @import './modules/mixins';
+@import './modules/formElements';
 
 .contact-main {
     height: calc(100vh - 60px);
     position: relative;
-    overflow: hidden;
+    width: 100%;
 }
 
 .bg {
     bottom: 0;
     left: 0;
+    overflow: hidden;
     position: absolute;
     top: 0;
     width: 100%;
@@ -28,9 +30,17 @@
         fill: $di__light;
         left: -150%;
         opacity: .15;
+        overflow: hidden;
         position: absolute;
         top: 0;
         width: 420%;
+    }
+}
+
+#di-contact-form {
+    width: 100%;
+    .field-containter {
+        width: 100%;
     }
 }
 

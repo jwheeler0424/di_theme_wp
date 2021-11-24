@@ -10,17 +10,27 @@
 <form id="di-contact-form" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
 
     <div class="field-containter">
-        <select class="field-input" id="subject" name="subject" required>
-            <option class="placeholder" value="" disabled selected hidden>Select a reason...</option>
-            <option value="Design">Design</option>
-            <option value="Development">Development</option>
-            <option value="IT">IT</option>
+        <label>Contact Reason</label>
+        <select class="field-input" id="subject" name="subject" data-custom required>
+            <option class="placeholder hidden" value="" disabled selected hidden>Select a reason...</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Get Quote">Get Quote</option>
+            <option value="Network Setup">Network Setup</option>
+            <option value="Computer Diagnostic">Computer Diagnostic</option>
+            <option value="Computer Upgrades">Computer Upgrades</option>
+            <option value="File Backup & Migration">File Backup & Migration</option>
+            <option value="Virus Scan / Cleanup">Virus Scan / Cleanup</option>
+            <option value="New Website">New Website</option>
+            <option value="Existing Website">Existing Website</option>
+            <option value="Logo Design">Logo Design</option>
+            <option value="UI/UX Design">UI/UX Design</option>
+            <option value="Windows 11 Upgrade">Windows 11 Upgrade</option>
         </select>
 		
 		<small class="field-msg error" data-error="subject">A Contact Reason is Required</small>
 	</div>
 
-	<div class="field-containter">
+	<!-- <div class="field-containter">
 		<input type="text" class="field-input" placeholder="Your Name" id="name" name="name" required>
 		<small class="field-msg error" data-error="name">Your Name is Required</small>
 	</div>
@@ -55,6 +65,6 @@
 	</div>
 
     <input type="hidden" name="action" value="submit_contact">
-    <input type="hidden" name="nonce" value="<?php echo wp_create_nonce( "contact-nonce" ) ?>">
+    <input type="hidden" name="nonce" value="<?php echo wp_create_nonce( "contact-nonce" ) ?>"> -->
 
 </form>

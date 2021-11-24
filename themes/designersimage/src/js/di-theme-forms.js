@@ -10,9 +10,7 @@ ready((event) => {
     // Load Contact Form JS
     const contact = document.querySelector('#di-contact-form');
     if (contact) {
-        contact.addEventListener('submit', (e) => {
-            contactForm(e, contact);
-        });
+        contactForm();
     }
     
     // Load Testimonial Form JS
