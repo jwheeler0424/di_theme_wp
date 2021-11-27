@@ -28,9 +28,9 @@ class EventController extends BaseController
         add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
         add_action( 'save_post', array( $this, 'save_meta_box' ) );
 
-        add_action( 'manage_contact_posts_columns', array( $this, 'set_custom_columns' ) );
-        add_action( 'manage_contact_posts_custom_column', array( $this, 'set_custom_columns_data' ), 10, 2 );
-        add_filter( 'manage_edit-contact_sortable_columns', array( $this, 'set_custom_columns_sortable' ) );
+        // add_action( 'manage_contact_posts_columns', array( $this, 'set_custom_columns' ) );
+        // add_action( 'manage_contact_posts_custom_column', array( $this, 'set_custom_columns_data' ), 10, 2 );
+        // add_filter( 'manage_edit-contact_sortable_columns', array( $this, 'set_custom_columns_sortable' ) );
 
         // $this->setShortcodePage();
 

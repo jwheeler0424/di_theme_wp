@@ -45,15 +45,17 @@ class ContactController extends BaseController
 
         // Sanitize the data
         $subject = sanitize_text_field( $_POST['subject'] );
-        $name = sanitize_text_field( $_POST['name'] );
+        $first = sanitize_text_field( $_POST['first'] );
+        $last = sanitize_text_field( $_POST['last'] );
         $company = sanitize_text_field( $_POST['company'] );
         $email = sanitize_email( $_POST['email'] );
-        $phone = $_POST['phone'];
+        $phone = $this->sanitize_phone_number($_POST['phone']);
         $message = sanitize_textarea_field( $_POST['message'] );
 
         // Store the data into contact CPT
         $data = array(
-			'name' => $name,
+			'first' => $first,
+            'last' => $last,
             'company' => $company,
 			'email' => $email,
 			'phone' => $phone,
@@ -95,9 +97,9 @@ class ContactController extends BaseController
     {
         $phone = preg_replace( "/[^0-9]/", "", $phone );
         if ( strlen( $phone ) == 10 ) {
-                 if ( is_numeric( $phone ) ) {
-                     return intval( $phone );
-                 }
+            if ( is_numeric( $phone ) ) {
+                return intval( $phone );
+            }
         }
     }
 
@@ -182,7 +184,8 @@ class ContactController extends BaseController
         wp_nonce_field( 'di_contact', 'di_contact_nonce' );
 
         $data = get_post_meta( $post->ID, '_di_contact_key', true );
-		$name = isset($data['name']) ? $data['name'] : '';
+		$first = isset($data['first']) ? $data['first'] : '';
+        $last = isset($data['last']) ? $data['last'] : '';
         $company = isset($data['company']) ? $data['company'] : '';
 		$email = isset($data['email']) ? $data['email'] : '';
         $phone = isset($data['phone']) ? $data['phone'] : '';
@@ -190,11 +193,12 @@ class ContactController extends BaseController
 
         ?>
 		<p>
-			<label class="meta-label" for="di_contact_name">Contact Name</label>
-			<input type="text" id="di_contact_name" name="di_contact_name" class="widefat" value="<?php echo esc_attr( $name ); ?>">
+			<label class="meta-label">Contact Name</label>
+			<input type="text" id="di_contact_first" name="di_contact_first" class="widefat" value="<?php echo esc_attr( $first ); ?>">
+            <input type="text" id="di_contact_last" name="di_contact_last" class="widefat" value="<?php echo esc_attr( $last ); ?>">
 		</p>
         <p>
-			<label class="meta-label" for="di_contact_company">Company Name</label>
+			<label class="meta-label" for="di_contact_company">Company</label>
 			<input type="text" id="di_contact_company" name="di_contact_company" class="widefat" value="<?php echo esc_attr( $company ); ?>">
 		</p>
 		<p>
@@ -238,10 +242,11 @@ class ContactController extends BaseController
         }
 
         $data = array(
-			'name' => sanitize_text_field( $_POST['di_contact_name'] ),
+			'first' => sanitize_text_field( $_POST['di_contact_first'] ),
+            'last' => sanitize_text_field( $_POST['di_contact_last'] ),
             'company' => sanitize_text_field( $_POST['di_contact_company'] ),
 			'email' => sanitize_text_field( $_POST['di_contact_email'] ),
-            'phone' => sanitize_text_field( $_POST['di_contact_phone'] ),
+            'phone' => $this->sanitize_phone_number( $_POST['di_contact_phone'] ),
 			'responded' => isset($_POST['di_contact_responded']) ? 1 : 0
 		);
 		update_post_meta( $post_id, '_di_contact_key', $data );
@@ -249,9 +254,9 @@ class ContactController extends BaseController
 
     public function set_custom_columns( $columns )
     {
-        unset( $columns['title'], $columns['date'] );
+        unset( $columns );
 
-        $columns['name'] = 'Contact Info';
+        $columns['last'] = 'Contact Info';
         $columns['title'] = 'Subject';
         $columns['message'] = 'Message';
         $columns['datetime'] = 'Date Requested';
@@ -263,18 +268,19 @@ class ContactController extends BaseController
     public function set_custom_columns_data( $column, $post_id )
     {
         $data = get_post_meta( $post_id, '_di_contact_key', true );
-		$name = isset($data['name']) ? $data['name'] : '';
+		$first = isset($data['first']) ? $data['first'] : '';
+        $last = isset($data['last']) ? $data['last'] : '';
         $company = isset($data['company']) ? $data['company'] : '';
 		$email = isset($data['email']) ? $data['email'] : '';
         $phone = isset($data['phone']) ? $data['phone'] : '';
-		$responded = isset($data['responded']) && $data['responded'] === 1 ? '<span class="dashicons dashicons-yes-alt" style="color: green;"></span>' : '<span class="dashicons dashicons-dismiss" style="color: red;"></span>';
+		$responded = isset($data['responded']) && $data['responded'] === 1 ? '<span class="dashicons dashicons-yes-alt" style="color: rgb(102, 171, 60);"></span>' : '<span class="dashicons dashicons-dismiss" style="color: rgb(172, 60, 61);"></span>';
 
         switch ( $column ) {
-            case 'name':
+            case 'last':
                 $company_insert = ($company) ? '<em>'. $company .'</em><br />' : '';
                 $phone_number = sprintf("(%s) %s-%s", substr($phone, 0, 3), substr($phone, 3, 3), substr($phone, 6, 9));
 
-                echo '<strong>'. $name .'</strong><br />'. $company_insert .'<a href="mailto:'. $email .'">'. $email .'</a><br /><a href="tel:'. $phone_number .'">' . $phone_number . '</a>';
+                echo '<strong>'. $first . ' ' . $last .'</strong><br />'. $company_insert .'<a href="mailto:'. $email .'">'. $email .'</a><br /><a href="tel:'. $phone_number .'">' . $phone_number . '</a>';
                 break;
 
             case 'message':
@@ -296,7 +302,7 @@ class ContactController extends BaseController
 
     public function set_custom_columns_sortable( $columns )
     {
-        $columns['name'] = 'name';
+        $columns['last'] = 'last';
         $columns['datetime'] = 'date';
         $columns['responded'] = 'responded';
         return $columns;

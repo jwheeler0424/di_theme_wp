@@ -9,7 +9,7 @@
 
 <form id="di-contact-form" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
 
-    <div class="field-containter">
+    <fieldset data-error="subject">
         <label>Contact Reason</label>
         <select class="field-input" id="subject" name="subject" data-custom required>
             <option class="placeholder hidden" value="" disabled selected hidden>Select a reason...</option>
@@ -27,44 +27,54 @@
             <option value="Windows 11 Upgrade">Windows 11 Upgrade</option>
         </select>
 		
-		<small class="field-msg error" data-error="subject">A Contact Reason is Required</small>
-	</div>
+		<small class="field-msg">A Contact Reason is Required</small>
+    </fieldset>
 
-	<!-- <div class="field-containter">
-		<input type="text" class="field-input" placeholder="Your Name" id="name" name="name" required>
-		<small class="field-msg error" data-error="name">Your Name is Required</small>
-	</div>
+	<fieldset>
+        <label for="company">Company Name <span>(Optional)</span></label>
+		<input type="text" class="field-input" placeholder="Company, Inc." id="company" name="company">
+	</fieldset>
 
-	<div class="field-containter">
-		<input type="text" class="field-input" placeholder="Company Name" id="company" name="company">
-		<small class="field-msg error" data-error="company">Your Name is Required</small>
-	</div>
+	<fieldset data-error="first">
+        <label for="first">First Name</label>
+		<input type="text" class="field-input" placeholder="John" id="first" name="first" required>
+		<small class="field-msg">Your First Name is Required</small>
+	</fieldset>
 
-	<div class="field-containter">
-		<input type="email" class="field-input" placeholder="Your Email" id="email" name="email" required>
-		<small class="field-msg error" data-error="email">Your Email is Required</small>
-	</div>
+	<fieldset data-error="last">
+        <label for="last">Last Name</label>
+		<input type="text" class="field-input" placeholder="Doe" id="last" name="last" required>
+		<small class="field-msg">Your Last Name is Required</small>
+	</fieldset>
 
-    <div class="field-containter">
-		<input type="phone" class="field-input" placeholder="Your Phone" id="phone" name="phone" required>
-		<small class="field-msg error" data-error="phone">Your Phone Number is Required</small>
-	</div>
+	<fieldset data-error="email">
+        <label for="email">Email Address</label>
+		<input type="email" class="field-input" placeholder="yourname@website.com" id="email" name="email" required>
+		<small class="field-msg">Your Email is Required</small>
+	</fieldset>
 
-	<div class="field-containter">
-		<textarea name="message" id="message" class="form-field" placeholder="Your Message" required></textarea>
-		<small class="field-msg error" data-error="message">A Message is Required</small>
-	</div>
+    <fieldset data-error="phone">
+        <label for="phone">Phone Number</label>
+		<input type="phone" class="field-input" placeholder="(555) 555-5555" id="phone" name="phone" required>
+		<small class="field-msg">Your Phone Number is Required</small>
+	</fieldset>
+
+	<fieldset data-error="message">
+        <label for="message">Message</label>
+		<textarea name="message" id="message" class="form-field" placeholder="Tell us what you would like to talk about..." required></textarea>
+		<small class="field-msg">A Message is Required</small>
+	</fieldset>
 	
-	<div class="text-center">
+	<fieldset>
 		<div>
-            <button type="stubmit" class="btn btn-default btn-lg btn-contact-form">Submit</button>
+            <button type="submit" class="btn btn-submit">Submit</button>
         </div>
 		<small class="field-msg js-form-submission">Submission in process, please wait&hellip;</small>
-		<small class="field-msg success js-form-success">Message Successfully submitted, thank you!</small>
-		<small class="field-msg error js-form-error">There was a problem with the Contact Form, please try again!</small>
-	</div>
+		<small class="field-msg js-form-success">Message Successfully submitted, thank you!</small>
+		<small class="field-msg js-form-error">There was a problem with the Contact Form, please try again!</small>
+	</fieldset>
 
     <input type="hidden" name="action" value="submit_contact">
-    <input type="hidden" name="nonce" value="<?php echo wp_create_nonce( "contact-nonce" ) ?>"> -->
+    <input type="hidden" name="nonce" value="<?php echo wp_create_nonce( "contact-nonce" ) ?>">
 
 </form>

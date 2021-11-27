@@ -65,6 +65,7 @@ function setupCustomElement(select)
 
     select.labelElement.classList.add('di-select-value');
     select.labelElement.innerText = select.selectedOption.label;
+    if (select.selectedOption.value === '') select.labelElement.classList.add('placeholder');
     select.customElement.append(select.labelElement);
 
     select.optionsCustomElement.classList.add('di-select-options');
@@ -78,6 +79,7 @@ function setupCustomElement(select)
         optionEl.dataset.value = option.value;
         optionEl.addEventListener('click', () => {
             select.selectValue(option.value);
+            select.labelElement.classList.remove('placeholder');
             select.optionsCustomElement.classList.remove('show');
         })
         select.optionsCustomElement.append(optionEl);
@@ -103,12 +105,14 @@ function setupCustomElement(select)
                 const prevOption = select.options[select.selectedOptionIndex - 1];
                 if ( prevOption ) {
                     select.selectValue( prevOption.value );
+                    select.labelElement.classList.remove('placeholder');
                 }
                 break;
             case "ArrowDown":
                 const nextOption = select.options[select.selectedOptionIndex + 1];
                 if ( nextOption ) {
                     select.selectValue( nextOption.value );
+                    select.labelElement.classList.remove('placeholder');
                 }
                 break;
             case "Enter":
@@ -125,7 +129,10 @@ function setupCustomElement(select)
                 const searchedOption = select.options.find(option => {
                     return option.label.toLowerCase().startsWith(searchTerm);
                 });
-                if ( searchedOption ) select.selectValue(searchedOption.value);
+                if ( searchedOption ) {
+                    select.selectValue(searchedOption.value);
+                    select.labelElement.classList.remove('placeholder');
+                };
         }
     })
 }

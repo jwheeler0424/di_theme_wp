@@ -1,0 +1,101 @@
+/*
+    @package diTheme
+    ##################################################
+    |   THEME BUTTON STYLES                          |
+    ##################################################
+*/
+@import './modules/variables';
+@import './modules/mixins';
+
+.btn {
+    background: white;
+    border: solid 1px $di__primary;
+    border-radius: .5rem;
+    color: $di__primary;
+    font-size: 1rem;
+    text-transform: lowercase;
+    padding: .5rem 1.5rem;
+}
+
+.btn-submit {
+    background: $di__primary;
+    border: transparent;
+    color: white;
+
+    &:active {
+        background: $di__light;
+    }
+    &:hover {
+        background: $di__light;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .btn {
+        background: white;
+        border: solid 1px $di__primary;
+        border-radius: .5rem;
+        color: $di__primary;
+        font-size: 1.2rem;
+        text-transform: lowercase;
+        padding: .7rem 1.75rem;
+    }
+    .btn-submit {
+        background: $di__primary;
+        border: transparent;
+        color: white;
+    }
+}
+
+@media screen and (min-width: 375px) {
+    
+}
+
+@media screen and (min-width: 410px) {
+    
+}
+
+@media screen and (min-width: 425px) {
+    .btn {
+        background: white;
+        border: solid 1px $di__primary;
+        border-radius: .5rem;
+        color: $di__primary;
+        font-size: 1.4rem;
+        text-transform: lowercase;
+        padding: 1rem 2rem;
+    }
+    .btn-submit {
+        background: $di__primary;
+        border: transparent;
+        color: white;
+    }
+}
+
+@media screen and (min-width: 540px) {
+    
+}
+
+@media screen and (min-width: 768px) {
+    
+}
+
+@media screen and (min-width: 1024px) {
+
+}
+
+@media screen and (min-width: 1280px) {
+    
+}
+
+@media screen and (min-width: 1440px) {
+
+}
+
+@media screen and (min-width: 1600px) {
+
+}
+
+@media screen and (min-width: 1920px) {
+
+}

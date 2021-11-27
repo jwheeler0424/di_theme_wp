@@ -9,13 +9,14 @@
 
 .di-select-container {
     display: inline-block;
+    font-size: 1rem;
     position: relative;
     width: 100%;
 
     .di-select-value {
         align-items: center;
         background: white;
-        border: 1px solid $di__primary;
+        border: 1px solid $di__light;
         border-radius: .5rem;
         cursor: pointer;
         display: flex;
@@ -26,7 +27,7 @@
     
         &::after {
             border: 4px solid transparent;
-            border-top-color: $di__primary;
+            border-top-color: $di__light;
             content: '';
             display: inline-block;
             margin-left: 1rem;
@@ -35,13 +36,22 @@
     }
 
     &:focus > .di-select-value {
-        border-color: $di__blue;
+        background: white;
+        border-color: $di__primary;
         outline: none;
+
+        &.placeholder {
+            color: $di__light;
+        }
+
+        &::after {
+            border-top-color: $di__primary;
+        }
     }
 
     .di-select-options {
         background: white;
-        border: solid 1px $di__blue;
+        border: solid 1px $di__primary;
         border-top: none;
         display: none;
         max-height: 200px;
@@ -74,4 +84,438 @@
             display: none;
         }
     }
+}
+
+fieldset {
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+
+    input[type="email"], input[type="phone"], input[type="text"] {
+        background: white;
+        border: 1px solid $di__light;
+        border-radius: .5rem;
+        font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1rem;
+        outline: none !important;
+        padding: .5rem 1rem;
+        width: 100%;
+
+        &:active {
+            border-color: $di__primary;
+        }
+        &:focus {
+            border-color: $di__primary;
+        }
+    }
+
+    label {
+        color: $di__primary;
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 5px;
+        width: 100%;
+
+        span {
+            font-size: .9rem;
+            font-style: italic;
+        }
+
+        &.error {
+            color: $di__red;
+        }
+    }
+
+    textarea {
+        background: white;
+        border: 1px solid $di__light;
+        border-radius: .5rem;
+        font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1rem;
+        outline: none !important;
+        padding: .5rem 1rem;
+        resize: none;
+        width: 100%;
+
+        &:active {
+            border-color: $di__primary;
+        }
+        &:focus {
+            border-color: $di__primary;
+        }
+    }
+
+    button {
+        float: right;
+        position: relative;
+    }
+
+    &.error {
+        .di-select-value {
+            background: lighten($di__red, 50);
+            border: 1px solid $di__red;
+            color: lighten($di__red, 25);
+        
+            &::after {
+                border: 4px solid transparent;
+                border-top-color: lighten($di__red, 25);
+                content: '';
+                display: inline-block;
+                margin-left: 1rem;
+                margin-top: .4rem;
+            }
+        }
+
+        input[type="email"], input[type="phone"], input[type="text"] {
+            background: lighten($di__red, 50);
+            border: 1px solid $di__red;
+    
+            &:active {
+                background: white;
+                border-color: $di__primary;
+            }
+            &:focus {
+                background: white;
+                border-color: $di__primary;
+            }
+        }
+    
+        label {
+            color: $di__red;
+        }
+    
+        textarea {
+            background: lighten($di__red, 50);
+            border: 1px solid $di__red;
+    
+            &:active {
+                background: white;
+                border-color: $di__primary;
+            }
+            &:focus {
+                background: white;
+                border-color: $di__primary;
+            }
+        }
+
+        .field-msg {
+            color: $di__red;
+            display: block;
+        }
+        .placeholder, ::placeholder {
+            color: lighten($di__red, 25);
+            font-style: italic;
+        }
+    }
+
+    .field-msg {
+        bottom: -12px;
+        color: $di__grey;
+        display: none;
+        font-size: .9rem;
+        font-style: italic;
+        left: 1.1rem;
+        line-height: 1.2;
+        position: absolute;
+        width: 100%;
+
+        &.js-form-error {
+            bottom: 0px;
+            clear: right;
+            color: $di__red;
+            display: none;
+            left: unset;
+            padding-top: 10px;
+            position: relative;
+            text-align: center;
+            width: 100%;
+
+            &.show {
+                display: block;
+            }
+        }
+        &.js-form-submission {
+            bottom: 0px;
+            clear: both;
+            color: $di__grey;
+            display: none;
+            left: unset;
+            padding-top: 10px;
+            position: relative;
+            text-align: center;
+            width: 100%;
+            
+            &.show {
+                display: block;
+            }
+        }
+        &.js-form-success {
+            bottom: 0;
+            clear: right;
+            color: $di__green;
+            display: none;
+            left: unset;
+            padding-top: 10px;
+            position: relative;
+            text-align: center;
+            width: 100%;
+            
+            &.show {
+                display: block;
+            }
+        }
+    }
+
+    .placeholder, ::placeholder {
+        color: $di__light;
+        font-style: italic;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .di-select-container {
+        font-size: 1.2rem;
+    
+        .di-select-value {
+            padding: .7rem 1.2rem;
+        
+            &::after {
+                border: 5px solid transparent;
+                border-top-color: $di__light;
+                margin-left: 1.2rem;
+                margin-top: .4rem;
+            }
+        }
+    
+        .di-select-options {
+    
+            .di-select-option {
+                padding: .7rem 1.2rem;
+            }
+        }
+    }
+
+    fieldset {
+        input[type="email"], input[type="phone"], input[type="text"] {
+            font-size: 1.2rem;
+            padding: .7rem 1.2rem;
+        }
+
+        label {
+            font-size: 1.2rem;
+            span {
+                font-size: 1rem;
+            }
+        }
+
+        textarea {
+            font-size: 1.2rem;
+            padding: .7rem 1.2rem;
+        }
+
+        &.error {
+            .di-select-value {
+            
+                &::after {
+                    border: 5px solid transparent;
+                    border-top-color: lighten($di__red, 25);
+                    margin-left: 1.2rem;
+                    margin-top: .4rem;
+                }
+            }
+        }
+    
+        .field-msg {
+            bottom: -12px;
+            color: $di__grey;
+            display: none;
+            font-size: 1rem;
+            font-style: italic;
+            left: 1.1rem;
+            position: absolute;
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (min-width: 375px) {
+    
+}
+
+@media screen and (min-width: 410px) {
+    
+}
+
+@media screen and (min-width: 425px) {
+    .di-select-container {
+        font-size: 1.4rem;
+    
+        .di-select-value {
+            padding: 1rem 1.2rem;
+        
+            &::after {
+                border: 5px solid transparent;
+                border-top-color: $di__light;
+                margin-left: 1.2rem;
+                margin-top: .5rem;
+            }
+        }
+    
+        .di-select-options {
+    
+            .di-select-option {
+                padding: .7rem 1.2rem;
+            }
+        }
+    }
+
+    fieldset {
+        margin-bottom: 30px;
+
+        input[type="email"], input[type="phone"], input[type="text"] {
+            font-size: 1.4rem;
+            padding: .7rem 1.2rem;
+        }
+
+        label {
+            font-size: 1.4rem;
+            span {
+                font-size: 1rem;
+            }
+        }
+
+        textarea {
+            font-size: 1.4rem;
+            padding: .7rem 1.2rem;
+        }
+
+        &.error {
+            .di-select-value {
+            
+                &::after {
+                    border: 5px solid transparent;
+                    border-top-color: lighten($di__red, 25);
+                    margin-left: 1.2rem;
+                    margin-top: .4rem;
+                }
+            }
+        }
+    
+        .field-msg {
+            bottom: -14px;
+            color: $di__grey;
+            display: none;
+            font-size: 1rem;
+            font-style: italic;
+            left: 1.1rem;
+            position: absolute;
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .di-select-container {
+        font-size: 1.2rem;
+    
+        .di-select-value {
+            padding: .8rem 1.2rem;
+        
+            &::after {
+                border: 5px solid transparent;
+                border-top-color: $di__light;
+                margin-left: 1.2rem;
+                margin-top: .5rem;
+            }
+        }
+    
+        .di-select-options {
+    
+            .di-select-option {
+                padding: .7rem 1.2rem;
+            }
+        }
+    }
+
+    fieldset {
+        margin-bottom: 30px;
+        width: calc(50% - 15px);
+
+        &:nth-child(odd) {
+            margin-right: 30px;
+        }
+
+        &:nth-child(7) {
+            margin-right: unset;
+            width: 100%;
+        }
+
+        &:nth-child(8) {
+            width: 100%;
+        }
+
+        input[type="email"], input[type="phone"], input[type="text"] {
+            font-size: 1.4rem;
+            padding: .7rem 1.2rem;
+        }
+
+        label {
+            font-size: 1.4rem;
+            span {
+                font-size: 1rem;
+            }
+        }
+
+        textarea {
+            font-size: 1.4rem;
+            padding: .7rem 1.2rem;
+        }
+
+        &.error {
+            .di-select-value {
+            
+                &::after {
+                    border: 5px solid transparent;
+                    border-top-color: lighten($di__red, 25);
+                    margin-left: 1.2rem;
+                    margin-top: .4rem;
+                }
+            }
+        }
+    
+        .field-msg {
+            bottom: -14px;
+            color: $di__grey;
+            display: none;
+            font-size: 1rem;
+            font-style: italic;
+            left: 1.1rem;
+            position: absolute;
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    
+}
+
+@media screen and (min-width: 1024px) {
+
+}
+
+@media screen and (min-width: 1280px) {
+    
+}
+
+@media screen and (min-width: 1440px) {
+
+}
+
+@media screen and (min-width: 1600px) {
+
+}
+
+@media screen and (min-width: 1920px) {
+
 }
