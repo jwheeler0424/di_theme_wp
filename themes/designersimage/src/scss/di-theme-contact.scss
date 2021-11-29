@@ -12,29 +12,27 @@
 @import './modules/buttons';
 
 .contact-main {
-    height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
+    overflow-x: hidden;
     position: relative;
     width: 100%;
 }
 
 .bg {
     bottom: 0;
-    left: 0;
+    left: -130%;
     overflow: hidden;
     position: absolute;
     top: 0;
-    width: 100%;
+    width: 420%;
     z-index: -1;
 
     svg {
-        bottom: 0;
         fill: $di__light;
-        left: -150%;
-        opacity: .15;
+        height: 100%;
+        object-fit: fill;
+        opacity: .05;
         overflow: hidden;
-        position: absolute;
-        top: 0;
-        width: 420%;
     }
 }
 
@@ -106,6 +104,24 @@ h2 {
 }
 
 @media screen and (min-width: 320px) {
+    .bg {
+        bottom: 0;
+        left: -100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 420%;
+        z-index: -1;
+    
+        svg {
+            fill: $di__light;
+            height: 100%;
+            object-fit: fill;
+            opacity: .15;
+            overflow: hidden;
+        }
+    }
+
     .contact-links {
         margin-right: 20px;
 
@@ -128,21 +144,15 @@ h2 {
 }
 
 @media screen and (min-width: 360px) {
-    .contact-main {
-        height: calc(100vh - 70px);
-    }
 
     .bg {
-    
-        svg {
-            bottom: 0;
-            fill: $di__light;
-            left: -130%;
-            opacity: .15;
-            position: absolute;
-            top: 0;
-            width: 380%;
-        }
+        bottom: 0;
+        left: -120%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 420%;
+        z-index: -1;
     }
 
     .contact-links {
@@ -168,51 +178,43 @@ h2 {
 
 @media screen and (min-width: 375px) {
     .bg {
-    
-        svg {
-            bottom: 0;
-            fill: $di__light;
-            left: -130%;
-            opacity: .15;
-            position: absolute;
-            top: 0;
-            width: 390%;
-        }
+        bottom: 0;
+        left: -120%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 420%;
+        z-index: -1;
     }
 }
 
 @media screen and (min-width: 410px) {
     .contact-main {
-        height: calc(100vh - 80px);
+        min-height: calc(100vh - 80px);
     }
     
     .bg {
-    
-        svg {
-            bottom: 0;
-            fill: $di__light;
-            left: -120%;
-            opacity: .15;
-            position: absolute;
-            top: 0;
-            width: 360%;
-        }
+        bottom: 0;
+        left: -100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 360%;
+        z-index: -1;
     }
 }
 
 @media screen and (min-width: 425px) {
     .bg {
-    
-        svg {
-            bottom: 0;
-            fill: $di__light;
-            left: -140%;
-            opacity: .15;
-            position: absolute;
-            top: 0;
-            width: 410%;
-        }
+        bottom: 0;
+        left: -120%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 360%;
+        z-index: -1;
     }
+
     .contact-links {
         margin: 120px 30px 0 0;
         width: 40px;
@@ -246,20 +248,17 @@ h2 {
 
 @media screen and (min-width: 540px) {
     .bg {
-    
-        svg {
-            bottom: 0;
-            fill: $di__light;
-            left: -70%;
-            opacity: .15;
-            position: absolute;
-            top: 0;
-            width: 250%;
-        }
+        bottom: 0;
+        left: -70%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 250%;
+        z-index: -1;
     }
 
     .contact-links {
-        margin: 140px 30px 0 0;
+        margin: 130px 30px 0 0;
         width: 35px;
     
         a {
@@ -274,7 +273,7 @@ h2 {
 
     h2 {
         font-size: 2.8rem;
-        margin: 70px 0 10px 0;
+        margin: 60px 0 10px 0;
         padding-left: 30px;
     }
 
@@ -292,8 +291,18 @@ h2 {
 }
 
 @media screen and (min-width: 768px) {
+    .bg {
+        bottom: 0;
+        left: -20%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 200%;
+        z-index: -1;
+    }
+
     .contact-main {
-        height: calc(100vh - 417px);
+        min-height: calc(100vh - 417px);
         position: relative;
         width: 100%;
     }
@@ -320,32 +329,226 @@ h2 {
 }
 
 @media screen and (min-width: 1024px) {
+    .contact-main {
+        min-height: calc(100vh - 502px);
+        position: relative;
+        width: 100%;
+    }
 
+    .contact-links {
+        flex: 0;
+        margin: 210px 60px 0 100px;
+        width: unset;
+    
+        a {
+            display: block;
+            margin-bottom: 27px;
+    
+            svg {
+                height: 35px;
+            }
+        }
+    }
+
+    h2 {
+        font-size: 4.8rem;
+        margin: 100px 0 20px 0;
+        padding-left: 60px;
+    }
+
+    .contact-bar {
+        height: .15rem;
+        margin-left: 60px;
+    }
+    
+    #di-contact-form {
+        margin-top: 40px;
+        padding: 0 100px 0 60px;
+    }
 }
 
 @media screen and (min-width: 1280px) {
-    .bg {
     
-        svg {
-            bottom: 0;
-            fill: $di__light;
-            left: 0;
-            opacity: .15;
-            position: absolute;
-            top: 0;
-            width: 113%;
+    .contact-main {
+        min-height: calc(100vh - 80px);
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .container {
+        display: flex;
+        justify-content: unset;
+    }
+
+    .bg {
+        bottom: unset;
+        left: -10%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 120%;
+        z-index: -1;
+    }
+
+    .contact-links {
+        flex: 0;
+        margin: 170px 60px 0 160px;
+        width: unset;
+    
+        a {
+            display: block;
+            margin-bottom: 25px;
+    
+            svg {
+                height: 30px;
+            }
         }
+    }
+
+    h2 {
+        font-size: 4.2rem;
+        margin: 60px 0 20px 0;
+        padding-left: 60px;
+    }
+
+    .contact-bar {
+        height: .15rem;
+        margin-left: 60px;
+        width: 250px;
+    }
+
+    .contact-form {
+        flex: 0 55%;
+        margin-bottom: 40px;
+    }
+    
+    #di-contact-form {
+        margin-top: 40px;
+        padding: 0 100px 0 60px;
     }
 }
 
 @media screen and (min-width: 1440px) {
+    .bg {
+        bottom: unset;
+        left: -5%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 110%;
+        z-index: -1;
+    }
+    
+    .contact-links {
+        flex: 0;
+        margin: 160px 60px 0 160px;
+        width: unset;
+    
+        a {
+            display: block;
+            margin-bottom: 20px;
+    
+            svg {
+                height: 25px;
+            }
+        }
+    }
 
+    h2 {
+        font-size: 3.6rem;
+        margin: 70px 0 10px 0;
+        padding-left: 80px;
+    }
+
+    .contact-bar {
+        height: .15rem;
+        margin-left: 80px;
+    }
+
+    .contact-form {
+        flex: 0 55%;
+        margin-bottom: 40px;
+    }
+    
+    #di-contact-form {
+        margin-top: 40px;
+        padding: 0 100px 0 80px;
+    }
 }
 
 @media screen and (min-width: 1600px) {
+    .contact-links {
+        flex: 0;
+        margin: 190px 60px 0 160px;
+        width: unset;
+    
+        a {
+            display: block;
+            margin-bottom: 20px;
+    
+            svg {
+                height: 25px;
+            }
+        }
+    }
 
+    h2 {
+        font-size: 3.6rem;
+        margin: 100px 0 10px 0;
+        padding-left: 80px;
+    }
+
+    .contact-bar {
+        height: .15rem;
+        margin-left: 80px;
+    }
+
+    .contact-form {
+        flex: 0 55%;
+        margin-bottom: 40px;
+    }
+    
+    #di-contact-form {
+        margin-top: 40px;
+        padding: 0 100px 0 80px;
+    }
 }
 
 @media screen and (min-width: 1920px) {
+    .contact-links {
+        flex: 0;
+        margin: 260px 60px 0 160px;
+        width: unset;
+    
+        a {
+            display: block;
+            margin-bottom: 20px;
+    
+            svg {
+                height: 25px;
+            }
+        }
+    }
 
+    h2 {
+        font-size: 4.2rem;
+        margin: 120px 0 10px 0;
+        padding-left: 80px;
+    }
+
+    .contact-bar {
+        height: .15rem;
+        margin-left: 80px;
+    }
+
+    .contact-form {
+        flex: 0 55%;
+        margin-bottom: 80px;
+    }
+    
+    #di-contact-form {
+        margin-top: 80px;
+        padding: 0 100px 0 80px;
+    }
 }

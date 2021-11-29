@@ -370,7 +370,7 @@ fieldset {
     }
 
     fieldset {
-        margin-bottom: 30px;
+        margin-bottom: 25px;
 
         input[type="email"], input[type="phone"], input[type="text"] {
             font-size: 1.4rem;
@@ -497,15 +497,255 @@ fieldset {
 }
 
 @media screen and (min-width: 768px) {
+    .di-select-container {
+        font-size: 1.4rem;
     
+        .di-select-value {
+            border-radius: .7rem;
+            padding: 1.1rem 1.2rem;
+        
+            &::after {
+                border: 5px solid transparent;
+                border-top-color: $di__light;
+                margin-left: 1.2rem;
+                margin-top: .5rem;
+            }
+        }
+    
+        .di-select-options {
+    
+            .di-select-option {
+                padding: 1rem 1.2rem;
+            }
+        }
+    }
+
+    fieldset {
+        margin-bottom: 30px;
+        width: calc(50% - 15px);
+
+        &:nth-child(odd) {
+            margin-right: 30px;
+        }
+
+        &:nth-child(7) {
+            margin-right: unset;
+            width: 100%;
+        }
+
+        &:nth-child(8) {
+            margin-bottom: unset;
+            width: 100%;
+        }
+
+        input[type="email"], input[type="phone"], input[type="text"] {
+            border-radius: .7rem;
+            font-size: 1.4rem;
+            padding: 1rem 1.2rem;
+        }
+
+        label {
+            font-size: 1.4rem;
+            span {
+                font-size: 1.1rem;
+            }
+        }
+
+        textarea {
+            border-radius: .7rem;
+            font-size: 1.4rem;
+            padding: 1rem 1.2rem;
+        }
+
+        &.error {
+            .di-select-value {
+            
+                &::after {
+                    border: 5px solid transparent;
+                    border-top-color: lighten($di__red, 25);
+                    margin-left: 1.2rem;
+                    margin-top: .4rem;
+                }
+            }
+        }
+    
+        .field-msg {
+            bottom: -14px;
+            color: $di__grey;
+            display: none;
+            font-size: 1rem;
+            font-style: italic;
+            left: 1.1rem;
+            position: absolute;
+            width: 100%;
+        }
+    }
 }
 
 @media screen and (min-width: 1024px) {
+    .di-select-container {
+        font-size: 1.8rem;
+    
+        .di-select-value {
+            padding: 1.1rem 1.2rem;
+        
+            &::after {
+                border: 5px solid transparent;
+                border-top-color: $di__light;
+                margin-left: 1.2rem;
+                margin-top: .5rem;
+            }
+        }
+    
+        .di-select-options {
+    
+            .di-select-option {
+                padding: 1rem 1.2rem;
+            }
+        }
+    }
 
+    fieldset {
+        margin-bottom: 40px;
+        width: calc(50% - 20px);
+
+        &:nth-child(odd) {
+            margin-right: 40px;
+        }
+
+        &:nth-child(7) {
+            margin-right: unset;
+            width: 100%;
+        }
+
+        &:nth-child(8) {
+            margin-bottom: unset;
+            width: 100%;
+        }
+
+        input[type="email"], input[type="phone"], input[type="text"] {
+            font-size: 1.8rem;
+            padding: 1rem 1.2rem;
+        }
+
+        label {
+            font-size: 1.8rem;
+            span {
+                font-size: 1.5rem;
+            }
+        }
+
+        textarea {
+            font-size: 1.8rem;
+            padding: 1rem 1.2rem;
+        }
+
+        &.error {
+            .di-select-value {
+            
+                &::after {
+                    border: 5px solid transparent;
+                    border-top-color: lighten($di__red, 25);
+                    margin-left: 1.2rem;
+                    margin-top: .4rem;
+                }
+            }
+        }
+    
+        .field-msg {
+            bottom: -20px;
+            color: $di__grey;
+            display: none;
+            font-size: 1.2rem;
+            font-style: italic;
+            left: 1.1rem;
+            position: absolute;
+            width: 100%;
+        }
+    }
 }
 
 @media screen and (min-width: 1280px) {
+    .di-select-container {
+        font-size: 1.2rem;
     
+        .di-select-value {
+            padding: 1.1rem 1.2rem;
+        
+            &::after {
+                border: 5px solid transparent;
+                border-top-color: $di__light;
+                margin-left: 1.2rem;
+                margin-top: .5rem;
+            }
+        }
+    
+        .di-select-options {
+    
+            .di-select-option {
+                padding: 1rem 1.2rem;
+            }
+        }
+    }
+
+    fieldset {
+        margin-bottom: 35px;
+        width: calc(50% - 20px);
+
+        &:nth-child(odd) {
+            margin-right: 40px;
+        }
+
+        &:nth-child(7) {
+            margin-right: unset;
+            width: 100%;
+        }
+
+        &:nth-child(8) {
+            margin-bottom: unset;
+            width: 100%;
+        }
+
+        input[type="email"], input[type="phone"], input[type="text"] {
+            font-size: 1.2rem;
+            padding: 1rem 1.2rem;
+        }
+
+        label {
+            font-size: 1.2rem;
+            span {
+                font-size: 1rem;
+            }
+        }
+
+        textarea {
+            font-size: 1.2rem;
+            padding: 1rem 1.2rem;
+        }
+
+        &.error {
+            .di-select-value {
+            
+                &::after {
+                    border: 5px solid transparent;
+                    border-top-color: lighten($di__red, 25);
+                    margin-left: 1.2rem;
+                    margin-top: .4rem;
+                }
+            }
+        }
+    
+        .field-msg {
+            bottom: -20px;
+            color: $di__grey;
+            display: none;
+            font-size: 1rem;
+            font-style: italic;
+            left: 1.1rem;
+            position: absolute;
+            width: 100%;
+        }
+    }
 }
 
 @media screen and (min-width: 1440px) {
@@ -513,7 +753,86 @@ fieldset {
 }
 
 @media screen and (min-width: 1600px) {
+    .di-select-container {
+        font-size: 1.4rem;
+    
+        .di-select-value {
+            padding: 1.1rem 1.2rem;
+        
+            &::after {
+                border: 5px solid transparent;
+                border-top-color: $di__light;
+                margin-left: 1.2rem;
+                margin-top: .5rem;
+            }
+        }
+    
+        .di-select-options {
+    
+            .di-select-option {
+                padding: 1rem 1.2rem;
+            }
+        }
+    }
 
+    fieldset {
+        margin-bottom: 35px;
+        width: calc(50% - 20px);
+
+        &:nth-child(odd) {
+            margin-right: 40px;
+        }
+
+        &:nth-child(7) {
+            margin-right: unset;
+            width: 100%;
+        }
+
+        &:nth-child(8) {
+            margin-bottom: unset;
+            width: 100%;
+        }
+
+        input[type="email"], input[type="phone"], input[type="text"] {
+            font-size: 1.4rem;
+            padding: 1rem 1.2rem;
+        }
+
+        label {
+            font-size: 1.4rem;
+            span {
+                font-size: 1rem;
+            }
+        }
+
+        textarea {
+            font-size: 1.4rem;
+            padding: 1rem 1.2rem;
+        }
+
+        &.error {
+            .di-select-value {
+            
+                &::after {
+                    border: 5px solid transparent;
+                    border-top-color: lighten($di__red, 25);
+                    margin-left: 1.2rem;
+                    margin-top: .4rem;
+                }
+            }
+        }
+    
+        .field-msg {
+            bottom: -20px;
+            color: $di__grey;
+            display: none;
+            font-size: 1rem;
+            font-style: italic;
+            left: 1.1rem;
+            position: absolute;
+            width: 100%;
+        }
+    }
 }
 
 @media screen and (min-width: 1920px) {
