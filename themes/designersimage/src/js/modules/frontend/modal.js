@@ -46,6 +46,10 @@ export function showModal( type, title, message ) {
     modalContent.focus();
     
     modalContent.addEventListener('keydown', handleKeyDown);
+    modalContent.addEventListener('blur', () => {
+        closeModal();
+        return false;
+    })
     
 } 
 

@@ -346,6 +346,7 @@ main {
             border-radius: 15px;
             box-shadow: 0 0 6px rgba(0, 0, 0, .25);
             color: $di__grey-light;
+            display: block;
             font-size: 4rem;
             font-weight: 600;
             height: 200px;
@@ -359,10 +360,13 @@ main {
             @include animate( all, 500ms );
 
             .card-info {
-                bottom: -45px;
+                bottom: -20px;
                 color: $di__grey;
+                display: flex;
+                flex-direction: column;
+                height: auto;
                 line-height: 1.6;
-                position: absolute;
+                position: relative;
                 text-align: center;
                 width: 100%;
                 @include animate( opacity, 300ms );
@@ -370,11 +374,17 @@ main {
                 h4 {
                     font-size: 1.1rem;
                     font-weight: 700;
+                    margin: 0;
+                    padding: 0;
+                    position: relative;
                     text-transform: uppercase;
                 }
                 span {
                     font-size: .9rem;
                     font-weight: 400;
+                    margin: 0;
+                    padding: 0;
+                    position: relative;
                     text-transform: lowercase;
                 }
             }
@@ -1002,7 +1012,7 @@ main {
                 }
 
                 .card-info {
-                    bottom: -55px;
+                    bottom: -20px;
         
                     h4 {
                         font-size: 1.2rem;
@@ -1213,7 +1223,7 @@ main {
                 }
             
                 .card-info {
-                    bottom: -55px;
+                    bottom: -20px;
         
                     h4 {
                         font-size: 1.2rem;
@@ -1388,7 +1398,7 @@ main {
                 }
                 
                 .card-info {
-                    bottom: -65px;
+                    bottom: -25px;
         
                     h4 {
                         font-size: 1.6rem;
@@ -1636,7 +1646,7 @@ main {
                 }
 
                 .card-info {
-                    bottom: -75px;
+                    bottom: -25px;
         
                     h4 {
                         font-size: 1.6rem;
@@ -1838,7 +1848,7 @@ main {
                     transform: translateX(265px) scale(.75);
                 }
                 .card-info {
-                    bottom: -75px;
+                    bottom: -25px;
         
                     h4 {
                         font-size: 1.6rem;
@@ -2106,7 +2116,7 @@ main {
                     transform: translateX(345px) scale(.75);
                 }
                 .card-info {
-                    bottom: -75px;
+                    bottom: -25px;
         
                     h4 {
                         font-size: 1.6rem;

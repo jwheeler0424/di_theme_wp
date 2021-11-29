@@ -12,6 +12,7 @@
 @import './modules/buttons';
 
 .contact-main {
+    background: none;
     min-height: calc(100vh - 60px);
     overflow-x: hidden;
     position: relative;
@@ -37,6 +38,7 @@
 }
 
 .container {
+    background: transparent;
     display: flex;
     justify-content: center;
 }
@@ -74,6 +76,7 @@
 }
 
 .contact-form {
+    background: transparent;
     flex: 1;
     margin-bottom: 40px;
 }
