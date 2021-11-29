@@ -56,18 +56,18 @@
         margin-bottom: 15px;
 
         svg {
-            fill: $di__primary;
+            fill: $di__light;
             height: 20px;
         }
 
         &:active {
             svg {
-                fill: $di__light;
+                fill: $di__primary;
             }
         }
         &:hover {
             svg {
-                fill: $di__light;
+                fill: $di__primary;
             }
         }
     }

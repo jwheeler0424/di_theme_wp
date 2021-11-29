@@ -1,0 +1,102 @@
+/*
+    @package diTheme
+    ##################################################
+    |   THEME MODAL STYLES                           |
+    ##################################################
+*/
+
+@import './modules/variables';
+@import './modules/mixins';
+
+.modal {
+    align-items: center;
+    background: rgba(255, 255, 255, .85);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 990;
+
+    // &::before {
+    //     bottom: 0;
+    //     content: '';
+    //     background-image: url('../img/di_logo.png');
+    //     background-size: 33%;
+    //     left: 0;
+    //     opacity: .07;
+    //     position: absolute;
+    //     right: 0;
+    //     top: 0;
+    //     z-index: 991;
+    // }
+
+    &.modal-alert {
+        button.cancel {
+            display: none; 
+        }
+    }
+
+    &.modal-confirm {
+
+    }
+
+    &.show {
+        display: flex;
+    }
+}
+
+.modal-content {
+    background: white;
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, .25);
+    height: 50%;
+    padding: 2rem;
+    width: 70%;
+    z-index: 992;
+}
+
+@media screen and (min-width: 360px) {
+    
+}
+
+@media screen and (min-width: 375px) {
+    
+}
+
+@media screen and (min-width: 410px) {
+    
+}
+
+@media screen and (min-width: 425px) {
+    
+}
+
+@media screen and (min-width: 540px) {
+    
+}
+
+@media screen and (min-width: 768px) {
+    
+}
+
+@media screen and (min-width: 1024px) {
+    
+}
+
+@media screen and (min-width: 1280px) {
+    
+}
+
+@media screen and (min-width: 1440px) {
+
+}
+
+@media screen and (min-width: 1600px) {
+
+}
+
+@media screen and (min-width: 1920px) {
+
+}
