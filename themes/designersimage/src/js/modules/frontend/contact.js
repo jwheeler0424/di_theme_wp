@@ -8,8 +8,10 @@
     ##################################################
 */
 import { Select } from './formElements';
+import { showModal, closeModal } from './modal';
 
 const contactForm = () => {
+
     const contact = document.querySelector('#di-contact-form');
     const requiredInputs = document.querySelectorAll('[required]');
     const selectElements = document.querySelectorAll('[data-custom]');
@@ -32,6 +34,7 @@ const contactForm = () => {
     contact.addEventListener('submit', (e) => {
         // console.log(e.target);
         e.preventDefault();
+        e.target.querySelector('button[type="submit"]').disabled = true;
 
         // reset the form messages
         resetMessages();
@@ -81,7 +84,8 @@ const contactForm = () => {
         }
 
         if ( formInvalid ) {
-            e.target.querySelector('.js-form-error').classList.add('show')
+            showModal( 'error', 'Error!', 'There was a problem with the Contact Form, please try again!');
+            e.target.querySelector('button[type="submit"]').disabled = false;
             return;
         }
 
@@ -100,19 +104,23 @@ const contactForm = () => {
             .then(res => res.json())
             .catch(error => {
                 resetMessages();
-                e.target.querySelector('.js-form-error').classList.add('show');
+                showModal( 'error', 'Error!', 'There was a problem with the Contact Form, please try again!');
+                e.target.querySelector('button[type="submit"]').disabled = false;
             })
             .then(response => {
                 
                 resetMessages();
                 // deal with the response
                 if ( response === 0 || response.status === 'error' ) {
-                    e.target.querySelector('.js-form-error').classList.add('show');
-                    
+                    showModal( 'error', 'Error!', 'There was a problem with the Contact Form, please try again!');
+                    e.target.querySelector('button[type="submit"]').disabled = false;
                     return;
                 }
                 
-                e.target.querySelector('.js-form-success').classList.add('show');
+                showModal( 'success', 'Success!', 'Message Successfully submitted, thank you! We will be in contact with you shortly.');
+                e.target.querySelector('button[type="submit"]').disabled = false;
+                e.target.querySelector('.di-select-container > .di-select-value').innerText = 'Select a reason...';
+                e.target.querySelector('.di-select-container > .di-select-value').classList.add('placeholder');
                 e.target.reset();
             });
         
@@ -125,11 +133,13 @@ const contactForm = () => {
     ##################################################
 */
 function resetMessages() {
+
     document.querySelectorAll('[data-error]').forEach( field => field.classList.remove('error') );
     document.querySelector('.js-form-submission').classList.remove('show');
-    document.querySelector('.js-form-success').classList.remove('show');
-    document.querySelector('.js-form-error').classList.remove('show');
-} 
+    closeModal();
+
+}
+
 
 /*
     ##################################################

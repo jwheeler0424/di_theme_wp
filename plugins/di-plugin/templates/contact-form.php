@@ -70,8 +70,6 @@
             <button type="submit" class="btn btn-submit">Submit</button>
         </div>
 		<small class="field-msg js-form-submission">Submission in process, please wait&hellip;</small>
-		<small class="field-msg js-form-success">Message Successfully submitted, thank you!</small>
-		<small class="field-msg js-form-error">There was a problem with the Contact Form, please try again!</small>
 	</fieldset>
 
     <input type="hidden" name="action" value="submit_contact">

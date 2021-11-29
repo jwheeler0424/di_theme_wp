@@ -16,13 +16,14 @@
 
         <div class="modal">
             <div class="modal-content">
-                <button class="close">&times;</button>
+                <button class="close" disabled>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </button>
                 <h3></h3>
-                <main class="content">
-
-                </main>
-                <button class="okay">Okay</button>
-                <button class="cancel">Cancel</button>
+                <main class="content"></main>
+                <button class="btn btn-cancel" disabled>Cancel</button>
+                <button class="btn btn-submit">Okay</button>
             </div>
         </div>
         <?php wp_footer(); ?>

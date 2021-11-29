@@ -2,10 +2,10 @@
  *  @package diTheme
 */
 
-import { carousel, slider } from './modules/frontend/animations';
+import { modal } from './modules/frontend/modal';
 import { adjustHeight } from './modules/frontend/pages';
+import { carousel, slider } from './modules/frontend/animations';
 import { menuToggle, pageTop, titleHover } from './modules/frontend/menu';
-
 
 ready((event) => {
 
@@ -26,7 +26,10 @@ ready((event) => {
 
     // Load slider JS
     slider();
-    
+
+    // Load Modal JS
+    modal();
+
 })
 
 /*
