@@ -68,9 +68,8 @@
 	<fieldset>
 		<button type="submit" class="btn btn-submit">Submit</button>
 		<small class="field-msg js-form-submission">Submission in process, please wait&hellip;</small>
+        <input type="hidden" name="action" value="submit_contact">
+        <input type="hidden" name="nonce" value="<?php echo wp_create_nonce( "contact-nonce" ) ?>">
 	</fieldset>
-
-    <input type="hidden" name="action" value="submit_contact">
-    <input type="hidden" name="nonce" value="<?php echo wp_create_nonce( "contact-nonce" ) ?>">
 
 </form>

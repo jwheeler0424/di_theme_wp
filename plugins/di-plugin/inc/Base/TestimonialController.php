@@ -46,12 +46,14 @@ class TestimonialController extends BaseController
 
         // Sanitize the data
         $name = sanitize_text_field( $_POST['name'] );
+        $company = sanitize_text_field( $_POST['company'] );
         $email = sanitize_email( $_POST['email'] );
         $message = sanitize_textarea_field( $_POST['message'] );
 
         // Store the data into testimonial CPT
         $data = array(
 			'name' => $name,
+            'company' => $company,
 			'email' => $email,
 			'approved' => 0,
 			'featured' => 0,
@@ -158,6 +160,7 @@ class TestimonialController extends BaseController
 
 		$data = get_post_meta( $post->ID, '_di_testimonial_key', true );
 		$name = isset($data['name']) ? $data['name'] : '';
+        $company = isset($data['company']) ? $data['company'] : '';
 		$email = isset($data['email']) ? $data['email'] : '';
 		$approved = isset($data['approved']) ? $data['approved'] : false;
 		$featured = isset($data['featured']) ? $data['featured'] : false;
@@ -165,6 +168,10 @@ class TestimonialController extends BaseController
 		<p>
 			<label class="meta-label" for="di_testimonial_author">Author Name</label>
 			<input type="text" id="di_testimonial_author" name="di_testimonial_author" class="widefat" value="<?php echo esc_attr( $name ); ?>">
+		</p>
+        <p>
+			<label class="meta-label" for="di_testimonial_author">Author Company</label>
+			<input type="text" id="di_testimonial_company" name="di_testimonial_company" class="widefat" value="<?php echo esc_attr( $company ); ?>">
 		</p>
 		<p>
 			<label class="meta-label" for="di_testimonial_email">Author Email</label>
@@ -214,6 +221,7 @@ class TestimonialController extends BaseController
 
         $data = array(
 			'name' => sanitize_text_field( $_POST['di_testimonial_author'] ),
+            'company' => sanitize_text_field( $_POST['di_testimonial_company'] ),
 			'email' => sanitize_email( $_POST['di_testimonial_email'] ),
 			'approved' => isset($_POST['di_testimonial_approved']) ? 1 : 0,
 			'featured' => isset($_POST['di_testimonial_featured']) ? 1 : 0,
@@ -240,13 +248,15 @@ class TestimonialController extends BaseController
     {
         $data = get_post_meta( $post_id, '_di_testimonial_key', true );
 		$name = isset($data['name']) ? $data['name'] : '';
+        $company = isset($data['company']) ? $data['company'] : '';
 		$email = isset($data['email']) ? $data['email'] : '';
 		$approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>YES</strong>' : 'NO';
 		$featured = isset($data['featured']) && $data['featured'] === 1 ? '<strong>YES</strong>' : 'NO';
 
         switch ( $column ) {
             case 'name':
-                echo '<strong>'. $name .'</strong><br /><a href="mailto:'. $email .'">'. $email .'</a>';
+                $company_insert = ($company) ? '<em>'. $company .'</em><br />' : '';
+                echo '<strong>'. $name .'</strong><br />'. $company_insert .'<br /><a href="mailto:'. $email .'">'. $email .'</a>';
                 break;
 
             case 'approved':

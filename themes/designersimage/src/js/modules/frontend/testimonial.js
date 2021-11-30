@@ -25,11 +25,11 @@ const testimonialForm = () => {
             this.classList.remove('error');
         })
     });
-
+    
     testimonial.addEventListener('submit', (e) => {
         e.preventDefault();
         e.target.querySelector('button[type="submit"]').disabled = true;
-    
+        
         // reset the form messages
         resetMessages();
 

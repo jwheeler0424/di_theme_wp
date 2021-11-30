@@ -1,35 +1,323 @@
-/**
- *  @package diTheme
+/*
+    @package diTheme
+    ##################################################
+    |   TESTIMONIAL PAGE STYLES                      |
+    ##################################################
 */
 
-#di-testimonial-form {
+@import './modules/variables';
+@import './modules/mixins';
+@import './modules/formElements';
+@import './modules/buttons';
+
+.testimonial-main {
+    background: none;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
     
-    .field-container {
-        position: relative;
-        margin-bottom: 20px;
+    .container {
+        display: flex;
+        justify-content: center;
     }
+    
+    .testimonial-form {
+        flex: 1;
+        margin-bottom: 40px;
+    }
+    
+    h2 {
+        color: $di__primary;
+        flex: 1;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 40px 0 5px 0;
+        text-transform: lowercase;
+    }
+    
+    .bar {
+        background: $di__primary;
+        height: 1px;
+        width: 125px;
+    }
+    
+    #di-testimonial-form {
+        flex: 1;
+        margin-top: 15px;
+        position: relative;
+    }
+}
 
-    .field-msg {
-        display: none;
-        position: absolute;
-        left: 2px;
-        bottom: -15px;
-        font-size: 9px;
-        text-transform: uppercase;
-        font-weight: 600;
-        letter-spacing: 0.05em;
 
-        &.show {
-            display: block;
+
+@media screen and (min-width: 320px) {
+    .testimonial-main {
+        
+        .bar {
+            margin-left: 20px;
+        }
+        
+        h2, #di-testimonial-form {
+            padding: 0 20px;
         }
     }
+}
 
-    .error {
-        color: rgb(144, 19, 19);
+@media screen and (min-width: 360px) {
+    .testimonial-main {
+        
+        .bar {
+            height: .15rem;
+            margin-left: 30px;
+        }
+
+        h2 {
+            color: $di__primary;
+            flex: 1;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin: 40px 0 7px 0;
+            padding-left: 30px;
+            text-transform: lowercase;
+        }
+        #di-testimonial-form {
+            padding: 0 30px;
+        }
+    }
+}
+
+@media screen and (min-width: 375px) {
+    
+}
+
+@media screen and (min-width: 410px) {
+    
+}
+
+@media screen and (min-width: 425px) {
+    .testimonial-main {
+        
+        h2 {
+            font-size: 2.2rem;
+            margin: 60px 0 10px 0;
+            padding-left: 30px;
+        }
+
+        .bar {
+            height: .15rem;
+            margin-left: 30px;
+            width: 150px;
+        }
+        
+        #di-testimonial-form {
+            margin-top: 25px;
+        }
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .testimonial-main {
+
+        h2 {
+            font-size: 2.8rem;
+            margin: 60px 0 10px 0;
+            padding-left: 30px;
+        }
+
+        .bar {
+            height: .15rem;
+            margin-left: 30px;
+            width: 200px;
+        }
+        
+        #di-testimonial-form {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 30px;
+
+            fieldset {
+        
+                &:first-child {
+                    margin-right: 50%;
+                }
+
+                &:nth-child(2) {
+                    margin-right: 30px;
+                }
+
+                &:nth-child(3) {
+                    margin-right: unset;
+                }
+        
+                &:nth-child(4) {
+                    margin-right: unset;
+                    width: 100%;
+                }
+        
+                &:nth-child(5) {
+                    margin-right: unset;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    
+    .testimonial-main {
+        min-height: calc(100vh - 417px);
+        position: relative;
+        width: 100%;
+    
+        h2 {
+            font-size: 2.8rem;
+            margin: 55px 0 10px 0;
+            padding-left: 30px;
+        }
+
     }
 
-    .success {
-        color: rgb(47, 129, 47);
+}
+
+@media screen and (min-width: 1024px) {
+    .testimonial-main {
+        min-height: calc(100vh - 502px);
+        position: relative;
+        width: 100%;
+
+        h2 {
+            font-size: 4.8rem;
+            margin: 100px 0 20px 0;
+            padding-left: 60px;
+        }
+    
+        .bar {
+            height: .15rem;
+            margin-left: 60px;
+        }
+        
+        #di-testimonial-form {
+            margin-top: 40px;
+            padding: 0 100px 0 60px;
+        }
+
     }
 
+}
+
+@media screen and (min-width: 1280px) {
+    
+    .testimonial-main {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+    
+        h2 {
+            font-size: 4.2rem;
+            margin: 60px 0 20px 0;
+            padding-left: unset;
+        }
+    
+        .bar {
+            height: .15rem;
+            margin-left: unset;
+            width: 250px;
+        }
+    
+        .testimonial-form {
+            flex: 0 45%;
+            margin-bottom: 40px;
+        }
+        
+        #di-testimonial-form {
+            margin-top: 40px;
+            padding: 0;
+        }
+
+    }
+
+}
+
+@media screen and (min-width: 1440px) {
+    .testimonial-main {
+
+        h2 {
+            font-size: 3.6rem;
+            margin: 70px 0 10px 0;
+            padding-left: unset;
+        }
+
+        .bar {
+            height: .15rem;
+            margin-left: unset;
+        }
+
+        .testimonial-form {
+            flex: 0 40%;
+            margin-bottom: 40px;
+        }
+        
+        #di-testimonial-form {
+            margin: 40px 0 70px;
+            padding: 0;
+        }
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .testimonial-main {
+        
+        h2 {
+            font-size: 3.6rem;
+            margin: 100px 0 10px 0;
+            padding-left: unset;
+        }
+
+        .bar {
+            height: .15rem;
+            margin-left: unset;
+        }
+
+        .testimonial-form {
+            flex: 0 40%;
+            margin: 40px 0 100px;
+        }
+        
+        #di-testimonial-form {
+            margin-top: 40px;
+            padding: 0;
+        }
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .testimonial-main {
+        
+        h2 {
+            font-size: 4.2rem;
+            margin: 120px 0 10px 0;
+            padding-left: unset;
+        }
+
+        .bar {
+            height: .15rem;
+            margin-left: unset;
+        }
+
+        .testimonial-form {
+            flex: 0 40%;
+            margin: 80px 0 120px;
+        }
+        
+        #di-testimonial-form {
+            margin-top: 80px;
+            padding: 0;
+        }
+    }
 }

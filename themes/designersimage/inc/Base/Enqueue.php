@@ -38,13 +38,9 @@ class Enqueue extends BaseController
 
         switch ( $slug )
         {
-            case 'testimonials':
-                wp_enqueue_style( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.css', array(), '1.0.0', 'all' );
-                wp_enqueue_script( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.js', array(), '1.0.0', true );
-                break;
-            
+            case 'testimonial':
             case 'contact':
-                wp_enqueue_style( 'di-theme-contactPage', $this->theme_url . '/assets/di-theme-contact.min.css', array(), '1.0.0', 'all' );
+                wp_enqueue_style( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.css', array(), '1.0.0', 'all' );
                 wp_enqueue_script( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.js', array(), '1.0.0', true );
                 break;
 

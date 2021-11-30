@@ -26,7 +26,7 @@ main {
 }
 
 .home-hero {
-    height: 100vh;
+    height: calc(100vh - 60px);
     position: relative;
     transform-style: preserve-3d;
     z-index: 0;
@@ -683,7 +683,7 @@ main {
 @media screen and (min-width: 360px) {
     
     .home-hero {
-        height: 100vh;
+        height: calc(100vh - 70px);
 
         .bg-title {
             h2 {
@@ -894,7 +894,7 @@ main {
 
 @media screen and (min-width: 410px) {
     .home-hero {
-        height: 100vh;
+        height: calc(100vh - 80px);
         
         .bg-title {
             h2 {
@@ -1306,7 +1306,7 @@ main {
 
 @media screen and (min-width: 768px) {
     .home-hero {
-        max-height: 100vh;
+        height: calc(100vh - 80px);
 
         .bg-title {
             h2 {
@@ -1482,7 +1482,7 @@ main {
 
     @media (orientation: landscape) {
         .home-hero {
-            height: 100vh;
+            height: calc(100vh - 80px);
             top: 0;
             .bg-title {
                 h2 {
@@ -1539,7 +1539,7 @@ main {
 
 @media screen and (min-width: 1024px) {
     .home-hero {
-        max-height: 100vh;
+        height: calc(100vh - 80px);
 
         .bg-title {
             h2 {
@@ -1718,7 +1718,7 @@ main {
 @media screen and (min-width: 1280px) {
     
     .home-hero {
-        height: 100vh;
+        height: calc(100vh - 80px);
         top: 0;
         .bg-title {
             h2 {
