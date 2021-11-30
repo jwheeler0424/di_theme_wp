@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN CONTACT MESSAGE CONTROLLER            |
+ *  ##################################################
 */
 
 namespace Plugin\Base;
@@ -280,7 +283,7 @@ class ContactController extends BaseController
                 $company_insert = ($company) ? '<em>'. $company .'</em><br />' : '';
                 $phone_number = sprintf("(%s) %s-%s", substr($phone, 0, 3), substr($phone, 3, 3), substr($phone, 6, 9));
 
-                echo '<strong>'. $first . ' ' . $last .'</strong><br />'. $company_insert .'<br /><a href="mailto:'. $email .'">'. $email .'</a><br /><a href="tel:'. $phone_number .'">' . $phone_number . '</a>';
+                echo '<strong>'. $first . ' ' . $last .'</strong><br />'. $company_insert .'<a href="mailto:'. $email .'">'. $email .'</a><br /><a href="tel:'. $phone_number .'">' . $phone_number . '</a>';
                 break;
 
             case 'message':

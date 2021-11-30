@@ -67,7 +67,7 @@ const testimonialForm = () => {
 
         // ajax http post request
         let url = e.target.dataset.url;
-        let params = new URLSearchParams(new FormData(testimonialForm));
+        let params = new URLSearchParams(new FormData(e.target));
         const fetchData = {
             method: "POST",
             body: params

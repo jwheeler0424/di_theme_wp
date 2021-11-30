@@ -169,67 +169,7 @@
                 <div class="container">
                     <h2>Here's what our clients have to say</h2>
                     <p>Feel free to <a href="contact/" class="link link-home">contact</a> us with any questions you may have.</p>
-                    <div class="testimonial-slider">
-                        <button class="left" type="button">
-                            <?php get_template_part( 'img/svg/icon', 'arrowLeft.svg' ); ?>
-                        </button>
-
-                        <figure class="front">
-                        <?php get_template_part( 'img/svg/icon', 'quoteLeft.svg' ); ?>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam fuga dolorum fugiat deleniti nesciunt, voluptates distinctio! Sit vitae eaque, et perferendis saepe vero nemo fuga.</p>
-                            </blockquote>
-                            <?php get_template_part( 'img/svg/icon', 'quoteRight.svg' ); ?>
-
-                            <figcaption>
-                                <span>~ John Smith ~</span>
-                                <cite>Company Name</cite>
-                            </figcaption>
-                        </figure>
-
-                        <figure class="right">
-                            <?php get_template_part( 'img/svg/icon', 'quoteLeft.svg' ); ?>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At eligendi possimus necessitatibus vel assumenda rem.</p>
-                            </blockquote>
-                            <?php get_template_part( 'img/svg/icon', 'quoteRight.svg' ); ?>
-
-                            <figcaption>
-                                <span>~ Jane Doe ~</span>
-                                <cite>Company Title</cite>
-                            </figcaption>
-                        </figure>
-
-                        <figure class="right">
-                            <?php get_template_part( 'img/svg/icon', 'quoteLeft.svg' ); ?>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi officiis placeat corporis, voluptas magnam vitae! Eaque nam aperiam recusandae a?</p>
-                            </blockquote>
-                            <?php get_template_part( 'img/svg/icon', 'quoteRightt.svg' ); ?>
-
-                            <figcaption>
-                                <span>~ Jimmy Cricket ~</span>
-                                <cite>Company Name</cite>
-                            </figcaption>
-                        </figure>
-
-                        <figure class="right">
-                            <?php get_template_part( 'img/svg/icon', 'quoteLeft.svg' ); ?>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut similique nihil incidunt cum earum iusto repudiandae, debitis vel enim harum necessitatibus minus dolorem consectetur aliquam ducimus tenetur quod quo at.</p>
-                            </blockquote>
-                            <?php get_template_part( 'img/svg/icon', 'quoteRight.svg' ); ?>
-
-                            <figcaption>
-                                <span>~ Alexander Samsonite ~</span>
-                                <cite>Company Title</cite>
-                            </figcaption>
-                        </figure>
-
-                        <button class="right" type="button">
-                            <?php get_template_part( 'img/svg/icon', 'arrowRight.svg' ); ?>
-                        </button>
-                    </div>
+                    <?php echo do_shortcode( '[testimonial-slider]' ) ?>
                 </div>
             </section>
             <?php get_template_part( 'template-parts/theme', 'footer' ); ?>

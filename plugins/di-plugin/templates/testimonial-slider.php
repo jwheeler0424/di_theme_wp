@@ -23,17 +23,46 @@ $query = new WP_Query( $args );
 
 if ( $query->have_posts() ):
     $i = 1;
-    echo '<div class="di-slider--wrapper"><div class="di-slider--container"><div class="di-slider--view"><ul>';
+    echo '<div class="testimonial-slider"><button class="left" type="button">';
+    get_template_part( 'img/svg/icon', 'arrowLeft.svg' );
+    echo '</button>';
 
     while ( $query->have_posts() ) : $query->the_post();
         $name = get_post_meta( get_the_ID(), '_di_testimonial_key', true )['name'] ?? 'Anonymous';
-        
-        echo '<li class="di-slider--view__slides'. ($i === 1 ? ' is-active' : '') .'"><p class="testimonial-quote">"'.get_the_content().'"</p><p class="testimonial-author">~'.$name.'~</p></li>';
+        $company = get_post_meta( get_the_ID(), '_di_testimonial_key', true )['company'] ?? '';
+
+        if ( $i === 1 ) {
+            echo '<figure class="front">';
+            get_template_part( 'img/svg/icon', 'quoteLeft.svg' );
+            echo '<blockquote>
+                    <p>'. get_the_content() .'</p>
+                </blockquote>';
+            get_template_part( 'img/svg/icon', 'quoteRight.svg' );
+            echo '<figcaption>
+                    <span>~ '. $name .' ~</span>
+                    <cite>'. $company .'</cite>
+                </figcaption>
+            </figure>';
+        } else {
+            echo '<figure class="right">';
+            get_template_part( 'img/svg/icon', 'quoteLeft.svg' );
+            echo '<blockquote>
+                    <p>'. get_the_content() .'</p>
+                </blockquote>';
+            get_template_part( 'img/svg/icon', 'quoteRight.svg' );
+            echo '<figcaption>
+                    <span>~ '. $name .' ~</span>
+                    <cite>'. $company .'</cite>
+                </figcaption>
+            </figure>';
+        }
         
         $i++;
     endwhile;
 
-    echo '</ul></div><div class="di-slider--arrows"><span class="arrow di-slider--arrows__left material-icons">chevron_left</span><span class="arrow di-slider--arrows__right material-icons">chevron_right</span></div></div></div>';
+    echo '<button class="right" type="button">';
+    get_template_part( 'img/svg/icon', 'arrowRight.svg' );
+    echo '</button></div>';
 
 endif;
 

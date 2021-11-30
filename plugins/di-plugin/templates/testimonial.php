@@ -14,7 +14,7 @@
     <p>Testimonial Form Shortcode</p>
     <p><code>[testimonial-form]</code></p>
 
-    <p>Testimonial Slideshow Shortcode</p>
-    <p><code>[testimonial-slideshow]</code></p>
+    <p>Testimonial Slider Shortcode</p>
+    <p><code>[testimonial-slider]</code></p>
 
 </div>

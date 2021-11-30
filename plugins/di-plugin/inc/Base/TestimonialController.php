@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN TESTIMONIAL CONTROLLER                |
+ *  ##################################################
 */
 
 namespace Plugin\Base;
@@ -32,7 +35,7 @@ class TestimonialController extends BaseController
         $this->setShortcodePage();
 
         add_shortcode( 'testimonial-form', array( $this, 'testimonial_form' ) );
-        add_shortcode( 'testimonial-slideshow', array( $this, 'testimonial_slideshow' ) );
+        add_shortcode( 'testimonial-slider', array( $this, 'testimonial_slider' ) );
 
         add_action( 'wp_ajax_submit_testimonial', array( $this, 'submit_testimonial' ) );
         add_action( 'wp_ajax_nopriv_submit_testimonial', array( $this, 'submit_testimonial' ) );
@@ -97,7 +100,7 @@ class TestimonialController extends BaseController
         return ob_get_clean();
     }
 
-    public function testimonial_slideshow()
+    public function testimonial_slider()
     {
         ob_start();
         require_once( "$this->plugin_path/templates/testimonial-slider.php" );
@@ -170,7 +173,7 @@ class TestimonialController extends BaseController
 			<input type="text" id="di_testimonial_author" name="di_testimonial_author" class="widefat" value="<?php echo esc_attr( $name ); ?>">
 		</p>
         <p>
-			<label class="meta-label" for="di_testimonial_author">Author Company</label>
+			<label class="meta-label" for="di_testimonial_company">Author Company</label>
 			<input type="text" id="di_testimonial_company" name="di_testimonial_company" class="widefat" value="<?php echo esc_attr( $company ); ?>">
 		</p>
 		<p>
@@ -250,13 +253,13 @@ class TestimonialController extends BaseController
 		$name = isset($data['name']) ? $data['name'] : '';
         $company = isset($data['company']) ? $data['company'] : '';
 		$email = isset($data['email']) ? $data['email'] : '';
-		$approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>YES</strong>' : 'NO';
-		$featured = isset($data['featured']) && $data['featured'] === 1 ? '<strong>YES</strong>' : 'NO';
+		$approved = isset($data['approved']) && $data['approved'] === 1 ? '<span class="dashicons dashicons-yes-alt" style="color: rgb(102, 171, 60);"></span>' : '<span class="dashicons dashicons-dismiss" style="color: rgb(172, 60, 61);"></span>';
+		$featured = isset($data['featured']) && $data['featured'] === 1 ? '<span class="dashicons dashicons-yes-alt" style="color: rgb(102, 171, 60);"></span>' : '<span class="dashicons dashicons-dismiss" style="color: rgb(172, 60, 61);"></span>';
 
         switch ( $column ) {
             case 'name':
                 $company_insert = ($company) ? '<em>'. $company .'</em><br />' : '';
-                echo '<strong>'. $name .'</strong><br />'. $company_insert .'<br /><a href="mailto:'. $email .'">'. $email .'</a>';
+                echo '<strong>'. $name .'</strong><br />'. $company_insert .'<a href="mailto:'. $email .'">'. $email .'</a>';
                 break;
 
             case 'approved':
