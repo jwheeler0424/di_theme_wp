@@ -28,9 +28,9 @@ class EventController extends BaseController
         add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
         add_action( 'save_post', array( $this, 'save_meta_box' ) );
 
-        // add_action( 'manage_contact_posts_columns', array( $this, 'set_custom_columns' ) );
-        // add_action( 'manage_contact_posts_custom_column', array( $this, 'set_custom_columns_data' ), 10, 2 );
-        // add_filter( 'manage_edit-contact_sortable_columns', array( $this, 'set_custom_columns_sortable' ) );
+        add_action( 'manage_event_posts_columns', array( $this, 'set_custom_columns' ) );
+        add_action( 'manage_event_posts_custom_column', array( $this, 'set_custom_columns_data' ), 10, 2 );
+        add_filter( 'manage_edit-event_sortable_columns', array( $this, 'set_custom_columns_sortable' ) );
 
         // $this->setShortcodePage();
 
@@ -171,10 +171,10 @@ class EventController extends BaseController
     public function add_meta_boxes()
     {
         add_meta_box (
-            'contact_info',
-            'Contact Info',
+            'event_info',
+            'Event Info',
             array( $this, 'render_info_box' ),
-            'contact',
+            'event',
             'side',
             'high'
         );
@@ -183,9 +183,9 @@ class EventController extends BaseController
 
     public function render_info_box( $post )
     {
-        wp_nonce_field( 'di_contact', 'di_contact_nonce' );
+        wp_nonce_field( 'di_event', 'di_event_nonce' );
 
-        $data = get_post_meta( $post->ID, '_di_contact_key', true );
+        $data = get_post_meta( $post->ID, '_di_event_key', true );
 		$name = isset($data['name']) ? $data['name'] : '';
         $company = isset($data['company']) ? $data['company'] : '';
 		$email = isset($data['email']) ? $data['email'] : '';
@@ -223,13 +223,13 @@ class EventController extends BaseController
 
     public function save_meta_box( $post_id )
     {
-        if ( !isset( $_POST['di_contact_nonce'] ) ) {
+        if ( !isset( $_POST['di_event_nonce'] ) ) {
             return $post_id;
         }
 
-        $nonce = $_POST['di_contact_nonce'];
+        $nonce = $_POST['di_event_nonce'];
 
-        if ( !wp_verify_nonce( $nonce, 'di_contact' ) ) {
+        if ( !wp_verify_nonce( $nonce, 'di_event' ) ) {
             return $post_id;
         }
 

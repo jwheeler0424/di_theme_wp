@@ -63,8 +63,27 @@ class PortfolioController extends BaseController
     public function portfolio_cpt()
     {
         $labels = array(
-            'name' => 'Portfolio',
-            'singular_name' => 'Portfolio'
+            'name'                  => 'Projects',
+            'singular_name'         => 'Project',
+            'menu_name'             => 'Portfolio',
+            'name_admin_bar'        => 'Portfolio',
+            'archives'              => 'Project Archives',
+            'attributes'            => 'Project Attributes',
+            'parent_item_colon'     => 'Parent Project',
+            'all_items'             => 'All Projects',
+            'add_new_item'          => 'Add New Project',
+            'add_new'               => 'Add New',
+            'new_item'              => 'New Project',
+            'edit_item'             => 'Edit Project',
+            'update_item'           => 'Update Project',
+            'view_item'             => 'View Project',
+            'view_items'            => 'View Projects',
+            'search_items'          => 'Search Project',
+            'not_found'             => 'No Project Found',
+            'not_found_in_trash'    => 'No Project Found in Trash',
+            'items_list'            => 'Project List',
+            'items_list_navigation' => 'Project List Navigation',
+            'filter_items_list'     => 'Filter Project List'
         );
 
         $args = array(
