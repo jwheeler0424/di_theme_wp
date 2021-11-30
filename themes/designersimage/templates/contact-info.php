@@ -5,7 +5,9 @@
  *  |   THEME CONTACT INFORMATION PAGE               |
  *  ##################################################
 */
-?><div class="wrap">
+?>
+
+<div class="wrap">
     <h1>di Theme Contact Information</h1>
     <?php settings_errors() ?>
     <?php

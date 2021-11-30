@@ -34,9 +34,6 @@ class TestimonialController extends BaseController
 
         $this->setShortcodePage();
 
-        add_shortcode( 'testimonial-form', array( $this, 'testimonial_form' ) );
-        add_shortcode( 'testimonial-slider', array( $this, 'testimonial_slider' ) );
-
         add_action( 'wp_ajax_submit_testimonial', array( $this, 'submit_testimonial' ) );
         add_action( 'wp_ajax_nopriv_submit_testimonial', array( $this, 'submit_testimonial' ) );
     }
@@ -91,20 +88,6 @@ class TestimonialController extends BaseController
 
         // Send response
         wp_die();
-    }
-
-    public function testimonial_form()
-    {
-        ob_start();
-        require_once( "$this->plugin_path/templates/testimonial-form.php" );
-        return ob_get_clean();
-    }
-
-    public function testimonial_slider()
-    {
-        ob_start();
-        require_once( "$this->plugin_path/templates/testimonial-slider.php" );
-        return ob_get_clean();
     }
 
     public function setShortcodePage()

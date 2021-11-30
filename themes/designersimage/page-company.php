@@ -2,7 +2,7 @@
 /**
  *  @package diTheme
  *  ##################################################
- *  |   THEME ABOUT PAGE                             |
+ *  |   THEME COMPANY PAGE                           |
  *  ##################################################
 */
 ?>
@@ -12,6 +12,9 @@
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
             <div class="container">
+                <div class="company-links">
+                    
+                </div>
                 <?php
                     if ( have_posts() ):
 

@@ -34,8 +34,6 @@ class ContactController extends BaseController
 
         $this->setShortcodePage();
 
-        add_shortcode( 'contact-form', array( $this, 'contact_form' ) );
-
         add_action( 'wp_ajax_submit_contact', array( $this, 'submit_contact' ) );
         add_action( 'wp_ajax_nopriv_submit_contact', array( $this, 'submit_contact' ) );
     }
@@ -104,13 +102,6 @@ class ContactController extends BaseController
                 return intval( $phone );
             }
         }
-    }
-
-    public function contact_form()
-    {
-        ob_start();
-        require_once( "$this->plugin_path/templates/contact-form.php" );
-        return ob_get_clean();
     }
 
     public function setShortcodePage()
