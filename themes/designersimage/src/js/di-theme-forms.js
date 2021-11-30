@@ -15,12 +15,8 @@ ready((event) => {
     
     // Load Testimonial Form JS
     const testimonial = document.querySelector('#di-testimonial-form');
-    
     if (testimonial) {
-        
-        testimonial.addEventListener('submit', (e) => {
-            testimonialForm(e, testimonial);
-        });
+        testimonialForm();
     } 
 
 })

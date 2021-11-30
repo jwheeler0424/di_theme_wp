@@ -66,9 +66,7 @@
 	</fieldset>
 	
 	<fieldset>
-		<div>
-            <button type="submit" class="btn btn-submit">Submit</button>
-        </div>
+		<button type="submit" class="btn btn-submit">Submit</button>
 		<small class="field-msg js-form-submission">Submission in process, please wait&hellip;</small>
 	</fieldset>
 

@@ -32,7 +32,6 @@ const contactForm = () => {
     });
 
     contact.addEventListener('submit', (e) => {
-        // console.log(e.target);
         e.preventDefault();
         e.target.querySelector('button[type="submit"]').disabled = true;
 
@@ -133,11 +132,9 @@ const contactForm = () => {
     ##################################################
 */
 function resetMessages() {
-
     document.querySelectorAll('[data-error]').forEach( field => field.classList.remove('error') );
     document.querySelector('.js-form-submission').classList.remove('show');
     closeModal();
-
 }
 
 
