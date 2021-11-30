@@ -2,7 +2,7 @@
 /**
  *  @package diTheme
  *  ##################################################
- *  |   THEME TESTIMONIAL SLIDER                    |
+ *  |   THEME PORTFOLIO CAROUSEL                     |
  *  ##################################################
 */
 

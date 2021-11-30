@@ -8,7 +8,6 @@
 
 namespace Theme\Base;
 
-use Theme\Api\SettingsApi;
 use Theme\Base\BaseController;
 
 class ShortcodeController extends BaseController

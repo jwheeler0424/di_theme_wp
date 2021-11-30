@@ -8,7 +8,20 @@
 
 $contact_info = get_option( 'di_theme_ci' );
 $contact_phone_formatted = isset($contact_info[ 'contact_phone' ]) ? '+1 (' . substr($contact_info[ 'contact_phone' ], 0, 3) . ') ' . substr($contact_info[ 'contact_phone' ], 3, 3) . '-' . substr($contact_info[ 'contact_phone' ], 6) : '';
+$args = array(
+    'name' => 'services',
+    'post_type' => 'page',
+    'post_status' => 'publish',
+    'numberposts' => 1,
+);
 
+$services_page = get_posts($args);
+
+$subpages = get_pages( array(
+    'title_li'    => '',
+    'child_of'    => $services_page[0]->ID,
+    'sort_column' => 'menu_order'
+) );
 ?>
 
 <footer class="di-footer__main">
@@ -62,26 +75,21 @@ $contact_phone_formatted = isset($contact_info[ 'contact_phone' ]) ? '+1 (' . su
                 <h3>Services</h3>
                 <div class="footer_bar"></div>
                 <div class="links">
-                    <div class="web">
-                        <div class="icon">
-                            <?php get_template_part( 'img/svg/icon', 'webDevelopment.svg' ); ?>
+                    <?php
+                    foreach ( $subpages as $page ):
+                    ?>
+                        <div class="<?php echo $page->post_name ?>">
+                            <div class="icon">
+                                <?php get_template_part( 'img/svg/icon', $page->post_name.'.svg' ); ?>
+                            </div>
+                            <a href="<?php echo esc_url( get_permalink( $page->ID ) ); ?>"><?php echo $page->post_title; ?></a>
                         </div>
-                        <a href="#">Web Development</a>
-                    </div>
-                    <div class="separator"></div>
-                    <div class="graphic">
-                        <div class="icon">
-                            <?php get_template_part( 'img/svg/icon', 'graphicDesign.svg' ); ?>
-                        </div>
-                        <a href="#">Graphic Design</a>
-                    </div>
-                    <div class="separator"></div>
-                    <div class="tech">
-                        <div class="icon">
-                            <?php get_template_part( 'img/svg/icon', 'techSupport.svg' ); ?>
-                        </div>
-                        <a href="#">Tech Support</a>
-                    </div>
+                        <?php if ( $page->post_name !== 'tech'): ?>
+                        <div class="separator"></div>
+                        <?php endif; ?>
+                    <?php
+                    endforeach;
+                    ?>
                 </div>
             </div>
             <div class="divider_contact"></div>

@@ -30,3 +30,5 @@ foreach ( $subpages as $page ) {
 }
 
 echo '</nav>';
+
+wp_reset_postdata();
