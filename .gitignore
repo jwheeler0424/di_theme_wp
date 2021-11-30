@@ -4,6 +4,7 @@
 /themes/twentytwentyone/
 
 /plugins/akismet/
+/plugins/wordpress-importer/
 /plugins/hello.php
 /plugins/index.php
 /node_modules/
