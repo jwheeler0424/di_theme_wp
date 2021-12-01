@@ -5,7 +5,7 @@
  *  |   THEME HEADER                                 |
  *  ##################################################
 */
-    namespace ThemeInc\Base;
+    namespace Theme\Base;
 
 ?>
 
@@ -25,7 +25,7 @@
                     'theme_location' => 'primary',
                     'container' => false,
                     'menu_class' => 'di-menu__nav',
-                    // 'walker' => new WalkerNavPrimary()
+                    //'walker' => new WalkerNavPrimary()
                 );
                 wp_nav_menu( $args );
                 get_search_form();

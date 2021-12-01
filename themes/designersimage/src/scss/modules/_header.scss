@@ -107,7 +107,10 @@
 
                 &.current-menu-item a {
                     color: $di__light;
-                    cursor: default;
+                    font-weight: 600;
+                }
+                &.current-page-ancestor a {
+                    color: $di__light;
                     font-weight: 600;
                 }
     

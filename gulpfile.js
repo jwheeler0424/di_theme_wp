@@ -34,6 +34,10 @@ const projectURL            = 'http://local.designersimage.io/wp-admin/';
 const stylePluginSRC        = './plugins/di-plugin/src/scss/di-plugin.scss';
 const styleThemeSRC         = './themes/designersimage/src/scss/di-theme.scss';
 const styleThemeHomeSRC     = './themes/designersimage/src/scss/di-theme-home.scss';
+const styleThemeCompanySRC     = './themes/designersimage/src/scss/di-theme-company.scss';
+const styleThemePortfolioSRC     = './themes/designersimage/src/scss/di-theme-portfolio.scss';
+const styleThemeServicesSRC     = './themes/designersimage/src/scss/di-theme-services.scss';
+const styleTheme404SRC     = './themes/designersimage/src/scss/di-theme-404.scss';
 const styleThemeAdminSRC    = './themes/designersimage/src/scss/di-theme-admin.scss';
 const styleThemeFormsSRC    = './themes/designersimage/src/scss/di-theme-forms.scss';
 const stylePluginURL        = './plugins/di-plugin/assets/';
@@ -94,7 +98,7 @@ function css(done) {
 		.pipe( browserSync.stream() );
 
     /* Theme CSS Style */
-    src( [ styleThemeSRC, styleThemeAdminSRC, styleThemeFormsSRC, styleThemeHomeSRC ] )
+    src( [ styleThemeSRC, styleThemeAdminSRC, styleThemeFormsSRC, styleThemeHomeSRC, styleThemeCompanySRC, styleThemeServicesSRC, styleThemePortfolioSRC, styleTheme404SRC ] )
 		.pipe( sourcemaps.init() )
 		.pipe( sass({
 			errLogToConsole: true,

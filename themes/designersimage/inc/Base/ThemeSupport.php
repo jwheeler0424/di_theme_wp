@@ -71,6 +71,7 @@ class ThemeSupport
         }
 
         add_theme_support( 'html5', array( 'search-form' ) );
+        add_post_type_support( 'page', 'excerpt' );
         
     }
 
