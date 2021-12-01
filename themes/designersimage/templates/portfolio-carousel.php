@@ -66,4 +66,45 @@ $query = new WP_Query( $args );
 
 // endif;
 
+echo '<div class="portfolio-carousel">';
+    echo '<button class="left" type="button">';
+        get_template_part( 'img/svg/icon', 'arrowLeft.svg' );
+    echo '</button>';
+    ?>
+    <div class="card front">1
+        <div class="card-info">
+            <h4>Company Name</h4>
+            <span>Website</span>
+        </div>
+    </div>
+    <div class="card right">2
+        <div class="card-info">
+            <h4>Company Title</h4>
+            <span>Logo</span>
+        </div>
+    </div>
+    <div class="card back hidden">3
+        <div class="card-info">
+            <h4>Company Name</h4>
+            <span>Web Application</span>
+        </div>
+    </div>
+    <div class="card back hidden">4
+        <div class="card-info">
+            <h4>Company Title</h4>
+            <span>Website</span>
+        </div>
+    </div>
+    <div class="card left">5
+        <div class="card-info">
+            <h4>Company Name</h4>
+            <span>Logo</span>
+        </div>
+    </div>
+    <?php
+    echo '<button class="right" type="button">';
+        get_template_part( 'img/svg/icon', 'arrowRight.svg' );
+    echo '</button>';
+echo '</div>';
+
 wp_reset_postdata();

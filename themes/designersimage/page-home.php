@@ -64,44 +64,7 @@
                 <div class="container">
                     <h2>Check out our latest projects</h2>
                     <p>View our <a href="portfolio/" class="link link-home">portfolio</a> for the full collection of our work.</p>
-                    <div class="portfolio-carousel">
-                        <button class="left" type="button">
-                            <?php get_template_part( 'img/svg/icon', 'arrowLeft.svg' ); ?>
-                        </button>
-                        <div class="card front">1
-                            <div class="card-info">
-                                <h4>Company Name</h4>
-                                <span>Website</span>
-                            </div>
-                        </div>
-                        <div class="card right">2
-                            <div class="card-info">
-                                <h4>Company Title</h4>
-                                <span>Logo</span>
-                            </div>
-                        </div>
-                        <div class="card back hidden">3
-                            <div class="card-info">
-                                <h4>Company Name</h4>
-                                <span>Web Application</span>
-                            </div>
-                        </div>
-                        <div class="card back hidden">4
-                            <div class="card-info">
-                                <h4>Company Title</h4>
-                                <span>Website</span>
-                            </div>
-                        </div>
-                        <div class="card left">5
-                            <div class="card-info">
-                                <h4>Company Name</h4>
-                                <span>Logo</span>
-                            </div>
-                        </div>
-                        <button class="right" type="button">
-                            <?php get_template_part( 'img/svg/icon', 'arrowRight.svg' ); ?>
-                        </button>
-                    </div>
+                    <?php echo do_shortcode( '[portfolio-carousel]' ) ?>
                 </div>
             </section>
 

@@ -36,39 +36,7 @@ $subpages = get_pages( array(
             <div class="events">
                 <h3>Community Events</h3>
                 <div class="footer_bar"></div>
-                <div class="event_links">
-                    <div class="event">
-                        <a href="#">Concert In The Park After Dark</a>
-                        <div class="datetime">
-                            <div class="icon">
-                                <?php get_template_part( 'img/svg/icon', 'calendar.svg' ); ?>
-                            </div>
-                            <span>11/25/21 @ 6:00 PM</span>
-                        </div>
-                        <div class="location">
-                            <div class="icon">
-                                <?php get_template_part( 'img/svg/icon', 'location.svg' ); ?>
-                            </div>
-                            <span>Woodward Park</span>
-                        </div>
-                    </div>
-                    <div class="event">
-                        <a href="#">Karaoke Night</a>
-                        <div class="datetime">
-                            <div class="icon">
-                                <?php get_template_part( 'img/svg/icon', 'calendar.svg' ); ?>
-                            </div>
-                            <span>11/30/21 @ 9:00 PM</span>
-                        </div>
-                        <div class="location">
-                            <div class="icon">
-                                <?php get_template_part( 'img/svg/icon', 'location.svg' ); ?>
-                            </div>
-                            <span>Goldsteins</span>
-                        </div>
-                    </div>
-                    <a href="#" class="view-all">View All</a>
-                </div>
+                <?php echo do_shortcode( '[event-list-footer]' ) ?>
             </div>
             <div class="divider_services"></div>
             <div class="services">

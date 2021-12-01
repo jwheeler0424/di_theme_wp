@@ -23,6 +23,9 @@ class ShortcodeController extends BaseController
         // Contact Links Main Shortcode
         add_shortcode( 'contact-links', array( $this, 'contact_links' ) );
 
+        // Event List - Footer Shortcode
+        add_shortcode( 'event-list-footer', array( $this, 'event_list_footer' ) );
+
         // Portfolio Carousel Shortcode
         add_shortcode( 'portfolio-carousel', array( $this, 'portfolio_carousel' ) );
 
@@ -57,6 +60,13 @@ class ShortcodeController extends BaseController
     {
         ob_start();
         require_once( "$this->theme_path/templates/contact-links.php" );
+        return ob_get_clean();
+    }
+
+    public function event_list_footer()
+    {
+        ob_start();
+        require_once( "$this->theme_path/templates/event-list-footer.php" );
         return ob_get_clean();
     }
 

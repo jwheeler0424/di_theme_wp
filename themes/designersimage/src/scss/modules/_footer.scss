@@ -95,7 +95,7 @@
             width: 85px;
         }
 
-        .info, .links, .event_links {
+        .info, .links, .event_list {
             display: flex;
             flex-direction: column;
             padding: 10px 0;
@@ -261,7 +261,7 @@
             .contact_info, .services, .events {
                 padding: 30px 30px;
             }
-            .info, .links, .event_links {
+            .info, .links, .event_list {
                 .phone, .email, .website, .location, .web, .graphic, .tech {
                     a, span {
                         font-size: 1.15rem
@@ -307,7 +307,7 @@
                 padding: 30px 40px;
             }
 
-            .info, .links, .event_links {
+            .info, .links, .event_list {
                 .phone, .email, .website, .location, .web, .graphic, .tech {
                     a, span {
                         font-size: 1.3rem
@@ -415,7 +415,7 @@
                 width: 85px;
             }
 
-            .info, .links, .event_links {
+            .info, .links, .event_list {
                 margin-top: 10px;
                 padding: 0 0 10px 0;
                 .phone, .email, .website, .location, .web, .graphic, .tech {
@@ -500,7 +500,7 @@
                 width: 100px;
             }
 
-            .info, .links, .event_links {
+            .info, .links, .event_list {
                 margin-top: 30px;
                 padding: 0 0 10px 0;
     
@@ -593,7 +593,7 @@
                 width: 100px;
             }
 
-            .info, .links, .event_links {
+            .info, .links, .event_list {
                 padding: 0 0 10px 0;
 
                 .phone, .email, .website, .location {
@@ -623,7 +623,7 @@
                 padding: 0;
             }
 
-            .event_links {
+            .event_list {
                 height: 210px;
                 padding-left: 10px;
                 position: relative;
@@ -861,7 +861,7 @@
     .di-footer__main {
 
         .di-footer__info {
-            .event_links {
+            .event_list {
                 
                 .event {
                     max-width: 300px;
