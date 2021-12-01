@@ -29,6 +29,9 @@ class ShortcodeController extends BaseController
         // Services Icon Links Shortcode
         add_shortcode( 'services-links', array( $this, 'services_links' ) );
 
+        // Services Icon Links - Footer Shortcode
+        add_shortcode( 'services-links-footer', array( $this, 'services_links_footer' ) );
+
         // Testimonial Slider Shortcode
         add_shortcode( 'testimonial-slider', array( $this, 'testimonial_slider' ) );
 
@@ -68,6 +71,13 @@ class ShortcodeController extends BaseController
     {
         ob_start();
         require_once( "$this->theme_path/templates/services-links.php" );
+        return ob_get_clean();
+    }
+
+    public function services_links_footer()
+    {
+        ob_start();
+        require_once( "$this->theme_path/templates/services-links-footer.php" );
         return ob_get_clean();
     }
 

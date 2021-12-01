@@ -74,23 +74,7 @@ $subpages = get_pages( array(
             <div class="services">
                 <h3>Services</h3>
                 <div class="footer_bar"></div>
-                <div class="links">
-                    <?php
-                    foreach ( $subpages as $page ):
-                    ?>
-                        <div class="<?php echo $page->post_name ?>">
-                            <div class="icon">
-                                <?php get_template_part( 'img/svg/icon', $page->post_name.'.svg' ); ?>
-                            </div>
-                            <a href="<?php echo esc_url( get_permalink( $page->ID ) ); ?>"><?php echo $page->post_title; ?></a>
-                        </div>
-                        <?php if ( $page->post_name !== 'tech'): ?>
-                        <div class="separator"></div>
-                        <?php endif; ?>
-                    <?php
-                    endforeach;
-                    ?>
-                </div>
+                <?php echo do_shortcode( '[services-links-footer]' ) ?>
             </div>
             <div class="divider_contact"></div>
             <div class="contact_info">
