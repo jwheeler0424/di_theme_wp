@@ -24,7 +24,7 @@ $subpages = get_pages( array(
 echo '<nav class="links">';
 
 foreach ( $subpages as $page ) {
-    echo '<div class="'. $page->post_name .'">';
+    echo '<div class="'. strtok($page->post_name, '-') .'">';
     echo '<div class="icon">';
     get_template_part( 'img/svg/icon', $page->post_name.'.svg' );
     echo '</div>';

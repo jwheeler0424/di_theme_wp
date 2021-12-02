@@ -20,5 +20,6 @@ class Activate
         if ( !get_option( 'di_theme_ci' ) ) {
             update_option( 'di_theme_ci', $default );
         }
+        
     }
 }

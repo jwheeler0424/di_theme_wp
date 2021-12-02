@@ -1,8 +1,8 @@
-<?php
+<?php 
 /**
- *  @package diTheme
+ *  @package diPlugin
  *  ##################################################
- *  |   THEME COMPANY PAGE                           |
+ *  |   EVENTS CUSTOM TEMPLATE                       |
  *  ##################################################
 */
 ?>
@@ -20,7 +20,8 @@
 
                         while ( have_posts() ) : the_post();?>
 
-                            <h2><?php the_title() ?></h2>
+                            <h3><?php the_title() ?></h3>
+                            <p>The Events Section</p>
                             <p><?php the_content() ?></p>
 
                         <?php endwhile;

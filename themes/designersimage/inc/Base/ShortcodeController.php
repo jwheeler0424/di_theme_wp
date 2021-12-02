@@ -26,6 +26,21 @@ class ShortcodeController extends BaseController
         // Event List - Footer Shortcode
         add_shortcode( 'event-list-footer', array( $this, 'event_list_footer' ) );
 
+        // Home Hero Section Shortcode
+        add_shortcode( 'home-hero', array( $this, 'home_hero' ) );
+
+        // Home Hero Section Shortcode
+        add_shortcode( 'home-about', array( $this, 'home_about' ) );
+
+        // Home Hero Section Shortcode
+        add_shortcode( 'home-portfolio', array( $this, 'home_portfolio' ) );
+
+        // Home Hero Section Shortcode
+        add_shortcode( 'home-services', array( $this, 'home_services' ) );
+
+        // Home Hero Section Shortcode
+        add_shortcode( 'home-testimonials', array( $this, 'home_testimonials' ) );
+
         // Portfolio Carousel Shortcode
         add_shortcode( 'portfolio-carousel', array( $this, 'portfolio_carousel' ) );
 
@@ -67,6 +82,41 @@ class ShortcodeController extends BaseController
     {
         ob_start();
         require_once( "$this->theme_path/templates/event-list-footer.php" );
+        return ob_get_clean();
+    }
+
+    public function home_hero($attr, $content)
+    {
+        ob_start();
+        require_once( "$this->theme_path/templates/home-hero.php" );
+        return ob_get_clean();
+    }
+
+    public function home_about($attr, $content)
+    {
+        ob_start();
+        require_once( "$this->theme_path/templates/home-about.php" );
+        return ob_get_clean();
+    }
+
+    public function home_portfolio($attr, $content)
+    {
+        ob_start();
+        require_once( "$this->theme_path/templates/home-portfolio.php" );
+        return ob_get_clean();
+    }
+
+    public function home_services($attr, $content)
+    {
+        ob_start();
+        require_once( "$this->theme_path/templates/home-services.php" );
+        return ob_get_clean();
+    }
+
+    public function home_testimonials($attr, $content)
+    {
+        ob_start();
+        require_once( "$this->theme_path/templates/home-testimonials.php" );
         return ob_get_clean();
     }
 
