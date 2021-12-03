@@ -101,6 +101,10 @@
         margin-top: 15px;
         padding-left: 15px;
         position: relative;
+
+        select#subject {
+            display: none;
+        }
     }
 }
 

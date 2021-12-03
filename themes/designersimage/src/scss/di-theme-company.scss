@@ -5,9 +5,9 @@
     ##################################################
 */
 @use "sass:math";
-@import './modules/reset';
 @import './modules/variables';
 @import './modules/mixins';
+@import './modules/links';
 
 
 @media screen and (min-width: 360px) {

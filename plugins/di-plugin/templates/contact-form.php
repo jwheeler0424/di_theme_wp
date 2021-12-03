@@ -8,7 +8,7 @@
 ?>
 
 <form id="di-contact-form" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
-
+    
     <fieldset data-error="subject">
         <label>Contact Reason</label>
         <select class="field-input" id="subject" name="subject" data-custom required>
@@ -23,6 +23,7 @@
             <option value="New Website">New Website</option>
             <option value="Existing Website">Existing Website</option>
             <option value="Logo Design">Logo Design</option>
+            <option value="Business Cards">Business Cards</option>
             <option value="UI/UX Design">UI/UX Design</option>
             <option value="Windows 11 Upgrade">Windows 11 Upgrade</option>
         </select>

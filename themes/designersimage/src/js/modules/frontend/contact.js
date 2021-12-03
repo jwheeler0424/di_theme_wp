@@ -11,10 +11,14 @@ import { Select } from './formElements';
 import { showModal, closeModal } from './modal';
 
 const contactForm = () => {
+    const url = new URL( window.location.href );
+    const searchParams = new URLSearchParams(url.search);
+    const reason = searchParams.get('r');
 
     const contact = document.querySelector('#di-contact-form');
     const requiredInputs = document.querySelectorAll('[required]');
     const selectElements = document.querySelectorAll('[data-custom]');
+    setSelectValue(reason);
 
     selectElements.forEach(selectElement => {
         new Select(selectElement);
@@ -146,6 +150,60 @@ function resetMessages() {
 function validateEmail(email) {
     let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regex.test(String(email).toLowerCase());
+}
+
+/*
+    ##################################################
+    |   URL PARAMETER SELECT VALUE FUNCTION          |
+    ##################################################
+*/
+function setSelectValue(reason) {
+    const selectElements = document.querySelectorAll('[data-custom]');
+    const subjectSelect = selectElements[0];
+    switch ( reason ) {
+        case 'general':
+            subjectSelect.value = 'General Inquiry';
+            break;
+        case 'quote':
+            subjectSelect.value = 'Get Quote';
+            break;
+        case 'network':
+            subjectSelect.value = 'Network Setup';
+            break;
+        case 'diagnostic':
+            subjectSelect.value = 'Computer Diagnostic';
+            break;
+        case 'upgrade':
+            subjectSelect.value = 'Computer Upgrades';
+            break;
+        case 'backup':
+            subjectSelect.value = 'File Backup & Migration';
+            break;
+        case 'optimize':
+            subjectSelect.value = 'Virus Scan / Cleanup';
+            break;
+        case 'new':
+            subjectSelect.value = 'New Website';
+            break;
+        case 'existing':
+            subjectSelect.value = 'Existing Website';
+            break;
+        case 'logo':
+            subjectSelect.value = 'Logo Design';
+            break;
+        case 'bc':
+            subjectSelect.value = 'Business Cards';
+            break;
+        case 'uiux':
+            subjectSelect.value = 'UI/UX Design';
+            break;           
+        case 'win11':
+            subjectSelect.value = 'Windows 11 Upgrade';
+            break;
+        default:
+            subjectSelect.value = '';
+            break;
+    }
 }
 
 

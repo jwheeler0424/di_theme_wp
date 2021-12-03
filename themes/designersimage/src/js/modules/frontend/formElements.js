@@ -18,7 +18,6 @@ export class Select
         this.optionsCustomElement = document.createElement('ul');
 
         setupCustomElement(this);
-        element.style.display = 'none';
         element.after(this.customElement);
     }
 
