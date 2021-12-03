@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN CUSTOM POST TYPE CONTROLLER           |
+ *  ##################################################
 */
 
 namespace Plugin\Base;

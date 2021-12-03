@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN MEMBERSHIP CONTROLLER                 |
+ *  ##################################################
 */
 
 namespace Plugin\Base;

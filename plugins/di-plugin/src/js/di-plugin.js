@@ -1,4 +1,8 @@
-window.addEventListener("load", () => {
+/**
+ *  @package diPlugin
+*/
+
+ready((event) =>  {
 
     // store tabs variables
     const tabs = document.querySelectorAll('ul.nav-tabs > li');
@@ -24,3 +28,16 @@ window.addEventListener("load", () => {
     }
 
 });
+
+/*
+    ##################################################
+    |   DOCUMENT READY FUNCTION                      |
+    ##################################################
+*/
+function ready(callbackFunction) {
+    if(document.readyState != 'loading') {
+        callbackFunction(event);
+    } else {
+        document.addEventListener("DOMContentLoaded", callbackFunction);
+    }
+}

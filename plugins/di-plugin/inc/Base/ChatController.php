@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN LIVE CHAT CONTROLLER                  |
+ *  ##################################################
 */
 
 namespace Plugin\Base;

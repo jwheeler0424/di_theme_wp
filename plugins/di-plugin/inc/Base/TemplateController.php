@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN CUSTOM TEMPLATE CONTROLLER            |
+ *  ##################################################
 */
 
 namespace Plugin\Base;

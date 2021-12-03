@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN TAXONOMY MANAGER CALLBACK FUNCTIONS   |
+ *  ##################################################
 */
 
 

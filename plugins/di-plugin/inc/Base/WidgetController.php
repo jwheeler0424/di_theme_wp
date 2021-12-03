@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN WIDGET CONTROLLER                     |
+ *  ##################################################
 */
 
 namespace Plugin\Base;

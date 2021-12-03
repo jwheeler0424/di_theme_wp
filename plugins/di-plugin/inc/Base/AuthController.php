@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN AUTHORIZATION CONTROLLER              |
+ *  ##################################################
 */
 
 namespace Plugin\Base;

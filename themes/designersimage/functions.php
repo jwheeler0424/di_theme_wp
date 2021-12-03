@@ -2,7 +2,7 @@
 /**
  *  @package diTheme
  *  ##################################################
- *  |   INITIALIZATION FUNCTIONS                     |
+ *  |   THEME INITIALIZATION FUNCTIONS               |
  *  ##################################################
 */
 

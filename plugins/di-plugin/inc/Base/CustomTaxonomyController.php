@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN CUSTOM TAXONOMY CONTROLLER            |
+ *  ##################################################
 */
 
 namespace Plugin\Base;

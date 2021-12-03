@@ -7,7 +7,6 @@
 */
 ?>
 
-
 <div class="wrap">
     <h1>Taxonomies Manager</h1>
     <?php settings_errors(); ?>

@@ -2,7 +2,7 @@
 /**
  * @package diPlugin
  *  ##################################################
- *  |   PLUGIN PORTFOLIO CALLBACKS                   |
+ *  |   PLUGIN PORTFOLIO MANAGER CALLBACKS           |
  *  ##################################################
 */
 

@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN DEACTIVATION FUNCTION                 |
+ *  ##################################################
 */
 
 namespace Plugin\Base;

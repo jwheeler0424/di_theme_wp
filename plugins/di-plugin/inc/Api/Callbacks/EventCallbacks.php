@@ -2,7 +2,7 @@
 /**
  * @package diPlugin
  *  ##################################################
- *  |   EVENT CALLBACK FUNCTIONS                     |
+ *  |   PLUGIN EVENT MANAGER CALLBACK FUNCTIONS      |
  *  ##################################################
 */
 

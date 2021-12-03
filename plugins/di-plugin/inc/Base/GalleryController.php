@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN GALLERY CONTROLLER                    |
+ *  ##################################################
 */
 
 namespace Plugin\Base;

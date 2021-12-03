@@ -2,7 +2,7 @@
 /**
  * @package diPlugin
  *  ##################################################
- *  |   PLUGIN TESTIMONIAL CALLBACKS                 |
+ *  |   PLUGIN TESTIMONIAL MANAGER CALLBACKS         |
  *  ##################################################
 */
 

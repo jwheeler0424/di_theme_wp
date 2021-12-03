@@ -1,3 +1,12 @@
+<?php
+/**
+ *  @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN USER AUTHORIZATION FORM               |
+ *  ##################################################
+*/
+?>
+
 <form id="di-auth-form" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
     <div class="auth-btn">
         <input class="submit_button" type="button" value="Login" id="di-show-auth-form">

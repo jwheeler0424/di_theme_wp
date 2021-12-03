@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN ENQUEUE FUNCTION                      |
+ *  ##################################################
 */
 
 namespace Plugin\Base;

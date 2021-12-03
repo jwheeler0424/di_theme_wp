@@ -1,7 +1,11 @@
 <?php
 /**
- * @package diPlugin
+ *  @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN ADMIN DASHBOARD CONTROLLER            |
+ *  ##################################################
 */
+
 namespace Plugin\Pages;
 
 use Plugin\Api\SettingsApi;

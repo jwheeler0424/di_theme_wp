@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN ACTIVATION FUNCTION                      |
+ *  ##################################################
 */
 
 namespace Plugin\Base;

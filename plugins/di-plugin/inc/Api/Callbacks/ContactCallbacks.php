@@ -2,7 +2,7 @@
 /**
  * @package diPlugin
  *  ##################################################
- *  |   CONTACT CALLBACK FUNCTIONS                   |
+ *  |   PLUGIN CONTACT MANAGER CALLBACK FUNCTIONS    |
  *  ##################################################
 */
 

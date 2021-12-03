@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN SETTINGS LINKS FUNCTION               |
+ *  ##################################################
 */
 
 namespace Plugin\Base;

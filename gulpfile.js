@@ -48,10 +48,11 @@ const mapThemeURL           = './';
 const jsPluginSRC           = './plugins/di-plugin/src/js/';
 const jsThemeSRC            = './themes/designersimage/src/js/';
 const jsPlugin              = 'di-plugin.js';
+const jsGutenburg           = 'di-gutenburg-blocks.js';
 const jsTheme               = 'di-theme.js';
 const jsThemeAdmin          = 'di-theme-admin.js';
 const jsThemeForms          = 'di-theme-forms.js';
-const jsPluginFiles         = [ jsPlugin ];
+const jsPluginFiles         = [ jsPlugin, jsGutenburg ];
 const jsThemeFiles          = [ jsTheme, jsThemeAdmin, jsThemeForms ];
 const jsPluginURL           = './plugins/di-plugin/assets/';
 const jsThemeURL            = './themes/designersimage/assets/';
@@ -119,7 +120,7 @@ function js(done) {
 		return browserify({
 			entries: [jsPluginSRC + entry]
 		})
-		.transform( babelify, { presets: [ '@babel/preset-env' ] } )
+		.transform( babelify, { presets: [ '@babel/preset-env', '@babel/preset-react' ] } )
 		.bundle()
 		.pipe( source( entry ) )
 		.pipe( rename( {

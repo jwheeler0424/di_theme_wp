@@ -1,6 +1,9 @@
 <?php
 /**
  * @package diPlugin
+ *  ##################################################
+ *  |   PLUGIN SETTINGS API FUNCTIONS                |
+ *  ##################################################
 */
 namespace Plugin\Api;
 
