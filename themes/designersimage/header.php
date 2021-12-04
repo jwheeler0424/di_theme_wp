@@ -20,7 +20,7 @@
     <head>
         <meta charset="<?php bloginfo( 'charset' ); ?>">
         <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1">
-        <title><?php bloginfo( 'name' ); wp_title(); ?></title>
+        <title><?php bloginfo( 'name' ); wp_title('|', true, 'left'); ?></title>
         <meta name="description" content="<?php bloginfo( 'description' ); ?>">
         <meta name="mobile-web-app-capable" content="yes">
         <link rel="profile" href="http://gmpg.org/xfn/11">

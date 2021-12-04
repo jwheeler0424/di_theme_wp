@@ -14,6 +14,9 @@ class ShortcodeController extends BaseController
 {
     public function register()
     {
+        // Background Icon Shortcode
+        add_shortcode( 'background-icon', array( $this, 'background_icon' ) );
+
         // About Company Icon Cards Shortcode
         add_shortcode( 'company-cards', array( $this, 'company_cards' ) );
 
@@ -58,6 +61,13 @@ class ShortcodeController extends BaseController
 
         // Testimonial Form Shortcode
         add_shortcode( 'testimonial-form', array( $this, 'testimonial_form' ) );
+    }
+
+    public function background_icon()
+    {
+        ob_start();
+        require_once( "$this->theme_path/templates/background-icon.php" );
+        return ob_get_clean();
     }
 
     public function company_cards()

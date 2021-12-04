@@ -21,7 +21,7 @@ $subpages = get_pages( array(
     'sort_column' => 'menu_order'
 ) );
 
-echo '<nav class="about-cards">';
+echo '<nav class="company-cards">';
 
 foreach ( $subpages as $page ) {
     echo '<div class="card">';
