@@ -16,7 +16,7 @@ ready((event) => {
     titleHover();
 
     // Adjust Page Height on load and rotate
-    adjustHeight();
+    //adjustHeight();
 
     // Load Top of Page Action
     pageTop();

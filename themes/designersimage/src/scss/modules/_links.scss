@@ -43,6 +43,18 @@
     }
 }
 
+.link-about {
+    color: $di__mix;
+    font-weight: 600;
+
+    &:active {
+        color: $di__grey;
+    }
+    &:hover {
+        color: $di__grey;
+    }
+}
+
 @media screen and (min-width: 540px) {
     .link-home {
         font-weight: 500;

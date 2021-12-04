@@ -9,13 +9,8 @@
 @import './modules/variables';
 @import './modules/mixins';
 
-html {
-    overflow: hidden;
-}
-
 main {
     bottom: 0;
-    height: 100vh;
     left: 0;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -23,11 +18,11 @@ main {
     position: absolute;
     scroll-behavior: smooth;
     top: 0;
-    width: 100vw;
+    width: 100%;
 }
 
 .home-hero {
-    height: calc(100vh - 60px);
+    height: calc(100% - 60px);
     position: relative;
     transform-style: preserve-3d;
     z-index: 0;
@@ -684,7 +679,7 @@ main {
 @media screen and (min-width: 360px) {
     
     .home-hero {
-        height: calc(100vh - 70px);
+        height: calc(100% - 70px);
 
         .bg-title {
             h2 {
@@ -895,7 +890,7 @@ main {
 
 @media screen and (min-width: 410px) {
     .home-hero {
-        height: calc(100vh - 80px);
+        height: calc(100% - 80px);
         
         .bg-title {
             h2 {
@@ -1307,7 +1302,7 @@ main {
 
 @media screen and (min-width: 768px) {
     .home-hero {
-        height: calc(100vh - 80px);
+        height: calc(100% - 80px);
 
         .bg-title {
             h2 {
@@ -1483,8 +1478,8 @@ main {
 
     @media (orientation: landscape) {
         .home-hero {
-            height: calc(100vh - 80px);
-            top: 0;
+            height: calc(100% - 80px);
+            
             .bg-title {
                 h2 {
                     padding: 0;
@@ -1540,7 +1535,7 @@ main {
 
 @media screen and (min-width: 1024px) {
     .home-hero {
-        height: calc(100vh - 80px);
+        height: calc(100% - 80px);
 
         .bg-title {
             h2 {
@@ -1719,8 +1714,8 @@ main {
 @media screen and (min-width: 1280px) {
     
     .home-hero {
-        height: calc(100vh - 80px);
-        top: 0;
+        height: calc(100% - 80px);
+        
         .bg-title {
             h2 {
                 padding: 0;
