@@ -28,7 +28,6 @@
         svg#di_logo {
             height: 40px;
             
-            .cls-1{fill:none;}
             .cls-2{fill: $di__tertiary; @include animate( fill, 250ms );}
             .cls-3{fill: $di__mix; @include animate( fill, 250ms );}
             .cls-4{fill: $di__light; @include animate( fill, 250ms );}

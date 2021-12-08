@@ -73,13 +73,8 @@ class ServicesController extends BaseController
         wp_nonce_field( 'di_service', 'di_service_nonce' );
 
 		$data = get_post_meta( $post->ID, '_di_service_key', true );
-		$group = isset($data['group']) ? $data['group'] : '';
-        $active = isset($data['active']) ? $data['active'] : false;
+		$active = isset($data['active']) ? $data['active'] : false;
 		?>
-		<p>
-			<label class="meta-label" for="di_service_group">Service Group</label>
-			<input type="text" id="di_service_group" name="di_service_group" class="widefat" value="<?php echo esc_attr( $group ); ?>">
-		</p>
         <div class="meta-container">
 			<label class="meta-label w-50 text-left" for="di_service_active">Active</label>
 			<div class="text-right w-50 inline">
@@ -113,7 +108,6 @@ class ServicesController extends BaseController
         }
 
         $data = array(
-			'group' => sanitize_text_field( $_POST['di_service_group'] ),
 			'active' => isset($_POST['di_service_active']) ? 1 : 0
 		);
 		update_post_meta( $post_id, '_di_service_key', $data );
@@ -125,7 +119,7 @@ class ServicesController extends BaseController
         $date = $columns['date'];
         unset( $columns['title'], $columns['date'] );
 
-        $columns['group'] = 'Service Type';
+        $columns['type'] = 'Service Type';
         $columns['title'] = $title;
         $columns['active'] = 'Active';
         $columns['date'] = $date;
@@ -136,12 +130,12 @@ class ServicesController extends BaseController
     public function set_custom_columns_data( $column, $post_id )
     {
         $data = get_post_meta( $post_id, '_di_service_key', true );
-		$group = isset($data['group']) ? $data['group'] : '';
+		$type = get_the_terms( $post_id, 'taxonomy' );
 		$active = isset($data['active']) && $data['active'] === 1 ? '<span class="dashicons dashicons-yes-alt" style="color: rgb(102, 171, 60);"></span>' : '<span class="dashicons dashicons-dismiss" style="color: rgb(172, 60, 61);"></span>';
 
         switch ( $column ) {
-            case 'group':
-                echo $group;
+            case 'type':
+                echo $type;
                 break;
 
             case 'active':
@@ -152,7 +146,7 @@ class ServicesController extends BaseController
 
     public function set_custom_columns_sortable( $columns )
     {
-        $columns['group'] = 'group';
+        $columns['type'] = 'type';
         $columns['active'] = 'active';
         return $columns;
     }

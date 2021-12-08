@@ -21,7 +21,7 @@ $subpages = get_pages( array(
     'sort_column' => 'menu_order'
 ) );
 
-echo '<nav class="services-links">';
+echo '<nav class="service-links">';
 
 foreach ( $subpages as $page ) {
     echo '<a href="'. esc_url( get_permalink( $page->ID ) ) .'" title="'. $page->post_title .'">';

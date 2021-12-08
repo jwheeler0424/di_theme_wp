@@ -93,7 +93,7 @@ class PortfolioController extends BaseController
             'menu_icon' => 'dashicons-portfolio',
             'exclude_from_search' => false,
             'publicly_queryable' => true,
-            'supports' => array( 'title', 'editor', 'thumbnail' ),
+            'supports' => array( 'title', 'editor', 'thumbnail', 'post-formats', 'page-attributes' ),
             'show_in_rest' => true
         );
 
@@ -103,8 +103,8 @@ class PortfolioController extends BaseController
     public function add_meta_boxes()
     {
         add_meta_box (
-            'portfolio_options',
-            'Portfolio Options',
+            'project_options',
+            'Project Options',
             array( $this, 'render_features_box' ),
             'portfolio',
             'side',
@@ -119,18 +119,18 @@ class PortfolioController extends BaseController
 
 		$data = get_post_meta( $post->ID, '_di_portfolio_key', true );
 		$name = isset($data['name']) ? $data['name'] : '';
-        $company = isset($data['company']) ? $data['company'] : '';
+        $url = isset($data['url']) ? $data['url'] : '';
 		$approved = isset($data['approved']) ? $data['approved'] : false;
 		$featured = isset($data['featured']) ? $data['featured'] : false;
 		?>
-		<p>
-			<label class="meta-label" for="di_portfolio_author">Client Name</label>
-			<input type="text" id="di_portfolio_author" name="di_portfolio_author" class="widefat" value="<?php echo esc_attr( $name ); ?>">
-		</p>
-        <p>
-			<label class="meta-label" for="di_portfolio_company">Client Company</label>
-			<input type="text" id="di_portfolio_company" name="di_portfolio_company" class="widefat" value="<?php echo esc_attr( $company ); ?>">
-		</p>
+		<div class="meta-container">
+			<label class="meta-label" for="di_portfolio_name">Client Name</label>
+			<input type="text" id="di_portfolio_name" name="di_portfolio_name" class="widefat" value="<?php echo esc_attr( $name ); ?>">
+        </div>
+        <div class="meta-container">
+			<label class="meta-label" for="di_portfolio_demo">Project Url</label>
+			<input type="url" id="di_portfolio_url" name="di_portfolio_url" class="widefat" value="<?php echo esc_attr( $url ); ?>">
+        </div>
 		<div class="meta-container">
 			<label class="meta-label w-50 text-left" for="di_portfolio_approved">Approved</label>
 			<div class="text-right w-50 inline">
@@ -172,8 +172,8 @@ class PortfolioController extends BaseController
         }
 
         $data = array(
-			'name' => sanitize_text_field( $_POST['di_portfolio_author'] ),
-            'company' => sanitize_text_field( $_POST['di_portfolio_company'] ),
+			'name' => sanitize_text_field( $_POST['di_portfolio_name'] ),
+            'url' => esc_url_raw( $_POST['di_portfolio_url'] ),
 			'approved' => isset($_POST['di_portfolio_approved']) ? 1 : 0,
 			'featured' => isset($_POST['di_portfolio_featured']) ? 1 : 0,
 		);
@@ -184,10 +184,11 @@ class PortfolioController extends BaseController
     {
         $title = $columns['title'];
         $date = $columns['date'];
-        unset( $columns['title'], $columns['date'] );
+        unset( $columns['title'], $columns['date'], $columns['taxonomy-project_type'] );
 
-        $columns['name'] = 'Client Name';
-        $columns['title'] = $title;
+        $columns['name'] = 'Client';
+        $columns['url'] = 'Project URL';
+        $columns['taxonomy-project_type'] = 'Project Type';
         $columns['approved'] = 'Approved';
         $columns['featured'] = 'Featured';
         $columns['date'] = $date;
@@ -198,15 +199,20 @@ class PortfolioController extends BaseController
     public function set_custom_columns_data( $column, $post_id )
     {
         $data = get_post_meta( $post_id, '_di_portfolio_key', true );
+        $client = get_the_title( $post_id );
 		$name = isset($data['name']) ? $data['name'] : '';
-        $company = isset($data['company']) ? $data['company'] : '';
+        $url = isset($data['url']) ? $data['url'] : '';
 		$approved = isset($data['approved']) && $data['approved'] === 1 ? '<span class="dashicons dashicons-yes-alt" style="color: rgb(102, 171, 60);"></span>' : '<span class="dashicons dashicons-dismiss" style="color: rgb(172, 60, 61);"></span>';
 		$featured = isset($data['featured']) && $data['featured'] === 1 ? '<span class="dashicons dashicons-yes-alt" style="color: rgb(102, 171, 60);"></span>' : '<span class="dashicons dashicons-dismiss" style="color: rgb(172, 60, 61);"></span>';
 
         switch ( $column ) {
             case 'name':
-                $company_insert = ($company) ? '<em>'. $company .'</em><br />' : '';
-                echo '<strong>'. $name .'</strong><br />'. $company_insert;
+                $name_insert = ($name) ? '<em>'. $name .'</em><br />' : '';
+                echo '<a href="'.get_edit_post_link( $post_id ).'"><strong>'. $client .'</strong></a><br />'. $name;
+                break;
+
+            case 'url':
+                echo '<a href="' . $url . '" target="_blank" rel="noopener noreferrer">'. $url .'</a>';
                 break;
 
             case 'approved':
@@ -221,7 +227,8 @@ class PortfolioController extends BaseController
 
     public function set_custom_columns_sortable( $columns )
     {
-        $columns['name'] = 'name';
+        $columns['name'] = 'title';
+        $columns['taxonomy-project_type'] = 'taxonomy-project_type';
         $columns['approved'] = 'approved';
         $columns['featured'] = 'featured';
         return $columns;

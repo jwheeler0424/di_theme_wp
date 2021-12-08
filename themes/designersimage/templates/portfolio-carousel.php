@@ -71,34 +71,54 @@ echo '<div class="portfolio-carousel">';
         get_template_part( 'img/svg/icon', 'arrowLeft.svg' );
     echo '</button>';
     ?>
-    <div class="card front">1
+    <div class="card front">
+        <div class="card-img">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/home_page.png" />
+        </div>
         <div class="card-info">
             <h4>Company Name</h4>
             <span>Website</span>
+            <a href="#" class="project-link">View Project</a>
         </div>
     </div>
-    <div class="card right">2
+    <div class="card right">
+        <div class="card-img">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/logo.jpg" />
+        </div>
         <div class="card-info">
             <h4>Company Title</h4>
             <span>Logo</span>
+            <a href="#" class="project-link">View Project</a>
         </div>
     </div>
-    <div class="card back hidden">3
+    <div class="card back hidden">
+        <div class="card-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/fwapper_logo.jpg" />
+        </div>
         <div class="card-info">
             <h4>Company Name</h4>
             <span>Web Application</span>
+            <a href="#" class="project-link">View Project</a>
         </div>
     </div>
-    <div class="card back hidden">4
+    <div class="card back hidden">
+        <div class="card-img">
+            <?php get_template_part( 'img/svg/logo', 'di_logo.svg' ); ?>
+        </div>
         <div class="card-info">
             <h4>Company Title</h4>
             <span>Website</span>
+            <a href="#" class="project-link">View Project</a>
         </div>
     </div>
-    <div class="card left">5
+    <div class="card left">
+        <div class="card-img">
+            <?php get_template_part( 'img/svg/logo', 'di_logo.svg' ); ?>
+        </div>
         <div class="card-info">
             <h4>Company Name</h4>
             <span>Logo</span>
+            <a href="#" class="project-link">View Project</a>
         </div>
     </div>
     <?php

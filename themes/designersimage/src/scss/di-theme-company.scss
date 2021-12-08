@@ -668,15 +668,6 @@ section {
 @media screen and (min-width: 1024px) {
     nav.company-cards {
         justify-content: space-evenly;
-        padding: 1rem 0 6rem;
-    
-        .card {
-            flex: 0 25%;
-            margin: 6rem 5rem;
-        }
-    }
-
-    nav.company-cards {
         padding: 1rem 0 2rem;
     
         .card {

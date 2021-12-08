@@ -5,24 +5,21 @@
  *  |   SERVICES CUSTOM TEMPLATE                     |
  *  ##################################################
 */
+
 ?>
 
 <?php get_header(); ?>
 
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
-            <div class="container">
-                <div class="company-links">
-                    
-                </div>
+            <div class="container services">
                 <?php
                     if ( have_posts() ):
 
                         while ( have_posts() ) : the_post();?>
 
-                            <h3><?php the_title() ?></h3>
-                            <p>The Services Section</p>
-                            <p><?php the_content() ?></p>
+                            <h2><?php the_title() ?></h2>
+                            <?php the_content() ?>
 
                         <?php endwhile;
 

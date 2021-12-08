@@ -50,11 +50,14 @@ class ShortcodeController extends BaseController
         // Portfolio Carousel Shortcode
         add_shortcode( 'portfolio-carousel', array( $this, 'portfolio_carousel' ) );
 
+        // Services Icon Cards Shortcode
+        add_shortcode( 'service-cards', array( $this, 'service_cards' ) );
+
         // Services Icon Links Shortcode
-        add_shortcode( 'services-links', array( $this, 'services_links' ) );
+        add_shortcode( 'service-links', array( $this, 'service_links' ) );
 
         // Services Icon Links - Footer Shortcode
-        add_shortcode( 'services-links-footer', array( $this, 'services_links_footer' ) );
+        add_shortcode( 'service-links-footer', array( $this, 'service_links_footer' ) );
 
         // Testimonial Slider Shortcode
         add_shortcode( 'testimonial-slider', array( $this, 'testimonial_slider' ) );
@@ -147,17 +150,24 @@ class ShortcodeController extends BaseController
         return ob_get_clean();
     }
 
-    public function services_links()
+    public function service_cards()
     {
         ob_start();
-        require_once( "$this->theme_path/templates/services-links.php" );
+        require_once( "$this->theme_path/templates/service-cards.php" );
         return ob_get_clean();
     }
 
-    public function services_links_footer()
+    public function service_links()
     {
         ob_start();
-        require_once( "$this->theme_path/templates/services-links-footer.php" );
+        require_once( "$this->theme_path/templates/service-links.php" );
+        return ob_get_clean();
+    }
+
+    public function service_links_footer()
+    {
+        ob_start();
+        require_once( "$this->theme_path/templates/service-links-footer.php" );
         return ob_get_clean();
     }
 

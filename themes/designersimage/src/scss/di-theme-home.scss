@@ -303,9 +303,9 @@ main {
         align-items: center;
         box-sizing: content-box;
         display: flex;
-        height: 200px;
+        height: 240px;
         justify-content: space-between;
-        padding-bottom: 120px;
+        padding-bottom: 80px;
         position: relative;
         transform-style: preserve-3d;
 
@@ -337,69 +337,107 @@ main {
         }
 
         .card {
+            align-items: center;
             background: white;
             border: solid 1px $di__grey-light;
-            border-radius: 15px;
-            box-shadow: 0 0 6px rgba(0, 0, 0, .25);
-            color: $di__grey-light;
-            display: block;
-            font-size: 4rem;
-            font-weight: 600;
-            height: 200px;
-            left: calc(50% - 135px / 2);
-            line-height: 200px;
+            box-shadow: 0 0 3px rgba(0, 0, 0, .05);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            left: calc(50% - 150px / 2);
             opacity: 1;
             position: absolute;
             text-align: center;
-            width: 135px;
+            width: 150px;
             z-index: 3;
             @include animate( all, 500ms );
 
+            .card-img {
+                height: 150px;
+                position: relative;
+                width: 100%;
+
+                img {
+                    height: 100%;
+                    left: 0;
+                    object-fit: cover;
+                    object-position: top left;
+                    overflow: hidden;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                }
+
+                svg#di_logo {
+                    bottom: 0;
+                    left: 0;
+                    object-fit: cover;
+                    position: absolute;
+                    top: 0;
+    
+                    .cls-2{fill: $di__tertiary;}
+                    .cls-3{fill: $di__mix;}
+                    .cls-4{fill: $di__light;}
+                    .cls-5{fill: $di__blue;}
+                    .cls-6{fill: $di__dark;}
+                }
+            }
+
             .card-info {
-                bottom: -20px;
-                color: $di__grey;
                 display: flex;
                 flex-direction: column;
-                height: auto;
-                line-height: 1.6;
+                line-height: 1.2;
+                padding: 1rem;
                 position: relative;
                 text-align: center;
                 width: 100%;
                 @include animate( opacity, 300ms );
     
                 h4 {
+                    color: $di__primary;
                     font-size: 1.1rem;
                     font-weight: 700;
-                    margin: 0;
-                    padding: 0;
+                    padding: .5rem 1rem 0;
                     position: relative;
                     text-transform: uppercase;
                 }
                 span {
+                    color: $di__grey;
                     font-size: .9rem;
                     font-weight: 400;
-                    margin: 0;
-                    padding: 0;
+                    padding: .5rem 1rem 0;
                     position: relative;
+                    text-transform: lowercase;
+                }
+
+                a.project-link {
+                    background: $di__secondary;
+                    border: solid 1px $di__primary;
+                    border-radius: 1.5rem;
+                    color: white;
+                    margin: 1rem .5rem;
+                    padding: 1rem .5rem;
+                    text-align: center;
+                    text-decoration: none;
                     text-transform: lowercase;
                 }
             }
 
             &.back {
-                opacity: .5;
+                opacity: .3;
                 transform: scale(.5);
                 z-index: 1;
                 @include animate( all, 500ms );
             }
 
             &.left {
-                opacity: .5;
+                opacity: .3;
                 transform: translateX(-70px) scale(.75);
                 z-index: 2;
             }
 
             &.right {
-                opacity: .5;
+                opacity: .3;
                 transform: translateX(70px) scale(.75);
                 z-index: 2;
             }
@@ -1593,7 +1631,7 @@ main {
                 width: 25%;
     
                 svg {
-                    height: 80px;
+                    height: 70px;
                     margin-bottom: 20px;
                 }
                 span {
@@ -2045,7 +2083,7 @@ main {
                 width: unset;
     
                 svg {
-                    height: 80px;
+                    height: 60px;
                     margin-bottom: 20px;
                 }
                 span {

@@ -42,7 +42,7 @@ $subpages = get_pages( array(
             <div class="services">
                 <h3>Services</h3>
                 <div class="footer_bar"></div>
-                <?php echo do_shortcode( '[services-links-footer]' ) ?>
+                <?php echo do_shortcode( '[service-links-footer]' ) ?>
             </div>
             <div class="divider_contact"></div>
             <div class="contact_info">

@@ -9,17 +9,423 @@
 @import './modules/mixins';
 @import './modules/links';
 
+h2 {
+    color: $di__primary;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.6;
+    padding: 4rem 0;
+    position: relative;
+    text-align: center;
+    text-transform: lowercase;
+    width: 100%;
+
+    &::after {
+        border-bottom: solid 1px $di__primary;
+        bottom: -5px;
+        content: '';
+        display: block;
+        height: 1px;
+        margin: 0 auto;
+        position: relative;
+        width: 105px;
+    }
+}
+
+p {
+    color: $di__grey-dark;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    padding-bottom: 2rem;
+    position: relative;
+    text-align: center;
+    width: 100%;
+
+    strong {
+        color: $di__primary;
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding-bottom: .5rem;
+        position: relative;
+        text-align: center;
+        text-transform: lowercase;
+        width: 100%;
+    }
+}
+
+nav.service-cards {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 6rem 0 2rem;
+
+    .card {
+        flex: 0 70%;
+        margin-bottom: 12rem;
+        padding: 1.6rem;
+        position: relative;
+        z-index: 1;
+
+        &::before {
+            background: $di__secondary;
+            border: solid 1px $di__primary;
+            bottom: 0;
+            content: '';
+            display: block;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: rotate(-10deg);
+            width: 100%;
+            z-index: -1;
+            @include animate(transform, 250ms);
+        }
+        &::after {
+            background: white;
+            border: solid 1px $di__grey-light;
+            bottom: 0;
+            content: '';
+            display: block;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .icon {
+            align-items: center;
+            background: $di__secondary;
+            border: solid 1px $di__primary;
+            border-radius: 50%;
+            display: flex;
+            height: 4.5rem;
+            justify-content: center;
+            margin: 1rem auto 0;
+            position: relative;
+            width: 4.5rem;
+            @include animate(all, 250ms);
+
+            svg {
+                fill: white;
+                height: 25px;
+                filter: drop-shadow(0 0 .1rem $di__primary);
+                @include animate(all, 250ms);
+            }
+        }
+
+        h3 {
+            color: $di__primary;
+            cursor: default;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 2rem 0;
+            text-align: center;
+            text-transform: lowercase;
+            user-select: none;
+            width: 100%;
+        }
+
+        p {
+            font-size: 1rem;
+            cursor: default;
+            user-select: none;
+        }
+
+        a {
+            background: $di__secondary;
+            border: solid 1px $di__primary;
+            border-radius: 1.5rem;
+            color: white;
+            display: block;
+            font-weight: 400;
+            margin: 0 auto 1rem;
+            padding: 1rem 2rem;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            text-shadow: $di__primary 0 0 .1rem;
+            text-transform: uppercase;
+            width: fit-content;
+            @include animate(all, 250ms);
+
+            &:active {
+                background: $di__light;
+            }
+            &:hover {
+                background: $di__light;
+            }
+        }
+    }
+}
+
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.service-links {
+    align-items: center;
+    display: flex;
+    flex: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: .2rem 2rem 0 0;
+    position: relative;
+
+    a {
+        color: $di__primary;
+        display: flex;
+        flex-direction: column;
+        font-size: .7rem;
+        margin-bottom: 15px;
+        text-align: center;
+        text-decoration: none;
+
+        svg {
+            fill: $di__light;
+            height: 20px;
+            margin-bottom: .5rem;
+        }
+
+        &:active {
+            svg {
+                fill: $di__primary;
+            }
+        }
+        &:hover {
+            svg {
+                fill: $di__primary;
+            }
+        }
+    }
+}
+
+section {
+    border-left: solid 1px $di__primary;
+    flex: 1;
+    margin-bottom: 6rem;
+    min-height: 70vh;
+    overflow: hidden;
+    padding-left: 2rem;
+    position: relative;
+
+    p {
+        color: $di__grey-dark;
+        font-size: 1rem;
+        line-height: 1.2;
+        padding-bottom: 2rem;
+        text-align: left;
+
+        strong {
+            text-align: left;
+            text-transform: unset;
+        }
+    }
+
+    svg {
+        fill: $di__light;
+        left: -100%;
+        opacity: .15;
+        position: absolute;
+        top: 0;
+        width: 200%;
+        z-index: -1;
+    }
+}
 
 @media screen and (min-width: 360px) {
+    h2 {
+        font-size: 1.8rem;
+        padding: 6rem 0 4rem;
     
+        &::after {
+            width: 150px;
+        }
+    }
+
+    .services {
+        h2 {
+            padding-top: 4rem;
+        }
+    }
+
+    p {
+        font-size: 1.3rem;
+        padding-bottom: 4rem;
+    
+        strong {
+            font-size: 1.4rem;
+        }
+    }
+
+    nav.service-cards {
+        padding: 6rem 0 2rem;
+    
+        .card {
+            flex: 0 60%;
+            margin-bottom: 12rem;
+            padding: 1.6rem;
+            position: relative;
+            z-index: 1;
+    
+            h3 {
+                color: $di__primary;
+                font-size: 1.2rem;
+                font-weight: 500;
+                margin: 2rem 0;
+                text-align: center;
+                text-transform: lowercase;
+                width: 100%;
+            }
+    
+            p {
+                font-size: 1rem;
+                padding-bottom: 2rem;
+            }
+    
+            
+        }
+    }
+
+    .service-links {
+        margin: .2rem 2rem 0 0;
+    
+        a {
+            color: $di__primary;
+            display: flex;
+            flex-direction: column;
+            font-size: .9rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-decoration: none;
+    
+            svg {
+                fill: $di__light;
+                height: 25px;
+                margin-bottom: .5rem;
+            }
+    
+            &:active {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+            &:hover {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+        }
+    }
+
+    section {
+        padding-left: 2rem;
+    
+        p {
+            color: $di__grey-dark;
+            font-size: 1.1rem;
+        }
+    
+        svg {
+            left: -100%;
+            width: 200%;
+        }
+    }
 }
 
 @media screen and (min-width: 375px) {
+    section {
+        padding-left: 3rem;
     
+        p {
+            color: $di__grey-dark;
+            font-size: 1.3rem;
+        }
+    
+        svg {
+            left: -100%;
+            width: 200%;
+        }
+    }
 }
 
 @media screen and (min-width: 410px) {
+    h2 {
+        font-size: 2.1rem;
+        padding: 6rem 0 4rem;
     
+        &::after {
+            width: 150px;
+        }
+    }
+
+    p {
+        font-size: 1.4rem;
+        padding-bottom: 4rem;
+    
+        strong {
+            font-size: 1.6rem;
+        }
+    }
+
+    nav.service-cards {
+        padding: 6rem 0 2rem;
+    
+        .card {
+            flex: 0 55%;
+            margin-bottom: 12rem;
+            padding: 1.6rem;
+            position: relative;
+            z-index: 1;
+    
+            .icon {
+                align-items: center;
+                background: $di__secondary;
+                border: solid 1px $di__primary;
+                border-radius: 50%;
+                display: flex;
+                height: 5rem;
+                justify-content: center;
+                margin: 1rem auto 0;
+                position: relative;
+                width: 5rem;
+    
+                svg {
+                    fill: white;
+                    height: 30px;
+                    filter: drop-shadow(0 0 .1rem $di__primary);
+                }
+            }
+    
+            h3 {
+                color: $di__primary;
+                font-size: 1.4rem;
+                font-weight: 500;
+                margin: 2.5rem 0;
+                text-align: center;
+                text-transform: lowercase;
+                width: 100%;
+            }
+    
+            p {
+                font-size: 1.1rem;
+                padding-bottom: 2.5rem;
+            }
+    
+            a {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 425px) {
@@ -27,29 +433,512 @@
 }
 
 @media screen and (min-width: 540px) {
+    nav.service-cards {
+        padding: 1rem 0 2rem;
     
+        .card {
+            flex: 0 33%;
+            margin: 6rem 1rem;
+            padding: 1.6rem;
+    
+            .icon {
+                height: 4.5rem;
+                margin: 1rem auto 0;
+                width: 4.5rem;
+    
+                svg {
+                    height: 25px;
+                }
+            }
+    
+            h3 {
+                font-size: 1.2rem;
+                font-weight: 500;
+                margin: 2rem 0;
+            }
+    
+            p {
+                font-size: 1rem;
+            }
+    
+            a {
+                font-size: 1.1rem;
+                margin: 0 auto 1rem;
+                padding: 1rem 2rem;
+            }
+        }
+    }
+
+    section {
+        padding-left: 3rem;
+    
+        p {
+            color: $di__grey-dark;
+            font-size: 1.3rem;
+        }
+    
+        svg {
+            left: -60%;
+            width: 120%;
+        }
+    }
 }
 
 @media screen and (min-width: 768px) {
+    h2 {
+        font-size: 3.2rem;
+        padding: 8rem 0 6rem;
     
+        &::after {
+            width: 250px;
+        }
+    }
+
+    nav.service-cards {
+        padding: 1rem 0 2rem;
+    
+        .card {
+            flex: 0 30%;
+            margin: 6rem 2rem;
+            padding: 1.6rem;
+    
+            .icon {
+                height: 4.5rem;
+                margin: 1rem auto 0;
+                width: 4.5rem;
+    
+                svg {
+                    height: 25px;
+                }
+            }
+    
+            h3 {
+                font-size: 1.2rem;
+                font-weight: 500;
+                margin: 2rem 0;
+            }
+    
+            p {
+                font-size: 1rem;
+            }
+    
+            a {
+                font-size: 1.1rem;
+                margin: 0 auto 1rem;
+                padding: 1rem 2rem;
+            }
+        }
+    }
+
+    .service-links {
+        margin: .2rem 2rem 0 0;
+    
+        a {
+            font-size: 1rem;
+            margin-bottom: 3rem;
+    
+            svg {
+                fill: $di__light;
+                height: 35px;
+                margin-bottom: .7rem;
+            }
+    
+            &:active {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+            &:hover {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+        }
+    }
+
+    section {
+        min-height: 65vh;
+        padding-left: 3rem;
+    
+        p {
+            color: $di__grey-dark;
+            font-size: 1.4rem;
+        }
+    
+        svg {
+            left: -53.2%;
+            width: 106.4%;
+        }
+    }
+}
+
+@media screen and (min-width: 820px) {
+
+    .service-links {
+        margin: .2rem 3rem 0 0;
+    
+        a {
+            font-size: 1rem;
+            margin-bottom: 3rem;
+    
+        }
+    }
+
+    section {
+        min-height: 58vh;
+        padding-left: 4rem;
+    
+        p {
+            color: $di__grey-dark;
+            font-size: 1.4rem;
+        }
+    
+        svg {
+            left: -50%;
+            width: 100%;
+        }
+    }
 }
 
 @media screen and (min-width: 1024px) {
+    nav.service-cards {
+        justify-content: space-evenly;
+        padding: 1rem 0 2rem;
     
+        .card {
+            flex: 0 30%;
+            margin: 6rem 2rem;
+            padding: 1.6rem;
+    
+            .icon {
+                height: 4.5rem;
+                margin: 1rem auto 0;
+                width: 4.5rem;
+    
+                svg {
+                    height: 25px;
+                }
+            }
+    
+            h3 {
+                font-size: 1.2rem;
+                font-weight: 500;
+                margin: 2rem 0;
+            }
+    
+            p {
+                font-size: 1rem;
+            }
+    
+            a {
+                font-size: 1.1rem;
+                margin: 0 auto 1rem;
+                padding: 1rem 2rem;
+            }
+        }
+    }
+
+    .service-links {
+        margin: .2rem 5rem 0 2rem;
+    
+        a {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+    
+            svg {
+                fill: $di__light;
+                height: 45px;
+                margin-bottom: .7rem;
+            }
+    
+            &:active {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+            &:hover {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+        }
+    }
+
+    section {
+        min-height: 55vh;
+        padding: 0 6rem 0 6rem;
+    
+        p {
+            color: $di__grey-dark;
+            font-size: 1.5rem;
+        }
+    
+        svg {
+            left: -45%;
+            width: 90%;
+        }
+    }
 }
 
 @media screen and (min-width: 1280px) {
+    h2 {
+        font-size: 3.2rem;
+        padding: 6rem 0 4rem;
+    }
+
+    .services h2 {
+        padding-bottom: 6rem;
+    }
+
+    p {
+        padding-bottom: 3rem;
+    }
+
+    nav.service-cards {
+        padding: 0 0 6rem;
     
+        .card {
+            flex: 0 15%;
+            margin: 6rem;
+
+            &::before {
+                transform: rotate(0deg);
+            }
+
+            .icon {
+                background: white;
+                border: solid 1px $di__primary;
+
+                svg {
+                    fill: $di__secondary;
+                    filter: unset;
+                }
+            }
+
+            p {
+                padding-bottom: 2.5rem;
+            }
+
+            a {
+                background: white;
+                border: solid 1px $di__primary;
+                color: $di__secondary;
+
+                &:active {
+                    background: $di__light;
+                }
+                &:hover {
+                    background: $di__light;
+                }
+            }
+
+            &:hover {
+                &::before {
+                    transform: rotate(-10deg);
+                }
+    
+                .icon {
+                    background: $di__secondary;
+                    border: solid 1px $di__primary;
+    
+                    svg {
+                        fill: white;
+                        filter: drop-shadow(0 0 .1rem $di__primary);
+                    }
+                }
+    
+                a {
+                    background: $di__secondary;
+                    border: solid 1px $di__primary;
+                    color: white;
+                    text-shadow: $di__primary 0 0 .1rem;
+    
+                    &:active {
+                        background: $di__light;
+                    }
+                    &:hover {
+                        background: $di__light;
+                    }
+                }
+            }
+        }
+    }
+
+    .service-links {
+        margin: .2rem 5rem 0 15rem;
+    
+        a {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+    
+            svg {
+                fill: $di__light;
+                height: 20px;
+                margin-bottom: .7rem;
+            }
+    
+            &:active {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+            &:hover {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+        }
+    }
+
+    section {
+        min-height: 62vh;
+        padding: 0 15rem 0 6rem;
+    
+        p {
+            color: $di__grey-dark;
+            font-size: 1.5rem;
+        }
+    
+        svg {
+            left: -20%;
+            width: 43.5%;
+        }
+    }
 }
 
 @media screen and (min-width: 1440px) {
+    nav.service-cards {
+        
+        .card {
+            flex: 0 14%;
+            margin: 6rem;
+        }
+    }
 
+    .service-links {
+        margin: .2rem 5rem 0 25rem;
+    
+        a {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+    
+            svg {
+                fill: $di__light;
+                height: 20px;
+                margin-bottom: .7rem;
+            }
+    
+            &:active {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+            &:hover {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+        }
+    }
+
+    section {
+        min-height: 62vh;
+        padding: 0 25rem 0 6rem;
+    
+        p {
+            color: $di__grey-dark;
+            font-size: 1.5rem;
+        }
+    
+        svg {
+            left: -15%;
+            width: 39%;
+        }
+    }
 }
 
 @media screen and (min-width: 1600px) {
+    .service-links {
+        margin: .2rem 5rem 0 25rem;
+    
+        a {
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+    
+            svg {
+                fill: $di__light;
+                height: 25px;
+                margin-bottom: .7rem;
+            }
+    
+            &:active {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+            &:hover {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+        }
+    }
 
+    section {
+        min-height: 60vh;
+        padding: 0 25rem 0 6rem;
+    
+        p {
+            color: $di__grey-dark;
+            font-size: 1.5rem;
+        }
+    
+        svg {
+            left: -20%;
+            width: 45%;
+        }
+    }
 }
 
 @media screen and (min-width: 1920px) {
+    .service-links {
+        margin: .2rem 5rem 0 25rem;
+    
+        a {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+    
+            svg {
+                fill: $di__light;
+                height: 30px;
+                margin-bottom: .7rem;
+            }
+    
+            &:active {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+            &:hover {
+                svg {
+                    fill: $di__primary;
+                }
+            }
+        }
+    }
 
+    section {
+        min-height: 57vh;
+        padding: 0 25rem 0 6rem;
+    
+        p {
+            color: $di__grey-dark;
+            font-size: 1.5rem;
+        }
+    
+        svg {
+            left: -20%;
+            width: 50%;
+        }
+    }
 }

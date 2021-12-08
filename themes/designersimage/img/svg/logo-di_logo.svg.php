@@ -1,6 +1,5 @@
 <svg id="di_logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 429.65 439.04">
     <g id="di_box">
-        <rect class="cls-1" x="97.98" y="102.98" width="233.09" height="233.09" transform="translate(-92.39 215.99) rotate(-45)"/>
         <polygon class="cls-2" points="379.34 219.52 214.52 384.34 214.83 422.63 417.93 219.52 379.34 219.52"/>
         <polygon class="cls-3" points="379.34 219.52 417.93 219.52 214.83 16.42 214.52 54.7 379.34 219.52"/>
         <polygon class="cls-4" points="49.7 219.52 11.72 219.52 214.83 422.63 214.52 384.34 49.7 219.52"/>
