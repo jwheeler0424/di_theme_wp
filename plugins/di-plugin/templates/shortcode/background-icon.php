@@ -1,8 +1,8 @@
 <?php
 /**
- *  @package diTheme
+ *  @package diPlugin
  *  ##################################################
- *  |   THEME COMPANY PAGE BACKGROUND ICON           |
+ *  |   PLUGIN COMPANY PAGE BACKGROUND ICON          |
  *  ##################################################
 */
 $slug = basename(get_permalink());

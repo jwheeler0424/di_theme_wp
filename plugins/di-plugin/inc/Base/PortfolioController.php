@@ -34,14 +34,6 @@ class PortfolioController extends BaseController
 
         $this->setShortcodePage();
 
-        add_shortcode( 'portfolio-carousel', array( $this, 'portfolio_carousel' ) );
-    }
-
-    public function portfolio_carousel()
-    {
-        ob_start();
-        require_once( "$this->plugin_path/templates/portfolio-carousel.php" );
-        return ob_get_clean();
     }
 
     public function setShortcodePage()

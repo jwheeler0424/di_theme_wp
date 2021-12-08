@@ -21,7 +21,6 @@ final class Init
             Base\Enqueue::class,
             Base\Cleanup::class,
             Base\ContactInfoController::class,
-            Base\ShortcodeController::class,
             Base\CustomFunctions::class,
             Base\ThemeSupport::class,
             Base\WalkerNavPrimary::class

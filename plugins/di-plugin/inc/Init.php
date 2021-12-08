@@ -20,6 +20,7 @@ final class Init
             Pages\Dashboard::class,
             Base\Enqueue::class,
             Base\SettingsLinks::class,
+            Base\ShortcodeController::class,
             Base\GutenburgController::class,
             Base\CustomPostTypeController::class,
 			Base\CustomTaxonomyController::class,

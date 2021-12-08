@@ -37,7 +37,7 @@ class BaseController
             'portfolio_manager' => 'Activate Portfolio Manager',
             'services_manager' => 'Activate Services Manager',
             'templates_manager' => 'Activate Custom Templates',
-            // 'login_manager' => 'Activate Ajax Login/Signup',
+            'login_manager' => 'Activate Ajax Login/Signup',
             // 'membership_manager' => 'Activate Membership Manager',
             // 'chat_manager' => 'Activate Chat Manager'
         ];
@@ -49,4 +49,30 @@ class BaseController
 
 		return isset( $option[ $key ] ) ? $option[ $key ] : false;
 	}
+
+    // Finds and returns a matching error message for the given error code.
+    public function get_error_message( $error_code )
+    {
+        switch ( $error_code ) {
+            case 'empty_username':
+                return __( 'You need to enter your username to login.', 'di-plugin' );
+            
+            case 'empty_password':
+                return __( 'You need to enter a password to login.', 'di-plugin' );
+            
+            case 'invalid_username':
+                return __( 'We don\'t have any users with that username.', 'di-plugin' );
+            
+            case 'incorrect_password':
+                $err = __( 'The password you entered was invalid. <a href="%s">Did you forget your password?</a>', 'di-plugin' );
+                return sprintf( $err, wp_lostpassword_url() );
+
+            default:
+                break;
+        }
+
+        return __( 'An unknown error occurred. Please try again later.', 'di-plugin' );
+    }
+
+    
 }

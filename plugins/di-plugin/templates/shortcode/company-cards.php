@@ -1,8 +1,8 @@
 <?php
 /**
- *  @package diTheme
+ *  @package diPlugin
  *  ##################################################
- *  |   THEME COMPANY PAGE CARDS                     |
+ *  |   PLUGIN COMPANY PAGE CARDS                    |
  *  ##################################################
 */
 

@@ -1,8 +1,8 @@
 <?php
 /**
- *  @package diTheme
+ *  @package diPlugin
  *  ##################################################
- *  |   THEME COMMUNITY EVENTS LIST - FOOTER         |
+ *  |   PLUGIN COMMUNITY EVENTS LIST - FOOTER        |
  *  ##################################################
 */
 

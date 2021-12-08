@@ -1,8 +1,8 @@
 <?php
 /**
- *  @package diTheme
+ *  @package diPlugin
  *  ##################################################
- *  |   THEME CONTACT MESSAGE FORM                   |
+ *  |   PLUGIN CONTACT MESSAGE FORM                  |
  *  ##################################################
 */
 ?>

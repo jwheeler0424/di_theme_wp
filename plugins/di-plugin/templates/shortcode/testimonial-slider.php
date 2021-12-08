@@ -1,8 +1,8 @@
 <?php
 /**
- *  @package diTheme
+ *  @package diPlugin
  *  ##################################################
- *  |   THEME TESTIMONIAL SLIDER                    |
+ *  |   PLUGIN TESTIMONIAL SLIDER                    |
  *  ##################################################
 */
 

@@ -1,13 +1,13 @@
 <?php
 /**
- *  @package diTheme
+ *  @package diPlugin
  *  ##################################################
- *  |   THEME HOME TESTIMONIALS SECTION              |
+ *  |   PLUGIN HOME PORTFOLIO SECTION                |
  *  ##################################################
 */
 ?>
 
-<section class="home-testimonials">
+<section class="home-portfolio">
     <div class="top-left">
         <?php get_template_part( 'img/svg/bg', 'topLeft.svg' ); ?>
     </div>

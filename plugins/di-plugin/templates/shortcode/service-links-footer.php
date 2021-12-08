@@ -1,8 +1,8 @@
 <?php
 /**
- *  @package diTheme
+ *  @package diPlugin
  *  ##################################################
- *  |   THEME SERVICES PAGE CARDS                     |
+ *  |   PLUGIN SERVICES PAGE LINKS - FOOTER          |
  *  ##################################################
 */
 
@@ -21,17 +21,18 @@ $subpages = get_pages( array(
     'sort_column' => 'menu_order'
 ) );
 
-echo '<nav class="service-cards">';
+echo '<nav class="links">';
 
 foreach ( $subpages as $page ) {
-    echo '<div class="card">';
-        echo '<div class="icon">';
-            get_template_part( 'img/svg/icon', $page->post_name.'.svg' );
-        echo '</div>';
-        echo '<h3>'. $page->post_title .'</h3>';
-        echo '<p>'. $page->post_excerpt .'</p>';
-        echo '<a href="'. esc_url( get_permalink( $page->ID ) ) .'" title="Learn More">Learn More</a>';
+    echo '<div class="'. strtok($page->post_name, '-') .'">';
+    echo '<div class="icon">';
+    get_template_part( 'img/svg/icon', $page->post_name.'.svg' );
     echo '</div>';
+    echo '<a href="'. esc_url( get_permalink( $page->ID ) ) .'" title="'. $page->post_title .'">'.$page->post_title .'</a>';
+    echo '</div>';
+    if ( $page->post_name !== 'tech') {
+        echo '<div class="separator"></div>';
+    }
 }
 
 echo '</nav>';

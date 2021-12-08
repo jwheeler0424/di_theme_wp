@@ -1,8 +1,8 @@
 <?php
 /**
- *  @package diTheme
+ *  @package diPlugin
  *  ##################################################
- *  |   THEME SERVICES PAGE LINKS                    |
+ *  |   PLUGIN SERVICES PAGE CARDS                   |
  *  ##################################################
 */
 
@@ -21,12 +21,17 @@ $subpages = get_pages( array(
     'sort_column' => 'menu_order'
 ) );
 
-echo '<nav class="service-links">';
+echo '<nav class="service-cards">';
 
 foreach ( $subpages as $page ) {
-    echo '<a href="'. esc_url( get_permalink( $page->ID ) ) .'" title="'. $page->post_title .'">';
+    echo '<div class="card">';
+        echo '<div class="icon">';
             get_template_part( 'img/svg/icon', $page->post_name.'.svg' );
-    echo '<span>'. $page->post_title .'</span> </a>';
+        echo '</div>';
+        echo '<h3>'. $page->post_title .'</h3>';
+        echo '<p>'. $page->post_excerpt .'</p>';
+        echo '<a href="'. esc_url( get_permalink( $page->ID ) ) .'" title="Learn More">Learn More</a>';
+    echo '</div>';
 }
 
 echo '</nav>';

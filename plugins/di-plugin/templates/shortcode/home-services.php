@@ -1,8 +1,8 @@
 <?php
 /**
- *  @package diTheme
+ *  @package diPlugin
  *  ##################################################
- *  |   THEME HOME SERVICES SECTION                  |
+ *  |   PLUGIN HOME SERVICES SECTION                 |
  *  ##################################################
 */
 ?>

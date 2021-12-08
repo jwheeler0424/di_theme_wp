@@ -1,8 +1,8 @@
 <?php
 /**
- *  @package diTheme
+ *  @package diPlugin
  *  ##################################################
- *  |   THEME HOME HERO SECTION                      |
+ *  |   PLUGIN HOME HERO SECTION                     |
  *  ##################################################
 */
 ?>

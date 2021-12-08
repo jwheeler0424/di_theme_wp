@@ -1,8 +1,8 @@
 <?php
 /**
- *  @package diTheme
+ *  @package diPlugin
  *  ##################################################
- *  |   THEME PORTFOLIO CAROUSEL                     |
+ *  |   PLUGIN PORTFOLIO CAROUSEL                    |
  *  ##################################################
 */
 
