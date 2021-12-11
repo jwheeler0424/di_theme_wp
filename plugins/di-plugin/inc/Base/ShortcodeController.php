@@ -208,7 +208,7 @@ class ShortcodeController extends BaseController
         }
 
         // Render the login form using template
-        return $this->get_template_html( 'login-form', $attr );
+        return $this->get_shortcode_template_html( 'login-form', $attr );
     }
 
     /**
@@ -243,7 +243,7 @@ class ShortcodeController extends BaseController
         }
 
         // Render the login form using template
-        return $this->get_template_html( 'password-lost-form', $attr );
+        return $this->get_shortcode_template_html( 'password-lost-form', $attr );
     }
 
     /**
@@ -291,7 +291,7 @@ class ShortcodeController extends BaseController
             return __( 'Invalid password reset link.', 'di-plugin' );
         }
 
-        return $this->get_template_html( 'password-reset-form', $attr );
+        return $this->get_shortcode_template_html( 'password-reset-form', $attr );
     }
 
     public function portfolio_carousel($attr, $content = null)
@@ -339,7 +339,7 @@ class ShortcodeController extends BaseController
         }
 
         // Render the register form using template
-        return $this->get_template_html( 'register-form', $attr );
+        return $this->get_shortcode_template_html( 'register-form', $attr );
 
     }
 

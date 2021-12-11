@@ -321,6 +321,83 @@ class AuthController extends BaseController
 
     }
 
+    public function submit_reset_password()
+    {
+        if( !DOING_AJAX || !check_ajax_referer( 'ajax-reset-password-nonce', 'di_reset_password' )) {
+            return $this->return_json( 'no-ajax' );
+        }
+
+        // Sanitize the data
+        $pass1 = sanitize_text_field( $_POST['pass1'] );
+        $pass2 = sanitize_text_field( $_POST['pass2'] );
+        $rp_key = sanitize_text_field( $_POST['rp_key'] );
+        $rp_login = sanitize_text_field( $_POST['rp_login'] );
+
+        $user = check_password_reset_key( $rp_key, $rp_login );
+
+        if ( !$user || is_wp_error( $user ) ) {
+            if ( $user && $user->get_error_code() === 'expired_key' ) {
+                echo json_encode(
+                    array(
+                        'status' => 'error',
+                        'message' => [ 'expiredkey' ]
+                    )
+                );
+            } else {
+                echo json_encode(
+                    array(
+                        'status' => 'error',
+                        'message' => [ 'invalidkey' ]
+                    )
+                );
+            }
+            exit;
+        }
+
+        if ( !isset( $pass1 ) || !isset( $pass2 ) ) {
+            echo json_encode(
+                array(
+                    'status' => 'error',
+                    'message' => [ 'invalid-request' ]
+                )
+            );
+            exit;
+        }
+
+        if ( empty( $pass1 ) ) {
+            // Password is empty
+            echo json_encode(
+                array(
+                    'status' => 'error',
+                    'message' => [ 'password_reset_empty' ]
+                )
+            );
+            exit;
+        }
+
+        if ( $pass1 != $pass2 ) {
+            // Password don't match
+            echo json_encode(
+                array(
+                    'status' => 'error',
+                    'message' => [ 'password_reset_mismatch' ]
+                )
+            );
+            exit;
+        }
+
+        // Parameter check OK, reset password
+        reset_password( $user, $pass1 );
+        echo json_encode(
+            array(
+                'status' => 'success',
+                'message' => [ 'Password reset successful! Redirecting...' ]
+            )
+        );
+        exit;
+
+    }
+
     public function return_json($status)
     {
         $return = array(

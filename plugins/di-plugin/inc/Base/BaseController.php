@@ -121,7 +121,7 @@ class BaseController
      * 
      * @return string                   The contents of the template.
      */
-    protected function get_template_html( $template_name, $attr = null )
+    protected function get_shortcode_template_html( $template_name, $attr = null )
     {
         if ( !$attr ) {
             $attr = array();
@@ -129,11 +129,11 @@ class BaseController
         
         ob_start();
 
-        do_action( 'di_login_before_' . $template_name );
+        do_action( 'di_shortcode_before_' . $template_name );
 
         require_once ( "$this->plugin_path/templates/shortcode/" . $template_name . '.php' );
 
-        do_action( 'di_login_after_' . $template_name );
+        do_action( 'di_shortcode_after_' . $template_name );
 
         $html = ob_get_contents();
         ob_end_clean();

@@ -64,6 +64,10 @@ export class Error
                 message: 'Incorrect username and/or password.'
             },
             {
+                code: 'invalid_request',
+                message: 'You must provide a password with matching confirmation.'
+            },
+            {
                 code: 'invalid_username',
                 message: 'We don\'t have any users with that username.'
             },

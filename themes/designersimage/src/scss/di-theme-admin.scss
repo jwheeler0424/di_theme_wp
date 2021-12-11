@@ -6,3 +6,9 @@
 */
 
 @import './modules/checkbox';
+
+.ui-toggle {
+    input[type="checkbox"] {
+        display: none;
+    }
+}

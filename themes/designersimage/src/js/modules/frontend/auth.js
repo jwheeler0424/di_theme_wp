@@ -214,8 +214,11 @@ export const resetPasswordForm = () => {
 
         // Collect all the form data
         const data = {
-            email: e.target.querySelector('[name="email"]').value,
-            nonce: e.target.querySelector('[name="di_lost_password"]').value
+            pass1:  e.target.querySelector('[name="pass1"]').value,
+            pass2:  e.target.querySelector('[name="pass2"]').value,
+            rp_key: e.target.querySelector('[name="rp_key"]').value,
+            rp_login: e.target.querySelector('[name="rp_login"]').value,
+            nonce: e.target.querySelector('[name="di_reset_password"]').value
         }
 
         // Validate Data
@@ -250,7 +253,7 @@ export const resetPasswordForm = () => {
                 }
                 
                 authInfo.innerHTML = response.message;
-                window.location = baseUrl + 'member-login/?checkmail=confirm';
+                window.location = baseUrl + 'member-login/?password=changed';
 
             } )
 
