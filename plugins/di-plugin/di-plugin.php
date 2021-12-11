@@ -1,35 +1,25 @@
 <?php
 /**
- *  @package diPlugin
  *  ##################################################
- *  |   PLUGIN INDEX                                 |
+ *  |   DESIGNER'S IMAGE PLUGIN                      |
  *  ##################################################
-*/
-
-/*
-    Plugin Name: Designer's Image
-    Plugin URI: http://designersimage.io
-    Description: A completely custom plugin to handle all activities for Designer's Image
-    Version: 1.0.0
-    Author: Jonathan D. Wheeler
-    Author URI: http://designersimage.io
-    License: GPLv3
-    Text Domain: di-plugin
-*/
-
-/*
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * 
+ *  @package    diPlugin
+ *  @author     Jonathan D. Wheeler <jonathan@designersimage.io>
+ *  @copyright  2021 Designer's Image
+ *  @license    GPL-3.0
+ * 
+ *  @wordpress-plugin
+ *  Plugin Name: Designer's Image
+ *  Plugin URI: http://designersimage.io/diPlugin/
+ *  Description: A completely custom plugin to handle all activities for Designer's Image
+ *  Version: 1.0.0
+ *  Author: Jonathan D. Wheeler
+ *  Author URI: http://designersimage.io
+ *  Text Domain: di-plugin
+ *  License: GPLv3
+ *  License URI: https://www.gnu.org/licenses/gpl-3.0.txt
+ *  Update URI: http://designersimage.io/diPlugin/
 */
 
 // If this file is called directly, abort!

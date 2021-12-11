@@ -23,6 +23,11 @@ class AdminCallbacks extends BaseController
 		return require_once( "$this->plugin_path/templates/cpt.php" );
 	}
 
+	public function adminAPI()
+	{
+		return require_once( "$this->plugin_path/templates/api.php" );
+	}
+
 	public function adminTaxonomy()
 	{
 		return require_once( "$this->plugin_path/templates/taxonomy.php" );

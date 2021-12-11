@@ -1,8 +1,8 @@
 <?php
 /**
- *  @package diPlugin
+ *  @package diTheme
  *  ##################################################
- *  |   PLUGIN CONTACT INFORMATION PAGE              |
+ *  |   THEME CONTACT INFORMATION PAGE               |
  *  ##################################################
 */
 ?>

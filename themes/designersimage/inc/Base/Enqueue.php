@@ -50,14 +50,23 @@ class Enqueue extends BaseController
                 wp_enqueue_style( 'di-theme-services', $this->theme_url . '/assets/di-theme-services.min.css', array(), '1.0.0', 'all' );
                 break;
 
-            case 'testimonial':
             case 'contact':
+            case 'member-login':
+            case 'member-password-lost':
+            case 'member-password-reset':
+            case 'testimonial':
                 wp_enqueue_style( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.css', array(), '1.0.0', 'all' );
                 wp_enqueue_script( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.js', array(), '1.0.0', true );
                 break;
 
             case 'home':
                 wp_enqueue_style( 'di-theme-home', $this->theme_url . '/assets/di-theme-home.min.css', array(), '1.0.0', 'all' );
+                break;
+
+            case 'member-register':
+                wp_enqueue_script( 'di-theme-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), null, true );
+                wp_enqueue_style( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.css', array(), '1.0.0', 'all' );
+                wp_enqueue_script( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.js', array(), '1.0.0', true );
                 break;
             
             default:

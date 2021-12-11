@@ -12,7 +12,6 @@
     <h1>Custom Post Type Manager</h1>
     <?php settings_errors(); ?>
 
-    
     <ul class="nav nav-tabs">
         <li class="<?php echo !isset($_POST["edit_post"]) ? 'active' : '' ?>"><a href="#tab-1" id="tab-1">Custom Post Types</a></li>
         <li class="<?php echo isset($_POST["edit_post"]) ? 'active' : '' ?>">

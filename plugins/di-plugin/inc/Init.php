@@ -24,6 +24,7 @@ final class Init
             Base\GutenburgController::class,
             Base\CustomPostTypeController::class,
 			Base\CustomTaxonomyController::class,
+			Base\APIKeysController::class,
 			// Base\WidgetController::class,
             Base\ContactController::class,
 			Base\TestimonialController::class,

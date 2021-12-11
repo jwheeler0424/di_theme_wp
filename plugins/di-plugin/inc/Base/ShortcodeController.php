@@ -50,9 +50,18 @@ class ShortcodeController extends BaseController
         // Login Form shortcode
         add_shortcode( 'login-form', array( $this, 'login_form' ) );
 
+        // Password Lost Form shortcode
+        add_shortcode( 'password-lost-form', array( $this, 'password_lost_form' ) );
+
+        // Password Reset Form shortcode
+        add_shortcode( 'password-reset-form', array( $this, 'password_reset_form' ) );
+
         // Portfolio Carousel Shortcode
         add_shortcode( 'portfolio-carousel', array( $this, 'portfolio_carousel' ) );
 
+        // Register Form shortcode
+        add_shortcode( 'register-form', array( $this, 'register_form' ) );
+        
         // Services Icon Cards Shortcode
         add_shortcode( 'service-cards', array( $this, 'service_cards' ) );
 
@@ -146,24 +155,32 @@ class ShortcodeController extends BaseController
         return ob_get_clean();
     }
 
-    public function login_Form($attr, $content = null)
+    /**
+     * A shortcode for rendering the login form
+     *
+     * @param array  $attr      Shortcode attributes
+     * @param string $content   The text content for the shortcode - NOT USED
+     * 
+     * @return string           The shortcode output
+     */
+    public function login_form($attr, $content = null)
     {
-        // Parse shortcode attributes
-        $default_attr = [ 'show_title' => false ];
-        $attr = shortcode_atts( $default_attr, $attr );
-        $show_title = $attr['show_title'];
-
-        if ( is_user_logged_in() ) {
-            return __( 'You are already signed in.', 'di-plugin' );
-        }
-
         // Pass the redirect paramenter to the WordPress login functionality:
         // by default, don't specify a redirect, but if a valid redirect URL
         // has been passed as a request parameter, use it.
-        $attr['redirect'] = '';
+        $redirect = '';
         if ( isset( $_REQUEST['redirect_to'] ) ) {
-            $attr['redirect'] = wp_validate_redirect( $_REQUEST['redirect_to'], $attr['redirect'] );
+            $redirect = wp_validate_redirect( $_REQUEST['redirect_to'], $redirect );
         }
+
+        // Check if the user just registered
+        $registered = isset( $_REQUEST['registered'] );
+
+        // Check if the user just requested a new password
+        $lost_password_sent = isset( $_REQUEST['checkmail'] ) && $_REQUEST['checkmail'] == 'confirm';
+
+        // Check if user just updated password
+        $password_updated = isset( $_REQUEST['password'] ) && $_REQUEST['password'] == 'changed';
 
         // Error Messages
         $errors = array();
@@ -174,16 +191,107 @@ class ShortcodeController extends BaseController
                 $errors[] = $this->get_error_message( $code );
             }
         }
-        $attr['errors'] = $errors;
 
-        ob_start();
-        do_action( 'personalize_login_before_login-form' );
-        require_once( "$this->plugin_path/templates/shortcode/login-form.php" );
-        do_action( 'personalize_login_after_login-form' );
+        // Parse shortcode attributes
+        $default_attr = array( 
+            'errors'                => $errors,
+            'lost_password_sent'    => $lost_password_sent,
+            'password_updated'      => $password_updated,
+            'redirect'              => $redirect,
+            'registered'            => $registered,
+            'show_title'            => false
+        );
+        $attr = shortcode_atts( $default_attr, $attr );
 
-        $html = ob_get_contents();
-        ob_end_clean();
-        return $html;
+        if ( is_user_logged_in() ) {
+            return __( 'You are already signed in.', 'di-plugin' );
+        }
+
+        // Render the login form using template
+        return $this->get_template_html( 'login-form', $attr );
+    }
+
+    /**
+     * A shortcode for rendering the form used to initiate the password reset
+     *
+     * @param array  $attr      Shortcode attributes
+     * @param string $content   The text content for the shortcode - NOT USED
+     * 
+     * @return string           The shortcode output
+     */
+    public function password_lost_form($attr, $content = null)
+    {
+        // Error Messages
+        $errors = array();
+        if ( isset( $_REQUEST['errors'] ) ) {
+            $error_codes = explode( ',', $_REQUEST['errors'] );
+
+            foreach ( $error_codes as $code ) {
+                $errors[] = $this->get_error_message( $code );
+            }
+        }
+
+        // Parse shortcode attributes
+        $default_attr = array( 
+            'errors'                => $errors,
+            'show_title'            => false
+        );
+        $attr = shortcode_atts( $default_attr, $attr );
+
+        if ( is_user_logged_in() ) {
+            return __( 'You are already signed in.', 'di-plugin' );
+        }
+
+        // Render the login form using template
+        return $this->get_template_html( 'password-lost-form', $attr );
+    }
+
+    /**
+     * A shortcode for endering the form used to reset a user's password
+     *
+     * @param array     $attr       Shortcode attributes
+     * @param string    $content    The text content for shortcode - NOT USED
+     * 
+     * @return string   The shortcode output
+     */
+    public function password_reset_form($attr, $content = null)
+    {
+        // Error Messages
+        $errors = array();
+        if ( isset( $_REQUEST['error'] ) ) {
+            $error_codes = explode( ',', $_REQUEST['error'] );
+
+            foreach ( $error_codes as $code ) {
+                $errors[] = $this->get_error_message( $code );
+            }
+        }
+
+        // Login & Key URL parameters
+        $login = '';
+        $key = '';
+        if ( isset( $_REQUEST['login'] ) && isset( $_REQUEST['key'] ) ) {
+            $login = $_REQUEST['login'];
+            $key = $_REQUEST['key'];
+        }
+
+        // Parse shortcode attributes
+        $default_attr = array( 
+            'errors'        => $errors,
+            'key'           => $key,
+            'login'         => $login,
+            'show_title'    => false
+        );
+        $attr = shortcode_atts( $default_attr, $attr );
+
+        if ( is_user_logged_in() ) {
+            return __( 'You are already signed in.', 'di-plugin' );
+        }
+
+        if ( !isset($_REQUEST['login']) || !isset($_REQUEST['key']) ) {
+            return __( 'Invalid password reset link.', 'di-plugin' );
+        }
+
+        return $this->get_template_html( 'password-reset-form', $attr );
     }
 
     public function portfolio_carousel($attr, $content = null)
@@ -191,6 +299,48 @@ class ShortcodeController extends BaseController
         ob_start();
         require_once( "$this->plugin_path/templates/shortcode/portfolio-carousel.php" );
         return ob_get_clean();
+    }
+
+    /**
+     * A shortcode for rendering the registration form
+     *
+     * @param array  $attr      Shortcode attributes
+     * @param string $content   The text content for the shortcode - NOT USED
+     * 
+     * @return string           The shortcode output
+     */
+    public function register_form($attr, $content = null)
+    {
+        // Retrieve reCAPTCHA Key
+        $keys = get_option( 'di_plugin_api' ) ?: array();
+
+        // Retrieve possible errors from request parameters
+        $errors = array();
+        if ( isset( $_REQUEST['register-errors'] ) ) {
+            $error_codes = explode( ',', $_REQUEST['register-errors'] );
+
+            foreach ( $error_codes as $error_code ) {
+                $errors[] = $this->get_error_message( $error_code );
+            }
+        }
+
+        // Parse shortcode attributes
+        $default_attr = array( 
+            'errors'        => $errors,
+            'reCAPTCHA'     => ($keys['reCAPTCHA']) ? $keys['reCAPTCHA']['site_key'] : '',
+            'show_title'    => false
+        );
+        $attr = shortcode_atts( $default_attr, $attr );
+
+        if ( is_user_logged_in() ) {
+            return __( 'You are already signed in.', 'di-plugin' );
+        } elseif ( !get_option( 'users_can_register' ) ) {
+            return __( 'Registering new users is currently not allowed.', 'di-plugin' );
+        }
+
+        // Render the register form using template
+        return $this->get_template_html( 'register-form', $attr );
+
     }
 
     public function service_cards($attr, $content = null)

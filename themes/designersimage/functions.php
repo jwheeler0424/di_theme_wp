@@ -1,10 +1,13 @@
 <?php
 /**
+ *  ##################################################
+ *  |   DESIGNER'S IMAGE THEME FUNCTIONS             |
+ *  ##################################################
+ * 
  *  @package diTheme
- *  ##################################################
- *  |   THEME INITIALIZATION FUNCTIONS               |
- *  ##################################################
+ *  @since diTheme 1.0
 */
+
 
 // If this file is called directly, abort!
 defined( 'ABSPATH' ) or die( 'You\'re not allowed to access this file. Run, you fools.' );

@@ -2,23 +2,23 @@
 /**
  * @package diPlugin
  *  ##################################################
- *  |   PLUGIN CPT MANAGER CALLBACK FUNCTIONS        |
+ *  |   PLUGIN API KEYS MANAGER CALLBACK FUNCTIONS   |
  *  ##################################################
 */
 
 
 namespace Plugin\Api\Callbacks;
 
-class CptCallbacks
+class APIKeysCallbacks
 {
-    public function cptSectionManager()
+    public function apiSectionManager()
     {
-        echo 'Manage your Custom Post Types.';
+        echo 'Manage your API Keys.';
     }
 
-    public function cptSanitize( $input )
+    public function apiSanitize( $input )
     {
-        $output = get_option( 'di_plugin_cpt' );
+        $output = get_option( 'di_plugin_api' );
 
         if ( isset($_POST["remove"]) ) {
             unset($output[$_POST["remove"]]);
@@ -27,16 +27,16 @@ class CptCallbacks
         }
 
         if ( count($output) == 0 ) {
-            $output[$input['post_type']] = $input;
+            $output[$input['key_type']] = $input;
 
             return $output;
         }
         
         foreach ($output as $key => $value) {
-            if ( $input['post_type'] === $key ) {
+            if ( $input['key_type'] === $key ) {
                 $output[$key] = $input;
             } else {
-                $output[$input['post_type']] = $input;
+                $output[$input['key_type']] = $input;
             }
         }
         
