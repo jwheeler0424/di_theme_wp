@@ -12,7 +12,6 @@
 
 .auth-main {
     background: none;
-    min-height: calc(100vh - 60px);
     overflow-x: hidden;
     position: relative;
     width: 100%;
@@ -39,7 +38,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        padding-bottom: 60px;
+        padding-bottom: 40px;
     }
     
     h2 {
@@ -47,8 +46,8 @@
         flex: 1 100%;
         font-size: 1.5rem;
         font-weight: 400;
-        margin: 40px 0 5px 0;
-        padding-left: 58px;
+        margin: 40px auto 5px;
+        text-align: center;
         text-transform: lowercase;
         width: 100%;
 
@@ -58,28 +57,45 @@
             content: '';
             display: block;
             height: 1px;
-            left: 0;
+            margin: 0 auto;
             position: relative;
             width: 105px;
         }
     }
-    
-    #di-auth-form {
-        flex: 1;
-        margin-top: 15px;
-        padding-left: 15px;
-        position: relative;
 
-        select#subject {
-            display: none;
+    .auth-info {
+        color: $di__grey;
+        flex: 1 100%;
+        font-style: italic;
+        margin: 1.5rem 0 0 0;
+        padding: 0 1.5rem;
+        position: relative;
+        text-align: center;
+        width: 100%;
+
+        &.error {
+            color: $di__red;
         }
+    }
+    #di-login-form {
+        flex: 1 100%;
+        margin: 1.5rem 0 .5rem;
+        padding: 0 1.5rem;
+        position: relative;
+        width: 100%;
+    }
+    .auth-links {
+        flex: 1 100%;
+        padding: 0 1.5rem;
+        width: 100%;
+        text-align: center;
     }
 }
 
 
 
 @media screen and (min-width: 320px) {
-    .contact-main {
+    .auth-main {
         .bg {
             bottom: 0;
             left: -100%;
@@ -97,32 +113,11 @@
                 overflow: hidden;
             }
         }
-        
-        h2 {
-            padding-left: 77px;
-        }
-
-        .contact-links {
-            margin-right: 20px;
-
-            a {
-                margin-bottom: 20px;
-        
-                svg {
-                    height: 25px;
-                }
-            }
-        }
-
-
-        #di-contact-form {
-            padding-left: 20px;
-        }
     }
 }
 
 @media screen and (min-width: 360px) {
-    .contact-main {
+    .auth-main {
         .bg {
             bottom: 0;
             left: -120%;
@@ -136,27 +131,17 @@
         
         h2 {
             font-size: 1.8rem;
-            margin: 40px 0 7px 0;
-            padding-left: 97px;
 
             &::after {
                 width: 125px;
             }
         }
 
-        .contact-links {
-            margin: 20px 30px 0 0;
-        }
-
-        #di-contact-form {
-            margin-top: 20px;
-            padding-left: 30px;
-        }
     }
 }
 
 @media screen and (min-width: 375px) {
-    .contact-main {
+    .auth-main {
         .bg {
             bottom: 0;
             left: -120%;
@@ -166,12 +151,15 @@
             width: 420%;
             z-index: -1;
         }
+
+        .container {
+            padding-bottom: 6rem;
+        }
     }
 }
 
 @media screen and (min-width: 410px) {
-    .contact-main {
-        min-height: calc(100vh - 80px);
+    .auth-main {
 
         .bg {
             bottom: 0;
@@ -188,7 +176,7 @@
 }
 
 @media screen and (min-width: 425px) {
-    .contact-main {
+    .auth-main {
         .bg {
             bottom: 0;
             left: -120%;
@@ -199,10 +187,13 @@
             z-index: -1;
         }
 
+        .container {
+            padding-bottom: 8rem;
+        }
+
         h2 {
             font-size: 2.2rem;
             margin: 60px 0 10px 0;
-            padding-left: 105px;
 
             &::after {
                 border-width: 1.5px;
@@ -211,27 +202,15 @@
             }
         }
 
-        .contact-links {
-            margin: 25px 30px 0 0;
-        
-            a {
-                display: block;
-                margin-bottom: 25px;
-        
-                svg {
-                    height: 30px;
-                }
-            }
-        }
-        
-        #di-contact-form {
-            margin-top: 25px;
+        #di-login-form {
+            margin-top: 2.5rem;
         }
     }
 }
 
 @media screen and (min-width: 540px) {
-    .contact-main {
+    .auth-main {
+
         .bg {
             bottom: 0;
             left: -70%;
@@ -245,37 +224,30 @@
         h2 {
             font-size: 2.8rem;
             margin: 60px 0 10px 0;
-            padding-left: 97px;
 
             &::after {
                 width: 200px;
             }
         }
-
-        .contact-links {
-            margin: 30px 30px 0 0;
         
-            a {
-                display: block;
-                margin-bottom: 20px;
-        
-                svg {
-                    height: 25px;
-                }
-            }
-        }
-        
-        #di-contact-form {
+        #di-login-form {
             display: flex;
+            flex: 0 280px;
+            flex-direction: column;
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin: 30px auto 0;
+            width: 280px;
+
+            fieldset {
+                width: 100%;
+            }
         }
     }
 }
 
 @media screen and (min-width: 768px) {
     
-    .contact-main {
+    .auth-main {
         min-height: calc(100vh - 417px);
         position: relative;
         width: 100%;
@@ -292,20 +264,19 @@
     
         h2 {
             font-size: 2.8rem;
-            margin: 55px 0 10px 0;
-            padding-left: 97px;
+            margin: 80px 0 20px 0;
         }
-    
-        .contact-links {
-            margin: 30px 30px 0 0;
-        
-            a {
-                display: block;
-                margin-bottom: 20px;
-        
-                svg {
-                    height: 25px;
-                }
+
+        #di-login-form {
+            display: flex;
+            flex: 0 280px;
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin: 30px auto 0;
+            width: 280px;
+
+            fieldset {
+                width: 100%;
             }
         }
 
@@ -314,39 +285,31 @@
 }
 
 @media screen and (min-width: 1024px) {
-    .contact-main {
+    .auth-main {
         min-height: calc(100vh - 502px);
         position: relative;
         width: 100%;
     
         h2 {
             font-size: 4.8rem;
-            margin: 100px 0 20px 0;
-            padding-left: 270px;
+            margin: 100px 0 40px 0;
 
             &::after {
                 width: 335px;
             }
         }
 
-        .contact-links {
-            flex: 0;
-            margin: 40px 60px 0 100px;
-            width: unset;
-        
-            a {
-                display: block;
-                margin-bottom: 27px;
-        
-                svg {
-                    height: 35px;
-                }
+        #di-login-form {
+            display: flex;
+            flex: 0 380px;
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin: 30px auto 0;
+            width: 380px;
+
+            fieldset {
+                width: 100%;
             }
-        }
-        
-        #di-contact-form {
-            margin-top: 40px;
-            padding: 0 100px 0 60px;
         }
 
     }
@@ -355,8 +318,7 @@
 
 @media screen and (min-width: 1280px) {
     
-    .contact-main {
-        min-height: calc(100vh - 80px);
+    .auth-main {
         position: relative;
         overflow: hidden;
         width: 100%;
@@ -379,32 +341,15 @@
         h2 {
             font-size: 3.6rem;
             margin: 60px 0 20px 0;
-            padding-left: 325px;
 
             &::after {
                 width: 250px;
             }
         }
-    
-        .contact-links {
-            flex: 0;
-            margin: 40px 60px 0 160px;
-            width: unset;
         
-            a {
-                display: block;
-                margin-bottom: 25px;
-        
-                svg {
-                    height: 30px;
-                }
-            }
-        }
-        
-        #di-contact-form {
-            flex: 0 55%;
+        #di-login-form {
+            flex: 0 270px;
             margin-top: 40px;
-            padding: 0 100px 0 60px;
         }
 
     }
@@ -412,7 +357,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-    .contact-main {
+    .auth-main {
         .bg {
             bottom: unset;
             left: -5%;
@@ -422,69 +367,40 @@
             width: 110%;
             z-index: -1;
         }
-
-        h2 {
-            padding-left: 340px;
-        }
-
-        .contact-links {
-            
-            a {
-                display: block;
-                margin-bottom: 20px;
-        
-                svg {
-                    height: 25px;
-                }
-            }
-        }
-        
-        #di-contact-form {
-            padding: 0 100px 0 80px;
-        }
     }
 }
 
 @media screen and (min-width: 1600px) {
-    .contact-main {
+    .auth-main {
         
         h2 {
             margin: 100px 0 10px 0;
         }
 
-        .contact-links {
-            margin: 40px 60px 0 160px;
-        }
-
         
         #di-contact-form {
             margin-top: 40px;
-            padding: 0 100px 0 80px;
         }
     }
 }
 
 @media screen and (min-width: 1920px) {
-    .contact-main {
+    .auth-main {
         
 
         h2 {
             font-size: 4.2rem;
             margin: 120px 0 10px 0;
-            // padding-left: 80px;
 
             &::after {
                 width: 300px;
             }
         }
-
-        .contact-links {
-            margin: 60px 60px 0 160px;
-        }
         
-        #di-contact-form {
+        #di-login-form {
+            flex: 0 320px;
             margin-top: 60px;
-            padding: 0 100px 0 80px;
+            width: 320px;
         }
     }
 }

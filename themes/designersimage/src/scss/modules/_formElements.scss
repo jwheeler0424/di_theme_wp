@@ -272,6 +272,55 @@ fieldset {
     }
 }
 
+fieldset.custom-checkbox {
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    input[type="checkbox"] + label svg {
+        cursor: pointer;
+        height: 1.5rem;
+        margin-right: .7rem;
+        width: 1.5rem;
+
+        g {
+            stroke: $di__light;
+            stroke-width: 2;
+        }
+
+        path {
+            fill: none;
+        }
+    }
+
+    input[type="checkbox"]:checked + label svg {
+        cursor: pointer;
+        height: 1.5rem;
+        margin-right: .7rem;
+        width: 1.5rem;
+
+        g {
+            stroke: $di__light;
+            stroke-width: 2;
+        }
+
+        path {
+            fill: $di__primary;
+        }
+    }
+
+    label {
+        align-items: center;
+        color: $di__primary;
+        display: flex;
+        font-size: 1rem;
+        justify-content: flex-start;
+        line-height: 1.5rem;
+        margin-bottom: 0;
+        user-select: none;
+    }
+}
+
 @media screen and (min-width: 360px) {
     .di-select-container {
         font-size: 1.2rem;
@@ -334,6 +383,12 @@ fieldset {
             left: 1.1rem;
             position: absolute;
             width: 100%;
+        }
+    }
+    fieldset.custom-checkbox {
+    
+        label {
+            font-size: 1.2rem;
         }
     }
 }
