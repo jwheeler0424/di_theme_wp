@@ -19,6 +19,7 @@ class TemplateController extends BaseController
         if ( !$this->activated( 'templates_manager' ) ) return;
 
         $this->templates = array(
+            'page-templates/auth-tpl.php' => 'User Authorization Page',
             'page-templates/company-tpl.php' => 'Company Page',
             'page-templates/events-tpl.php' => 'Events Page',
             'page-templates/portfolio-tpl.php' => 'Portfolio Page',

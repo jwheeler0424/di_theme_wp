@@ -20,8 +20,7 @@ class AuthController extends BaseController
     {
         if ( !$this->activated( 'auth_manager' ) ) return;
 
-        $this->create_auth_pages();
-
+        add_action( 'admin_menu', array( $this, 'create_auth_pages' ) );
         add_action( 'admin_menu', array( $this, 'set_user_roles' ) );
         add_action( 'wp_ajax_nopriv_login', array( $this, 'submit_login' ) );
         add_action( 'wp_ajax_nopriv_register', array( $this, 'submit_registration' ) );
@@ -43,7 +42,7 @@ class AuthController extends BaseController
         // Create definitions for each page needed
         $this->page_definitions = [
             'client-account'    => [
-                'title'         => __( 'Your Account', 'di-plugin' ),
+                'title'         => __( 'Client Account', 'di-plugin' ),
                 'content'       => '[client-info]'
             ],
             'member-login'    => [
@@ -51,7 +50,7 @@ class AuthController extends BaseController
                 'content'       => '[login-form]'
             ],
             'member-account'  => [
-                'title'         => __( 'Your Account', 'di-plugin' ),
+                'title'         => __( 'Member Account', 'di-plugin' ),
                 'content'       => '[member-info]'
             ],
             'member-register' => [
@@ -71,27 +70,23 @@ class AuthController extends BaseController
         foreach ( $this->page_definitions as $slug => $page ) {
 
             // Check that the page doesn't already exist
-            $page_query = get_posts(
-                array(
-                    'name'      => $slug,
-                    'post_type' => 'page'
-                )
-            );
+            $page_query = get_page_by_path($slug);
 
             if ( !$page_query ) {
 
                 // Add the page using the page definitions array
-                wp_insert_post (
-                    [
-                        'post_content'      => $page['content'],
-                        'post_name'         => $slug,
-                        'post_title'        => $page['title'],
-                        'post_status'       => 'publish',
-                        'post_type'         => 'page',
-                        'ping_status'       => 'closed',
-                        'comment_status'    => 'closed'
-                    ]
+                $page = array (
+                    'post_author'       => 1,
+                    'post_content'      => $page['content'],
+                    'post_name'         => $slug,
+                    'post_title'        => $page['title'],
+                    'post_status'       => 'publish',
+                    'post_type'         => 'page',
+                    'ping_status'       => 'closed',
+                    'comment_status'    => 'closed'
                 );
+
+                $page_id = wp_insert_post( $page );
 
             }
 

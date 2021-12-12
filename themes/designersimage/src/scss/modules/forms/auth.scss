@@ -1,94 +1,490 @@
 /*
     @package diTheme
     ##################################################
-    |   THEME USER AUTHORIZATION FORM STYLES         |
+    |   USER AUTHORIZATION FORM STYLES               |
     ##################################################
 */
 
-#di-auth-form {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 10;
-    overflow: hidden;
+@import './modules/variables';
+@import './modules/mixins';
+@import './modules/formElements';
+@import './modules/buttons';
 
-    .auth-btn {
-        margin: 20px;
+.auth-main {
+    background: none;
+    min-height: calc(100vh - 60px);
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+
+    .bg {
+        bottom: 0;
+        left: -130%;
+        overflow: hidden;
         position: absolute;
         top: 0;
-        right: 0;
+        width: 420%;
+        z-index: -1;
+    
+        svg {
+            fill: $di__light;
+            height: 100%;
+            object-fit: fill;
+            opacity: .05;
+            overflow: hidden;
+        }
+    }
+    
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding-bottom: 60px;
+    }
+    
+    h2 {
+        color: $di__primary;
+        flex: 1 100%;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 40px 0 5px 0;
+        padding-left: 58px;
+        text-transform: lowercase;
+        width: 100%;
 
-        &.hide {
+        &::after {
+            border-bottom: solid 1px $di__primary;
+            bottom: -5px;
+            content: '';
+            display: block;
+            height: 1px;
+            left: 0;
+            position: relative;
+            width: 105px;
+        }
+    }
+    
+    #di-auth-form {
+        flex: 1;
+        margin-top: 15px;
+        padding-left: 15px;
+        position: relative;
+
+        select#subject {
             display: none;
         }
     }
+}
 
-    .auth-container {
-        transition: transform 200ms ease;
-        transform: translateX(300px);
-        width: 220px;
-        margin: 20px;
+
+
+@media screen and (min-width: 320px) {
+    .contact-main {
+        .bg {
+            bottom: 0;
+            left: -100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 420%;
+            z-index: -1;
+        
+            svg {
+                fill: $di__light;
+                height: 100%;
+                object-fit: fill;
+                opacity: .15;
+                overflow: hidden;
+            }
+        }
+        
+        h2 {
+            padding-left: 77px;
+        }
+
+        .contact-links {
+            margin-right: 20px;
+
+            a {
+                margin-bottom: 20px;
+        
+                svg {
+                    height: 25px;
+                }
+            }
+        }
+
+
+        #di-contact-form {
+            padding-left: 20px;
+        }
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .contact-main {
+        .bg {
+            bottom: 0;
+            left: -120%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 420%;
+            z-index: -1;
+        }
+
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 7px 0;
+            padding-left: 97px;
+
+            &::after {
+                width: 125px;
+            }
+        }
+
+        .contact-links {
+            margin: 20px 30px 0 0;
+        }
+
+        #di-contact-form {
+            margin-top: 20px;
+            padding-left: 30px;
+        }
+    }
+}
+
+@media screen and (min-width: 375px) {
+    .contact-main {
+        .bg {
+            bottom: 0;
+            left: -120%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 420%;
+            z-index: -1;
+        }
+    }
+}
+
+@media screen and (min-width: 410px) {
+    .contact-main {
+        min-height: calc(100vh - 80px);
+
+        .bg {
+            bottom: 0;
+            left: -100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 360%;
+            z-index: -1;
+        }
+
+    }
+    
+}
+
+@media screen and (min-width: 425px) {
+    .contact-main {
+        .bg {
+            bottom: 0;
+            left: -120%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 360%;
+            z-index: -1;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin: 60px 0 10px 0;
+            padding-left: 105px;
+
+            &::after {
+                border-width: 1.5px;
+                bottom: -10px;
+                width: 150px;
+            }
+        }
+
+        .contact-links {
+            margin: 25px 30px 0 0;
+        
+            a {
+                display: block;
+                margin-bottom: 25px;
+        
+                svg {
+                    height: 30px;
+                }
+            }
+        }
+        
+        #di-contact-form {
+            margin-top: 25px;
+        }
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .contact-main {
+        .bg {
+            bottom: 0;
+            left: -70%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 250%;
+            z-index: -1;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            margin: 60px 0 10px 0;
+            padding-left: 97px;
+
+            &::after {
+                width: 200px;
+            }
+        }
+
+        .contact-links {
+            margin: 30px 30px 0 0;
+        
+            a {
+                display: block;
+                margin-bottom: 20px;
+        
+                svg {
+                    height: 25px;
+                }
+            }
+        }
+        
+        #di-contact-form {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    
+    .contact-main {
+        min-height: calc(100vh - 417px);
         position: relative;
-        background: white;
-        padding: 10px;
-        border-radius: 4px;
-        box-shadow: 0 15px 15px -10px rgba(0, 0, 0, 0.35);
+        width: 100%;
 
-        &.show {
-            transform: translateX(0);
-        }
-    }
-
-    h2 {
-        margin: 0 0 10px 0;
-        padding-top: 0;
-        font-size: 16px;
-    }
-
-    .close {
-        position: absolute;
-        top: 3px;
-        right: 10px;
-        font-size: 16px;
-    }
-
-    label {
-        font-size: 10px;
-        text-transform: uppercase;
-    }
-
-    input[type="text"],
-    input[type="passowrd"] {
-        margin-bottom: 10px;
-        padding: 4px;
-        font-size: 12px;
-    }
-
-    .actions {
-        text-align: center;
-        margin-bottom: 0;
-
-        a {
-            font-size: 10px;
-            text-transform: uppercase;
-            display: inline-block;
-            margin: 0 4px;
-        }
-    }
-
-    .status {
-        text-align: center;
-        margin: 5px 0;
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        font-weight: 600;
-
-        &.error {
-            color: rgb(144, 19, 19);
+        .bg {
+            bottom: 0;
+            left: -20%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 200%;
+            z-index: -1;
         }
     
-        &.success {
-            color: rgb(47, 129, 47);
+        h2 {
+            font-size: 2.8rem;
+            margin: 55px 0 10px 0;
+            padding-left: 97px;
+        }
+    
+        .contact-links {
+            margin: 30px 30px 0 0;
+        
+            a {
+                display: block;
+                margin-bottom: 20px;
+        
+                svg {
+                    height: 25px;
+                }
+            }
+        }
+
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    .contact-main {
+        min-height: calc(100vh - 502px);
+        position: relative;
+        width: 100%;
+    
+        h2 {
+            font-size: 4.8rem;
+            margin: 100px 0 20px 0;
+            padding-left: 270px;
+
+            &::after {
+                width: 335px;
+            }
+        }
+
+        .contact-links {
+            flex: 0;
+            margin: 40px 60px 0 100px;
+            width: unset;
+        
+            a {
+                display: block;
+                margin-bottom: 27px;
+        
+                svg {
+                    height: 35px;
+                }
+            }
+        }
+        
+        #di-contact-form {
+            margin-top: 40px;
+            padding: 0 100px 0 60px;
+        }
+
+    }
+
+}
+
+@media screen and (min-width: 1280px) {
+    
+    .contact-main {
+        min-height: calc(100vh - 80px);
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+
+        .container {
+            display: flex;
+            justify-content: unset;
+        }
+    
+        .bg {
+            bottom: unset;
+            left: -10%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 120%;
+            z-index: -1;
+        }
+    
+        h2 {
+            font-size: 3.6rem;
+            margin: 60px 0 20px 0;
+            padding-left: 325px;
+
+            &::after {
+                width: 250px;
+            }
+        }
+    
+        .contact-links {
+            flex: 0;
+            margin: 40px 60px 0 160px;
+            width: unset;
+        
+            a {
+                display: block;
+                margin-bottom: 25px;
+        
+                svg {
+                    height: 30px;
+                }
+            }
+        }
+        
+        #di-contact-form {
+            flex: 0 55%;
+            margin-top: 40px;
+            padding: 0 100px 0 60px;
+        }
+
+    }
+
+}
+
+@media screen and (min-width: 1440px) {
+    .contact-main {
+        .bg {
+            bottom: unset;
+            left: -5%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 110%;
+            z-index: -1;
+        }
+
+        h2 {
+            padding-left: 340px;
+        }
+
+        .contact-links {
+            
+            a {
+                display: block;
+                margin-bottom: 20px;
+        
+                svg {
+                    height: 25px;
+                }
+            }
+        }
+        
+        #di-contact-form {
+            padding: 0 100px 0 80px;
+        }
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .contact-main {
+        
+        h2 {
+            margin: 100px 0 10px 0;
+        }
+
+        .contact-links {
+            margin: 40px 60px 0 160px;
+        }
+
+        
+        #di-contact-form {
+            margin-top: 40px;
+            padding: 0 100px 0 80px;
+        }
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .contact-main {
+        
+
+        h2 {
+            font-size: 4.2rem;
+            margin: 120px 0 10px 0;
+            // padding-left: 80px;
+
+            &::after {
+                width: 300px;
+            }
+        }
+
+        .contact-links {
+            margin: 60px 60px 0 160px;
+        }
+        
+        #di-contact-form {
+            margin-top: 60px;
+            padding: 0 100px 0 80px;
         }
     }
 }
