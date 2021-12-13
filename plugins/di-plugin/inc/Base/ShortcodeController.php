@@ -283,13 +283,13 @@ class ShortcodeController extends BaseController
         );
         $attr = shortcode_atts( $default_attr, $attr );
 
-        if ( is_user_logged_in() ) {
-            return __( 'You are already signed in.', 'di-plugin' );
-        }
+        // if ( is_user_logged_in() ) {
+        //     return __( 'You are already signed in.', 'di-plugin' );
+        // }
 
-        if ( !isset($_REQUEST['login']) || !isset($_REQUEST['key']) ) {
-            return __( 'Invalid password reset link.', 'di-plugin' );
-        }
+        // if ( !isset($_REQUEST['login']) || !isset($_REQUEST['key']) ) {
+        //     return __( 'Invalid password reset link.', 'di-plugin' );
+        // }
 
         return $this->get_shortcode_template_html( 'password-reset-form', $attr );
     }

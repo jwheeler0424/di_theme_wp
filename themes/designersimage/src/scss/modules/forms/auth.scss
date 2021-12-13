@@ -77,15 +77,37 @@
             color: $di__red;
         }
     }
-    #di-login-form {
+
+    .hint {
+        color: $di__grey;
+        flex: 1 100%;
+        font-size: .9rem;
+        font-style: italic;
+        margin: 1.5rem 0;
+        padding: 0;
+        position: relative;
+        text-align: center;
+        width: 100%;
+    }
+
+    #di-login-form, #di-register-form, #di-lost-password-form, #di-reset-password-form {
         flex: 1 100%;
         margin: 1.5rem 0 .5rem;
         padding: 0 1.5rem;
         position: relative;
         width: 100%;
     }
+
+    .g-recaptcha {
+        transform:scale(0.69);
+        -webkit-transform:scale(0.69);
+        transform-origin:0 0;
+        -webkit-transform-origin:0 0;
+    }
+
     .auth-links {
         flex: 1 100%;
+        font-size: 1.2rem;
         padding: 0 1.5rem;
         width: 100%;
         text-align: center;
@@ -113,6 +135,13 @@
                 overflow: hidden;
             }
         }
+
+        .g-recaptcha {
+            transform:scale(0.83);
+            -webkit-transform:scale(0.83);
+            transform-origin:0 0;
+            -webkit-transform-origin:0 0;
+        }
     }
 }
 
@@ -137,6 +166,17 @@
             }
         }
 
+        .g-recaptcha {
+            transform:scale(0.89);
+            -webkit-transform:scale(0.89);
+            transform-origin:0 0;
+            -webkit-transform-origin:0 0;
+        }
+
+        .hint {
+            font-size: 1.1rem;
+        }
+
     }
 }
 
@@ -153,7 +193,21 @@
         }
 
         .container {
-            padding-bottom: 6rem;
+            padding-bottom: 7rem;
+        }
+
+        h2 {
+            margin: 6rem 0 1.5rem;
+        }
+        .auth-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .g-recaptcha {
+            transform:scale(0.94);
+            -webkit-transform:scale(0.94);
+            transform-origin:0 0;
+            -webkit-transform-origin:0 0;
         }
     }
 }
@@ -169,6 +223,17 @@
             top: 0;
             width: 360%;
             z-index: -1;
+        }
+
+        .g-recaptcha {
+            transform:unset;
+            -webkit-transform:unset;
+            transform-origin:unset;
+            -webkit-transform-origin:unset;
+        }
+
+        #di-login-form, #di-register-form, #di-lost-password-form, #di-reset-password-form {
+            margin: 1.5rem 0 1.5rem;
         }
 
     }
@@ -193,17 +258,13 @@
 
         h2 {
             font-size: 2.2rem;
-            margin: 60px 0 10px 0;
+            margin: 8rem 0 3rem 0;
 
             &::after {
                 border-width: 1.5px;
                 bottom: -10px;
                 width: 150px;
             }
-        }
-
-        #di-login-form {
-            margin-top: 2.5rem;
         }
     }
 }

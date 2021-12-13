@@ -64,7 +64,9 @@
     </p>
 <?php endif; ?>
 
-<p class="auth-info"></p>
+<p class="auth-info">
+    <?php _e( 'Use the form below to sign in to your user account. ', 'di-plugin' ) ?>
+</p>
 
 <form id="di-login-form" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
     <fieldset data-error="username">
@@ -98,11 +100,11 @@
     <?php wp_nonce_field( 'ajax-login-nonce', 'di_auth' ) ?>
 </form>
 <div class="auth-links">
-    <a class="link" href="<?php echo wp_lostpassword_url(); ?>">
+    <a class="link link-auth" href="<?php echo wp_lostpassword_url(); ?>">
         <?php _e( 'Lost your password?', 'di-plugin' ); ?>
     </a>
-        | 
-    <a class="link" href="<?php echo wp_registration_url() ?>">
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="link link-auth" href="<?php echo wp_registration_url() ?>">
         <?php _e( 'Register', 'di-plugin' ); ?>
     </a>
 </div>

@@ -55,6 +55,18 @@
     }
 }
 
+.link-auth {
+    color: $di__primary;
+    font-weight: 400;
+
+    &:active {
+        color: $di__light;
+    }
+    &:hover {
+        color: $di__light;
+    }
+}
+
 @media screen and (min-width: 540px) {
     .link-home {
         font-weight: 500;

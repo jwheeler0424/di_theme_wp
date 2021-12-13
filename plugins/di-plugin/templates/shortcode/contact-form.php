@@ -55,7 +55,7 @@
 
     <fieldset data-error="phone">
         <label for="phone">Phone Number</label>
-		<input type="phone" class="field-input" placeholder="(555) 555-5555" id="phone" name="phone" required>
+		<input type="tel" class="field-input" placeholder="(555) 555-5555" id="phone" name="phone" required>
 		<small class="field-msg">Your Phone Number is Required</small>
 	</fieldset>
 
