@@ -24,6 +24,8 @@
         <small class="field-msg"><?php _e( 'Your Password Must Match', 'di-plugin' ); ?></small>
     </fieldset>
 
+    <div id="password-strength"></div>
+
     <fieldset class="hint">
         <?php echo wp_get_password_hint(); ?>
     </fieldset>

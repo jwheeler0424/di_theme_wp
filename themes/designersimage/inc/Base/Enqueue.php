@@ -53,7 +53,6 @@ class Enqueue extends BaseController
             case 'contact':
             case 'member-login':
             case 'member-password-lost':
-            case 'member-password-reset':
             case 'testimonial':
                 wp_enqueue_style( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.css', array(), '1.0.0', 'all' );
                 wp_enqueue_script( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.js', array(), '1.0.0', true );
@@ -68,13 +67,19 @@ class Enqueue extends BaseController
                 wp_enqueue_style( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.css', array(), '1.0.0', 'all' );
                 wp_enqueue_script( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.js', array(), '1.0.0', true );
                 break;
+
+            case 'member-password-reset':
+                wp_enqueue_style( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.css', array(), '1.0.0', 'all' );
+                wp_enqueue_script( 'password-strength', $this->theme_url . '/assets/zxcvbn.js', array(), '', true );
+                wp_enqueue_script( 'di-theme-forms', $this->theme_url . '/assets/di-theme-forms.min.js', array(), '1.0.0', true );
+                break;
             
             default:
                 wp_enqueue_style( 'di-theme-404', $this->theme_url . '/assets/di-theme-404.min.css', array(), '1.0.0', 'all' );
                 break;
             
         }
-       
+        
     }
 
 }

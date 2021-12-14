@@ -202,11 +202,15 @@ export const lostPasswordForm = () => {
 }
 
 export const resetPasswordForm = () => {
-    const resetPassword = document.getElementById('di-reset-password-form');
-    const authInfo = document.querySelector('.auth-info');
+    const resetPassword = document.getElementById( 'di-reset-password-form' );
+    const authInfo = document.querySelector( '.auth-info' );
     const errorMsg = new Error();
+    const pass1 = document.querySelector( '[name="pass1"]' );
+    const pass2 = document.querySelector( '[name="pass2"]' );
+    
+    const blackListAr = [];
 
-    resetPassword.addEventListener('submit', (e) => {
+    resetPassword.addEventListener( 'submit', (e) => {
         e.preventDefault();
 
         // Reset the form messages
@@ -257,7 +261,14 @@ export const resetPasswordForm = () => {
 
             } )
 
-    });
+    } );
+
+    
+    pass1.addEventListener( 'keyup', (e) => {
+        checkPasswordStrength( pass1, pass2, blackListAr );
+    } );
+
+
 }
 
 const getUrl = window.location;
@@ -297,4 +308,44 @@ const resetResetPassword = () => {
     authInfo.innerHTML = '';
     resetPassword.querySelector('[name="submit"]').innerHTML = 'Reset Password';
     resetPassword.querySelector('[name="submit"]').disabled = false;
+}
+
+const checkPasswordStrength = ( pass1, blackListAr ) => {
+    // blackListAr.concat(  );
+    const strength = zxcvbn(pass1.value);
+    const strengthMeter = document.querySelector( '#password-strength' );
+    strengthMeter.classList.remove( 'short', 'bad', 'good', 'strong' );
+    console.log(strength);
+
+    switch ( strength.score) {
+
+        case 1:
+            strengthMeter.classList.add( 'bad' );
+            strengthMeter.innerHTML = 'Bad';
+            break;
+
+        case 2:
+            strengthMeter.classList.add( 'weak' );
+            strengthMeter.innerHTML = 'Weak';
+            break;
+        
+        case 3:
+            strengthMeter.classList.add( 'good' );
+            strengthMeter.innerHTML = 'Good';
+            break;
+        
+        case 4:
+            strengthMeter.classList.add( 'strong' );
+            strengthMeter.innerHTML = 'Strong';
+            break;
+    
+        default:
+            strengthMeter.classList.add( 'bad' );
+            strengthMeter.innerHTML = 'Bad';
+            break;
+
+    }
+
+    return strength;
+
 }
