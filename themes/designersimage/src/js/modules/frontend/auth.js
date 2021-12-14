@@ -12,16 +12,30 @@ import { showModal, closeModal } from './modal';
 
 export const loginForm = () => {
     const login = document.getElementById('di-login-form');
-    const authInfo = document.querySelector('.auth-info');
+    const requiredInputs = document.querySelectorAll('[required]');
     const pass1 = document.querySelector( '[name="password"]' );
     const visibleBtn = document.querySelector( 'button.visible' );
     const errorMsg = new Error();
+
+    // If javascript enabled, Disable HTML5 required
+    requiredInputs.forEach(input => {
+        input.required = false;
+    });
+
+    document.querySelectorAll('[data-error]').forEach( field => {
+        field.addEventListener('click', function() {
+            this.classList.remove('error');
+        })
+    });
 
     login.addEventListener('submit', (e) => {
         e.preventDefault();
 
         // Reset the form messages
         resetLogin();
+
+        e.target.querySelector('[name="submit"]').innerHTML = 'Validating...';
+        e.target.querySelector('[name="submit"]').disabled = true;
 
         // Collect all the form data
         const data = {
@@ -30,20 +44,30 @@ export const loginForm = () => {
             remember: e.target.querySelector('[name="remember"]').value,
             nonce: e.target.querySelector('[name="di_auth"]').value
         }
+        let formInvalid = false;
+        let errorHTML = '';
 
         // Validate Data
-        if ( !data.username || !data.password ) {
-            authInfo.innerHTML = errorMsg.getError( 'empty-combo' );
-            authInfo.classList.add( 'error' );
+        if ( !data.username ) {
+            e.target.querySelector('[data-error="username"]').classList.add('error');
+            formInvalid = true;
+        }
+
+        if ( !data.password ) {
+            e.target.querySelector('[data-error="password"]').classList.add('error');
+            formInvalid = true;
+        }
+
+        if ( formInvalid ) {
+            showModal( 'error', 'Error!', errorMsg.getError( 'empty_combo' ) );
+            e.target.querySelector('[name="submit"]').innerHTML = 'Sign In';
+            e.target.querySelector('[name="submit"]').disabled = false;
             return;
         }
 
         // AJAX http post request
         const url = e.target.dataset.url;
         const params = new URLSearchParams(new FormData(e.target));
-
-        e.target.querySelector('[name="submit"]').innerHTML = 'Validating...';
-        e.target.querySelector('[name="submit"]').disabled = true;
 
         let fetchData = {
             method: "POST",
@@ -53,22 +77,30 @@ export const loginForm = () => {
         fetch( url, fetchData )
             .then( res => res.json() )
             .catch( error => { 
-                authInfo.innerHTML = errorMsg.getError( 'error' );
+                showModal( 'error', 'Error!', errorMsg.getError( 'error' ) );
+                e.target.querySelector('[name="submit"]').innerHTML = 'Sign In';
+                e.target.querySelector('[name="submit"]').disabled = false;
             } )
             .then( response => {
                 if ( response === 0 || response.status === 'error' ) {
                     resetLogin();
                     response.message.forEach(error => {
-                        authInfo.innerHTML += errorMsg.getError( error ) + `\n`;
+                        errorHTML += errorMsg.getError( error ) + `\n`;
                     });
                     
-                    authInfo.classList.add( 'error' );
+                    showModal( 'error', 'Error!', errorHTML );
+                    e.target.querySelector('[name="submit"]').innerHTML = 'Sign In';
+                    e.target.querySelector('[name="submit"]').disabled = false;
                     e.target.reset();
 
                     return;
                 }
+
+                showModal( 'success', 'Success!', response.message );
+                e.target.querySelector('[name="submit"]').innerHTML = 'Sign In';
+                e.target.querySelector('[name="submit"]').disabled = false;
+                // e.target.reset();
                 
-                authInfo.innerHTML = response.message;
                 switch (response.user.roles[0]) {
                     case 'administrator':
                         window.location = baseUrl + 'wp-admin/';
@@ -318,11 +350,11 @@ const baseUrl = getUrl.protocol + "//" + getUrl.host + "/";
 
 const resetLogin = () => {
     // Reset all the messages
-    const login = document.getElementById('di-login-form');
-    const authInfo = document.querySelector('.auth-info');
-    authInfo.innerHTML = '';
-    login.querySelector('[name="submit"]').innerHTML = 'Sign In';
-    login.querySelector('[name="submit"]').disabled = false;
+    document.querySelector('[name="submit"]').innerHTML = 'Sign In';
+    document.querySelector('[name="submit"]').disabled = false;
+    document.querySelectorAll('[data-error]').forEach( field => field.classList.remove('error') );
+    document.querySelector('.js-form-submission').classList.remove('show');
+    closeModal();
 }
 
 const resetRegister = () => {

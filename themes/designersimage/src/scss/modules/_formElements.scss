@@ -527,7 +527,7 @@ fieldset.custom-checkbox {
         }
     
         .field-msg {
-            bottom: -12px;
+            bottom: -14px;
             color: $di__grey;
             display: none;
             font-size: 1rem;
@@ -609,7 +609,7 @@ fieldset.custom-checkbox {
         }
     
         .field-msg {
-            bottom: -12px;
+            bottom: -14px;
             color: $di__grey;
             display: none;
             font-size: 1rem;
@@ -792,6 +792,11 @@ fieldset.custom-checkbox {
             position: absolute;
             width: 100%;
         }
+    }
+
+    fieldset.recaptcha {
+        margin: 0 0 3rem 0;
+        width: 100%;
     }
 }
 
@@ -1035,7 +1040,7 @@ fieldset.custom-checkbox {
         }
     
         .field-msg {
-            bottom: -20px;
+            bottom: -16px;
             color: $di__grey;
             display: none;
             font-size: 1rem;
