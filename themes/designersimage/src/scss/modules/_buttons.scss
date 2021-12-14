@@ -26,6 +26,9 @@
     &:active {
         background: $di__light;
     }
+    &:disabled {
+        background: $di__grey-light;
+    }
     &:hover {
         background: $di__light;
     }

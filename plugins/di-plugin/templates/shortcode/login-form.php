@@ -77,6 +77,10 @@
     <fieldset data-error="password">
         <label for="user_pass"><?php _e( 'Password', 'di-plugin') ?></label>
         <input type="password" class="field-input" id="user_pass" name="password" required>
+        <button type="button" class="visible">
+            <?php get_template_part( 'img/svg/icon', 'visible.svg' ); ?>
+            <?php get_template_part( 'img/svg/icon', 'non_visible.svg' ); ?>
+        </button>
         <small class="field-msg">You Must Provide a Password</small>
     </fieldset>
     <fieldset class="custom-checkbox">

@@ -108,6 +108,134 @@ fieldset {
         &:focus {
             border-color: $di__primary;
         }
+
+        &.bad {
+            border-color: $di__red;
+        }
+        &.weak {
+            border-color: $di__orange;
+        }
+        &.warning {
+            border-color: $di__yellow;
+        }
+        &.strong {
+            border-color: $di__green;
+        }
+    }
+
+    input#pass1 {
+        padding-right: 3.6rem;
+    }
+
+    input#pass1, input#pass2 {
+        width: calc(100% - 1rem);
+    }
+
+    svg {
+        bottom: calc(50% - 1.7rem);
+        display: none;
+        height: 1.6rem;
+        position: absolute;
+        right: -1rem;
+
+        &.bad {
+            fill: $di__red;
+        }
+        &.weak {
+            fill: $di__orange;
+        }
+        &.warning {
+            fill: $di__yellow;
+        }
+        &.strong {
+            fill: $di__green;
+        }
+    }
+
+    input.bad {
+        ~ svg.bad {
+            display: block;
+        }
+        ~ svg.weak {
+            display: none;
+        }
+        ~ svg.warning {
+            display: none;
+        }
+        ~ svg.strong {
+            display: none;
+        }
+    }
+    input.weak {
+        ~ svg.bad {
+            display: none;
+        }
+        ~ svg.weak {
+            display: block;
+        }
+        ~ svg.warning {
+            display: none;
+        }
+        ~ svg.strong {
+            display: none;
+        }
+    }
+    input.warning {
+        ~ svg.bad {
+            display: none;
+        }
+        ~ svg.weak {
+            display: none;
+        }
+        ~ svg.warning {
+            display: block;
+        }
+        ~ svg.strong {
+            display: none;
+        }
+    }
+    input.strong {
+        ~ svg.bad {
+            display: none;
+        }
+        ~ svg.weak {
+            display: none;
+        }
+        ~ svg.warning {
+            display: none;
+        }
+        ~ svg.strong {
+            display: block;
+        }
+    }
+
+    button.visible {
+        align-items: center;
+        background: none;
+        border: none;
+        bottom: calc(50% - 1.7rem);
+        display: flex;
+        height: 1.6rem;
+        justify-content: center;
+        padding: 0;
+        position: absolute;
+        right: 2rem;
+        width: 1.6rem;
+        z-index: 10;
+
+        svg {
+            bottom: 0;
+            display: block;
+            fill: $di__primary;
+            height: 100%;
+            left: 0;
+            position: relative;
+            width: 100%;
+
+            &.hide {
+                display: none;
+            }
+        }
     }
 
     label {
@@ -284,9 +412,13 @@ fieldset.custom-checkbox {
     }
 
     input[type="checkbox"] + label svg {
+        bottom: unset;
         cursor: pointer;
+        display: block;
         height: 1.5rem;
         margin-right: .7rem;
+        position: unset;
+        right: unset;
         width: 1.5rem;
 
         g {
@@ -300,9 +432,13 @@ fieldset.custom-checkbox {
     }
 
     input[type="checkbox"]:checked + label svg {
+        bottom: unset;
         cursor: pointer;
+        display: block;
         height: 1.5rem;
         margin-right: .7rem;
+        position: unset;
+        right: unset;
         width: 1.5rem;
 
         g {
@@ -367,6 +503,10 @@ fieldset.custom-checkbox {
             span {
                 font-size: 1rem;
             }
+        }
+
+        svg {
+            bottom: calc(50% - 1.8rem);
         }
 
         textarea {
@@ -441,6 +581,14 @@ fieldset.custom-checkbox {
             span {
                 font-size: 1.2rem;
             }
+        }
+        
+        svg {
+            bottom: calc(50% - 1.9rem);
+        }
+
+        button.visible {
+            bottom: calc(50% - 1.9rem);
         }
 
         textarea {

@@ -98,6 +98,44 @@
         width: 100%;
     }
 
+    #di-login-form {
+        button.visible {
+            right: 1rem;
+        }
+    }
+
+    #password-strength {
+        border-radius: 2rem;
+        display: none;
+        font-weight: 600;
+        margin: 0 auto;
+        padding: .7rem 2rem;
+        text-align: center;
+        text-transform: uppercase;
+        width: 65%;
+
+        &.bad {
+            background: lighten($di__red, 40);
+            border: 1px solid $di__red;
+            color: $di__red;
+        }
+        &.weak {
+            background: lighten($di__orange, 40);
+            border: 1px solid $di__orange;
+            color: $di__orange;
+        }
+        &.warning {
+            background: lighten($di__yellow, 40);
+            border: 1px solid $di__yellow;
+            color: $di__yellow;
+        }
+        &.strong {
+            background: lighten($di__green, 40);
+            border: 1px solid $di__green;
+            color: $di__green;
+        }
+    }
+
     .g-recaptcha {
         transform:scale(0.69);
         -webkit-transform:scale(0.69);

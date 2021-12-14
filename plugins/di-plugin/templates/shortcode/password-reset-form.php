@@ -15,12 +15,24 @@
     <fieldset data-error="pass1">
         <label for="pass1"><?php _e( 'New Password', 'di-plugin' ); ?></label>
         <input type="password" class="field-input" id="pass1" name="pass1" value="" autocomplete="off" required />
+        <?php get_template_part( 'img/svg/icon', 'bad.svg' ); ?>
+        <?php get_template_part( 'img/svg/icon', 'weak.svg' ); ?>
+        <?php get_template_part( 'img/svg/icon', 'warning.svg' ); ?>
+        <?php get_template_part( 'img/svg/icon', 'strong.svg' ); ?>
+        <button type="button" class="visible">
+            <?php get_template_part( 'img/svg/icon', 'visible.svg' ); ?>
+            <?php get_template_part( 'img/svg/icon', 'non_visible.svg' ); ?>
+        </button>
         <small class="field-msg"><?php _e( 'A New Password is Required', 'di-plugin' ); ?></small>
     </fieldset>
 
     <fieldset data-error="pass2">
         <label for="pass2"><?php _e( 'Confirm Password', 'di-plugin' ); ?></label>
         <input type="password" class="field-input" id="pass2" name="pass2" value="" autocomplete="off" required />
+        <?php get_template_part( 'img/svg/icon', 'bad.svg' ); ?>
+        <?php get_template_part( 'img/svg/icon', 'weak.svg' ); ?>
+        <?php get_template_part( 'img/svg/icon', 'warning.svg' ); ?>
+        <?php get_template_part( 'img/svg/icon', 'strong.svg' ); ?>
         <small class="field-msg"><?php _e( 'Your Password Must Match', 'di-plugin' ); ?></small>
     </fieldset>
 

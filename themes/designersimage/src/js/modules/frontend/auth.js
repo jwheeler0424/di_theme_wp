@@ -13,6 +13,8 @@ import { showModal, closeModal } from './modal';
 export const loginForm = () => {
     const login = document.getElementById('di-login-form');
     const authInfo = document.querySelector('.auth-info');
+    const pass1 = document.querySelector( '[name="password"]' );
+    const visibleBtn = document.querySelector( 'button.visible' );
     const errorMsg = new Error();
 
     login.addEventListener('submit', (e) => {
@@ -84,6 +86,23 @@ export const loginForm = () => {
             } )
 
     })
+
+    visibleBtn.addEventListener( 'click', (e) => {
+        e.preventDefault();
+        const visIcon = document.querySelector( 'svg.visible' );
+        const nonVisIcon = document.querySelector( 'svg.non-visible' );
+
+        visIcon.classList.toggle( 'hide' );
+        nonVisIcon.classList.toggle( 'hide' );
+
+        if ( !visIcon.classList.contains('hide') ) {
+            pass1.type = 'text'
+            return;
+        }
+
+        pass1.type = 'password'
+
+    } );
 
 }
 
@@ -207,7 +226,10 @@ export const resetPasswordForm = () => {
     const errorMsg = new Error();
     const pass1 = document.querySelector( '[name="pass1"]' );
     const pass2 = document.querySelector( '[name="pass2"]' );
+    const submitBtn = document.querySelector( '[name="submit"]' );
+    const visibleBtn = document.querySelector( 'button.visible' );
     
+    submitBtn.disabled = true;
     const blackListAr = [];
 
     resetPassword.addEventListener( 'submit', (e) => {
@@ -265,9 +287,29 @@ export const resetPasswordForm = () => {
 
     
     pass1.addEventListener( 'keyup', (e) => {
-        checkPasswordStrength( pass1, pass2, blackListAr );
+        checkPasswordStrength( pass1, blackListAr );
     } );
 
+    pass2.addEventListener( 'keyup', (e) => {
+        checkPasswordMatch( pass1, pass2, blackListAr );
+    } );
+
+    visibleBtn.addEventListener( 'click', (e) => {
+        e.preventDefault();
+        const visIcon = document.querySelector( 'svg.visible' );
+        const nonVisIcon = document.querySelector( 'svg.non-visible' );
+
+        visIcon.classList.toggle( 'hide' );
+        nonVisIcon.classList.toggle( 'hide' );
+
+        if ( !visIcon.classList.contains('hide') ) {
+            pass1.type = 'text'
+            return;
+        }
+
+        pass1.type = 'password'
+
+    } );
 
 }
 
@@ -310,42 +352,103 @@ const resetResetPassword = () => {
     resetPassword.querySelector('[name="submit"]').disabled = false;
 }
 
-const checkPasswordStrength = ( pass1, blackListAr ) => {
-    // blackListAr.concat(  );
-    const strength = zxcvbn(pass1.value);
+const checkPasswordStrength = ( pass, blackListAr ) => {
+    const strength = zxcvbn(pass.value, blackListAr);
     const strengthMeter = document.querySelector( '#password-strength' );
-    strengthMeter.classList.remove( 'short', 'bad', 'good', 'strong' );
-    console.log(strength);
+    pass.classList.remove( 'bad', 'weak', 'warning', 'strong' );
+    strengthMeter.classList.remove( 'bad', 'weak', 'warning', 'strong' );
 
+    if ( pass.value === '' ) {
+        strengthMeter.style.display = 'none';
+        strengthMeter.innerHTML = '';
+        return strength;
+    }
+            
     switch ( strength.score) {
 
         case 1:
+            pass.classList.add( 'bad' );
             strengthMeter.classList.add( 'bad' );
-            strengthMeter.innerHTML = 'Bad';
+            strengthMeter.innerHTML = 'Unacceptable';
+            strengthMeter.style.display = 'block';
             break;
 
         case 2:
+            pass.classList.add( 'weak' );
             strengthMeter.classList.add( 'weak' );
             strengthMeter.innerHTML = 'Weak';
+            strengthMeter.style.display = 'block';
             break;
         
         case 3:
-            strengthMeter.classList.add( 'good' );
-            strengthMeter.innerHTML = 'Good';
+            pass.classList.add( 'warning' );
+            strengthMeter.classList.add( 'warning' );
+            strengthMeter.innerHTML = 'Acceptable';
+            strengthMeter.style.display = 'block';
             break;
         
         case 4:
+            pass.classList.add( 'strong' );
             strengthMeter.classList.add( 'strong' );
             strengthMeter.innerHTML = 'Strong';
+            strengthMeter.style.display = 'block';
             break;
     
         default:
+            pass.classList.add( 'bad' );
             strengthMeter.classList.add( 'bad' );
-            strengthMeter.innerHTML = 'Bad';
+            strengthMeter.innerHTML = 'Unacceptable';
+            strengthMeter.style.display = 'block';
             break;
 
     }
 
     return strength;
+}
 
+const checkPasswordMatch = ( pass1, pass2, blackListAr ) => {
+    const strength = zxcvbn(pass2.value, blackListAr);
+    const submitBtn = document.querySelector( '[name="submit"]' );
+    pass2.classList.remove( 'bad', 'weak', 'warning', 'strong' );
+            
+    if ( pass1.value !== pass2.value ) {
+        pass2.classList.add( 'bad' );
+        submitBtn.disabled = true;
+        return strength;
+    }
+
+    if ( pass2.value === '' ) {
+        return strength;
+    }
+
+    switch ( strength.score) {
+
+        case 1:
+            pass2.classList.add( 'bad' );
+            submitBtn.disabled = true;
+            break;
+
+        case 2:
+            pass2.classList.add( 'weak' );
+            submitBtn.disabled = false;
+            break;
+        
+        case 3:
+            pass2.classList.add( 'warning' );
+            submitBtn.disabled = false;
+            break;
+        
+        case 4:
+            pass2.classList.add( 'strong' );
+            submitBtn.disabled = false;
+            break;
+    
+        default:
+            pass2.classList.add( 'bad' );
+            submitBtn.disabled = true;
+            break;
+
+    }
+
+    return strength;
 }
