@@ -36,8 +36,24 @@ export class Error
                 message: 'You must provide a username and password.'
             },
             {
+                code: 'empty_email',
+                message: 'You must provide a valid email address.'
+            },
+            {
+                code: 'empty_first',
+                message: 'You must provide a first name.'
+            },
+            {
+                code: 'empty_last',
+                message: 'You must provide a last name.'
+            },
+            {
                 code: 'empty_password',
                 message: 'You need to enter your username to continue.'
+            },
+            {
+                code: 'empty_username',
+                message: 'You must provide a unique username.'
             },
             {
                 code: 'error',

@@ -85,7 +85,7 @@ export const loginForm = () => {
                 if ( response === 0 || response.status === 'error' ) {
                     resetLogin();
                     response.message.forEach(error => {
-                        errorHTML += errorMsg.getError( error ) + `\n`;
+                        errorHTML += errorMsg.getError( error ) + `\n\n`;
                     });
                     
                     showModal( 'error', 'Error!', errorHTML );
@@ -98,8 +98,6 @@ export const loginForm = () => {
 
                 showModal( 'success', 'Success!', response.message );
                 e.target.querySelector('[name="submit"]').innerHTML = 'Sign In';
-                e.target.querySelector('[name="submit"]').disabled = false;
-                // e.target.reset();
                 
                 switch (response.user.roles[0]) {
                     case 'administrator':
@@ -140,14 +138,28 @@ export const loginForm = () => {
 
 export const registerForm = () => {
     const register = document.getElementById('di-register-form');
-    const authInfo = document.querySelector('.auth-info');
+    const requiredInputs = document.querySelectorAll('[required]');
     const errorMsg = new Error();
+
+    // If javascript enabled, Disable HTML5 required
+    requiredInputs.forEach(input => {
+        input.required = false;
+    });
+
+    document.querySelectorAll('[data-error]').forEach( field => {
+        field.addEventListener('click', function() {
+            this.classList.remove('error');
+        })
+    });
 
     register.addEventListener('submit', (e) => {
         e.preventDefault();
 
         // Reset the form messages
         resetRegister();
+
+        e.target.querySelector('[name="submit"]').innerHTML = 'Processing...';
+        e.target.querySelector('[name="submit"]').disabled = true;
 
         // Collect all the form data
         const data = {
@@ -157,15 +169,44 @@ export const registerForm = () => {
             lastName: e.target.querySelector('[name="last"]').value,
             nonce: e.target.querySelector('[name="di_register"]').value
         }
+        let formInvalid = false;
+        let errorHTML = '';
 
         // Validate Data
+        if ( !data.username ) {
+            e.target.querySelector('[data-error="username"]').classList.add('error');
+            errorHTML += errorMsg.getError( 'empty_username' ) + `\n\n`;
+            formInvalid = true;
+        }
+
+        if ( !data.email ) {
+            e.target.querySelector('[data-error="email"]').classList.add('error');
+            errorHTML += errorMsg.getError( 'empty_email' ) + `\n\n`;
+            formInvalid = true;
+        }
+
+        if ( !data.firstName ) {
+            e.target.querySelector('[data-error="first"]').classList.add('error');
+            errorHTML += errorMsg.getError( 'empty_first' ) + `\n\n`;
+            formInvalid = true;
+        }
+
+        if ( !data.lastName ) {
+            e.target.querySelector('[data-error="last"]').classList.add('error');
+            errorHTML += errorMsg.getError( 'empty_last' ) + `\n\n`;
+            formInvalid = true;
+        }
+
+        if ( formInvalid ) {
+            showModal( 'error', 'Error!', errorHTML );
+            e.target.querySelector('[name="submit"]').innerHTML = 'Register';
+            e.target.querySelector('[name="submit"]').disabled = false;
+            return;
+        }
 
         // AJAX http post request
         const url = e.target.dataset.url;
         const params = new URLSearchParams(new FormData(e.target));
-
-        e.target.querySelector('[name="submit"]').innerHTML = 'Processing...';
-        e.target.querySelector('[name="submit"]').disabled = true;
 
         let fetchData = {
             method: "POST",
@@ -175,20 +216,27 @@ export const registerForm = () => {
         fetch( url, fetchData )
             .then( res => res.json() )
             .catch( error => { 
-                authInfo.innerHTML = errorMsg.getError( 'error' );
+                showModal( 'error', 'Error!', errorMsg.getError( 'error' ) );
+                e.target.querySelector('[name="submit"]').innerHTML = 'Register';
+                e.target.querySelector('[name="submit"]').disabled = false;
+                grecaptcha.reset();
             } )
             .then( response => {
                 if ( response === 0 || response.status === 'error' ) {
                     resetRegister();
                     response.message.forEach(error => {
-                        authInfo.innerHTML += errorMsg.getError( error ) + `\n`;
+                        errorHTML += errorMsg.getError( error ) + `\n`;
                     });
                     
-                    authInfo.classList.add( 'error' );
+                    showModal( 'error', 'Error!', errorHTML );
+                    e.target.querySelector('[name="submit"]').innerHTML = 'Register';
+                    e.target.querySelector('[name="submit"]').disabled = false;
+                    grecaptcha.reset();
                     return;
                 }
                 
-                authInfo.innerHTML = response.message;
+                showModal( 'success', 'Success!', response.message );
+                e.target.querySelector('[name="submit"]').innerHTML = 'Register';
                 window.location = baseUrl + 'member-login/?registered=' + data.username;
 
             } )
@@ -359,11 +407,11 @@ const resetLogin = () => {
 
 const resetRegister = () => {
     // Reset all the messages
-    const register = document.getElementById('di-register-form');
-    const authInfo = document.querySelector('.auth-info');
-    authInfo.innerHTML = '';
-    register.querySelector('[name="submit"]').innerHTML = 'Register';
-    register.querySelector('[name="submit"]').disabled = false;
+    document.querySelector('[name="submit"]').innerHTML = 'Register';
+    document.querySelector('[name="submit"]').disabled = false;
+    document.querySelectorAll('[data-error]').forEach( field => field.classList.remove('error') );
+    document.querySelector('.js-form-submission').classList.remove('show');
+    closeModal();
 }
 
 const resetLostPassword = () => {
