@@ -11,64 +11,65 @@
     <h2><?php _e( 'Sign In', 'di-plugin' ); ?></h2>
 <?php endif; ?>
 
-<?php 
-    // Show errors if there are any
-    if( $attr['errors'] && count( $attr['errors'] ) > 0 ): 
-?>
-    <?php foreach ( $attr['errors'] as $error ): ?>
-        <p class="auth-error">
-            <?php echo $error; ?>
-        </p>
-    <?php endforeach; ?>
-<?php endif; ?>
-
-<?php 
-    // Show success message if the user just registered
-    if( $attr['registered'] ):
-?>
-    <p class="auth-info">
-        <?php
-            _e( "You have successfully registered! We have emailed your password to the email address you provided.", 'di-plugin' );
-        ?>
-    </p>
-<?php endif; ?>
-
-<?php 
-    // Show success message if the user has requested a password reset
-    if( $attr['lost_password_sent'] ):
-?>
-    <p class="auth-info">
-        <?php
-            _e( 'Check your email for a link to reset your password.', 'di-plugin' );
-        ?>
-    </p>
-<?php endif; ?>
-
-<?php 
-    // Show success message if the user has updated the password
-    if( $attr['password_updated'] ):
-?>
-    <p class="auth-info">
-        <?php
-            _e( 'Your password has been changed. You can sign in now.', 'di-plugin' );
-        ?>
-    </p>
-<?php endif; ?>
-
-<?php 
-    if ( $_GET['logged_out'] ):
-    // Show logged out message if user just logged out
-?>
-    <p class="auth-info">
-        <?php _e( 'You have been successfully signed out.', 'di-plugin' ) ?>
-    </p>
-<?php endif; ?>
-
-<p class="auth-info">
-    <?php _e( 'Use the form below to sign in to your user account. ', 'di-plugin' ) ?>
-</p>
-
 <form id="di-login-form" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
+
+    <?php 
+        // Show errors if there are any
+        if( $attr['errors'] && count( $attr['errors'] ) > 0 ): 
+    ?>
+        <?php foreach ( $attr['errors'] as $error ): ?>
+            <p class="auth-info error">
+                <?php echo $error; ?>
+            </p>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+    <?php 
+        // Show success message if the user just registered
+        if( $attr['registered'] ):
+    ?>
+        <p class="auth-info success">
+            <?php
+                _e( "You have successfully registered! We have emailed your password to the email address you provided.", 'di-plugin' );
+            ?>
+        </p>
+    <?php endif; ?>
+
+    <?php 
+        // Show success message if the user has requested a password reset
+        if( $attr['lost_password_sent'] ):
+    ?>
+        <p class="auth-info success">
+            <?php
+                _e( 'Check your email for a link to reset your password.', 'di-plugin' );
+            ?>
+        </p>
+    <?php endif; ?>
+
+    <?php 
+        // Show success message if the user has updated the password
+        if( $attr['password_updated'] ):
+    ?>
+        <p class="auth-info success">
+            <?php
+                _e( 'Your password has been changed. You can sign in now.', 'di-plugin' );
+            ?>
+        </p>
+    <?php endif; ?>
+
+    <?php 
+        if ( $_GET['logged_out'] ):
+        // Show logged out message if user just logged out
+    ?>
+        <p class="auth-info info">
+            <?php _e( 'You have been successfully signed out.', 'di-plugin' ) ?>
+        </p>
+    <?php endif; ?>
+
+    <p class="auth-info">
+        <?php _e( 'Use the form below to sign in to your user account. ', 'di-plugin' ) ?>
+    </p>
+
     <fieldset data-error="username">
         <label for="user_login"><?php _e( 'Username', 'di-plugin') ?></label>
         <input type="text" class="field-input" id="user_login" name="username" required>

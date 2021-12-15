@@ -63,21 +63,6 @@
         }
     }
 
-    .auth-info {
-        color: $di__grey;
-        flex: 1 100%;
-        font-style: italic;
-        margin: 1.5rem 0 0 0;
-        padding: 0 1.5rem;
-        position: relative;
-        text-align: center;
-        width: 100%;
-
-        &.error {
-            color: $di__red;
-        }
-    }
-
     .hint {
         color: $di__grey;
         flex: 1 100%;
@@ -101,6 +86,44 @@
     #di-login-form {
         button.visible {
             right: 1rem;
+        }
+    }
+
+    .auth-info {
+        color: $di__grey;
+        flex: 1 100%;
+        font-style: italic;
+        margin: 0 0 2rem 0;
+        padding: 0 1.5rem;
+        position: relative;
+        text-align: center;
+        width: 100%;
+
+        &.error {
+            background: lighten($di__red, 40);
+            border-left: solid 2px $di__red;
+            color: $di__red;
+            font-weight: 600;
+            padding: 1rem 1.2rem;
+            text-align: left;
+        }
+
+        &.info {
+            background: lighten($di__grey, 35);
+            border-left: solid 2px $di__grey;
+            color: $di__grey;
+            font-weight: 600;
+            padding: 1rem 1.2rem;
+            text-align: left;
+        }
+
+        &.success {
+            background: lighten($di__green, 40);
+            border-left: solid 2px $di__green;
+            color: $di__green;
+            font-weight: 600;
+            padding: 1rem 1.2rem;
+            text-align: left;
         }
     }
 
@@ -238,7 +261,7 @@
             margin: 6rem 0 1.5rem;
         }
         .auth-info {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .g-recaptcha {
@@ -335,7 +358,7 @@
 
         .auth-info {
             font-size: 1.1rem;
-            margin: 2rem 0 0 0;
+            margin: 0 0 2rem 0;
         }
         
         #di-login-form, #di-lost-password-form, #di-reset-password-form {
@@ -397,11 +420,11 @@
 
         #di-login-form, #di-lost-password-form, #di-reset-password-form {
             display: flex;
-            flex: 0 280px;
+            flex: 0 380px;
             flex-direction: row;
             flex-wrap: wrap;
             margin: 30px auto 0;
-            width: 280px;
+            width: 380px;
 
             fieldset {
                 flex: 1 100%;
@@ -424,6 +447,10 @@
                 position: relative;
                 right: 0;
             }
+        }
+
+        .auth-info {
+            margin-bottom: 3rem;
         }
 
     }
@@ -450,7 +477,7 @@
             flex: 0 380px;
             flex-direction: row;
             flex-wrap: wrap;
-            margin: 30px auto 0;
+            margin: 0 auto 0;
             width: 380px;
 
             fieldset {
@@ -458,6 +485,10 @@
                 margin-right: unset;
                 width: 100%;
             }
+        }
+
+        .auth-info {
+            margin-bottom: 4rem;
         }
 
     }
@@ -488,7 +519,7 @@
     
         h2 {
             font-size: 3.6rem;
-            margin: 60px 0 20px 0;
+            margin: 60px 0 40px 0;
 
             &::after {
                 width: 250px;
@@ -496,8 +527,7 @@
         }
         
         #di-login-form {
-            flex: 0 270px;
-            margin-top: 40px;
+            flex: 0 280px;
         }
 
         #di-register-form {
@@ -507,6 +537,10 @@
             margin-left: 30%;
             margin-top: 30px;
             width: 40%;
+        }
+
+        .auth-info {
+            margin-bottom: 3rem;
         }
 
     }
@@ -531,12 +565,7 @@
     .auth-main {
         
         h2 {
-            margin: 100px 0 10px 0;
-        }
-
-        
-        #di-login-form, #di-register-form, #di-lost-password-form, #di-reset-password-form {
-            margin-top: 40px;
+            margin: 100px 0 40px 0;
         }
 
         .auth-links {
@@ -551,7 +580,7 @@
 
         h2 {
             font-size: 4.2rem;
-            margin: 120px 0 10px 0;
+            margin: 120px 0 40px 0;
 
             &::after {
                 width: 300px;
@@ -559,9 +588,8 @@
         }
         
         #di-login-form, #di-lost-password-form, #di-reset-password-form {
-            flex: 0 320px;
-            margin-top: 60px;
-            width: 320px;
+            flex: 0 380px;
+            width: 380px;
         }
     }
 }

@@ -49,7 +49,7 @@ export class Error
             },
             {
                 code: 'empty_password',
-                message: 'You need to enter your username to continue.'
+                message: 'You need to enter a password to continue.'
             },
             {
                 code: 'empty_username',
@@ -110,6 +110,10 @@ export class Error
             {
                 code: 'username_exists',
                 message: 'An account already exists with this username.'
+            },
+            {
+                code: 'weak_password',
+                message: 'The password you entered is not strong enough.'
             }
         ];
     }

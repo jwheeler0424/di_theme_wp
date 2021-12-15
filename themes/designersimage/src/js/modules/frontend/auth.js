@@ -4,7 +4,7 @@
 
 /*
     ##################################################
-    |   LOGIN FORM                                   |
+    |   USER AUTHENTICATION AJAX & VALIDATION        |
     ##################################################
 */
 import { Error } from './errorMessages';
@@ -32,7 +32,8 @@ export const loginForm = () => {
         e.preventDefault();
 
         // Reset the form messages
-        resetLogin();
+        e.target.querySelector('[name="submit"]').innerHTML = 'Sign In';
+        resetMessages();
 
         e.target.querySelector('[name="submit"]').innerHTML = 'Validating...';
         e.target.querySelector('[name="submit"]').disabled = true;
@@ -83,7 +84,8 @@ export const loginForm = () => {
             } )
             .then( response => {
                 if ( response === 0 || response.status === 'error' ) {
-                    resetLogin();
+                    e.target.querySelector('[name="submit"]').innerHTML = 'Sign In';
+                    resetMessages();
                     response.message.forEach(error => {
                         errorHTML += errorMsg.getError( error ) + `\n\n`;
                     });
@@ -91,8 +93,6 @@ export const loginForm = () => {
                     showModal( 'error', 'Error!', errorHTML );
                     e.target.querySelector('[name="submit"]').innerHTML = 'Sign In';
                     e.target.querySelector('[name="submit"]').disabled = false;
-                    e.target.reset();
-
                     return;
                 }
 
@@ -156,7 +156,8 @@ export const registerForm = () => {
         e.preventDefault();
 
         // Reset the form messages
-        resetRegister();
+        e.target.querySelector('[name="submit"]').innerHTML = 'Register';
+        resetMessages();
 
         e.target.querySelector('[name="submit"]').innerHTML = 'Processing...';
         e.target.querySelector('[name="submit"]').disabled = true;
@@ -223,7 +224,8 @@ export const registerForm = () => {
             } )
             .then( response => {
                 if ( response === 0 || response.status === 'error' ) {
-                    resetRegister();
+                    e.target.querySelector('[name="submit"]').innerHTML = 'Register';
+                    resetMessages();
                     response.message.forEach(error => {
                         errorHTML += errorMsg.getError( error ) + `\n\n`;
                     });
@@ -264,7 +266,8 @@ export const lostPasswordForm = () => {
         e.preventDefault();
 
         // Reset the form messages
-        resetLostPassword();
+        e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
+        resetMessages();
 
         e.target.querySelector('[name="submit"]').innerHTML = 'Processing...';
         e.target.querySelector('[name="submit"]').disabled = true;
@@ -286,7 +289,7 @@ export const lostPasswordForm = () => {
 
         if ( formInvalid ) {
             showModal( 'error', 'Error!', errorHTML );
-            e.target.querySelector('[name="submit"]').innerHTML = 'Register';
+            e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
             e.target.querySelector('[name="submit"]').disabled = false;
             return;
         }
@@ -310,7 +313,8 @@ export const lostPasswordForm = () => {
             .then( response => {
                 console.log(response);
                 if ( response === 0 || response.status === 'error' ) {
-                    resetLostPassword();
+                    e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
+                    resetMessages();
                     response.message.forEach(error => {
                         errorHTML += errorMsg.getError( error ) + `\n\n`;
                     });
@@ -332,21 +336,35 @@ export const lostPasswordForm = () => {
 
 export const resetPasswordForm = () => {
     const resetPassword = document.getElementById( 'di-reset-password-form' );
-    const authInfo = document.querySelector( '.auth-info' );
+    const requiredInputs = document.querySelectorAll('[required]');
     const errorMsg = new Error();
     const pass1 = document.querySelector( '[name="pass1"]' );
     const pass2 = document.querySelector( '[name="pass2"]' );
     const submitBtn = document.querySelector( '[name="submit"]' );
     const visibleBtn = document.querySelector( 'button.visible' );
     
-    submitBtn.disabled = true;
     const blackListAr = [];
+
+    // If javascript enabled, Disable HTML5 required
+    requiredInputs.forEach(input => {
+        input.required = false;
+    });
+
+    document.querySelectorAll('[data-error]').forEach( field => {
+        field.addEventListener('click', function() {
+            this.classList.remove('error');
+        })
+    });
 
     resetPassword.addEventListener( 'submit', (e) => {
         e.preventDefault();
 
         // Reset the form messages
-        resetResetPassword();
+        e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
+        resetMessages();
+
+        e.target.querySelector('[name="submit"]').innerHTML = 'Processing...';
+        e.target.querySelector('[name="submit"]').disabled = true;
 
         // Collect all the form data
         const data = {
@@ -356,15 +374,38 @@ export const resetPasswordForm = () => {
             rp_login: e.target.querySelector('[name="rp_login"]').value,
             nonce: e.target.querySelector('[name="di_reset_password"]').value
         }
+        let formInvalid = false;
+        let errorHTML = '';
 
         // Validate Data
+        if ( !data.pass1 ) {
+            e.target.querySelector('[data-error="pass1"]').classList.add('error');
+            errorHTML += errorMsg.getError( 'password_reset_empty' ) + `\n\n`;
+            formInvalid = true;
+        }
+
+        if ( checkPasswordStrength(pass1).score <=2 ) {
+            e.target.querySelector('[data-error="pass1"]').classList.add('error');
+            errorHTML += errorMsg.getError( 'weak_password' ) + `\n\n`;
+            formInvalid = true;
+        }
+
+        if ( data.pass1 !== data.pass2 ) {
+            e.target.querySelector('[data-error="pass2"]').classList.add('error');
+            errorHTML += errorMsg.getError( 'password_reset_mismatch' ) + `\n\n`;
+            formInvalid = true;
+        }
+
+        if ( formInvalid ) {
+            showModal( 'error', 'Error!', errorHTML );
+            e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
+            e.target.querySelector('[name="submit"]').disabled = false;
+            return;
+        }
 
         // AJAX http post request
         const url = e.target.dataset.url;
         const params = new URLSearchParams(new FormData(e.target));
-
-        e.target.querySelector('[name="submit"]').innerHTML = 'Processing...';
-        e.target.querySelector('[name="submit"]').disabled = true;
 
         let fetchData = {
             method: "POST",
@@ -374,21 +415,30 @@ export const resetPasswordForm = () => {
         fetch( url, fetchData )
             .then( res => res.json() )
             .catch( error => { 
-                authInfo.innerHTML = errorMsg.getError( 'error' );
+                showModal( 'error', 'Error!', errorMsg.getError( 'error' ) );
+                e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
+                e.target.querySelector('[name="submit"]').disabled = false;
             } )
             .then( response => {
-                console.log(response);
                 if ( response === 0 || response.status === 'error' ) {
-                    resetResetPassword();
+                    e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
+                    resetMessages();
                     response.message.forEach(error => {
-                        authInfo.innerHTML += errorMsg.getError( error ) + `\n`;
+                        errorHTML += errorMsg.getError( error ) + `\n\n`;
                     });
                     
-                    authInfo.classList.add( 'error' );
+                    showModal( 'error', 'Error!', errorHTML );
+                    e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
+                    e.target.querySelector('[name="submit"]').disabled = false;
+                    console.log(response.message);
+                    if ( response.message.includes('expiredkey') || response.message.includes('invalidkey') ) {
+                        window.location = baseUrl + 'member-password-lost/?errors=' + response.message.join(',')
+                    }
                     return;
                 }
                 
-                authInfo.innerHTML = response.message;
+                showModal( 'success', 'Success!', response.message );
+                e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
                 window.location = baseUrl + 'member-login/?password=changed';
 
             } )
@@ -426,40 +476,12 @@ export const resetPasswordForm = () => {
 const getUrl = window.location;
 const baseUrl = getUrl.protocol + "//" + getUrl.host + "/";
 
-const resetLogin = () => {
+const resetMessages = () => {
     // Reset all the messages
-    document.querySelector('[name="submit"]').innerHTML = 'Sign In';
     document.querySelector('[name="submit"]').disabled = false;
     document.querySelectorAll('[data-error]').forEach( field => field.classList.remove('error') );
     document.querySelector('.js-form-submission').classList.remove('show');
     closeModal();
-}
-
-const resetRegister = () => {
-    // Reset all the messages
-    document.querySelector('[name="submit"]').innerHTML = 'Register';
-    document.querySelector('[name="submit"]').disabled = false;
-    document.querySelectorAll('[data-error]').forEach( field => field.classList.remove('error') );
-    document.querySelector('.js-form-submission').classList.remove('show');
-    closeModal();
-}
-
-const resetLostPassword = () => {
-    // Reset all the messages
-    document.querySelector('[name="submit"]').innerHTML = 'Reset Password';
-    document.querySelector('[name="submit"]').disabled = false;
-    document.querySelectorAll('[data-error]').forEach( field => field.classList.remove('error') );
-    document.querySelector('.js-form-submission').classList.remove('show');
-    closeModal();
-}
-
-const resetResetPassword = () => {
-    // Reset all the messages
-    const resetPassword = document.getElementById('di-reset-password-form');
-    const authInfo = document.querySelector('.auth-info');
-    authInfo.innerHTML = '';
-    resetPassword.querySelector('[name="submit"]').innerHTML = 'Reset Password';
-    resetPassword.querySelector('[name="submit"]').disabled = false;
 }
 
 const checkPasswordStrength = ( pass, blackListAr ) => {
@@ -518,44 +540,33 @@ const checkPasswordStrength = ( pass, blackListAr ) => {
 
 const checkPasswordMatch = ( pass1, pass2, blackListAr ) => {
     const strength = zxcvbn(pass2.value, blackListAr);
-    const submitBtn = document.querySelector( '[name="submit"]' );
     pass2.classList.remove( 'bad', 'weak', 'warning', 'strong' );
             
     if ( pass1.value !== pass2.value ) {
         pass2.classList.add( 'bad' );
-        submitBtn.disabled = true;
         return strength;
     }
-
-    if ( pass2.value === '' ) {
-        return strength;
-    }
-
+    
     switch ( strength.score) {
 
         case 1:
             pass2.classList.add( 'bad' );
-            submitBtn.disabled = true;
             break;
 
         case 2:
             pass2.classList.add( 'weak' );
-            submitBtn.disabled = false;
             break;
         
         case 3:
             pass2.classList.add( 'warning' );
-            submitBtn.disabled = false;
             break;
         
         case 4:
             pass2.classList.add( 'strong' );
-            submitBtn.disabled = false;
             break;
     
         default:
             pass2.classList.add( 'bad' );
-            submitBtn.disabled = true;
             break;
 
     }

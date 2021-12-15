@@ -11,16 +11,28 @@
     <h2><?php _e( 'Forgot Your Password?', 'di-plugin' ); ?></h2>
 <?php endif; ?>
 
-<p class="auth-info">
-    <?php
-        _e(
-            "Enter your email address and we'll send you a link you can use to pick a new password.",
-            'di-plugin'
-        );
-    ?>
-</p>
-
 <form id="di-lost-password-form" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
+
+    <?php 
+        // Show errors if there are any
+        if( $attr['errors'] && count( $attr['errors'] ) > 0 ): 
+    ?>
+        <?php foreach ( $attr['errors'] as $error ): ?>
+            <p class="auth-info error">
+                <?php echo $error; ?>
+            </p>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+    <p class="auth-info">
+        <?php
+            _e(
+                "Enter your email address and we'll send you a link you can use to pick a new password.",
+                'di-plugin'
+            );
+        ?>
+    </p>
+
     <fieldset data-error="email">
         <label for="email"><?php _e( 'Email Address', 'di-plugin' ); ?></label>
         <input type="email" class="field-input" placeholder="yourname@website.com" id="email" name="email" required>

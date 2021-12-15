@@ -204,7 +204,15 @@ class ShortcodeController extends BaseController
         $attr = shortcode_atts( $default_attr, $attr );
 
         if ( is_user_logged_in() ) {
-            return __( 'You are already signed in.', 'di-plugin' );
+            $user = wp_get_current_user();
+            if ( user_can( $user, 'manage_options' ) ) {
+                wp_redirect( admin_url() );
+            } elseif ( $user->roles[0] === 'member') {
+                wp_redirect( home_url( 'member-account' ) );
+            } else {
+                wp_redirect( home_url( 'client-account' ) );
+            }
+            exit;
         }
 
         // Render the login form using template
@@ -239,7 +247,15 @@ class ShortcodeController extends BaseController
         $attr = shortcode_atts( $default_attr, $attr );
 
         if ( is_user_logged_in() ) {
-            return __( 'You are already signed in.', 'di-plugin' );
+            $user = wp_get_current_user();
+            if ( user_can( $user, 'manage_options' ) ) {
+                wp_redirect( admin_url() );
+            } elseif ( $user->roles[0] === 'member') {
+                wp_redirect( home_url( 'member-account' ) );
+            } else {
+                wp_redirect( home_url( 'client-account' ) );
+            }
+            exit;
         }
 
         // Render the login form using template
@@ -283,13 +299,22 @@ class ShortcodeController extends BaseController
         );
         $attr = shortcode_atts( $default_attr, $attr );
 
-        // if ( is_user_logged_in() ) {
-        //     return __( 'You are already signed in.', 'di-plugin' );
-        // }
+        if ( is_user_logged_in() ) {
+            $user = wp_get_current_user();
+            if ( user_can( $user, 'manage_options' ) ) {
+                wp_redirect( admin_url() );
+            } elseif ( $user->roles[0] === 'member') {
+                wp_redirect( home_url( 'member-account' ) );
+            } else {
+                wp_redirect( home_url( 'client-account' ) );
+            }
+            exit;
+        }
 
-        // if ( !isset($_REQUEST['login']) || !isset($_REQUEST['key']) ) {
-        //     return __( 'Invalid password reset link.', 'di-plugin' );
-        // }
+        if ( !isset($_REQUEST['login']) || !isset($_REQUEST['key']) ) {
+            wp_redirect( home_url( 'member-login?login=invalidkey' ) );
+            exit;
+        }
 
         return $this->get_shortcode_template_html( 'password-reset-form', $attr );
     }
@@ -333,9 +358,17 @@ class ShortcodeController extends BaseController
         $attr = shortcode_atts( $default_attr, $attr );
 
         if ( is_user_logged_in() ) {
-            return __( 'You are already signed in.', 'di-plugin' );
+            $user = wp_get_current_user();
+            if ( user_can( $user, 'manage_options' ) ) {
+                wp_redirect( admin_url() );
+            } elseif ( $user->roles[0] === 'member') {
+                wp_redirect( home_url( 'member-account' ) );
+            } else {
+                wp_redirect( home_url( 'client-account' ) );
+            }
+            exit;
         } elseif ( !get_option( 'users_can_register' ) ) {
-            return __( 'Registering new users is currently not allowed.', 'di-plugin' );
+            wp_redirect( home_url( 'member-login' ) );
         }
 
         // Render the register form using template

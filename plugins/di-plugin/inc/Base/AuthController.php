@@ -338,6 +338,7 @@ class AuthController extends BaseController
                         'message' => [ 'expiredkey' ]
                     )
                 );
+                
             } else {
                 echo json_encode(
                     array(

@@ -28,6 +28,15 @@
     }
     &:disabled {
         background: $di__grey-light;
+
+        &:active {
+            background: $di__grey-light;
+            cursor: default;
+        }
+        &:hover {
+            background: $di__grey-light;
+            cursor: default;
+        }
     }
     &:hover {
         background: $di__light;
