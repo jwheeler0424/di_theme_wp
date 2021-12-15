@@ -55,12 +55,14 @@
     <?php wp_nonce_field( 'ajax-register-nonce', 'di_register' ) ?>
 </form>
 
-<div class="auth-links">
-    <a class="link link-auth" href="<?php echo wp_login_url() ?>">
-        <?php _e( 'Log In', 'di-plugin' ); ?>
-    </a>
-    &nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="link link-auth" href="<?php echo wp_lostpassword_url(); ?>">
-        <?php _e( 'Lost your password?', 'di-plugin' ); ?>
-    </a>
-</div>
+<?php if ( get_option( 'users_can_register' ) ): ?>
+    <div class="auth-links">
+        <a class="link link-auth" href="<?php echo wp_login_url() ?>">
+            <?php _e( 'Log In', 'di-plugin' ); ?>
+        </a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a class="link link-auth" href="<?php echo wp_lostpassword_url(); ?>">
+            <?php _e( 'Lost your password?', 'di-plugin' ); ?>
+        </a>
+    </div>
+<?php endif; ?>

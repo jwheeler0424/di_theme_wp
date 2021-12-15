@@ -104,12 +104,15 @@
     <input type="hidden" name="action" value="login">
     <?php wp_nonce_field( 'ajax-login-nonce', 'di_auth' ) ?>
 </form>
-<div class="auth-links">
-    <a class="link link-auth" href="<?php echo wp_lostpassword_url(); ?>">
-        <?php _e( 'Lost your password?', 'di-plugin' ); ?>
-    </a>
-    &nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="link link-auth" href="<?php echo wp_registration_url() ?>">
-        <?php _e( 'Register', 'di-plugin' ); ?>
-    </a>
-</div>
+
+<?php if ( get_option( 'users_can_register' ) ): ?>
+    <div class="auth-links">
+        <a class="link link-auth" href="<?php echo wp_lostpassword_url(); ?>">
+            <?php _e( 'Lost your password?', 'di-plugin' ); ?>
+        </a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a class="link link-auth" href="<?php echo wp_registration_url() ?>">
+            <?php _e( 'Register', 'di-plugin' ); ?>
+        </a>
+    </div>
+<?php endif; ?>
