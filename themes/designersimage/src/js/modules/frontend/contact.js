@@ -41,6 +41,7 @@ const contactForm = () => {
 
         // reset the form messages
         resetMessages();
+        showModal( 'loading', 'Processing...', '' );
         
         // collect all the data
         let formData = {

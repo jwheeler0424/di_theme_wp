@@ -34,6 +34,7 @@ export const loginForm = () => {
         // Reset the form messages
         e.target.querySelector('[name="submit"]').innerHTML = 'Sign In';
         resetMessages();
+        showModal( 'loading', 'Validating...', '' );
 
         e.target.querySelector('[name="submit"]').innerHTML = 'Validating...';
         e.target.querySelector('[name="submit"]').disabled = true;
@@ -95,9 +96,6 @@ export const loginForm = () => {
                     e.target.querySelector('[name="submit"]').disabled = false;
                     return;
                 }
-
-                showModal( 'success', 'Success!', response.message );
-                e.target.querySelector('[name="submit"]').innerHTML = 'Sign In';
                 
                 switch (response.user.roles[0]) {
                     case 'administrator':
@@ -158,6 +156,7 @@ export const registerForm = () => {
         // Reset the form messages
         e.target.querySelector('[name="submit"]').innerHTML = 'Register';
         resetMessages();
+        showModal( 'loading', 'Processing...', '' );
 
         e.target.querySelector('[name="submit"]').innerHTML = 'Processing...';
         e.target.querySelector('[name="submit"]').disabled = true;
@@ -223,6 +222,7 @@ export const registerForm = () => {
                 grecaptcha.reset();
             } )
             .then( response => {
+                showModal( 'loading', 'Processing...', '' );
                 if ( response === 0 || response.status === 'error' ) {
                     e.target.querySelector('[name="submit"]').innerHTML = 'Register';
                     resetMessages();
@@ -237,8 +237,6 @@ export const registerForm = () => {
                     return;
                 }
                 
-                showModal( 'success', 'Success!', response.message );
-                e.target.querySelector('[name="submit"]').innerHTML = 'Register';
                 window.location = baseUrl + 'member-login/?registered=' + data.username;
 
             } )
@@ -268,6 +266,7 @@ export const lostPasswordForm = () => {
         // Reset the form messages
         e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
         resetMessages();
+        showModal( 'loading', 'Processing...', '' );
 
         e.target.querySelector('[name="submit"]').innerHTML = 'Processing...';
         e.target.querySelector('[name="submit"]').disabled = true;
@@ -325,8 +324,6 @@ export const lostPasswordForm = () => {
                     return;
                 }
                 
-                showModal( 'success', 'Success!', response.message );
-                e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
                 window.location = baseUrl + 'member-login/?checkmail=confirm';
 
             } )
@@ -362,6 +359,7 @@ export const resetPasswordForm = () => {
         // Reset the form messages
         e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
         resetMessages();
+        showModal( 'loading', 'Processing...', '' );
 
         e.target.querySelector('[name="submit"]').innerHTML = 'Processing...';
         e.target.querySelector('[name="submit"]').disabled = true;
@@ -437,8 +435,6 @@ export const resetPasswordForm = () => {
                     return;
                 }
                 
-                showModal( 'success', 'Success!', response.message );
-                e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
                 window.location = baseUrl + 'member-login/?password=changed';
 
             } )

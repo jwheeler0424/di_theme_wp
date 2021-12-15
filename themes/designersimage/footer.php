@@ -22,6 +22,7 @@
                 </button>
                 <h3></h3>
                 <main class="content"></main>
+                <?php get_template_part( 'img/svg/loader', 'wedges.svg' ); ?>
                 <button class="btn btn-cancel" disabled>Cancel</button>
                 <button class="btn btn-submit">Okay</button>
             </div>

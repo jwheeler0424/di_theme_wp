@@ -209,6 +209,7 @@ class AuthController extends BaseController
                     'user' => $user
                 )
             );
+
         } else {
             echo json_encode(
                 array(
@@ -616,20 +617,24 @@ class AuthController extends BaseController
      * 
      * @return void
      */
-    private function redirect_logged_in_user( $redirect_to = null )
+    public function redirect_logged_in_user( $redirect_to = null )
     {
         $user = wp_get_current_user();
 
         if ( user_can( $user, 'manage_options' ) ) {
             if ( $redirect_to ) {
                 wp_safe_redirect( $redirect_to );
+                exit;
             } else {
                 wp_redirect( admin_url() );
+                exit;
             }
-        } else {
+        } elseif ( $user->roles[0] === 'member') {
             wp_redirect( home_url( 'member-account' ) );
+            exit;
         }
 
+        wp_redirect( home_url( 'client-account' ) );
         exit;
     }
 

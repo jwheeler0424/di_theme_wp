@@ -38,19 +38,21 @@ export function modal() {
 export function showModal( type, title, message ) {
     const modal = document.querySelector('.modal');
     const modalContent = document.querySelector('.modal-content');
+    closeModal();
     
     modal.querySelector('h3').innerText = `${title}`;
     modal.querySelector('main').innerText = `${message}`;
     modal.classList.add(`${type}`);
     modal.classList.add('show');
-    modalContent.focus();
     
-    modalContent.addEventListener('keydown', handleKeyDown);
-    modalContent.addEventListener('blur', () => {
-        closeModal();
-        return false;
-    })
-    
+    if ( type !== 'loading' ) {
+        modalContent.focus();
+        modalContent.addEventListener('keydown', handleKeyDown);
+        modalContent.addEventListener('blur', () => {
+            closeModal();
+            return false;
+        })
+    }
 } 
 
 
@@ -67,6 +69,7 @@ export function closeModal() {
     if ( modal.classList.contains('error') ) modal.classList.remove('error');
     if ( modal.classList.contains('success') ) modal.classList.remove('success');
     if ( modal.classList.contains('warning') ) modal.classList.remove('warning');
+    if ( modal.classList.contains('loading') ) modal.classList.remove('loading');
 
     modal.querySelector('h3').innerText = '';
     modal.querySelector('main').innerText = '';
