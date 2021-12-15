@@ -193,7 +193,7 @@ export const registerForm = () => {
 
         if ( !data.lastName ) {
             e.target.querySelector('[data-error="last"]').classList.add('error');
-            errorHTML += errorMsg.getError( 'empty_last' ) + `\n\n`;
+            errorHTML += errorMsg.getError( 'empty_last' );
             formInvalid = true;
         }
 
@@ -225,7 +225,7 @@ export const registerForm = () => {
                 if ( response === 0 || response.status === 'error' ) {
                     resetRegister();
                     response.message.forEach(error => {
-                        errorHTML += errorMsg.getError( error ) + `\n`;
+                        errorHTML += errorMsg.getError( error ) + `\n\n`;
                     });
                     
                     showModal( 'error', 'Error!', errorHTML );
@@ -246,8 +246,19 @@ export const registerForm = () => {
 
 export const lostPasswordForm = () => {
     const lostPassword = document.getElementById('di-lost-password-form');
-    const authInfo = document.querySelector('.auth-info');
+    const requiredInputs = document.querySelectorAll('[required]');
     const errorMsg = new Error();
+
+    // If javascript enabled, Disable HTML5 required
+    requiredInputs.forEach(input => {
+        input.required = false;
+    });
+
+    document.querySelectorAll('[data-error]').forEach( field => {
+        field.addEventListener('click', function() {
+            this.classList.remove('error');
+        })
+    });
 
     lostPassword.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -255,20 +266,34 @@ export const lostPasswordForm = () => {
         // Reset the form messages
         resetLostPassword();
 
+        e.target.querySelector('[name="submit"]').innerHTML = 'Processing...';
+        e.target.querySelector('[name="submit"]').disabled = true;
+
         // Collect all the form data
         const data = {
             email: e.target.querySelector('[name="email"]').value,
             nonce: e.target.querySelector('[name="di_lost_password"]').value
         }
+        let formInvalid = false;
+        let errorHTML = '';
 
         // Validate Data
+        if ( !data.email ) {
+            e.target.querySelector('[data-error="email"]').classList.add('error');
+            errorHTML += errorMsg.getError( 'empty_email' );
+            formInvalid = true;
+        }
+
+        if ( formInvalid ) {
+            showModal( 'error', 'Error!', errorHTML );
+            e.target.querySelector('[name="submit"]').innerHTML = 'Register';
+            e.target.querySelector('[name="submit"]').disabled = false;
+            return;
+        }
 
         // AJAX http post request
         const url = e.target.dataset.url;
         const params = new URLSearchParams(new FormData(e.target));
-
-        e.target.querySelector('[name="submit"]').innerHTML = 'Processing...';
-        e.target.querySelector('[name="submit"]').disabled = true;
 
         let fetchData = {
             method: "POST",
@@ -278,21 +303,26 @@ export const lostPasswordForm = () => {
         fetch( url, fetchData )
             .then( res => res.json() )
             .catch( error => { 
-                authInfo.innerHTML = errorMsg.getError( 'error' );
+                showModal( 'error', 'Error!', errorMsg.getError( 'error' ) );
+                e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
+                e.target.querySelector('[name="submit"]').disabled = false;
             } )
             .then( response => {
                 console.log(response);
                 if ( response === 0 || response.status === 'error' ) {
                     resetLostPassword();
                     response.message.forEach(error => {
-                        authInfo.innerHTML += errorMsg.getError( error ) + `\n`;
+                        errorHTML += errorMsg.getError( error ) + `\n\n`;
                     });
                     
-                    authInfo.classList.add( 'error' );
+                    showModal( 'error', 'Error!', errorHTML );
+                    e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
+                    e.target.querySelector('[name="submit"]').disabled = false;
                     return;
                 }
                 
-                authInfo.innerHTML = response.message;
+                showModal( 'success', 'Success!', response.message );
+                e.target.querySelector('[name="submit"]').innerHTML = 'Reset Password';
                 window.location = baseUrl + 'member-login/?checkmail=confirm';
 
             } )
@@ -416,11 +446,11 @@ const resetRegister = () => {
 
 const resetLostPassword = () => {
     // Reset all the messages
-    const lostPassword = document.getElementById('di-lost-password-form');
-    const authInfo = document.querySelector('.auth-info');
-    authInfo.innerHTML = '';
-    lostPassword.querySelector('[name="submit"]').innerHTML = 'Reset Password';
-    lostPassword.querySelector('[name="submit"]').disabled = false;
+    document.querySelector('[name="submit"]').innerHTML = 'Reset Password';
+    document.querySelector('[name="submit"]').disabled = false;
+    document.querySelectorAll('[data-error]').forEach( field => field.classList.remove('error') );
+    document.querySelector('.js-form-submission').classList.remove('show');
+    closeModal();
 }
 
 const resetResetPassword = () => {
